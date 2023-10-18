@@ -19,7 +19,7 @@ function Navbar({ items, searchbar, logo }: {
   logo?: { src: string; alt: string };
 }) {
   const platform = usePlatform();
-
+  const help  = "/help.png";
   return (
     <>
       {/* Mobile Version */}
@@ -48,51 +48,79 @@ function Navbar({ items, searchbar, logo }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden md:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6">
-        <div class="flex-none w-44">
-          {logo && (
-            <a
+      <div class="hidden md:flex flex-col justify-between items-center w-full px-[120px] py-5">
+        <div class='flex flex-row justify-between items-center w-full'>
+
+          <div class="flex-none w-44">
+            {logo && (
+              <a
               href="/"
               aria-label="Store logo"
-              class="block px-4 py-3 w-[160px]"
-            >
-              <Image src={logo.src} alt={logo.alt} width={126} height={16} />
-            </a>
-          )}
+              class="blocK w-[180px]"
+              >
+                <Image src={logo.src} alt={logo.alt} width={180} height={40} />
+              </a>
+            )}
+          </div>
+      
+          <div class="flex-none flex items-center justify-center gap-3">
+            {/*
+             <SearchButton />
+             <Searchbar searchbar={searchbar} />*/}
+            <div class='uppercase flex flex-row text-base items-center gap-1'>
+            <a
+              class="btn btn-circle btn-sm btn-ghost"
+              href="/login"
+              aria-label="Log in"
+              >
+              <Icon id="User-Circle" size={24} strokeWidth={0.4} />
+            </a> Entrar
+            </div>
+            <div class='uppercase flex flex-row text-base gap-1 items-center'>
+                {platform === "vtex" && <CartButtonVTEX />}
+                {platform === "vnda" && <CartButtonVDNA />}
+                {platform === "wake" && <CartButtonWake />}
+                {platform === "linx" && <CartButtonLinx />}
+                {platform === "shopify" && <CartButtonShopify />}
+                Carrinho
+            </div>
+            <div class='uppercase flex flex-row text-base items-center gap-1'>
+              <a
+                class="btn btn-circle btn-sm btn-ghost"
+                href="/wishlist"
+                aria-label="Wishlist"
+                >
+                <Icon
+                  id="Heart"
+                  size={24}
+                  strokeWidth={2}
+                  fill="none"
+                  /> 
+              </a> Lista de desejos
+            </div>
+            <div class='uppercase flex flex-row text-base gap-1 items-center'>
+              <a
+                class="btn btn-circle btn-sm btn-ghost"
+                href="/help"
+                aria-label="help"
+                >
+                <img
+                  src={help}
+                  id="Help-Contact"
+                  width={24}
+                  height={24}
+                  loading={"lazy"}/> 
+              </a> Ajuda
+            </div>
+            
+          </div>
         </div>
         <div class="flex-auto flex justify-center">
           {items.map((item) => <NavItem item={item} />)}
         </div>
-        <div class="flex-none w-44 flex items-center justify-end gap-2">
-          <SearchButton />
-          <Searchbar searchbar={searchbar} />
-          <a
-            class="btn btn-circle btn-sm btn-ghost"
-            href="/login"
-            aria-label="Log in"
-          >
-            <Icon id="User" size={24} strokeWidth={0.4} />
-          </a>
-          <a
-            class="btn btn-circle btn-sm btn-ghost"
-            href="/wishlist"
-            aria-label="Wishlist"
-          >
-            <Icon
-              id="Heart"
-              size={24}
-              strokeWidth={2}
-              fill="none"
-            />
-          </a>
-          {platform === "vtex" && <CartButtonVTEX />}
-          {platform === "vnda" && <CartButtonVDNA />}
-          {platform === "wake" && <CartButtonWake />}
-          {platform === "linx" && <CartButtonLinx />}
-          {platform === "shopify" && <CartButtonShopify />}
-        </div>
       </div>
     </>
+
   );
 }
 
