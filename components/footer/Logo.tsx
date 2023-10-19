@@ -21,9 +21,6 @@ export default function Logo({ logo }: Props) {
               height={200}
             />
           </div>
-          <div class="">
-            {logo?.description}
-          </div>
         </div>
       )}
     </>

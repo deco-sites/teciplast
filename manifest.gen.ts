@@ -69,8 +69,7 @@ const manifest = {
     "deco-sites/teciplast/sections/Miscellaneous/CampaignTimer.tsx": $$$$$$25,
     "deco-sites/teciplast/sections/Miscellaneous/CookieConsent.tsx": $$$$$$26,
     "deco-sites/teciplast/sections/Newsletter/Newsletter.tsx": $$$$$$32,
-    "deco-sites/teciplast/sections/Product/ImageGalleryFrontBack.tsx":
-      $$$$$$22,
+    "deco-sites/teciplast/sections/Product/ImageGalleryFrontBack.tsx": $$$$$$22,
     "deco-sites/teciplast/sections/Product/ImageGallerySlider.tsx": $$$$$$21,
     "deco-sites/teciplast/sections/Product/NotFound.tsx": $$$$$$24,
     "deco-sites/teciplast/sections/Product/NotFoundChallenge.tsx": $$$$$$17,

@@ -221,25 +221,34 @@ function Footer({
       <div class="lg:container mx-6 lg:mx-auto">
         {(!layout?.variation || layout?.variation == "Variation 1") && (
           <div class="flex flex-col gap-10">
-            <div class="flex flex-col md:flex-row md:justify-between md:flex-wrap lg:flex-nowrap gap-8 lg:gap-12">
-              {_logo}
-              {_sectionLinks}
+            <div class="bg-[#0443AC]">
               {_newsletter}
+            </div>
+            <div class="flex flex-col md:flex-row md:justify-between md:flex-wrap lg:flex-nowrap gap-8 lg:gap-12">
+              <div>
+                <div>{_logo}</div>
+                <div>
+                  {_social}
+                </div>
+              </div>
+              {_sectionLinks}
             </div>
             <Divider />
             <div class="flex flex-col md:flex-row gap-10 md:gap-14 md:items-end">
+              <span class={"text-[9px]"}>
+                Avenida Ayrton Senna, 2541 Lote 100, Loja 1 - Barra da Tijuca,
+                Rio de Janeiro - RJ, 22775-002 -INOVA TEXTIL DECORAÇÕES EIRELI
+                CNPJ: 41.330.899/0001-98
+              </span>
               {_payments}
-              {_social}
-              <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 lg:items-end">
-                {_apps}
-                {_region}
-              </div>
             </div>
-            <Divider />
+            {
+              /* <Divider />
             <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
               <PoweredByDeco />
               {_links}
-            </div>
+            </div> */
+            }
           </div>
         )}
         {layout?.variation == "Variation 2" && (

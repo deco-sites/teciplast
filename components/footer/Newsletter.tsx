@@ -11,8 +11,14 @@ export interface Form {
 
 export interface Props {
   content: {
+    /**
+     * @label Primary text (html)
+     */
     title?: string;
     /** @format textarea */
+    /**
+     * @label Secondary text (html)
+     */
     description?: string;
     form?: Form;
   };
@@ -44,18 +50,21 @@ function Newsletter(
 
   return (
     <div
-      class={`flex ${
-        tiled
-          ? "flex-col gap-4 lg:flex-row lg:w-full lg:justify-between"
-          : "flex-col gap-4"
-      }`}
+      class={`flex flex-row justify-around`}
     >
       <div class="flex flex-col gap-4">
-        {content?.title && (
-          <h3 class={tiled ? "text-2xl lg:text-3xl" : "text-lg"}>
-            {content?.title}
-          </h3>
-        )}
+        {content?.title
+          ? (
+            <h3 class={tiled ? "text-2xl lg:text-3xl" : "text-lg"}>
+              {content?.title}
+            </h3>
+          )
+          : (
+            <span class={"text-lg"}>
+              Quer mais <b>descontos</b> e{" "}
+              <b>oportunidades</b>? Informe seu email
+            </span>
+          )}
         {content?.description && <div>{content?.description}</div>}
       </div>
       <div class="flex flex-col gap-4">
@@ -80,7 +89,7 @@ function Newsletter(
         </form>
         {content?.form?.helpText && (
           <div
-            class="text-sm"
+            class="text-[9px]"
             dangerouslySetInnerHTML={{ __html: content?.form?.helpText }}
           />
         )}
