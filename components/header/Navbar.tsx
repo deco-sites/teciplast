@@ -1,17 +1,18 @@
 import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
-import { MenuButton, SearchButton } from "$store/islands/Header/Buttons.tsx";
+import { MenuButton } from "$store/islands/Header/Buttons.tsx";
 import CartButtonLinx from "$store/islands/Header/Cart/linx.tsx";
 import CartButtonShopify from "$store/islands/Header/Cart/shopify.tsx";
 import CartButtonVDNA from "$store/islands/Header/Cart/vnda.tsx";
 import CartButtonVTEX from "$store/islands/Header/Cart/vtex.tsx";
 import CartButtonWake from "$store/islands/Header/Cart/wake.tsx";
-import Searchbar from "$store/islands/Header/Searchbar.tsx";
+import Searchbar from "$store/islands/Header/Searchbarfixa.tsx";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { SiteNavigationElement } from "apps/commerce/types.ts";
 import Image from "apps/website/components/Image.tsx";
 import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
+import SearchButton from "deco-sites/teciplast/components/header/Buttons/Search.tsx";
 
 function Navbar({ items, searchbar, logo }: {
   items: SiteNavigationElement[];
@@ -49,9 +50,9 @@ function Navbar({ items, searchbar, logo }: {
 
       {/* Desktop Version */}
       <div class="hidden md:flex flex-col justify-between items-center w-full px-[120px] py-1">
-        <div class='flex flex-row justify-between items-center w-full border-b-2 py-2 shrink-0'>
+        <div class='flex flex-row justify-around items-center w-full  border-b-2 py-2 shrink-0'>
 
-          <div class="flex-none w-44">
+          <div class="flex-none w-44 mr-auto">
             {logo && (
               <a
               href="/"
@@ -62,11 +63,11 @@ function Navbar({ items, searchbar, logo }: {
               </a>
             )}
           </div>
-      
-          <div class="flex-none flex items-center justify-center gap-4">
-            {/*
-             <SearchButton />
-             <Searchbar searchbar={searchbar} />*/}
+          
+          <Searchbar searchbar={searchbar} />
+          
+          <div class="flex-none flex items-center justify-center gap-14">
+             
             <div class='uppercase flex flex-row text-base items-center gap-2'>
             <a
               class="btn btn-circle btn-sm btn-ghost"
