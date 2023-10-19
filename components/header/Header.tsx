@@ -8,7 +8,10 @@ import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
 
 export interface Props {
-  alerts: string[];
+  
+  timer?: number;
+  text?: Text[];
+  textLink?: TextLink;
 
   /** @title Search Bar */
   searchbar?: Omit<SearchbarProps, "platform">;
@@ -23,8 +26,23 @@ export interface Props {
   logo?: { src: ImageWidget; alt: string };
 }
 
+interface TextLink{
+  href: string;
+  text: string;
+  bold: boolean;
+  underline: boolean;
+  
+}
+
+interface Text{
+  text: string;
+  bold: boolean;
+  underline: boolean;
+  
+}
+
 function Header({
-  alerts,
+  text,textLink,timer,
   searchbar,
   navItems,
   logo,
@@ -41,7 +59,7 @@ function Header({
           platform={platform}
         >
           <div class="bg-base-100  w-full z-50">
-            <Alert alerts={alerts} />
+            <Alert timer={timer} text={text} textLink={textLink} />
             <Navbar
               items={items}
               searchbar={searchbar && { ...searchbar, platform }}

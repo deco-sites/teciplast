@@ -53,7 +53,7 @@ export interface Props {
 }
 
 function Searchbar({
-  placeholder = "What are you looking for?",
+  placeholder = "ENCONTRAR PRODUTOS",
   action = "/s",
   name = "q",
   loader,
@@ -111,7 +111,7 @@ function Searchbar({
         >
           {loading.value
             ? <span class="loading loading-spinner loading-xs bg-base-100" />
-            : <Icon id="MagnifyingGlass" size={30} strokeWidth={0.01} />}
+            : <Icon id="MagnifyingGlass" size={24} strokeWidth={0.01} />}
         </Button>
       </form>
 
