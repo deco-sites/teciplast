@@ -48,8 +48,8 @@ function Navbar({ items, searchbar, logo }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden md:flex flex-col justify-between items-center w-full px-[120px] py-5">
-        <div class='flex flex-row justify-between items-center w-full'>
+      <div class="hidden md:flex flex-col justify-between items-center w-full px-[120px] py-1">
+        <div class='flex flex-row justify-between items-center w-full border-b-2 py-2 shrink-0'>
 
           <div class="flex-none w-44">
             {logo && (
@@ -63,11 +63,11 @@ function Navbar({ items, searchbar, logo }: {
             )}
           </div>
       
-          <div class="flex-none flex items-center justify-center gap-3">
+          <div class="flex-none flex items-center justify-center gap-4">
             {/*
              <SearchButton />
              <Searchbar searchbar={searchbar} />*/}
-            <div class='uppercase flex flex-row text-base items-center gap-1'>
+            <div class='uppercase flex flex-row text-base items-center gap-2'>
             <a
               class="btn btn-circle btn-sm btn-ghost"
               href="/login"
@@ -76,7 +76,7 @@ function Navbar({ items, searchbar, logo }: {
               <Icon id="User-Circle" size={24} strokeWidth={0.4} />
             </a> Entrar
             </div>
-            <div class='uppercase flex flex-row text-base gap-1 items-center'>
+            <div class='uppercase flex flex-row text-base gap-2 items-center'>
                 {platform === "vtex" && <CartButtonVTEX />}
                 {platform === "vnda" && <CartButtonVDNA />}
                 {platform === "wake" && <CartButtonWake />}
@@ -84,7 +84,7 @@ function Navbar({ items, searchbar, logo }: {
                 {platform === "shopify" && <CartButtonShopify />}
                 Carrinho
             </div>
-            <div class='uppercase flex flex-row text-base items-center gap-1'>
+            <div class='uppercase flex flex-row text-base items-center gap-2'>
               <a
                 class="btn btn-circle btn-sm btn-ghost"
                 href="/wishlist"
@@ -98,7 +98,7 @@ function Navbar({ items, searchbar, logo }: {
                   /> 
               </a> Lista de desejos
             </div>
-            <div class='uppercase flex flex-row text-base gap-1 items-center'>
+            <div class='uppercase flex flex-row text-base gap-2 items-center'>
               <a
                 class="btn btn-circle btn-sm btn-ghost"
                 href="/help"
@@ -115,9 +115,9 @@ function Navbar({ items, searchbar, logo }: {
             
           </div>
         </div>
-        <div class="flex-auto flex justify-center">
+        <ul class="flex items-center justify-between w-full h-full shrink-0 ">
           {items.map((item) => <NavItem item={item} />)}
-        </div>
+        </ul>
       </div>
     </>
 
