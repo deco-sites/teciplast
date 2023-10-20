@@ -50,7 +50,7 @@ function Newsletter(
 
   return (
     <div
-      class={`flex flex-row justify-around`}
+      class={`flex flex-row justify-between items-center py-5 container`}
     >
       <div class="flex flex-col gap-4">
         {content?.title
@@ -60,9 +60,9 @@ function Newsletter(
             </h3>
           )
           : (
-            <span class={"text-lg"}>
+            <span class={"text-2xl"}>
               Quer mais <b>descontos</b> e{" "}
-              <b>oportunidades</b>? Informe seu email
+              <b>oportunidades</b>? Inscreva seu email
             </span>
           )}
         {content?.description && <div>{content?.description}</div>}
@@ -72,27 +72,29 @@ function Newsletter(
           class="form-control"
           onSubmit={handleSubmit}
         >
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-wrap">
             <input
               name="email"
-              class="flex-auto md:flex-none input input-bordered md:w-80 text-base-content"
+              class="flex-auto md:flex-none input input-bordered md:w-80 text-base-content ronded-r-none h-10 rounded-l-md rounded-r-none border-none"
               placeholder={content?.form?.placeholder || "Digite seu email"}
             />
             <button
               type="submit"
-              class="btn disabled:loading"
+              class="btn-tec bg-[#002A70] disabled:loading rounded-l-none rounded-r-md"
               disabled={loading}
             >
               {content?.form?.buttonText || "Inscrever"}
             </button>
           </div>
         </form>
-        {content?.form?.helpText && (
+        {
+          /* {content?.form?.helpText && (
           <div
             class="text-[9px]"
             dangerouslySetInnerHTML={{ __html: content?.form?.helpText }}
           />
-        )}
+        )} */
+        }
       </div>
     </div>
   );

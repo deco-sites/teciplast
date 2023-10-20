@@ -4,7 +4,8 @@ export interface Layout {
     | "Secondary"
     | "Accent"
     | "Base 100"
-    | "Base 100 inverted";
+    | "Base 100 inverted"
+    | "Personalized Teciplast";
   variation?:
     | "Variation 1"
     | "Variation 2"
@@ -36,6 +37,8 @@ export default function colorClasses(layout: Layout) {
       return "bg-base-100 text-base-content";
     case "Base 100 inverted":
       return "bg-base-content text-base-100";
+    case "Personalized Teciplast":
+      return "bg-gradient-to-b from-[#001D4E] to-[#002A70] text-white";
     default:
       return "bg-primary text-primary-content";
   }
