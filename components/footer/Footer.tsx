@@ -353,7 +353,7 @@ function Footer({
         <div
           class={"flex flex-col md:flex-row gap-10 md:gap-14 justify-between container items-center"}
         >
-          <span class={"text-[9px]"}>
+          <span class={"text-[9px] opacity-50 text-center"}>
             Avenida Ayrton Senna, 2541 Lote 100, Loja 1 - Barra da Tijuca, Rio
             de Janeiro - RJ, 22775-002 -INOVA TEXTIL DECORAÇÕES EIRELI CNPJ:
             41.330.899/0001-98

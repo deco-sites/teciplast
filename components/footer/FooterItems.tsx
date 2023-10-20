@@ -70,7 +70,7 @@ export default function FooterItems(
           </ul>
 
           {/* Mobile view */}
-          <ul class="flex flex-col md:hidden gap-4">
+          <ul class="flex flex-col md:hidden gap-4 mb-10">
             {sections.map((section) => (
               <li>
                 <div class="collapse collapse-arrow ">

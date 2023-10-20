@@ -50,9 +50,9 @@ function Newsletter(
 
   return (
     <div
-      class={`flex flex-row justify-between items-center py-5 container`}
+      class={`flex flex-col lg:flex-row text-center lg:justify-between items-center py-5 container`}
     >
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 mb-5 lg:mb-0">
         {content?.title
           ? (
             <h3 class={tiled ? "text-2xl lg:text-3xl" : "text-lg"}>
