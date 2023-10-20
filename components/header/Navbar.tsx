@@ -49,7 +49,7 @@ function Navbar({ items, searchbar, logo }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden md:flex flex-col justify-between items-center w-full px-[120px] py-1">
+      <div class="hidden md:flex flex-col justify-between items-center w-full container py-1">
         <div class='flex flex-row justify-around items-center w-full  border-b-2 py-2 shrink-0'>
 
           <div class="flex-none w-44 mr-auto">

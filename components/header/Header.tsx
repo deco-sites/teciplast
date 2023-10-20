@@ -9,7 +9,7 @@ import { headerHeight } from "./constants.ts";
 
 export interface Props {
   
-  timer?: number;
+  data?: number;
   text?: Text[];
   textLink?: TextLink;
 
@@ -42,7 +42,7 @@ interface Text{
 }
 
 function Header({
-  text,textLink,timer,
+  text,textLink,data,
   searchbar,
   navItems,
   logo,
@@ -59,7 +59,7 @@ function Header({
           platform={platform}
         >
           <div class="bg-base-100  w-full z-50">
-            <Alert timer={timer} text={text} textLink={textLink} />
+            <Alert data={data} text={text} textLink={textLink} />
             <Navbar
               items={items}
               searchbar={searchbar && { ...searchbar, platform }}
