@@ -116,7 +116,7 @@ function Navbar({ items, searchbar, logo }: {
             
           </div>
         </div>
-        <ul class="flex items-center justify-between w-full h-full shrink-0 py-1">
+        <ul class="flex items-center justify-between w-full h-full shrink-0 ">
           {items.map((item) => <NavItem item={item} />)}
         </ul>
       </div>

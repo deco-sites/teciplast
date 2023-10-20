@@ -8,7 +8,7 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
   const image = item?.image?.[0];
 
   return (
-    <li class="relative group flex items-center box-border ease-out duration-300">
+    <li class="relative group flex items-center box-border ease-out duration-300 py-2">
       <a href={url} >
         <div class="flex flex-row items-center gap-2 group-hover:border-b-[3px] border-[#626262] px-1 py-2">
         <span >

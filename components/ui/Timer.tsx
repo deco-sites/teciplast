@@ -23,7 +23,7 @@ function Timer({ data }: Props) {
 
   return (
     <div class="gap-5 py-[2px] flex flex-row items-center justify-end w-full"  >
-      Acaba em:
+      Acaba em :
       <div class="flex flex-col text-end justify-end items-center"> 
         <span class="text-2xl font-bold">14</span>
         <span class="text-xs" >Dias</span> 
