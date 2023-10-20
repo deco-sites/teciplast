@@ -74,12 +74,11 @@ function Searchbar({
   }, [displaySearchPopup.value]);
 
   return (
+    <>
     <div
       class="w-full grid overflow-y-hidden max-w-[500px] bg-base-100"
-      style={{ gridTemplateRows: "min-content auto" }}
     >
       <form id={id} action={action} class="join">
-       
         <input
           ref={searchInputRef}
           id="search-input"
@@ -114,12 +113,14 @@ function Searchbar({
             : <Icon id="MagnifyingGlass" size={24} strokeWidth={0.01} />}
         </Button>
       </form>
+      </div>
 
+      {hasProducts && 
       <div
-        class={`overflow-y-scroll ${!hasProducts && !hasTerms ? "hidden" : ""}`}
+        class={`fixed  w-full overflow-y-scroll z-50 ${!hasProducts && !hasTerms ? "hidden" : ""} max-w-[500px] mt-[50px]`}
       >
-        <div class="gap-4 grid grid-cols-1 sm:grid-rows-1 sm:grid-cols-[150px_1fr]">
-          <div class="flex flex-col gap-6">
+        <div class="gap-4 grid grid-cols-1 sm:grid-rows-1 sm:grid-cols-[150px_1fr] bg-base-100">
+          <div class="flex flex-col gap-6 bg-red-600">
             <span
               class="font-medium text-xl"
               role="heading"
@@ -144,7 +145,7 @@ function Searchbar({
               ))}
             </ul>
           </div>
-          <div class="flex flex-col pt-6 md:pt-0 gap-6 overflow-x-hidden">
+          <div class="flex flex-col pt-6 md:pt-0 gap-6 overflow-x-hidden bg-amber-400">
             <span
               class="font-medium text-xl"
               role="heading"
@@ -165,7 +166,8 @@ function Searchbar({
           </div>
         </div>
       </div>
-    </div>
+}        
+</>      
   );
 }
 

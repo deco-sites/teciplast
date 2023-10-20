@@ -1,4 +1,4 @@
-import { headerHeight } from "$store/components/header/constants.ts";
+
 import Searchbar, {
   Props as SearchbarProps,
 } from "$store/components/search/SearchbarDesktop.tsx";
@@ -9,18 +9,21 @@ export interface Props {
 
 function SearchbarFixed({ searchbar }: Props) {
 
-  if (!searchbar) {
+  
+  if (!searchbar) { 
     return null;
   }
 
   return (
     
-      <div
-        class=" bg-base-100 container flex justify-center items-center"
+    
+    <div
+        class=" flex w-full justify-center  "
         
       >
         <Searchbar {...searchbar} />
       </div>
+
   );
 }
 

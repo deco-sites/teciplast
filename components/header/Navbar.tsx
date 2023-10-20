@@ -6,7 +6,7 @@ import CartButtonShopify from "$store/islands/Header/Cart/shopify.tsx";
 import CartButtonVDNA from "$store/islands/Header/Cart/vnda.tsx";
 import CartButtonVTEX from "$store/islands/Header/Cart/vtex.tsx";
 import CartButtonWake from "$store/islands/Header/Cart/wake.tsx";
-import Searchbar from "$store/islands/Header/Searchbarfixa.tsx";
+import SearchbarFixed from "$store/islands/Header/Searchbarfixa.tsx";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { SiteNavigationElement } from "apps/commerce/types.ts";
 import Image from "apps/website/components/Image.tsx";
@@ -49,8 +49,8 @@ function Navbar({ items, searchbar, logo }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden md:flex flex-col justify-between items-center w-full container py-1">
-        <div class='flex flex-row justify-around items-center w-full  border-b-2 py-2 shrink-0'>
+      <div class="hidden md:flex flex-col justify-between items-center w-full container py-1 max-h-[170px] ">
+        <div class='flex flex-row justify-around items-center w-full  border-b-2 py-2 shrink-0' >
 
           <div class="flex-none w-44 mr-auto">
             {logo && (
@@ -64,7 +64,7 @@ function Navbar({ items, searchbar, logo }: {
             )}
           </div>
           
-          <Searchbar searchbar={searchbar} />
+          <SearchbarFixed searchbar={searchbar} />
           
           <div class="flex-none flex items-center justify-center gap-14">
              
