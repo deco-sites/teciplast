@@ -11,8 +11,14 @@ export interface Form {
 
 export interface Props {
   content: {
+    /**
+     * @label Primary text (html)
+     */
     title?: string;
     /** @format textarea */
+    /**
+     * @label Secondary text (html)
+     */
     description?: string;
     form?: Form;
   };
@@ -44,18 +50,21 @@ function Newsletter(
 
   return (
     <div
-      class={`flex ${
-        tiled
-          ? "flex-col gap-4 lg:flex-row lg:w-full lg:justify-between"
-          : "flex-col gap-4"
-      }`}
+      class={`flex flex-col lg:flex-row text-center lg:justify-between items-center py-5 container`}
     >
-      <div class="flex flex-col gap-4">
-        {content?.title && (
-          <h3 class={tiled ? "text-2xl lg:text-3xl" : "text-lg"}>
-            {content?.title}
-          </h3>
-        )}
+      <div class="flex flex-col gap-4 mb-5 lg:mb-0">
+        {content?.title
+          ? (
+            <h3 class={tiled ? "text-2xl lg:text-3xl" : "text-lg"}>
+              {content?.title}
+            </h3>
+          )
+          : (
+            <span class={"text-2xl"}>
+              Quer mais <b>descontos</b> e{" "}
+              <b>oportunidades</b>? Inscreva seu email
+            </span>
+          )}
         {content?.description && <div>{content?.description}</div>}
       </div>
       <div class="flex flex-col gap-4">
@@ -63,27 +72,29 @@ function Newsletter(
           class="form-control"
           onSubmit={handleSubmit}
         >
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-wrap">
             <input
               name="email"
-              class="flex-auto md:flex-none input input-bordered md:w-80 text-base-content"
+              class="flex-auto md:flex-none input input-bordered md:w-80 text-base-content ronded-r-none h-10 rounded-l-md rounded-r-none border-none"
               placeholder={content?.form?.placeholder || "Digite seu email"}
             />
             <button
               type="submit"
-              class="btn disabled:loading"
+              class="btn-tec bg-[#002A70] disabled:loading rounded-l-none rounded-r-md"
               disabled={loading}
             >
               {content?.form?.buttonText || "Inscrever"}
             </button>
           </div>
         </form>
-        {content?.form?.helpText && (
+        {
+          /* {content?.form?.helpText && (
           <div
-            class="text-sm"
+            class="text-[9px]"
             dangerouslySetInnerHTML={{ __html: content?.form?.helpText }}
           />
-        )}
+        )} */
+        }
       </div>
     </div>
   );

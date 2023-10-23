@@ -10,13 +10,13 @@ export default function PaymentMethods(
   return (
     <>
       {content && content.items && content.items.length > 0 && (
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-4 opacity-50">
           {content.title && <h3 class="text-lg">{content.title}</h3>}
           <ul class="flex items-center gap-4 flex-wrap">
             {content.items.map((item) => {
               return (
                 <li
-                  class="border"
+                  class="border rounded-md"
                   title={item.label}
                 >
                   <Icon

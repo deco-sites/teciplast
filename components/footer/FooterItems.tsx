@@ -19,22 +19,48 @@ export default function FooterItems(
         <>
           {/* Tablet and Desktop view */}
           <ul
-            class={`hidden md:flex flex-row gap-6 lg:gap-10 ${
-              justify && "lg:justify-between"
+            class={`hidden md:flex flex-row gap-6 lg:gap-28 ${
+              justify && "lg:justify-around"
             }`}
           >
-            {sections.map((section) => (
+            {sections.map((section, i) => (
               <li>
                 <div class="flex flex-col gap-2">
-                  <span class="font-medium text-lg">
+                  <span class="font-semibold text-base uppercase">
                     {section.label}
                   </span>
-                  <ul class={`flex flex-col gap-2 flex-wrap text-sm`}>
+                  <ul
+                    class={`${
+                      i === 0 && "columns-2 inline gap-x-8"
+                    }  flex-col flex-wrap text-sm leading-7`}
+                  >
                     {section.items?.map((item) => (
                       <li>
-                        <a href={item.href} class="block py-1 link link-hover">
-                          {item.label}
-                        </a>
+                        {item.label.includes("@") && (
+                          <div class={"inline-flex gap-2 items-center"}>
+                            <Icon id="Email" width={20} height={20} />
+                            <span>
+                              {item.label}
+                            </span>
+                          </div>
+                        )}
+                        {item.label.includes("(21)") && (
+                          <div class={"inline-flex gap-2 items-center"}>
+                            <Icon id="WhatsApp2" width={20} height={20} />
+                            <span>
+                              {item.label}
+                            </span>
+                          </div>
+                        )}
+                        {!item.label.includes("@") &&
+                          !item.label.includes("(21)") && (
+                          <a
+                            href={item.href}
+                            class="block py-1 link link-hover"
+                          >
+                            {item.label}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -44,7 +70,7 @@ export default function FooterItems(
           </ul>
 
           {/* Mobile view */}
-          <ul class="flex flex-col md:hidden gap-4">
+          <ul class="flex flex-col md:hidden gap-4 mb-10">
             {sections.map((section) => (
               <li>
                 <div class="collapse collapse-arrow ">
