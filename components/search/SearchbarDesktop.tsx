@@ -117,7 +117,7 @@ function Searchbar({
 
       {hasProducts && 
       <div
-        class={`fixed  w-full overflow-y-scroll z-50 ${!hasProducts && !hasTerms ? "hidden" : ""} max-w-[500px] mt-[50px]`}
+        class={`absolute  w-full overflow-y-scroll z-50 ${!hasProducts && !hasTerms ? "hidden" : ""} max-w-[500px] mt-[50px]`}
       >
         <div class="gap-4 grid grid-cols-1 sm:grid-rows-1 sm:grid-cols-[150px_1fr] bg-base-100">
           <div class="flex flex-col gap-6">

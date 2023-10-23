@@ -20,19 +20,15 @@ function Navbar({ items, searchbar, logo }: {
   logo?: { src: string; alt: string };
 }) {
   const platform = usePlatform();
-  const help  = "/help.png";
+  const help = "/help.png";
   return (
     <>
       {/* Mobile Version */}
       <div
         class="md:hidden flex flex-col justify-center items-center  border-base-200 w-full mb-3"
         style={{ minHeight: navbarHeight }}
-
       >
-        <div
-          
-          class="md:hidden flex flex-row justify-between items-center  w-full  gap-2 mb-3"
-        >
+        <div class="md:hidden flex flex-row justify-between items-center  w-full  gap-2 mb-3">
           <MenuButton />
 
           {logo && (
@@ -52,79 +48,83 @@ function Navbar({ items, searchbar, logo }: {
             {platform === "linx" && <CartButtonLinx />}
             {platform === "shopify" && <CartButtonShopify />}
           </div>
-        
         </div>
-     
+
         <SearchbarFixed searchbar={searchbar} />
-        
       </div>
 
       {/* Desktop Version */}
       <div class="hidden md:flex flex-col justify-between items-center w-full container py-1 max-h-[170px] ">
-        <div class='flex flex-row justify-around items-center w-full  border-b-2 py-2 shrink-0' >
-
+        <div class="flex flex-row justify-around items-center w-full  border-b-2 py-2 shrink-0">
           <div class="flex-none w-44 mr-auto">
             {logo && (
               <a
-              href="/"
-              aria-label="Store logo"
-              class="blocK w-[180px]"
+                href="/"
+                aria-label="Store logo"
+                class="blocK w-[180px]"
               >
                 <Image src={logo.src} alt={logo.alt} width={180} height={40} />
               </a>
             )}
           </div>
-          
+
           <SearchbarFixed searchbar={searchbar} />
-          
+
           <div class="flex-none flex items-center justify-center gap-14">
-             
-            <div class='uppercase flex flex-row text-base items-center gap-2'>
-            <a
-              class="btn btn-circle btn-sm btn-ghost"
-              href="/login"
-              aria-label="Log in"
-              >
-              <Icon id="User-Circle" size={24} strokeWidth={0.4} />
-            </a> Entrar
-            </div>
-            <div class='uppercase flex flex-row text-base gap-2 items-center'>
-                {platform === "vtex" && <CartButtonVTEX />}
-                {platform === "vnda" && <CartButtonVDNA />}
-                {platform === "wake" && <CartButtonWake />}
-                {platform === "linx" && <CartButtonLinx />}
-                {platform === "shopify" && <CartButtonShopify />}
-                Carrinho
-            </div>
-            <div class='uppercase flex flex-row text-base items-center gap-2'>
+            <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
               <a
-                class="btn btn-circle btn-sm btn-ghost"
+                class="flex flex-row  justify-center items-center "
+                href="/login"
+                aria-label="Log in"
+              >
+                <Icon
+                  id="User-Circle2"
+                  class={`w-full  justify-center items-center  object-cover mr-2`}
+                  size={24}
+                  strokeWidth={0.4}
+                />
+                Entrar
+              </a>
+            </div>
+            <div class="uppercase flex flex-row text-base gap-2 justify-center items-center">
+              {platform === "vtex" && <CartButtonVTEX />}
+              {platform === "vnda" && <CartButtonVDNA />}
+              {platform === "wake" && <CartButtonWake />}
+              {platform === "linx" && <CartButtonLinx />}
+              {platform === "shopify" && <CartButtonShopify />}
+              Carrinho
+            </div>
+            <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
+              <a
+                class="  flex flex-row justify-center items-center"
                 href="/wishlist"
                 aria-label="Wishlist"
-                >
+              >
                 <Icon
                   id="Heart"
-                  size={24}
+                  class={` mr-2`}
+                  size={25}
                   strokeWidth={2}
                   fill="none"
-                  /> 
-              </a> Lista de desejos
+                />
+                Lista de desejos
+              </a>
             </div>
-            <div class='uppercase flex flex-row text-base gap-2 items-center'>
+            <div class="uppercase flex flex-row text-base gap-2 items-center justify-center">
               <a
-                class="btn btn-circle btn-sm btn-ghost"
+                class="  flex flex-row  items-center justify-center "
                 href="/help"
                 aria-label="help"
-                >
-                <img
-                  src={help}
-                  id="Help-Contact"
-                  width={24}
-                  height={24}
-                  loading={"lazy"}/> 
-              </a> Ajuda
+              >
+                <Icon
+                  id="Layer_1"
+                  class={`w-full  justify-center items-center  object-cover mr-2`}
+                  size={24}
+                  strokeWidth={1}
+                />
+                Ajuda
+              </a>
             </div>
-            
           </div>
         </div>
         <ul class="flex items-center justify-between w-full h-full shrink-0 ">
@@ -132,7 +132,6 @@ function Navbar({ items, searchbar, logo }: {
         </ul>
       </div>
     </>
-
   );
 }
 

@@ -8,9 +8,9 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
   const image = item?.image?.[0];
 
   return (
-    <li class="relative group flex items-center box-border ease-out duration-300 py-2">
+    <li class=" group grid overflow-y-hidden items-center  ease-out duration-300 py-2">
       <a href={url} >
-        <div class="flex flex-row items-center gap-2 group-hover:border-b-[3px] border-[#626262] px-1 py-2">
+        <div class="flex flex-row items-center gap-2 border-b-[3px] border-b-transparent group-hover:border-b-[#626262]   px-1 py-2">
         <span >
           {name}
         </span> 
@@ -26,8 +26,8 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
       {children && children.length > 0 &&
         (
           <div
-            class="fixed hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center max-w-[350px] "
-            style={{ top: "0px",  marginTop: marginTopDrop }}
+            class="absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center max-w-[350px] "
+            style={{ top: "0px" ,marginTop:marginTopDrop }}
           >
             {image?.url && (
               <Image

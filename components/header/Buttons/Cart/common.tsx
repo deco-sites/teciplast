@@ -24,9 +24,9 @@ function CartButton({ loading, currency, total, items }: Props) {
   };
 
   return (
-    <div class="indicator">
+    <div class="flex justify-center items-center">
       <span
-        class={`indicator-item badge badge-secondary badge-sm ${
+        class={` ${
           totalItems === 0 ? "hidden" : ""
         }`}
       >
@@ -34,13 +34,13 @@ function CartButton({ loading, currency, total, items }: Props) {
       </span>
 
       <Button
-        class="btn-circle btn-sm btn-ghost"
+        class=""
         aria-label="open cart"
         data-deco={displayCart.value && "open-cart"}
         loading={loading}
         onClick={onClick}
       >
-        <Icon id="ShoppingCart" size={24} strokeWidth={2} />
+        <Icon id="CartShopping" size={24} strokeWidth={2} />
       </Button>
     </div>
   );
