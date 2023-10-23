@@ -10,6 +10,12 @@ import type { ComponentChildren } from "preact";
 import { lazy, Suspense } from "preact/compat";
 import Image from "apps/website/components/Image.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
+import SearchbarFixed from "$store/islands/Header/SearchbarMobileMenu.tsx";
+import CartButtonLinx from "$store/islands/Header/Cart/linx.tsx";
+import CartButtonShopify from "$store/islands/Header/Cart/shopify.tsx";
+import CartButtonVDNA from "$store/islands/Header/Cart/vnda.tsx";
+import CartButtonVTEX from "$store/islands/Header/Cart/vtex.tsx";
+import CartButtonWake from "$store/islands/Header/Cart/wake.tsx";
 
 const Menu = lazy(() => import("$store/components/header/Menu.tsx"));
 const Searchbar = lazy(() => import("$store/components/search/Searchbar.tsx"));
@@ -17,7 +23,7 @@ const Searchbar = lazy(() => import("$store/components/search/Searchbar.tsx"));
 export interface Props {
   menu: MenuProps;
   searchbar?: SearchbarProps;
-  imgMenu: { src: ImageWidget; alt: string };
+  imgMenu?: { src: ImageWidget; alt: string };
   /**
    * @ignore_gen true
    */
@@ -56,23 +62,31 @@ const Aside = (
 );
 
 function Central(
-  { onClose, children, imgMenu }: {
-    imgMenu: { src: ImageWidget | undefined; alt: string | undefined };
+  { onClose, children, imgMenu, searchbar,platform }: {
+    imgMenu?: { src: ImageWidget; alt: string };
     title: string;
     onClose?: () => void;
     children: ComponentChildren;
+    searchbar?: SearchbarProps;
+    platform?:ReturnType<typeof usePlatform>;
   },
 ) {
   return (
     <div class="w-full flex px-5 justify-center items-center ">
-      <div class="left-auto  absolute top-5  rounded-none w-11/12 bg-base-200 py-[30px] px-[15px]">
-        <div class="flex justify-start items-start w-full">
-          {imgMenu.src && (
+      <div class="left-auto  absolute top-5  rounded-none w-11/12 bg-base-100 py-[15px] px-[15px] ">
+        <div class="flex justify-start items-start w-full mb-[15px]">
+          {imgMenu && (
             <div
               class="flex-grow inline-flex items-start justify-start w-full pl-3"
               aria-label="Store logo"
             >
-              <Image src={imgMenu.src} alt={"Logo"} width={140} height={30} class={`grayscale`} />
+              <Image
+                src={imgMenu.src}
+                alt={"Logo"}
+                width={140}
+                height={30}
+                class={`grayscale`}
+              />
             </div>
           )}
 
@@ -82,6 +96,65 @@ function Central(
             </Button>
           )}
         </div>
+
+        <SearchbarFixed searchbar={searchbar} />
+
+        <div class="flex justify-around items-center w-full my-[15px] h-11">
+          <div class="uppercase flex flex-col text-[9px] justify-end items-center  gap-2">
+            <a
+              class="flex items-center flex-col justify-center"
+              href="/login"
+              aria-label="Log in"
+            >
+              <Icon
+                id="User-Circle2"
+                class={`w-full  justify-center items-center  object-cover mb-2`}
+                size={24}
+                strokeWidth={0.4}
+              />
+            Entrar  
+            </a>
+            
+          </div>
+          <div class="uppercase flex flex-col  gap-2 text-[9px] justify-end items-center">
+              {platform === "vtex" && <CartButtonVTEX />}
+              {platform === "vnda" && <CartButtonVDNA />}
+              {platform === "wake" && <CartButtonWake />}
+              {platform === "linx" && <CartButtonLinx />}
+              {platform === "shopify" && <CartButtonShopify />}
+              <span class="text-[9px mt-2]"> Carrinho </span>
+            </div>
+          <div class="uppercase flex flex-col text-[9px] justify-end items-center gap-2">
+            <a
+              class="flex items-center flex-col justify-center"
+              href="/wishlist"
+              aria-label="Wishlist"
+            >
+              <Icon
+                id="Heart"
+                class={`mb-2 `}
+                size={25}
+                strokeWidth={2}
+                fill="none"
+              />Lista de desejos
+            </a>
+          </div>
+          <div class="uppercase flex flex-col text-[9px] gap-2 items-center justify-end">
+            <a
+              class=" flex items-center flex-col justify-center"
+              href="/help"
+              aria-label="help"
+            >
+              <Icon
+                id="Layer_1"
+                class={`w-full  justify-center items-center  object-cover mb-2 `}
+                size={24}
+                strokeWidth={1}
+              />Ajuda
+            </a>
+          </div>
+        </div>
+
         <Suspense
           fallback={
             <div class="w-screen flex items-center justify-center">
@@ -108,7 +181,9 @@ function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
       }}
       aside={
         <Central
+        platform={platform}
           imgMenu={imgMenu}
+          searchbar={searchbar}
           onClose={() => {
             displayMenu.value = false;
             displaySearchDrawer.value = false;

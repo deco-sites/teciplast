@@ -23,7 +23,7 @@ export interface Props {
   navItems?: SiteNavigationElement[] | null;
 
   /** @title Logo */
-  logo: { src: ImageWidget; alt: string };
+  logo?: { src: ImageWidget; alt: string };
   
 }
 
