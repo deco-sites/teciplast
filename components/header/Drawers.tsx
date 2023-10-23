@@ -8,6 +8,7 @@ import { useUI } from "$store/sdk/useUI.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { ComponentChildren } from "preact";
 import { lazy, Suspense } from "preact/compat";
+import Image from "apps/website/components/Image.tsx";
 
 const Menu = lazy(() => import("$store/components/header/Menu.tsx"));
 const Searchbar = lazy(() => import("$store/components/search/Searchbar.tsx"));
@@ -52,6 +53,53 @@ const Aside = (
   </div>
 );
 
+function Central(
+  { title, onClose, children, }: {
+    title: string;
+    onClose?: () => void;
+    children: ComponentChildren;
+  },
+) {
+  const logo = "./LogoIncolor.png"
+  return (
+  <div class="w-full flex px-5 justify-center items-center ">
+  <div class="left-auto  absolute top-5  rounded-none w-11/12 bg-base-200">
+    <div class="flex justify-between items-center">
+      <h1 class="px-4 py-3">
+        <span class="font-medium text-2xl">{title}</span>
+      </h1>
+
+      {logo && (
+            <a
+              href="/"
+              class="flex-grow inline-flex items-center justify-center w-full"
+              aria-label="Store logo"
+            >
+              <Image src={"/"} alt={"Logo'"} width={140} height={30} />
+            </a>
+          )}
+
+
+      {onClose && (
+        <Button class="btn btn-ghost" onClick={onClose}>
+          <Icon id="XMark" size={24} strokeWidth={2} />
+        </Button>
+      )}
+    </div>
+    <Suspense
+      fallback={
+        <div class="w-screen flex items-center justify-center">
+          <span class="loading loading-ring" />
+        </div>
+      }
+    >
+      {children}
+    </Suspense>
+  </div>
+  </div>
+);}
+
+
 function Drawers({ menu, searchbar, children, platform }: Props) {
   const { displayCart, displayMenu, displaySearchDrawer } = useUI();
 
@@ -63,7 +111,8 @@ function Drawers({ menu, searchbar, children, platform }: Props) {
         displaySearchDrawer.value = false;
       }}
       aside={
-        <Aside
+        <Central 
+
           onClose={() => {
             displayMenu.value = false;
             displaySearchDrawer.value = false;
@@ -76,7 +125,7 @@ function Drawers({ menu, searchbar, children, platform }: Props) {
               <Searchbar {...searchbar} />
             </div>
           )}
-        </Aside>
+        </Central>
       }
     >
       <Drawer // right drawer cart

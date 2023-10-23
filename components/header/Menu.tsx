@@ -14,14 +14,14 @@ function MenuItem({ item }: { item: SiteNavigationElement }) {
       }`}
     >
       <input type="checkbox" aria-label={item.name} />
-      <label class="collapse-title uppercase">
-        {item.name} dsdasdsada
+      <label class="collapse-title  text-base">
+        {item.name}  
       </label>
       <div class="collapse-content">
-        <ul class="text-[20px] border-none ">
+        <ul class="text-sm border-none ">
           {item.children?.map((node) => (
-            <li>
-              <a class="uppercase text-[20x] border-none mb-3" href={node.url}>
+            <li class="gap-2">
+              <a class=" text-sm border-none" href={node.url}>
                 {node.name}
                 
               </a>
