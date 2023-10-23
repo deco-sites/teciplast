@@ -41,7 +41,7 @@ function Alert({  interval = 5, text,textLink,data,textMobile }: Props) {
   
         
         {text &&<div class="hidden lg:flex w-full">{text.map((text) => (<span class={` text-lg  uppercase ${text.bold && "font-bold"} ${text.underline && "underline"} mr-2 `} >{text.text}</span>))}</div>}
-        {textMobile &&<div class="lg:hidden flex  w-full">{textMobile.map((txt) => (<span class={`text-xs  uppercase ${txt.bold && "font-bold"} ${txt.underline && "underline"} mr-1 `} >{txt.text}</span>))}</div>}
+        {textMobile &&<div class="lg:hidden flex  w-full">{textMobile.map((txt) => (<span class={`text-xs   ${txt.bold && "font-semibold"} ${txt.underline && "underline"} mr-1 `} >{txt.text}</span>))}</div>}
 
         {textLink && <div class={`hidden lg:flex text-xs lg:text-lg  w-full ${textLink.bold && "font-bold"} ${textLink.underline && "underline"} `}>{textLink.text}</div>}
   

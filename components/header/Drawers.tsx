@@ -56,7 +56,7 @@ function Drawers({ menu, searchbar, children, platform }: Props) {
   const { displayCart, displayMenu, displaySearchDrawer } = useUI();
 
   return (
-    <Drawer // left drawer
+    <Drawer // left drawer menu
       open={displayMenu.value || displaySearchDrawer.value}
       onClose={() => {
         displayMenu.value = false;
@@ -79,7 +79,7 @@ function Drawers({ menu, searchbar, children, platform }: Props) {
         </Aside>
       }
     >
-      <Drawer // right drawer
+      <Drawer // right drawer cart
         class="drawer-end"
         open={displayCart.value !== false}
         onClose={() => displayCart.value = false}
