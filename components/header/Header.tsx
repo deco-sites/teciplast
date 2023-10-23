@@ -11,6 +11,7 @@ export interface Props {
   
   data?: number;
   text?: Text[];
+  textMobile?: Text[];
   textLink?: TextLink;
 
   /** @title Search Bar */
@@ -42,7 +43,8 @@ interface Text{
 }
 
 function Header({
-  text,textLink,data,
+  text,
+  textLink,data,textMobile,
   searchbar,
   navItems,
   logo,
@@ -59,7 +61,7 @@ function Header({
           platform={platform}
         >
           <div class="bg-base-100  w-full z-50">
-            <Alert data={data} text={text} textLink={textLink} />
+            <Alert data={data} text={text} textLink={textLink}  textMobile={textMobile}/>
             <Navbar
               items={items}
               searchbar={searchbar && { ...searchbar, platform }}

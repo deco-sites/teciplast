@@ -22,22 +22,22 @@ function Timer({ data }: Props) {
   },[totalTime])*/}
 
   return (
-    <div class="gap-5 py-[2px] flex flex-row items-center justify-end w-full"  >
-      Acaba em :
-      <div class="flex flex-col text-end justify-end items-center"> 
-        <span class="text-2xl font-bold">14</span>
-        <span class="text-xs" >Dias</span> 
+    <div class="gap-1 lg:gap-5 py-[2px] flex flex-row items-center justify-end lg:w-full"  >
+      <span class="hidden lg:flex"> Acaba em :</span>
+      <div class="flex lg:flex-col text-end justify-end items-center"> 
+        <span class="text-sm lg:text-2xl font-bold mr-1 lg:mr-0">14</span>
+        <span class="text-sm lg:text-xs" >Dias</span> 
       </div>
     
-      <div class="flex flex-col text-end justify-end items-center">
-        <span class="text-2xl font-bold">14</span>
-        <span class="text-xs">horas</span>
+      <div class="flex lg:flex-col text-end justify-end items-center">
+        <span class="text-sm lg:text-2xl font-bold mr-1 lg:mr-0">14</span>
+        <span class="text-sm lg:text-xs">horas</span>
       </div>
 
     
-      <div class="flex flex-col text-end justify-end items-center">
-        <span class="text-2xl font-bold">14</span>
-        <span class="text-xs">segundos</span>
+      <div class="flex  lg:flex-col text-end justify-end items-center">
+        <span class="text-sm lg:text-2xl font-bold mr-1 lg:mr-0">14</span>
+        <span class="text-sm lg:text-xs">segundos</span>
       </div>
     </div>
   );
