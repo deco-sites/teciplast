@@ -61,9 +61,9 @@ function Navbar({ items, searchbar, logo }: {
               <a
                 href="/"
                 aria-label="Store logo"
-                class="blocK w-[180px]"
+                class="block w-[180px]"
               >
-                <Image src={logo.src} alt={logo.alt} width={180} height={40} />
+                <Image class={`object-cover`} src={logo.src} alt={logo.alt} width={1920} height={427} />
               </a>
             )}
           </div>

@@ -9,6 +9,7 @@ import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { ComponentChildren } from "preact";
 import { lazy, Suspense } from "preact/compat";
 import Image from "apps/website/components/Image.tsx";
+import type { ImageWidget } from "apps/admin/widgets.ts";
 
 const Menu = lazy(() => import("$store/components/header/Menu.tsx"));
 const Searchbar = lazy(() => import("$store/components/search/Searchbar.tsx"));
@@ -16,6 +17,7 @@ const Searchbar = lazy(() => import("$store/components/search/Searchbar.tsx"));
 export interface Props {
   menu: MenuProps;
   searchbar?: SearchbarProps;
+  imgMenu: { src: ImageWidget; alt: string };
   /**
    * @ignore_gen true
    */
@@ -54,53 +56,47 @@ const Aside = (
 );
 
 function Central(
-  { title, onClose, children, }: {
+  { onClose, children, imgMenu }: {
+    imgMenu: { src: ImageWidget | undefined; alt: string | undefined };
     title: string;
     onClose?: () => void;
     children: ComponentChildren;
   },
 ) {
-  const logo = "./LogoIncolor.png"
   return (
-  <div class="w-full flex px-5 justify-center items-center ">
-  <div class="left-auto  absolute top-5  rounded-none w-11/12 bg-base-200">
-    <div class="flex justify-between items-center">
-      <h1 class="px-4 py-3">
-        <span class="font-medium text-2xl">{title}</span>
-      </h1>
-
-      {logo && (
-            <a
-              href="/"
-              class="flex-grow inline-flex items-center justify-center w-full"
+    <div class="w-full flex px-5 justify-center items-center ">
+      <div class="left-auto  absolute top-5  rounded-none w-11/12 bg-base-200 py-[30px] px-[15px]">
+        <div class="flex justify-start items-start w-full">
+          {imgMenu.src && (
+            <div
+              class="flex-grow inline-flex items-start justify-start w-full pl-3"
               aria-label="Store logo"
             >
-              <Image src={"/"} alt={"Logo'"} width={140} height={30} />
-            </a>
+              <Image src={imgMenu.src} alt={"Logo"} width={140} height={30} class={`grayscale`} />
+            </div>
           )}
 
-
-      {onClose && (
-        <Button class="btn btn-ghost" onClick={onClose}>
-          <Icon id="XMark" size={24} strokeWidth={2} />
-        </Button>
-      )}
-    </div>
-    <Suspense
-      fallback={
-        <div class="w-screen flex items-center justify-center">
-          <span class="loading loading-ring" />
+          {onClose && (
+            <Button class="" onClick={onClose}>
+              <Icon id="XMark" size={24} strokeWidth={2} />
+            </Button>
+          )}
         </div>
-      }
-    >
-      {children}
-    </Suspense>
-  </div>
-  </div>
-);}
+        <Suspense
+          fallback={
+            <div class="w-screen flex items-center justify-center">
+              <span class="loading loading-ring" />
+            </div>
+          }
+        >
+          {children}
+        </Suspense>
+      </div>
+    </div>
+  );
+}
 
-
-function Drawers({ menu, searchbar, children, platform }: Props) {
+function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
   const { displayCart, displayMenu, displaySearchDrawer } = useUI();
 
   return (
@@ -111,8 +107,8 @@ function Drawers({ menu, searchbar, children, platform }: Props) {
         displaySearchDrawer.value = false;
       }}
       aside={
-        <Central 
-
+        <Central
+          imgMenu={imgMenu}
           onClose={() => {
             displayMenu.value = false;
             displaySearchDrawer.value = false;
