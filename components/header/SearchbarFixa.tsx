@@ -18,7 +18,7 @@ function SearchbarFixed({ searchbar }: Props) {
     
     
     <div
-        class=" flex w-full justify-center  "
+        class=" flex lg:px-0 px-3 w-full justify-center  "
         
       >
         <Searchbar {...searchbar} />
