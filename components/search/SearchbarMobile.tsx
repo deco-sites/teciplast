@@ -128,58 +128,50 @@ function Searchbar({
               !hasProducts && !hasTerms ? "hidden" : ""
             } max-w-[350px] mt-[50px]`}
           >
-            <div class="gap-4 grid grid-cols-1 sm:grid-rows-1 sm:grid-cols-[150px_1fr] bg-base-100">
-              <div class="flex flex-col justify-between items-start py-5 px-4 bg-base-100">
-                <div class="flex flex-col gap-3">
-                  <span
-                    class="font-medium text-base"
-                    role="heading"
-                    aria-level={3}
-                  >
-                    Sugestões
-                  </span>
-                  <ul
-                    id="search-suggestion"
-                    class="flex flex-col gap-6 text-sm"
-                  >
-                    {searches.map(({ term }) => (
-                      <li>
-                        <a
-                          href={`/s?q=${term}`}
-                          class="flex gap-4 items-center"
-                        >
-                          <span>
-                            <Icon
-                              id="MagnifyingGlass"
-                              size={16}
-                              strokeWidth={0.01}
-                            />
-                          </span>
-                          <span dangerouslySetInnerHTML={{ __html: term }} />
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div class="flex flex-col pt-5 gap-3 overflow-x-hidden  ">
-                  <span
-                    class="font-medium text-base"
-                    role="heading"
-                    aria-level={3}
-                  >
-                    Produtos sugeridos
-                  </span>
-                  <Slider class="carousel gap-5">
-                    {products.map((product, index) => (
-                      <Slider.Item
-                        index={index}
-                        class="carousel-item first:ml-4 last:mr-4 min-w-[200px] max-w-[220px]"
-                      >
-                        <ProductCard product={product} platform={platform} />
-                      </Slider.Item>
-                    ))}
-                  </Slider>
-                </div>
+            <div class="gap-4 grid grid-cols-1  bg-base-100 py-5 px-5">
+            <div class="flex flex-col gap-3 ">
+                <span
+                  class="font-medium text-base"
+                  role="heading"
+                  aria-level={3}
+                >
+                  Sugestões
+                </span>
+                <ul id="search-suggestion" class="flex flex-col gap-4 text-sm">
+                  {searches.map(({ term }) => (
+                    <li>
+                      <a href={`/s?q=${term}`} class="flex gap-4 items-center">
+                        <span>
+                          <Icon
+                            id="MagnifyingGlass"
+                            size={16}
+                            strokeWidth={0.01}
+                          />
+                        </span>
+                        <span dangerouslySetInnerHTML={{ __html: term }} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="flex flex-col pt-2 gap-1 overflow-y-hidden  ">
+                <span
+                  class="font-medium text-base"
+                  role="heading"
+                  aria-level={3}
+                >
+                  Produtos sugeridos
+                </span>
+                <Slider class="carousel flex-col gap-5 max-h-[380px]">
+                  {products.map((product, index) => (
+                    <Slider.Item
+                      index={index}
+                      class="carousel-item   min-w-[200px] max-w-[440px]"
+                    >
+                      <ProductCard product={product} platform={platform} />
+                    </Slider.Item>
+                  ))}
+                </Slider>
               </div>
             </div>
           </div>

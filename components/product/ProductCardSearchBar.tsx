@@ -54,8 +54,8 @@ const relative = (url: string) => {
   return `${link.pathname}${link.search}`;
 };
 
-const WIDTH = 220;
-const HEIGHT = 190;
+const WIDTH = 120;
+const HEIGHT = 100;
 
 function ProductCard(
   { product, preload, itemListName, layout, platform }: Props,
@@ -104,17 +104,11 @@ function ProductCard(
 
   return (
     <div
-      id={id}
-      class={`card card-compact group w-full ${
-        align === "center" ? "text-center" : "text-start"
-      } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}
-        ${
-        l?.onMouseOver?.card === "Move up" &&
-        "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
-      } border-b-4 border-[#002A70] rounded-none min-h-[330px] justify-between
-      `}
-      data-deco="view-product"
-    >
+    class="flex flex-row gap-2  justify-start items-start"
+    style={{
+      gridTemplateColumns: "auto 1fr",
+    }}
+  >
       <SendEventOnClick
         id={id}
         event={{
@@ -135,33 +129,13 @@ function ProductCard(
         class="relative overflow-hidden"
         style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}
       >
-        {/* Wishlist button */}
-        <div
-          class={`absolute top-2 z-10
-          ${
-            l?.elementsPositions?.favoriteIcon === "Top left"
-              ? "left-2"
-              : "right-2"
-          }
-          ${
-            l?.onMouseOver?.showFavoriteIcon
-              ? "lg:hidden lg:group-hover:block"
-              : "lg:hidden"
-          }
-        `}
-        >
-          {platform === "vtex" && (
-            <WishlistButton
-              productGroupID={productGroupID}
-              productID={productID}
-            />
-          )}
-        </div>
+        
+        
         {/* Product Images */}
         <a
           href={url && relative(url)}
           aria-label="view product"
-          class="grid grid-cols-1 grid-rows-1 w-full"
+          class="grid grid-cols-1 grid-rows-1 w-full max-w-[120px]"
         >
           <Image
             src={front.url!}
@@ -218,26 +192,22 @@ function ProductCard(
            </div>
           )}
         {l?.hide?.allPrices ? "" : (
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <div
-              class={`flex flex-col gap-0 ${
-                l?.basics?.oldPriceSize === "Normal"
-                  ? "lg:flex-row lg:gap-2"
-                  : ""
-              } ${align === "center" ? "justify-center" : "justify-start"}`}
+              class={`flex flex-row gap-0  "justify-end`}
             >
+              
+              <div class="font-bold text-[15px] mr-2 ">
+                {formatPrice(price, offers?.priceCurrency)} 
+              </div>
+
               <div
-                class={`line-through text-base-300 text-xs ${
-                  l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
-                }`}
+                class={`line-through text-base-300 text-xs `}
               >
                 {formatPrice(listPrice, offers?.priceCurrency)}
               </div>
-              <div class="font-bold text-[15px] ">
-                {formatPrice(price, offers?.priceCurrency)}
-              </div>
             </div>
-            {l?.hide?.installments
+            {l?.hide?.installments !== offers?.priceCurrency
               ? ""
               : (
                 <div class="text-base-300 text-sm ">
@@ -247,20 +217,7 @@ function ProductCard(
           </div>
         )}
 
-        {/* SKU Selector */}
-        {l?.elementsPositions?.skuSelector === "Bottom" && (
-          <>
-            {l?.hide?.skuSelector ? "" : (
-              <ul
-                class={`flex items-center gap-2 w-full ${
-                  align === "center" ? "justify-center" : "justify-start"
-                } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
-              >
-                {skuSelector}
-              </ul>
-            )}
-          </>
-        )}
+      
 
         
       </div>

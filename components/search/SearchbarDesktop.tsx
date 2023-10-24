@@ -75,99 +75,100 @@ function Searchbar({
 
   return (
     <>
-    <div
-      class="w-full grid overflow-y-hidden max-w-[500px] bg-base-100"
-    >
-      <form id={id} action={action} class="join">
-        <input
-          ref={searchInputRef}
-          id="search-input"
-          class="input input-bordered join-item flex-grow bg-base-100 border-r-0"
-          name={name}
-          onInput={(e) => {
-            const value = e.currentTarget.value;
+      <div class="w-full grid overflow-y-hidden max-w-[500px] bg-base-100">
+        <form id={id} action={action} class="join">
+          <input
+            ref={searchInputRef}
+            id="search-input"
+            class="input input-bordered join-item flex-grow bg-base-100 border-r-0"
+            name={name}
+            onInput={(e) => {
+              const value = e.currentTarget.value;
 
-            if (value) {
-              sendEvent({
-                name: "search",
-                params: { search_term: value },
-              });
-            }
+              if (value) {
+                sendEvent({
+                  name: "search",
+                  params: { search_term: value },
+                });
+              }
 
-            setQuery(value);
-          }}
-          placeholder={placeholder}
-          role="combobox"
-          aria-controls="search-suggestion"
-          autocomplete="off"
-        />
-        <Button
-          type="submit"
-          class="join-item   bg-base-100 border-l-0 input input-bordered "
-          aria-label="Search"
-          for={id}
-          tabIndex={-1}
-        >
-          {loading.value
-            ? <span class="loading loading-spinner loading-xs bg-base-100" />
-            : <Icon id="MagnifyingGlass" size={24} strokeWidth={0.01} />}
-        </Button>
-      </form>
+              setQuery(value);
+            }}
+            placeholder={placeholder}
+            role="combobox"
+            aria-controls="search-suggestion"
+            autocomplete="off"
+          />
+          <Button
+            type="submit"
+            class="join-item   bg-base-100 border-l-0 input input-bordered "
+            aria-label="Search"
+            for={id}
+            tabIndex={-1}
+          >
+            {loading.value
+              ? <span class="loading loading-spinner loading-xs bg-base-100" />
+              : <Icon id="MagnifyingGlass" size={24} strokeWidth={0.01} />}
+          </Button>
+        </form>
       </div>
 
-      {hasProducts && 
-      <div
-        class={`absolute  w-full overflow-y-scroll z-50 ${!hasProducts && !hasTerms ? "hidden" : ""} max-w-[500px] mt-[50px]`}
-      >
-        <div class="flex flex-col justify-between items-start py-5 px-4 bg-base-100">
-          <div class="flex flex-col gap-3">
-            <span
-              class="font-medium text-base"
-              role="heading"
-              aria-level={3}
-            >
-              Sugestões 
-            </span>
-            <ul id="search-suggestion" class="flex flex-col gap-6 text-sm">
-              {searches.map(({ term }) => (
-                <li>
-                  <a href={`/s?q=${term}`} class="flex gap-4 items-center">
-                    <span>
-                      <Icon
-                        id="MagnifyingGlass"
-                        size={16}
-                        strokeWidth={0.01}
-                      />
-                    </span>
-                    <span dangerouslySetInnerHTML={{ __html: term }} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div class="flex flex-col pt-5 gap-3 overflow-x-hidden  ">
-            <span
-              class="font-medium text-base"
-              role="heading"
-              aria-level={3}
-            >
-              Produtos sugeridos
-            </span>
-            <Slider class="carousel gap-5">
-              {products.map((product, index) => (
-                <Slider.Item
-                  index={index}
-                  class="carousel-item first:ml-4 last:mr-4 min-w-[200px] max-w-[220px]"  
+      {hasProducts &&
+        (
+          <div
+            class={`absolute  w-full overflow-y-scroll z-50 ${
+              !hasProducts && !hasTerms ? "hidden" : ""
+            } max-w-[500px] mt-[50px]`}
+          >
+            <div class="gap-4 grid grid-cols-1  bg-base-100  py-5 px-5">
+              <div class="flex flex-col gap-3 ">
+                <span
+                  class="font-medium text-base"
+                  role="heading"
+                  aria-level={3}
                 >
-                  <ProductCard product={product} platform={platform} />
-                </Slider.Item>
-              ))}
-            </Slider>
+                  Sugestões
+                </span>
+                <ul id="search-suggestion" class="flex flex-col gap-4 text-sm">
+                  {searches.map(({ term }) => (
+                    <li>
+                      <a href={`/s?q=${term}`} class="flex gap-4 items-center">
+                        <span>
+                          <Icon
+                            id="MagnifyingGlass"
+                            size={16}
+                            strokeWidth={0.01}
+                          />
+                        </span>
+                        <span dangerouslySetInnerHTML={{ __html: term }} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="flex flex-col pt-2 gap-1 overflow-y-hidden  ">
+                <span
+                  class="font-medium text-base"
+                  role="heading"
+                  aria-level={3}
+                >
+                  Produtos sugeridos
+                </span>
+                <Slider class="carousel flex-col gap-5 max-h-[380px]">
+                  {products.map((product, index) => (
+                    <Slider.Item
+                      index={index}
+                      class="carousel-item   min-w-[200px] max-w-[440px]"
+                    >
+                      <ProductCard product={product} platform={platform} />
+                    </Slider.Item>
+                  ))}
+                </Slider>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-}        
-</>      
+        )}
+    </>
   );
 }
 
