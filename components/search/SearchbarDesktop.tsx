@@ -9,7 +9,7 @@
  * no JavaScript is shipped to the browser!
  */
 
-import ProductCard from "$store/components/product/ProductCard.tsx";
+import ProductCard from "$store/components/product/ProductCardSearchBar.tsx";
 import Button from "$store/components/ui/Button.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
@@ -119,23 +119,23 @@ function Searchbar({
       <div
         class={`absolute  w-full overflow-y-scroll z-50 ${!hasProducts && !hasTerms ? "hidden" : ""} max-w-[500px] mt-[50px]`}
       >
-        <div class="gap-4 grid grid-cols-1 sm:grid-rows-1 sm:grid-cols-[150px_1fr] bg-base-100">
-          <div class="flex flex-col gap-6">
+        <div class="flex flex-col justify-between items-start py-5 px-4 bg-base-100">
+          <div class="flex flex-col gap-3">
             <span
-              class="font-medium text-xl"
+              class="font-medium text-base"
               role="heading"
               aria-level={3}
             >
               Sugestões
             </span>
-            <ul id="search-suggestion" class="flex flex-col gap-6">
+            <ul id="search-suggestion" class="flex flex-col gap-6 text-sm">
               {searches.map(({ term }) => (
                 <li>
                   <a href={`/s?q=${term}`} class="flex gap-4 items-center">
                     <span>
                       <Icon
                         id="MagnifyingGlass"
-                        size={24}
+                        size={16}
                         strokeWidth={0.01}
                       />
                     </span>
@@ -145,19 +145,19 @@ function Searchbar({
               ))}
             </ul>
           </div>
-          <div class="flex flex-col pt-6 md:pt-0 gap-6 overflow-x-hidden ">
+          <div class="flex flex-col pt-5 gap-3 overflow-x-hidden  ">
             <span
-              class="font-medium text-xl"
+              class="font-medium text-base"
               role="heading"
               aria-level={3}
             >
               Produtos sugeridos
             </span>
-            <Slider class="carousel">
+            <Slider class="carousel gap-5">
               {products.map((product, index) => (
                 <Slider.Item
                   index={index}
-                  class="carousel-item first:ml-4 last:mr-4 min-w-[200px] max-w-[200px]"
+                  class="carousel-item first:ml-4 last:mr-4 min-w-[200px] max-w-[220px]"  
                 >
                   <ProductCard product={product} platform={platform} />
                 </Slider.Item>
