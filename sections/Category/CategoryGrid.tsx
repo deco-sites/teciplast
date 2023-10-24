@@ -56,32 +56,45 @@ function CategoryGrid(props: Props) {
     }],
   } = props;
 
+  const className = (index: number, showItems: number) => {
+    if (index === showItems - 1 && showItems === 5) {
+      return "col-span-1 w-full hidden md:block";
+    }
+    if(index > 0) {
+      return "col-span-1 w-full";
+    } else {
+      if(showItems === 3 ){
+        return "col-span-2 w-full";
+      } else {
+        return "md:col-span-2 col-span-1 w-full";
+      }
+    }
+  }
+
   return (
     <div
       id={id}
       class="mt-6 container"
     >
-      <div class="grid gap-4 grid-cols-9">
+      <div class="grid gap-4 md:grid-cols-9 grid-cols-10">
         {list.map((
           { title, href, showItems, subcategories },
           index,
         ) => (
-          <div class={index > 0 ? "col-span-2 h-full" : "col-span-3 h-full"}>
+          <div class={index > 0 ? "md:col-span-2 h-full col-span-5" : "md:col-span-3 h-full col-span-5"}>
             <div class="shadow-[#c7c7c7] shadow-md p-4 h-full relative pb-7">
               <h3 class="text-xl">{title}</h3>
               <div
                 class={showItems === 3
                   ? "grid grid-cols-2 gap-2"
-                  : "grid grid-cols-3 gap-2"}
+                  : "grid grid-cols-2 md:grid-cols-3 gap-2"}
               >
                 {subcategories?.map(({ title, image, href }, index) => (
                   index < showItems
                     ? (
                       <a
                         href={href}
-                        class={index > 0
-                          ? "col-span-1 w-full"
-                          : "col-span-2 w-full"}
+                        class={className(index, showItems)}
                       >
                         {image &&
                           (
