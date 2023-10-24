@@ -8,7 +8,6 @@ import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
 
 export interface Props {
-  
   data?: number;
   text?: Text[];
   textMobile?: Text[];
@@ -25,26 +24,27 @@ export interface Props {
 
   /** @title Logo */
   logo?: { src: ImageWidget; alt: string };
+  
 }
 
-interface TextLink{
+interface TextLink {
   href: string;
   text: string;
   bold: boolean;
   underline: boolean;
-  
 }
 
-interface Text{
+interface Text {
   text: string;
   bold: boolean;
   underline: boolean;
-  
 }
 
 function Header({
   text,
-  textLink,data,textMobile,
+  textLink,
+  data,
+  textMobile,
   searchbar,
   navItems,
   logo,
@@ -54,14 +54,20 @@ function Header({
 
   return (
     <>
-      <header >
+      <header>
         <Drawers
           menu={{ items }}
           searchbar={searchbar}
           platform={platform}
+          imgMenu={logo}
         >
           <div class="bg-base-100  w-full z-50">
-            <Alert data={data} text={text} textLink={textLink}  textMobile={textMobile}/>
+            <Alert
+              data={data}
+              text={text}
+              textLink={textLink}
+              textMobile={textMobile}
+            />
             <Navbar
               items={items}
               searchbar={searchbar && { ...searchbar, platform }}
