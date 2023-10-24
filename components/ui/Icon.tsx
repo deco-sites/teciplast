@@ -44,7 +44,10 @@ export type AvailableIcons =
   | "Email"
   | "Zoom"
   | "User-Circle"
-  | "Help-Contact";
+  | "User-Circle2"
+  | "Help-Contact"
+  | "CartShopping"
+  | "Layer_1"  ;
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
