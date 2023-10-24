@@ -6,36 +6,21 @@ import type { ImageWidget } from "apps/admin/widgets.ts";
 import Icon from "$store/components/ui/Icon.tsx";
 
 export interface Category {
-  tag?: string;
   label: string;
-  description?: string;
   href?: string;
   image?: ImageWidget;
-  buttonText?: string;
 }
 
 export interface Props {
-  header?: {
-    title?: string;
-    description?: string;
-  };
+  /**
+   * @label Lista de Categorias
+   */
   list?: Category[];
-  layout?: {
-    headerAlignment?: "center" | "left";
-    categoryCard?: {
-      textPosition?: "top" | "bottom";
-      textAlignment?: "center" | "left";
-    };
-  };
 }
 
 function CategoryList(props: Props) {
   const id = useId();
   const {
-    header = {
-      title: "",
-      description: "",
-    },
     list = [
       {
         tag: "10% off",
@@ -47,13 +32,6 @@ function CategoryList(props: Props) {
         buttonText: "Ver produtos",
       },
     ],
-    layout = {
-      headerAlignment: "center",
-      categoryCard: {
-        textPosition: "top",
-        textAlignment: "center",
-      },
-    },
   } = props;
 
   return (
@@ -63,7 +41,7 @@ function CategoryList(props: Props) {
     >
       <Slider class="carousel carousel-start gap-4 lg:gap-8 row-start-2 row-end-5">
         {list.map((
-          { label, description, href, image, buttonText },
+          { label, href, image },
           index,
         ) => (
           <Slider.Item
@@ -72,18 +50,20 @@ function CategoryList(props: Props) {
           >
             <a
               href={href}
-              class="flex flex-col gap-4 lg:w-[150px] w-40 lg:h-auto"
+              class="flex flex-col gap-4 lg:w-[150px] sm:w-40 w-24 lg:h-auto"
             >
               {image &&
                 (
                   <figure class="relative">
                     <div class="absolute bg-white z-10 top-2/3 w-full">
-                      <h3 class="uppercase text-center">{label}</h3>
+                      <h3 class="uppercase text-center text-xs sm:text-base">
+                        {label}
+                      </h3>
                     </div>
                     <Image
                       class="card w-full rounded-full"
                       src={image}
-                      alt={description || label}
+                      alt={label}
                       width={121}
                       height={121}
                       loading="lazy"
@@ -91,8 +71,6 @@ function CategoryList(props: Props) {
                   </figure>
                 )}
             </a>
-            {buttonText &&
-              <a href={href} class="btn">{buttonText}</a>}
           </Slider.Item>
         ))}
       </Slider>
