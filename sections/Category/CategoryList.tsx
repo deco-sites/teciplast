@@ -59,7 +59,7 @@ function CategoryList(props: Props) {
   return (
     <div
       id={id}
-      class="mt-3 flex justify-around container flex-col text-base-content shadow-[#c7c7c7] shadow-sm p-4 grid sm:grid-cols-[48px_1fr_48px]"
+      class="mt-6 flex justify-around container flex-col text-base-content shadow-[#c7c7c7] shadow-sm p-4 grid sm:grid-cols-[48px_1fr_48px]"
     >
       <Slider class="carousel carousel-start gap-4 lg:gap-8 row-start-2 row-end-5">
         {list.map((
