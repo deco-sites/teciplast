@@ -87,7 +87,7 @@ function CategoryGrid(props: Props) {
                           (
                             <figure class={"relative h-full"}>
                               <Image
-                                class="w-full h-full border-white border-2"
+                                class="w-full h-full border-white border-2 object-cover max-h-[295px]"
                                 src={image}
                                 alt={title}
                                 width={250}
