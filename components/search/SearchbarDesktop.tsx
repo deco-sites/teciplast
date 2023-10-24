@@ -126,7 +126,7 @@ function Searchbar({
               role="heading"
               aria-level={3}
             >
-              Sugestões
+              Sugestões 
             </span>
             <ul id="search-suggestion" class="flex flex-col gap-6 text-sm">
               {searches.map(({ term }) => (

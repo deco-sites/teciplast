@@ -75,12 +75,12 @@ function Searchbar({
 
   return (
     <>
-      <div class="w-full grid overflow-y-hidden max-w-[350px] bg-base-200">
-        <form id={id} action={action} class="join bg-transparent border-none">
+      <div class="w-full grid overflow-y-hidden max-w-[350px] bg-base-100">
+        <form id={id} action={action} class="join bg-transparent ">
           <input
             ref={searchInputRef}
             id="search-input"
-            class="input input-bordered join-item flex-grow bg-transparent border-r-0 border-none"
+            class="input input-bordered join-item flex-grow bg-transparent border-r-0 "
             name={name}
             onInput={(e) => {
               const value = e.currentTarget.value;
@@ -101,7 +101,7 @@ function Searchbar({
           />
           <Button
             type="submit"
-            class="join-item   bg-transparent border-l-0 input input-bordered border-none"
+            class="join-item   bg-transparent border-l-0 input input-bordered "
             aria-label="Search"
             for={id}
             tabIndex={-1}
