@@ -75,7 +75,7 @@ function Cart({
             {/* Cart Items */}
             <ul
               role="list"
-              class="mt-6 px-2 flex-grow overflow-y-auto flex flex-col gap-6 w-full"
+              class="mt-6 px-2 flex-grow overflow-y-auto flex flex-col gap-3 w-full border-t border-[#D3D3D3]"
             >
               {items.map((item, index) => (
                 <li key={index}>
@@ -94,7 +94,7 @@ function Cart({
             {/* Cart Footer */}
             <footer class="w-full">
               {/* Subtotal */}
-              <div class="border-t border-base-200 py-2 flex flex-col">
+              <div class="border-t border-[#D3D3D3] py-2 flex flex-col">
                 {discounts > 0 && (
                   <div class="flex justify-between items-center px-4">
                     <span class="text-sm">Descontos</span>

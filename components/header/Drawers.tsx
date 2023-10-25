@@ -60,15 +60,46 @@ const Aside = (
     </Suspense>
   </div>
 );
+const ModalCart = (
+  { title, onClose, children }: {
+    title: string;
+    onClose?: () => void;
+    children: ComponentChildren;
+  },
+) => (
+    <div class="bg-base-100 grid grid-rows-[auto_1fr] h-full divide-y max-w-[100vw] max-h-[900px] ">
+      <div class="flex justify-center items-center text-center bg-base-300 text-base-100 px-5 ">
+      {onClose && (
+          <Button class="btn btn-ghost left-0" onClick={onClose}>
+            <Icon id="XMark" size={24} strokeWidth={2} />
+          </Button>
+        )}
+        
+        <h1 class="m-auto">
+          <span class="font-medium text-xl">{title}</span>
+        </h1>
+        
+      </div>
+      <Suspense
+        fallback={
+          <div class="w-screen flex items-center justify-center p-5">
+            <span class="loading loading-ring" />
+          </div>
+        }
+      >
+        {children}
+      </Suspense>
+    </div>
+);
 
 function Central(
-  { onClose, children, imgMenu, searchbar,platform }: {
+  { onClose, children, imgMenu, searchbar, platform }: {
     imgMenu?: { src: ImageWidget; alt: string };
     title: string;
     onClose?: () => void;
     children: ComponentChildren;
     searchbar?: SearchbarProps;
-    platform?:ReturnType<typeof usePlatform>;
+    platform?: ReturnType<typeof usePlatform>;
   },
 ) {
   return (
@@ -112,18 +143,17 @@ function Central(
                 size={24}
                 strokeWidth={0.4}
               />
-            Entrar  
+              Entrar
             </a>
-            
           </div>
           <div class="uppercase flex flex-col  gap-2 text-[9px] justify-end items-center">
-              {platform === "vtex" && <CartButtonVTEX />}
-              {platform === "vnda" && <CartButtonVDNA />}
-              {platform === "wake" && <CartButtonWake />}
-              {platform === "linx" && <CartButtonLinx />}
-              {platform === "shopify" && <CartButtonShopify />}
-              <span class="text-[9px mt-2]"> Carrinho </span>
-            </div>
+            {platform === "vtex" && <CartButtonVTEX />}
+            {platform === "vnda" && <CartButtonVDNA />}
+            {platform === "wake" && <CartButtonWake />}
+            {platform === "linx" && <CartButtonLinx />}
+            {platform === "shopify" && <CartButtonShopify />}
+            <span class="text-[9px mt-2]">Carrinho</span>
+          </div>
           <div class="uppercase flex flex-col text-[9px] justify-end items-center gap-2">
             <a
               class="flex items-center flex-col justify-center"
@@ -181,7 +211,7 @@ function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
       }}
       aside={
         <Central
-        platform={platform}
+          platform={platform}
           imgMenu={imgMenu}
           searchbar={searchbar}
           onClose={() => {
@@ -204,12 +234,12 @@ function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
         open={displayCart.value !== false}
         onClose={() => displayCart.value = false}
         aside={
-          <Aside
-            title="Minha sacola"
+          <ModalCart
+            title="Carrinho de Compras"
             onClose={() => displayCart.value = false}
           >
             <Cart platform={platform} />
-          </Aside>
+          </ModalCart>
         }
       >
         {children}
