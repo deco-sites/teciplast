@@ -11,12 +11,11 @@ function Coupon({ coupon, onAddCoupon }: Props) {
   const [display, setDisplay] = useState(false);
 
   return (
-    <div class="flex justify-between items-center px-4">
-      <span class="text-sm">Cupom de desconto</span>
-      {display
-        ? (
+    <div class="flex justify-between items-center  w-full">
+      
+     
           <form
-            class="join"
+            class="join  bg-[#EDEDED] justify-center items-center border border-[#dadada] rounded-md w-full" 
             onSubmit={async (e) => {
               e.preventDefault();
               const { currentTarget: { elements } } = e;
@@ -37,29 +36,23 @@ function Coupon({ coupon, onAddCoupon }: Props) {
           >
             <input
               name="coupon"
-              class="input join-item"
+              class="input  bg-[#EDEDED]  "
               type="text"
               value={coupon ?? ""}
-              placeholder={"Cupom"}
+              placeholder={"Cupom de desconto"}
             />
             <Button
-              class="join-item"
+              class="  bg-[#A6A6A6] w-[120px] h-[25px] text-white rounded-md uppercase text-xs font-bold"
               type="submit"
               htmlFor="coupon"
               loading={loading}
             >
-              Ok
+              Aplicar
             </Button>
           </form>
-        )
-        : (
-          <Button
-            class="btn-ghost underline font-normal"
-            onClick={() => setDisplay(true)}
-          >
-            {coupon || "Adicionar"}
-          </Button>
-        )}
+      
+     
+       
     </div>
   );
 }

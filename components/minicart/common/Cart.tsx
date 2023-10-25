@@ -6,6 +6,7 @@ import { AnalyticsItem } from "apps/commerce/types.ts";
 import CartItem, { Item, Props as ItemProps } from "./CartItem.tsx";
 import Coupon, { Props as CouponProps } from "./Coupon.tsx";
 import FreeShippingProgressBar from "./FreeShippingProgressBar.tsx";
+import Icon from "deco-sites/teciplast/components/ui/Icon.tsx";
 
 interface Props {
   items: Item[];
@@ -43,8 +44,8 @@ function Cart({
 
   return (
     <div
-      class="flex flex-col justify-center items-center overflow-hidden"
-      style={{ minWidth: "calc(min(100vw, 425px))", maxWidth: "425px" }}
+      class="flex flex-col justify-center items-center overflow-hidden px-5"
+      style={{ minWidth: "calc(min(100vw, 450px))", maxWidth: "450px" }}
     >
       {isEmtpy
         ? (
@@ -63,7 +64,7 @@ function Cart({
         : (
           <>
             {/* Free Shipping Bar */}
-            <div class="px-2 py-4 w-full">
+            <div class=" py-4 w-full pb-5">
               <FreeShippingProgressBar
                 total={total}
                 locale={locale}
@@ -75,7 +76,7 @@ function Cart({
             {/* Cart Items */}
             <ul
               role="list"
-              class="mt-6 px-2 flex-grow overflow-y-auto flex flex-col gap-3 w-full border-t border-[#D3D3D3]"
+              class="py-5  max-h-[360px] flex-grow overflow-y-auto flex flex-col gap-3 w-full border-t border-[#D3D3D3] "
             >
               {items.map((item, index) => (
                 <li key={index}>
@@ -94,42 +95,57 @@ function Cart({
             {/* Cart Footer */}
             <footer class="w-full">
               {/* Subtotal */}
-              <div class="border-t border-[#D3D3D3] py-2 flex flex-col">
-                {discounts > 0 && (
-                  <div class="flex justify-between items-center px-4">
-                    <span class="text-sm">Descontos</span>
-                    <span class="text-sm">
-                      {formatPrice(discounts, currency, locale)}
-                    </span>
-                  </div>
-                )}
-                <div class="w-full flex justify-between px-4 text-sm">
+              <div class=" border-[#D3D3D3] px-4 py-2 flex flex-col">
+                <div class="w-full border-y min-h-[50px] flex justify-between items-center text-sm font-bold">
                   <span>Subtotal</span>
-                  <span class="px-4">
+                  <span class="px-4 font-bold text-[15px]">
                     {formatPrice(subtotal, currency, locale)}
                   </span>
                 </div>
-                <Coupon onAddCoupon={onAddCoupon} coupon={coupon} />
+
+                <div class="flex w-full justify-start items-center py-5 ">
+                  <Coupon onAddCoupon={onAddCoupon} coupon={coupon} />
+                  {discounts > 0 && (
+                    <div class="flex w-full">
+                      <span class="text-sm">Descontos</span>
+                      <span class="text-sm">
+                        {formatPrice(discounts, currency, locale)}
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Total */}
-              <div class="border-t border-base-200 pt-4 flex flex-col justify-end items-end gap-2 mx-4">
+              <div class="border-t border-base-200 py-4 flex flex-col justify-end items-end gap-2 mx-4">
                 <div class="flex justify-between items-center w-full">
-                  <span>Total</span>
+                  <span class={`px-4 font-bold text-[15px]`}>Total</span>
                   <span class="font-medium text-xl">
                     {formatPrice(total, currency, locale)}
                   </span>
                 </div>
-                <span class="text-sm text-base-300">
-                  Taxas e fretes serão calculados no checkout
+                <span class="text-xs text-base-300 flex flex-row gap-2">
+                  <Icon
+                    width={17}
+                    height={14}
+                    strokeWidth={1}
+                    id="Visas"
+                  />
+                  <Icon
+                    width={17}
+                    height={14}
+                    strokeWidth={1}
+                    id="Mastercards"
+                  />{" "}
+                  Parcele em até 12x dependendo do cartão
                 </span>
               </div>
 
-              <div class="p-4">
-                <a class="inline-block w-full" href={checkoutHref}>
+              <div class="">
+                <a class="inline-block w-full py-5" href={checkoutHref}>
                   <Button
                     data-deco="buy-button"
-                    class="btn-primary btn-block"
+                    class="btn-primary btn-block h-[40px] uppercase text-[15px font-bold]"
                     disabled={loading || isEmtpy}
                     onClick={() => {
                       sendEvent({
@@ -145,7 +161,7 @@ function Cart({
                       });
                     }}
                   >
-                    Fechar pedido
+                    Finalizar compra
                   </Button>
                 </a>
               </div>

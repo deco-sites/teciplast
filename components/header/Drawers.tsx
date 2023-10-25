@@ -3,6 +3,8 @@ import Cart from "$store/components/minicart/Cart.tsx";
 import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import Button from "$store/components/ui/Button.tsx";
 import Drawer from "$store/components/ui/Drawer.tsx";
+import Drawer2 from "$store/components/ui/Drawer2.tsx";
+
 import Icon from "$store/components/ui/Icon.tsx";
 import { useUI } from "$store/sdk/useUI.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
@@ -60,15 +62,17 @@ const Aside = (
     </Suspense>
   </div>
 );
-const ModalCart = (
+function ModalCart(
   { title, onClose, children }: {
     title: string;
     onClose?: () => void;
     children: ComponentChildren;
   },
-) => (
-    <div class="bg-base-100 grid grid-rows-[auto_1fr] h-full divide-y max-w-[100vw] max-h-[900px] ">
-      <div class="flex justify-center items-center text-center bg-base-300 text-base-100 px-5 ">
+) {
+  const { displayCart} = useUI();
+  return(
+    <div class={`${displayCart.value === true ? "grid": "hidden"} bg-base-100  grid-rows-[auto_1fr]    lg:max-w-[100vw] max-h-[900px]  mt-5  lg:mr-10`}>     
+      <div class="flex justify-center items-center text-center bg-[#807f7f] text-base-100 px-5 ">
       {onClose && (
           <Button class="btn btn-ghost left-0" onClick={onClose}>
             <Icon id="XMark" size={24} strokeWidth={2} />
@@ -76,7 +80,7 @@ const ModalCart = (
         )}
         
         <h1 class="m-auto">
-          <span class="font-medium text-xl">{title}</span>
+          <span class="font-medium text-xl ml-[-24px]">{title}</span>
         </h1>
         
       </div>
@@ -89,8 +93,8 @@ const ModalCart = (
       >
         {children}
       </Suspense>
-    </div>
-);
+    </div>)
+;}
 
 function Central(
   { onClose, children, imgMenu, searchbar, platform }: {
@@ -229,7 +233,7 @@ function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
         </Central>
       }
     >
-      <Drawer // right drawer cart
+      <Drawer2 // right drawer cart
         class="drawer-end"
         open={displayCart.value !== false}
         onClose={() => displayCart.value = false}
@@ -243,7 +247,7 @@ function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
         }
       >
         {children}
-      </Drawer>
+      </Drawer2>
     </Drawer>
   );
 }

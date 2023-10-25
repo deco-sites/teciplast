@@ -31,15 +31,16 @@ import * as $$$$$$23 from "./sections/Content/Testimonials.tsx";
 import * as $$$$$$24 from "./sections/Content/Faq.tsx";
 import * as $$$$$$25 from "./sections/Content/Logos.tsx";
 import * as $$$$$$26 from "./sections/Content/Benefits.tsx";
-import * as $$$$$$27 from "./sections/Links/LinkTree.tsx";
-import * as $$$$$$28 from "./sections/Links/Shortcuts.tsx";
-import * as $$$$$$29 from "./sections/Footer/Footer.tsx";
-import * as $$$$$$30 from "./sections/Layout/GridItem.tsx";
-import * as $$$$$$31 from "./sections/Layout/Container.tsx";
-import * as $$$$$$32 from "./sections/Layout/Grid.tsx";
-import * as $$$$$$33 from "./sections/Layout/Flex.tsx";
-import * as $$$$$$34 from "./sections/Miscellaneous/CookieConsent.tsx";
-import * as $$$$$$35 from "./sections/Miscellaneous/CampaignTimer.tsx";
+import * as $$$$$$27 from "./sections/Content/OurStores.tsx";
+import * as $$$$$$28 from "./sections/Links/LinkTree.tsx";
+import * as $$$$$$29 from "./sections/Links/Shortcuts.tsx";
+import * as $$$$$$30 from "./sections/Footer/Footer.tsx";
+import * as $$$$$$31 from "./sections/Layout/GridItem.tsx";
+import * as $$$$$$32 from "./sections/Layout/Container.tsx";
+import * as $$$$$$33 from "./sections/Layout/Grid.tsx";
+import * as $$$$$$34 from "./sections/Layout/Flex.tsx";
+import * as $$$$$$35 from "./sections/Miscellaneous/CookieConsent.tsx";
+import * as $$$$$$36 from "./sections/Miscellaneous/CampaignTimer.tsx";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
@@ -55,8 +56,9 @@ const manifest = {
     "deco-sites/teciplast/sections/Content/Benefits.tsx": $$$$$$26,
     "deco-sites/teciplast/sections/Content/Faq.tsx": $$$$$$24,
     "deco-sites/teciplast/sections/Content/Logos.tsx": $$$$$$25,
+    "deco-sites/teciplast/sections/Content/OurStores.tsx": $$$$$$27,
     "deco-sites/teciplast/sections/Content/Testimonials.tsx": $$$$$$23,
-    "deco-sites/teciplast/sections/Footer/Footer.tsx": $$$$$$29,
+    "deco-sites/teciplast/sections/Footer/Footer.tsx": $$$$$$30,
     "deco-sites/teciplast/sections/Gallery.tsx": $$$$$$0,
     "deco-sites/teciplast/sections/Header/Header.tsx": $$$$$$22,
     "deco-sites/teciplast/sections/Images/BannerCustom.tsx": $$$$$$11,
@@ -64,14 +66,14 @@ const manifest = {
     "deco-sites/teciplast/sections/Images/Carousel.tsx": $$$$$$13,
     "deco-sites/teciplast/sections/Images/ImageGallery.tsx": $$$$$$15,
     "deco-sites/teciplast/sections/Images/ShoppableBanner.tsx": $$$$$$12,
-    "deco-sites/teciplast/sections/Layout/Container.tsx": $$$$$$31,
-    "deco-sites/teciplast/sections/Layout/Flex.tsx": $$$$$$33,
-    "deco-sites/teciplast/sections/Layout/Grid.tsx": $$$$$$32,
-    "deco-sites/teciplast/sections/Layout/GridItem.tsx": $$$$$$30,
-    "deco-sites/teciplast/sections/Links/LinkTree.tsx": $$$$$$27,
-    "deco-sites/teciplast/sections/Links/Shortcuts.tsx": $$$$$$28,
-    "deco-sites/teciplast/sections/Miscellaneous/CampaignTimer.tsx": $$$$$$35,
-    "deco-sites/teciplast/sections/Miscellaneous/CookieConsent.tsx": $$$$$$34,
+    "deco-sites/teciplast/sections/Layout/Container.tsx": $$$$$$32,
+    "deco-sites/teciplast/sections/Layout/Flex.tsx": $$$$$$34,
+    "deco-sites/teciplast/sections/Layout/Grid.tsx": $$$$$$33,
+    "deco-sites/teciplast/sections/Layout/GridItem.tsx": $$$$$$31,
+    "deco-sites/teciplast/sections/Links/LinkTree.tsx": $$$$$$28,
+    "deco-sites/teciplast/sections/Links/Shortcuts.tsx": $$$$$$29,
+    "deco-sites/teciplast/sections/Miscellaneous/CampaignTimer.tsx": $$$$$$36,
+    "deco-sites/teciplast/sections/Miscellaneous/CookieConsent.tsx": $$$$$$35,
     "deco-sites/teciplast/sections/Newsletter/Newsletter.tsx": $$$$$$1,
     "deco-sites/teciplast/sections/Product/ImageGalleryFrontBack.tsx": $$$$$$2,
     "deco-sites/teciplast/sections/Product/ImageGallerySlider.tsx": $$$$$$10,
