@@ -9,6 +9,10 @@
     font-family: var(--font-family);
   }
 
+  body {
+    background: linear-gradient(180deg, #FFF 0%, #E3E3E3 9.59%);
+  }
+
   mark {
     @apply bg-accent text-accent-content;
   }

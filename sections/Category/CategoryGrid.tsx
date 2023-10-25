@@ -8,12 +8,12 @@ import type { ImageWidget } from "apps/admin/widgets.ts";
 export interface SubCategory {
   /**
    * @title Título da subcategoria
-  */
+   */
   title: string;
   image: ImageWidget;
   /**
    * @title Link da subcategoria
-  */
+   */
   href: string;
 }
 
@@ -23,26 +23,26 @@ export interface SubCategory {
 export interface Category {
   /**
    * @title Título da Categoria
-  */
+   */
   title: string;
   /**
    * @title Tipo de exibição
-  */
+   */
   showItems: 3 | 5;
   /**
    * @title Link da Categoria
-  */
+   */
   href?: string;
   /**
    * @title Subcategorias
-  */
+   */
   subcategories?: SubCategory[];
 }
 
 export interface Props {
   /**
    * @title Categorias
-  */
+   */
   list?: Category[];
 }
 
@@ -60,16 +60,16 @@ function CategoryGrid(props: Props) {
     if (index === showItems - 1 && showItems === 5) {
       return "col-span-1 w-full hidden md:block";
     }
-    if(index > 0) {
+    if (index > 0) {
       return "col-span-1 w-full";
     } else {
-      if(showItems === 3 ){
+      if (showItems === 3) {
         return "col-span-2 w-full";
       } else {
         return "md:col-span-2 col-span-1 w-full";
       }
     }
-  }
+  };
 
   return (
     <div
@@ -81,8 +81,12 @@ function CategoryGrid(props: Props) {
           { title, href, showItems, subcategories },
           index,
         ) => (
-          <div class={index > 0 ? "md:col-span-2 h-full col-span-5" : "md:col-span-3 h-full col-span-5"}>
-            <div class="shadow-[#c7c7c7] shadow-md p-4 h-full relative pb-7">
+          <div
+            class={index > 0
+              ? "md:col-span-2 h-full col-span-5"
+              : "md:col-span-3 h-full col-span-5"}
+          >
+            <div class="shadow-[#c7c7c7] shadow-md p-4 h-full relative pb-7 bg-white">
               <h3 class="text-xl">{title}</h3>
               <div
                 class={showItems === 3
