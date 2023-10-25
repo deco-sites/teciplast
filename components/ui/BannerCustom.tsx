@@ -19,7 +19,6 @@ export interface Banner {
    * @description When you click you go to
    */
   href: string;
-
 }
 
 export type BorderRadius =
@@ -169,7 +168,7 @@ const DEFAULT_PROPS: Props = {
   borderRadius: {
     mobile: "3xl",
     desktop: "3xl",
-  }
+  },
 };
 
 export default function BannerCustom(props: Props) {
@@ -181,19 +180,37 @@ export default function BannerCustom(props: Props) {
     banners = [],
   } = { ...DEFAULT_PROPS, ...props };
 
+  const firstBanner = banners[0];
   return (
-    <section class="container w-full px-4 md:px-0 mx-auto my-8">
+    <section class="md:container w-full md:px-0 mx-auto my-8">
       <div
-        class={`grid gap-1 md:gap-2 ${
+        class={`hidden md:grid gap-1 md:gap-2 ${
           MOBILE_COLUMNS[gridColumns]
-        } ${DESKTOP_COLUMNS[gridColumns]} ${DESKTOP_ROWS[gridRows]} ${DESKTOP_ROWS[gridRows]} `}
+        } ${DESKTOP_COLUMNS[gridColumns]} ${DESKTOP_ROWS[gridRows]} ${
+          DESKTOP_ROWS[gridRows]
+        } `}
       >
-        {banners.map(({ href, srcMobile, srcDesktop, alt, columns, rows, heightProportion, widthProportion = 200 }) => (
+        {banners.map((
+          {
+            href,
+            srcMobile,
+            srcDesktop,
+            alt,
+            columns,
+            rows,
+            heightProportion,
+            widthProportion = 200,
+          },
+        ) => (
           <a
             href={href}
             class={`overflow-hidden ${
               RADIUS_MOBILE[borderRadius.mobile ?? "none"]
-            } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} ${MOBILE_ROWSPAN[rows]} ${MOBILE_COLSPAN[columns]}`}
+            } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} ${
+              MOBILE_ROWSPAN[rows]
+            } ${
+              MOBILE_COLSPAN[columns]
+            } hover:shadow-xl hover:shadow-[#00000061] transition-shadow duration-150`}
           >
             <Picture class="h-full">
               <Source
@@ -219,6 +236,38 @@ export default function BannerCustom(props: Props) {
             </Picture>
           </a>
         ))}
+      </div>
+      <div class="md:hidden grid gap-1 grid-cols-1">
+        <a
+          href={firstBanner.href}
+          class={`overflow-hidden ${
+            RADIUS_MOBILE[borderRadius.mobile ?? "none"]
+          } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]}
+           col-span-1 hover:shadow-xl hover:shadow-[#00000061] transition-shadow duration-150`}
+        >
+          <Picture class="h-full">
+            <Source
+              media="(max-width: 845px)"
+              src={firstBanner.srcMobile}
+              width={firstBanner.widthProportion!}
+              height={firstBanner.heightProportion}
+            />
+            <Source
+              media="(min-width: 845px)"
+              src={firstBanner.srcDesktop ? firstBanner.srcDesktop : firstBanner.srcMobile}
+              width={firstBanner.widthProportion!}
+              height={firstBanner.heightProportion}
+            />
+            <img
+              class="w-full h-full object-cover"
+              sizes="(max-width: 845px) 100vw, 30vw"
+              src={firstBanner.srcMobile}
+              alt={firstBanner.alt}
+              decoding="async"
+              loading="lazy"
+            />
+          </Picture>
+        </a>
       </div>
     </section>
   );
