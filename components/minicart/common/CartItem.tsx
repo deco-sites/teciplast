@@ -45,9 +45,8 @@ function CartItem(
   const isGift = sale < 0.01;
   const [loading, setLoading] = useState(false);
   const { alt, src } = image;
+  const srcNew = src.replace("-55-55","")
   
-  
-  console.log(item)
 
   const withLoading = useCallback(
     <A,>(cb: (args: A) => Promise<void>) => async (e: A) => {
@@ -64,20 +63,21 @@ function CartItem(
   return (
     <div class="flex flex-row justify-start items-center gap-2 bg-[#EEEEEE] max-h-[120px] p-3">
       <Image
-        {...image}
+        alt={image.src}
+        src={srcNew}
         class="w-full h-full max-w-[120px] max-h-[100px] object-cover"
         sizes="(max-width: 640px) 100vw, 40vw"
-        width={63}
-        height={87.5}
+        width={770}
+        height={950}
       />
 
-      <div class="flex flex-col justify-start items-center gap-2">
-        <div class="flex justify-between items-center">
+      <div class="flex flex-col justify-start items-start gap-2 ">
+        <div class="flex justify-between items-center w-full">
           <span class="text-xs font-bold">{name}</span>
           <Button
             disabled={loading || isGift}
             loading={loading}
-            class="btn-ghost btn-square text-secondary"
+            class="btn-ghost btn-square text-secondary flex justify-end items-start"
             onClick={withLoading(async () => {
               const analyticsItem = itemToAnalyticsItem(index);
 
@@ -92,8 +92,8 @@ function CartItem(
             <Icon id="Trash" size={18} />
           </Button>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="text-[15px] font-bold mr-auto">
+        <div class="flex justify-between items-center gap-2 w-full">
+          <span class="text-[15px] font-bold ">
             {isGift ? "Grátis" : formatPrice(sale, currency, locale)}
           </span>
 

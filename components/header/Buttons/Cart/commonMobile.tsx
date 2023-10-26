@@ -9,7 +9,6 @@ interface Props {
   currency: string;
   total: number;
   items: AnalyticsItem[];
-  
 }
 
 function CartButton({ loading, currency, total, items }: Props) {
@@ -42,7 +41,6 @@ function CartButton({ loading, currency, total, items }: Props) {
         onClick={onClick}
       >
         <Icon id="CartShopping" size={24} strokeWidth={2} />
-        <span class="ml-1 uppercase text-[9px] lg:text-base justify-center items-center gap-2 mt-2 lg:mt-0 ">CARRINHO</span>
       </Button>
     </div>
   );
