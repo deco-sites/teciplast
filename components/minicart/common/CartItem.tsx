@@ -45,9 +45,8 @@ function CartItem(
   const isGift = sale < 0.01;
   const [loading, setLoading] = useState(false);
   const { alt, src } = image;
+  const srcNew = src.replace("-55-55","")
   
-  
-  console.log(item)
 
   const withLoading = useCallback(
     <A,>(cb: (args: A) => Promise<void>) => async (e: A) => {
@@ -64,11 +63,12 @@ function CartItem(
   return (
     <div class="flex flex-row justify-start items-center gap-2 bg-[#EEEEEE] max-h-[120px] p-3">
       <Image
-        {...image}
+        alt={image.src}
+        src={srcNew}
         class="w-full h-full max-w-[120px] max-h-[100px] object-cover"
         sizes="(max-width: 640px) 100vw, 40vw"
-        width={63}
-        height={87.5}
+        width={770}
+        height={950}
       />
 
       <div class="flex flex-col justify-start items-center gap-2">

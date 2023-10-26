@@ -15,7 +15,7 @@ function CartButton() {
     <Button
       currency={currency}
       loading={loading.value}
-      total={(total - discounts) / 100}
+      total={(total) / 100}
       items={items.map((item, index) =>
         itemToAnalyticsItem({ ...item, coupon }, index)
       )}

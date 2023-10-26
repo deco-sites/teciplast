@@ -42,6 +42,8 @@ function Cart({
   const { displayCart } = useUI();
   const isEmtpy = items.length === 0;
 
+  console.log(discounts)
+
   return (
     <div
       class="flex flex-col justify-center items-center overflow-hidden px-5"
@@ -49,7 +51,7 @@ function Cart({
     >
       {isEmtpy
         ? (
-          <div class="flex flex-col gap-6">
+          <div class="flex flex-col gap-6 min-h-[300px] justify-center items-center">
             <span class="font-medium text-2xl">Sua sacola está vazia</span>
             <Button
               class="btn-outline"
@@ -103,10 +105,10 @@ function Cart({
                   </span>
                 </div>
 
-                <div class="flex w-full justify-start items-center py-5 ">
+                <div class="flex flex-col w-full justify-start items-center py-5 ">
                   <Coupon onAddCoupon={onAddCoupon} coupon={coupon} />
-                  {discounts > 0 && (
-                    <div class="flex w-full">
+                  {discounts !== 0 && (
+                    <div class="w-full  min-h-[50px] flex justify-between items-center text-sm font-bold">
                       <span class="text-sm">Descontos</span>
                       <span class="text-sm">
                         {formatPrice(discounts, currency, locale)}
@@ -121,7 +123,7 @@ function Cart({
                 <div class="flex justify-between items-center w-full">
                   <span class={`px-4 font-bold text-[15px]`}>Total</span>
                   <span class="font-medium text-xl">
-                    {formatPrice(total, currency, locale)}
+                    {formatPrice(total , currency, locale)}
                   </span>
                 </div>
                 <span class="text-xs text-base-300 flex flex-row gap-2">
