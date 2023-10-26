@@ -47,7 +47,11 @@ export type AvailableIcons =
   | "User-Circle2"
   | "Help-Contact"
   | "CartShopping"
-  | "Layer_1"  ;
+  | "PresentBox"
+  | "ReturnBox"
+  | "FastTruck"
+  | "GreenShield"
+  | "Layer_1";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
