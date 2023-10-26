@@ -13,6 +13,24 @@
     background: linear-gradient(180deg, #FFF 0%, #E3E3E3 9.59%);
   }
 
+  .benefits-bg-first {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22315%22%20height%3D%2280%22%20viewBox%3D%220%200%20315%2080%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M0%200H291.264L314.785%2040L291.264%2080H0V0Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+    background-size: 100% 100%; /* Set the height to 100% and let the width adjust automatically */
+    background-position: center; /* Start from the right side */
+  }
+
+  .benefits-bg-middle {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22317%22%20height%3D%2280%22%20viewBox%3D%220%200%20317%2080%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M0.747559%200H292.939L316.535%2040L292.939%2080H0.747559L24.3438%2040L0.747559%200Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+    background-size: 100% 100%; /* Set the height to 100% and let the width adjust automatically */
+    background-position: center; /* Start from the right side */
+  }
+
+  .benefits-bg-last {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22303%22%20height%3D%2280%22%20viewBox%3D%220%200%20303%2080%22%20fill%3D%22none%22%3E%0A%20%20%3Cpath%20d%3D%22M0.244995%200H303V40V80H0.244995L23.8412%2040L0.244995%200Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+    background-size: 100% 100%; /* Set the height to 100% and let the width adjust automatically */
+    background-position: center; /* Start from the right side */
+  }
+
   mark {
     @apply bg-accent text-accent-content;
   }
