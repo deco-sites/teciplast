@@ -83,7 +83,7 @@ function Header({
           platform={platform}
           imgMenu={logo}
         >
-          <div class="bg-base-100 bg-opacity-0  w-full z-50">
+          <div class="bg-base-100 bg-opacity-0  w-full z-30">
             <Alert
               data={data}
               expiresAt={expiresAt}

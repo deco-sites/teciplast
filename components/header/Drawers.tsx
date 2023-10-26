@@ -3,6 +3,8 @@ import Cart from "$store/components/minicart/Cart.tsx";
 import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import Button from "$store/components/ui/Button.tsx";
 import Drawer from "$store/components/ui/Drawer.tsx";
+import Drawer2 from "$store/components/ui/Drawer2.tsx";
+
 import Icon from "$store/components/ui/Icon.tsx";
 import { useUI } from "$store/sdk/useUI.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
@@ -60,15 +62,48 @@ const Aside = (
     </Suspense>
   </div>
 );
+function ModalCart(
+  { title, onClose, children }: {
+    title: string;
+    onClose?: () => void;
+    children: ComponentChildren;
+  },
+) {
+  const { displayCart} = useUI();
+  return(
+    <div class={`${displayCart.value === true ? "grid": "hidden"} bg-base-100  grid-rows-[auto_1fr]    lg:max-w-[100vw] max-h-[900px]  mt-5  lg:mr-10`}>     
+      <div class="flex justify-center items-center text-center bg-[#807f7f] text-base-100 px-5 ">
+      {onClose && (
+          <Button class="btn btn-ghost left-0" onClick={onClose}>
+            <Icon id="XMark" size={24} strokeWidth={2} />
+          </Button>
+        )}
+        
+        <h1 class="m-auto">
+          <span class="font-medium text-xl ml-[-24px]">{title}</span>
+        </h1>
+        
+      </div>
+      <Suspense
+        fallback={
+          <div class="w-screen flex items-center justify-center p-5">
+            <span class="loading loading-ring" />
+          </div>
+        }
+      >
+        {children}
+      </Suspense>
+    </div>)
+;}
 
 function Central(
-  { onClose, children, imgMenu, searchbar,platform }: {
+  { onClose, children, imgMenu, searchbar, platform }: {
     imgMenu?: { src: ImageWidget; alt: string };
     title: string;
     onClose?: () => void;
     children: ComponentChildren;
     searchbar?: SearchbarProps;
-    platform?:ReturnType<typeof usePlatform>;
+    platform?: ReturnType<typeof usePlatform>;
   },
 ) {
   return (
@@ -112,18 +147,17 @@ function Central(
                 size={24}
                 strokeWidth={0.4}
               />
-            Entrar  
+              Entrar
             </a>
-            
           </div>
           <div class="uppercase flex flex-col  gap-2 text-[9px] justify-end items-center">
-              {platform === "vtex" && <CartButtonVTEX />}
-              {platform === "vnda" && <CartButtonVDNA />}
-              {platform === "wake" && <CartButtonWake />}
-              {platform === "linx" && <CartButtonLinx />}
-              {platform === "shopify" && <CartButtonShopify />}
-              <span class="text-[9px mt-2]"> Carrinho </span>
-            </div>
+            {platform === "vtex" && <CartButtonVTEX />}
+            {platform === "vnda" && <CartButtonVDNA />}
+            {platform === "wake" && <CartButtonWake />}
+            {platform === "linx" && <CartButtonLinx />}
+            {platform === "shopify" && <CartButtonShopify />}
+            <span class="text-[9px mt-2]">Carrinho</span>
+          </div>
           <div class="uppercase flex flex-col text-[9px] justify-end items-center gap-2">
             <a
               class="flex items-center flex-col justify-center"
@@ -181,7 +215,7 @@ function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
       }}
       aside={
         <Central
-        platform={platform}
+          platform={platform}
           imgMenu={imgMenu}
           searchbar={searchbar}
           onClose={() => {
@@ -199,21 +233,21 @@ function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
         </Central>
       }
     >
-      <Drawer // right drawer cart
+      <Drawer2 // right drawer cart
         class="drawer-end"
         open={displayCart.value !== false}
         onClose={() => displayCart.value = false}
         aside={
-          <Aside
-            title="Minha sacola"
+          <ModalCart
+            title="Carrinho de Compras"
             onClose={() => displayCart.value = false}
           >
             <Cart platform={platform} />
-          </Aside>
+          </ModalCart>
         }
       >
         {children}
-      </Drawer>
+      </Drawer2>
     </Drawer>
   );
 }
