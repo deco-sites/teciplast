@@ -15,7 +15,7 @@ function Coupon({ coupon, onAddCoupon }: Props) {
       
      
           <form
-            class="join  bg-[#EDEDED] justify-center items-center border border-[#dadada] rounded-md w-full" 
+            class="join  bg-[#EDEDED] justify-center items-center border border-[#dadada] rounded-md w-full px-5" 
             onSubmit={async (e) => {
               e.preventDefault();
               const { currentTarget: { elements } } = e;
@@ -42,7 +42,7 @@ function Coupon({ coupon, onAddCoupon }: Props) {
               placeholder={"Cupom de desconto"}
             />
             <Button
-              class="  bg-[#A6A6A6] w-[120px] h-[25px] text-white rounded-md uppercase text-xs font-bold"
+              class="  bg-[#A6A6A6] px-2 lg:px-0  w-[120px] h-[25px] text-white rounded-md uppercase text-xs font-bold"
               type="submit"
               htmlFor="coupon"
               loading={loading}

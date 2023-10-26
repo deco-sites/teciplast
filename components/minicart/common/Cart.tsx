@@ -105,10 +105,10 @@ function Cart({
                   </span>
                 </div>
 
-                <div class="flex flex-col w-full justify-start items-center py-5 ">
+                <div class="flex flex-col w-full min-h-[50px] justify-start items-center py-5 ">
                   <Coupon onAddCoupon={onAddCoupon} coupon={coupon} />
                   {discounts !== 0 && (
-                    <div class="w-full  min-h-[50px] flex justify-between items-center text-sm font-bold">
+                    <div class="w-full   flex justify-between items-center text-sm font-bold">
                       <span class="text-sm">Descontos</span>
                       <span class="text-sm">
                         {formatPrice(discounts, currency, locale)}
