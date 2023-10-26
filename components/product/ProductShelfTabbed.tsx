@@ -53,19 +53,19 @@ function TabbedProductShelf({
   }
 
   return (
-    <div class="w-full container  py-8 flex flex-col gap-8 lg:gap-12 lg:py-10">
+    <div class="w-full container py-8 flex flex-col gap-8 lg:gap-12 lg:py-10">
       <Header
         title={title || ""}
         description={description || ""}
         fontSize={layout?.headerfontSize || "Large"}
-        alignment={layout?.headerAlignment || "center"}
+        alignment={layout?.headerAlignment || "left"}
       />
 
-      <div class="flex justify-center">
-        <div class="tabs tabs-boxed">
+      <div class="flex justify-start">
+        <div class="tabs">
           {tabs.map((tab, index) => (
             <button
-              class={`tab tab-lg ${index === ti ? "tab-active" : ""}`}
+              class={`tab tab-lg uppercase text-base ${index=== 0 ? "pl-0" : ""} ${index === ti ? "tab-active bg-transparent underline" : ""}`}
               {...usePartial({ id: sectionId, props: { tabIndex: index } })}
             >
               {tab.title}
@@ -89,6 +89,7 @@ function TabbedProductShelf({
                 itemListName={title}
                 layout={cardLayout}
                 platform={platform}
+                
               />
             </Slider.Item>
           ))}
