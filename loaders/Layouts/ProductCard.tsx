@@ -13,7 +13,7 @@ export const Preview = (props: Props) => {
   const { layout } = props;
 
   return (
-    <div class="h-full w-full grid place-items-center">
+    <div class="h-full w-full grid place-items-center bg-white border-b-blue-500 border-2">
       <div class="max-w-xs">
         <ProductCard
           layout={layout}

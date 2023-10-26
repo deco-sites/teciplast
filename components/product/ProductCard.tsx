@@ -96,7 +96,7 @@ function ProductCard(
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-block"
+      class="btn btn-block btn-primary"
     >
       {l?.basics?.ctaText || "Ver produto"}
     </a>
@@ -105,9 +105,9 @@ function ProductCard(
   return (
     <div
       id={id}
-      class={`card card-compact group w-full ${
+      class={`group w-full bg-white border-b-[#002A70] border-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
-      } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}
+      } ${l?.onMouseOver?.showCardShadow ? "lg:hover:border-4" : ""}
         ${
         l?.onMouseOver?.card === "Move up" &&
         "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
@@ -206,7 +206,7 @@ function ProductCard(
               {skuSelector}
             </ul>
           )}
-          {l?.onMouseOver?.showCta && cta}
+          {/* {l?.onMouseOver?.showCta && cta} */}
         </figcaption>
       </figure>
       {/* Prices & Name */}
@@ -233,16 +233,16 @@ function ProductCard(
             <div class="flex flex-col gap-0">
               {l?.hide?.productName ? "" : (
                 <h2
-                  class="truncate text-base lg:text-lg text-base-content"
+                  class="truncate text-base lg:text-lg text-[#303030] font-bold"
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}
-              {l?.hide?.productDescription ? "" : (
+              {/* {l?.hide?.productDescription ? "" : (
                 <div
                   class="truncate text-sm lg:text-sm text-neutral"
                   dangerouslySetInnerHTML={{ __html: description ?? "" }}
                 />
-              )}
+              )} */}
             </div>
           )}
         {l?.hide?.allPrices ? "" : (
@@ -261,7 +261,7 @@ function ProductCard(
               >
                 {formatPrice(listPrice, offers?.priceCurrency)}
               </div>
-              <div class="text-accent text-base lg:text-xl">
+              <div class="text-[#3e3e3e] font-bold text-base lg:text-xl">
                 {formatPrice(price, offers?.priceCurrency)}
               </div>
             </div>
@@ -269,7 +269,7 @@ function ProductCard(
               ? ""
               : (
                 <div class="text-base-300 text-sm lg:text-base truncate">
-                  ou {installments}
+                  até <span class="text-[#007C2C] ">{installments}</span>
                 </div>
               )}
           </div>
@@ -289,6 +289,11 @@ function ProductCard(
             )}
           </>
         )}
+
+        <div class={l?.onMouseOver?.showCta ? "hidden lg:group-hover:flex"
+              : "lg:hidden"}>
+          {l?.onMouseOver?.showCta && cta}
+        </div>
 
         {!l?.hide?.cta
           ? (
