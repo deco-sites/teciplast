@@ -1,7 +1,7 @@
 
 import Searchbar, {
   Props as SearchbarProps,
-} from "$store/components/search/SearchbarMobile.tsx";
+} from "$store/components/search/SearchbarMobileWhite.tsx";
 
 export interface Props {
   searchbar?: SearchbarProps;

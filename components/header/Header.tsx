@@ -6,13 +6,9 @@ import type { SiteNavigationElement } from "apps/commerce/types.ts";
 import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
+import type { HTMLWidget } from "apps/admin/widgets.ts";
 
 export interface Props {
-  data?: number;
-  text?: Text[];
-  textMobile?: Text[];
-  textLink?: TextLink;
-
   /** @title Search Bar */
   searchbar?: Omit<SearchbarProps, "platform">;
 
@@ -24,6 +20,31 @@ export interface Props {
 
   /** @title Logo */
   logo?: { src: ImageWidget; alt: string };
+  data?: number;
+  
+  /**
+   * @title Text
+   * @default Time left for a campaign to end wth a link
+   */
+  text?: HTMLWidget;
+  textMobile?: HTMLWidget;
+  textLink?: HTMLWidget;
+  
+  /**
+   * @title Expires at date
+   * @format datetime
+   */
+  expiresAt?: string;
+
+  labels?: {
+    /**
+     * @title Text to show when expired
+     */
+    expired?: string;
+    hours?: string;
+    minutes?: string;
+    seconds?: string;
+  };
 }
 
 interface TextLink {
@@ -40,6 +61,8 @@ interface Text {
 }
 
 function Header({
+  expiresAt,
+  labels,
   text,
   textLink,
   data,
@@ -63,6 +86,8 @@ function Header({
           <div class="bg-base-100 bg-opacity-0  w-full z-30">
             <Alert
               data={data}
+              expiresAt={expiresAt}
+              labels={labels}
               text={text}
               textLink={textLink}
               textMobile={textMobile}

@@ -156,7 +156,7 @@ function Central(
             {platform === "wake" && <CartButtonWake />}
             {platform === "linx" && <CartButtonLinx />}
             {platform === "shopify" && <CartButtonShopify />}
-            <span class="text-[9px mt-2]">Carrinho</span>
+            
           </div>
           <div class="uppercase flex flex-col text-[9px] justify-end items-center gap-2">
             <a

@@ -5,8 +5,12 @@ import CartButtonLinx from "$store/islands/Header/Cart/linx.tsx";
 import CartButtonShopify from "$store/islands/Header/Cart/shopify.tsx";
 import CartButtonVDNA from "$store/islands/Header/Cart/vnda.tsx";
 import CartButtonVTEX from "$store/islands/Header/Cart/vtex.tsx";
+import CartButtonVTEXMobile from "$store/islands/Header/Cart/vtexMobile.tsx";
+
 import CartButtonWake from "$store/islands/Header/Cart/wake.tsx";
 import SearchbarFixed from "$store/islands/Header/Searchbarfixa.tsx";
+import SearchbarMObile from "$store/islands/Header/SearchbarMobileMenuWhite.tsx";
+
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { SiteNavigationElement } from "apps/commerce/types.ts";
 import Image from "apps/website/components/Image.tsx";
@@ -25,10 +29,10 @@ function Navbar({ items, searchbar, logo }: {
     <>
       {/* Mobile Version */}
       <div
-        class="md:hidden flex flex-col justify-center items-center  border-base-200 w-full mb-3"
+        class="md:hidden flex flex-col justify-center items-center  border-base-200 w-full py-2"
         style={{ minHeight: navbarHeight }}
       >
-        <div class="md:hidden flex flex-row justify-between items-center  w-full  gap-2 mb-3">
+        <div class="md:hidden flex flex-row justify-between items-center  w-full  gap-2 mb-3 px-2">
           <MenuButton />
 
           {logo && (
@@ -42,15 +46,16 @@ function Navbar({ items, searchbar, logo }: {
           )}
 
           <div class="flex gap-1">
-            {platform === "vtex" && <CartButtonVTEX />}
+            {platform === "vtex" && <CartButtonVTEXMobile />}
             {platform === "vnda" && <CartButtonVDNA />}
             {platform === "wake" && <CartButtonWake />}
             {platform === "linx" && <CartButtonLinx />}
             {platform === "shopify" && <CartButtonShopify />}
           </div>
         </div>
+        <SearchbarMObile searchbar={searchbar} />
 
-        <SearchbarFixed searchbar={searchbar} />
+
       </div>
 
       {/* Desktop Version */}
@@ -92,7 +97,7 @@ function Navbar({ items, searchbar, logo }: {
               {platform === "wake" && <CartButtonWake />}
               {platform === "linx" && <CartButtonLinx />}
               {platform === "shopify" && <CartButtonShopify />}
-              Carrinho
+              
             </div>
             <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
               <a
