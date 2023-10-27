@@ -59,7 +59,7 @@ function NavItem(
                             class="flex flex-row h-full justify-start items-center "
                             href={leaf.url}
                           >
-                            <span >{leaf.name}</span>
+                            <span class="font-normal">{leaf.name}</span>
                           </a>
                         </li>
                       ))}
