@@ -17,7 +17,7 @@ const DEFAULT_PROPS: Props = {
   },
 };
 
-export default function BannnerGrid(props: Props) {
+export default function PromotionalBanner(props: Props) {
   const {
     banner,
   } = { ...DEFAULT_PROPS, ...props };

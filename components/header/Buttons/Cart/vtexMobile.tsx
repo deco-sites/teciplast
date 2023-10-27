@@ -1,5 +1,5 @@
 import { itemToAnalyticsItem, useCart } from "apps/vtex/hooks/useCart.ts";
-import Button from "./common.tsx";
+import Button from "./commonMobile.tsx";
 
 function CartButton() {
   const { loading, cart } = useCart();

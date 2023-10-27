@@ -28,7 +28,7 @@ function WishlistButton({
     <Button
       class={variant === "icon"
         ? "btn-circle btn-ghost gap-2"
-        : "btn-primary btn-outline gap-2"}
+        : "btn-primary btn-outline gap-2 text-center"}
       loading={fetching.value}
       aria-label="Add to wishlist"
       onClick={async (e) => {
@@ -60,6 +60,7 @@ function WishlistButton({
         size={24}
         strokeWidth={2}
         fill={inWishlist ? "black" : "none"}
+        class="my-0 mx-auto"
       />
       {variant === "icon" ? null : inWishlist ? "Remover" : "Favoritar"}
     </Button>
