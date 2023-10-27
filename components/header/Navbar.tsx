@@ -15,6 +15,7 @@ import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { SiteNavigationElement } from "apps/commerce/types.ts";
 import Image from "apps/website/components/Image.tsx";
 import NavItem from "./NavItem.tsx";
+
 import { navbarHeight } from "./constants.ts";
 import SearchButton from "deco-sites/teciplast/components/header/Buttons/Search.tsx";
 
@@ -23,6 +24,7 @@ function Navbar({ items, searchbar, logo }: {
   searchbar?: SearchbarProps;
   logo?: { src: string; alt: string };
 }) {
+  console.log(items);
   const platform = usePlatform();
   const help = "/help.png";
   return (
@@ -54,8 +56,6 @@ function Navbar({ items, searchbar, logo }: {
           </div>
         </div>
         <SearchbarMObile searchbar={searchbar} />
-
-
       </div>
 
       {/* Desktop Version */}
@@ -68,7 +68,13 @@ function Navbar({ items, searchbar, logo }: {
                 aria-label="Store logo"
                 class="block w-[180px]"
               >
-                <Image class={`object-cover`} src={logo.src} alt={logo.alt} width={1920} height={427} />
+                <Image
+                  class={`object-cover`}
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={1920}
+                  height={427}
+                />
               </a>
             )}
           </div>
@@ -132,9 +138,10 @@ function Navbar({ items, searchbar, logo }: {
             </div>
           </div>
         </div>
-        <ul class="flex items-center justify-between w-full h-full shrink-0 ">
-          {items.map((item) => <NavItem item={item} />)}
+        <ul class="flex flex-row items-center justify-between w-full h-full shrink-0 ">
+          {items.map((item,index) => <NavItem item={item} index={index}/>)}
         </ul>
+        
       </div>
     </>
   );
