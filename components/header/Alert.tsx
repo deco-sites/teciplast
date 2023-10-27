@@ -1,4 +1,4 @@
-import Timer from "deco-sites/teciplast/components/ui/Timer.tsx";
+
 import { useId } from "$store/sdk/useId.ts";
 import type { HTMLWidget } from "apps/admin/widgets.ts";
 
@@ -128,7 +128,7 @@ function Alert(
           {textMobile &&
             (
               <div
-                class="lg:hidden flex  w-full max-w-[500px] justify-center items-center text-ce"
+                class="lg:hidden flex  w-full max-w-[500px] justify-start items-center"
                 dangerouslySetInnerHTML={{ __html: textMobile }}
               >
               </div>
@@ -141,40 +141,40 @@ function Alert(
             </div>
           )}
 
-          <div class=" mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-16 py-4 px-6 gap-4 ">
+          <div class=" mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-16   gap-4 ">
             <div
               id={`${id}::expired`}
               class="hidden text-sm text-center lg:text-xl lg:text-left lg:max-w-lg"
             >
               {labels?.expired || "Expired!"}
             </div>
-            <div class="flex gap-8 lg:gap-16 items-center justify-center lg:justify-normal">
+            <div class="flex gap-8 lg:gap-16 items-center justify-center lg:justify-normal py-2 ">
               <div id={`${id}::counter`}>
-                <div class="grid grid-flow-col gap-3 text-center auto-cols-max items-center">
-                  <span class="hidden lg:flex">Acaba em</span>
-                  <div class="flex flex-row lg:flex-col text-xs lg:text-sm text-center items-center justify-center">
-                    <span class="countdown font-normal text-xl lg:text-2xl">
+                <div class="grid grid-flow-col lg:gap-3 text-center auto-cols-max items-center">
+                  <span class="hidden lg:flex">Acaba em:</span>
+                  <div class="flex flex-row lg:flex-col text-xs lg:text-XS text-center items-center justify-center ">
+                    <span class="countdown text-xl lg:text-xl font-bold mr-1  lg:mr-0 ">
                       <span id={`${id}::hours`} />
                     </span>
-                    {labels?.hours || ""}
+                    <span class='hidden lg:flex'>{labels?.hours || ""}</span>
                   </div>
-                  <div class="hidden lg:flex">
+                  <div class="flex px-1">
                     :
                   </div>
-                  <div class="flex flex-row lg:flex-col text-xs lg:text-sm text-center items-center justify-center">
-                    <span class="countdown font-normal text-xl lg:text-2xl">
+                  <div class="flex flex-row lg:flex-col text-xs lg:text-XS text-center items-center justify-center ">
+                    <span class="countdown text-xl lg:text-xl font-bold mr-1  lg:mr-0 ">
                       <span id={`${id}::minutes`} />
                     </span>
-                    {labels?.minutes || ""}
+                    <span class='hidden lg:flex'>{labels?.minutes || ""}</span>
                   </div>
-                  <div class="hidden lg:flex">
+                  <div class="flex px-1">
                     :
                   </div>
-                  <div class="flex flex-row lg:flex-col text-xs lg:text-sm text-center items-center justify-center">
-                    <span class="countdown font-normal text-xl lg:text-2xl">
+                  <div class="flex flex-row lg:flex-col text-xs lg:text-XS text-center items-center justify-center ">
+                    <span class="countdown text-xl lg:text-xl font-bold mr-1  lg:mr-0 ">
                       <span id={`${id}::seconds`} />
                     </span>
-                    {labels?.seconds || ""}
+                    <span class="hidden lg:flex">{labels?.seconds || ""}</span>
                   </div>
                 </div>
               </div>
