@@ -19,7 +19,7 @@ function FreeShippingProgressBar({ target, total, currency, locale }: Props) {
         {remaining > 0
           ? (
             <span class="text-white">
-              Adicione mais ${formatPrice(remaining, currency, locale)}{" "}
+              Adicione mais {formatPrice(remaining, currency, locale)}{" "}
               para ganhar <strong>frete grátis!</strong>
             </span>
           )
