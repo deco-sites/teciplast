@@ -46,9 +46,6 @@ function CartItem(
   const [loading, setLoading] = useState(false);
   const { alt, src } = image;
   
-  
-  console.log(item)
-
   const withLoading = useCallback(
     <A,>(cb: (args: A) => Promise<void>) => async (e: A) => {
       try {
