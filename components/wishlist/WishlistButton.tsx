@@ -27,7 +27,7 @@ function WishlistButton({
   return (
     <Button
       class={variant === "icon"
-        ? "btn-circle btn-ghost gap-2"
+        ? "btn-circle btn-ghost gap-2 hover:bg-transparent text-base-200"
         : "btn-primary btn-outline gap-2 text-center"}
       loading={fetching.value}
       aria-label="Add to wishlist"
@@ -58,7 +58,7 @@ function WishlistButton({
       <Icon
         id="Heart"
         size={24}
-        strokeWidth={2}
+        strokeWidth={1}
         fill={inWishlist ? "black" : "none"}
         class="my-0 mx-auto"
       />

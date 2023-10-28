@@ -38,19 +38,19 @@ function ProductShelf({
   }
 
   return (
-    <div class="w-full container  py-8 flex flex-col gap-5 lg:py-10">
+    <div class="w-full container  py-4 flex flex-col gap-5 lg:py-5">
       <Header
         title={title || ""}
         description={description || ""}
         fontSize={layout?.headerfontSize || "Large"}
         alignment={layout?.headerAlignment || "center"}
       />
-
+      <div class ="container h-[450px]">
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5 min-h-[620px]"
+        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5   "
       >
-        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
+        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start">
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
@@ -93,6 +93,7 @@ function ProductShelf({
             },
           }}
         />
+      </div>
       </div>
     </div>
   );

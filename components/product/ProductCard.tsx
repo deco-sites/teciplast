@@ -21,6 +21,7 @@ export interface Layout {
   };
   hide?: {
     productName?: boolean;
+    showFavoriteIcon?: boolean;
     productDescription?: boolean;
     allPrices?: boolean;
     installments?: boolean;
@@ -28,7 +29,7 @@ export interface Layout {
     cta?: boolean;
   };
   onMouseOver?: {
-    image?: "Change image" | "Zoom image";
+    image?: "Change image" | "Zoom image" | "OutZoom image";
     card?: "None" | "Move up";
     showFavoriteIcon?: boolean;
     showSkuSelector?: boolean;
@@ -66,7 +67,7 @@ function ProductCard(
     name,
     image: images,
     offers,
-    isVariantOf,
+    isVariantOf,review
   } = product;
   const id = `product-card-${productID}`;
   const hasVariant = isVariantOf?.hasVariant ?? [];
@@ -137,16 +138,21 @@ function ProductCard(
       >
         {/* Wishlist button */}
         <div
-          class={`absolute top-2 z-10
+          class={`absolute top-1 z-10
           ${
             l?.elementsPositions?.favoriteIcon === "Top left"
-              ? "left-2"
-              : "right-2"
+              ? "left-1"
+              : "right-1"
           }
           ${
             l?.onMouseOver?.showFavoriteIcon
               ? "lg:hidden lg:group-hover:block"
-              : "lg:hidden"
+              : ""
+          }
+          ${
+            l?.hide?.showFavoriteIcon
+              ? "lg:block "
+              : ""
           }
         `}
         >
@@ -168,11 +174,17 @@ function ProductCard(
             alt={front.alternateName}
             width={WIDTH}
             height={HEIGHT}
-            class={`bg-base-100 col-span-full row-span-full rounded w-full ${
+            class={`bg-base-100 col-span-full row-span-full  w-full ${
               l?.onMouseOver?.image == "Zoom image"
                 ? "duration-100 transition-scale scale-100 lg:group-hover:scale-125"
                 : ""
-            }`}
+            }
+            ${
+              l?.onMouseOver?.image == "OutZoom image"
+                ? "duration-100 transition-scale scale-100 lg:group-hover:scale-90"
+                : ""
+            }
+            `}
             sizes="(max-width: 640px) 50vw, 20vw"
             preload={preload}
             loading={preload ? "eager" : "lazy"}
@@ -185,7 +197,7 @@ function ProductCard(
               alt={back?.alternateName ?? front.alternateName}
               width={WIDTH}
               height={HEIGHT}
-              class="bg-base-100 col-span-full row-span-full transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"
+              class="bg-base-100 col-span-full row-span-full transition-opacity  w-full opacity-0 lg:group-hover:opacity-100"
               sizes="(max-width: 640px) 50vw, 20vw"
               loading="lazy"
               decoding="async"
@@ -245,6 +257,44 @@ function ProductCard(
               )} */}
             </div>
           )}
+          <div className="hidden  group-hover:rating">
+            <input
+              type="radio"
+              name="rating-0"
+              
+              className="mask mask-star cursor-default"
+              disabled
+             
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star cursor-default"
+              disabled
+             
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star cursor-default"
+              disabled
+              
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star cursor-default"
+              disabled
+             
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star cursor-default"
+              disabled
+             
+            />
+          </div>
         {l?.hide?.allPrices ? "" : (
           <div class="flex flex-col gap-2">
             <div

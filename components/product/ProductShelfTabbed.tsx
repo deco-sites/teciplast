@@ -53,7 +53,7 @@ function TabbedProductShelf({
   }
 
   return (
-    <div class="w-full container py-8 flex flex-col gap-8 lg:gap-12 lg:py-10">
+    <div class="w-full container py-3 flex flex-col gap-4 lg:gap-6 lg:py-5">
       <Header
         title={title || ""}
         description={description || ""}
@@ -78,10 +78,11 @@ function TabbedProductShelf({
         id={id}
         class="flex-grow"
       >
-        <div class="grid grid-cols-2 gap-2 items-center sm:grid-cols-5 sm:gap-[30px] ">
+        {/* class="grid grid-cols-2 gap-2 items-center sm:grid-cols-5 sm:gap-[30px]  " */}
+        <div class="flex flex-row  justify-evenly items-start h-[400px] ">
           {products?.map((product, index) => (
             <div
-              class="carousel-item w-[170px] sm:w-[220px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+              class="w-[170px] sm:w-[220px]"
             >
               <ProductCard
                 product={product}
