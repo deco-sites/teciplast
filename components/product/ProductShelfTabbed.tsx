@@ -46,7 +46,8 @@ function TabbedProductShelf({
   const ti = typeof tabIndex === "number"
     ? Math.min(Math.max(tabIndex, 0), tabs.length)
     : 0;
-  const { products } = tabs[ti];
+  const { products, } = tabs[ti];
+
 
   if (!products || products.length === 0) {
     return null;
@@ -77,7 +78,6 @@ function TabbedProductShelf({
         id={id}
         class="hidden lg:flex flex-grow"
       >
-        {/* class="grid grid-cols-2 gap-2 items-center sm:grid-cols-5 sm:gap-[30px]  " */}
         <div class="flex flex-row  justify-between items-start h-[400px] w-full ">
           {products?.map((product, index) => (
             <div
@@ -98,9 +98,9 @@ function TabbedProductShelf({
       </div>
       <div
         id={id}
-        class="lg:hidden container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5  flex-grow  h-[450px] "
+        class="lg:hidden container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5  flex-grow  sm:h-[450px] "
       >
-        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  h-[450px]">
+        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px]">
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
@@ -132,7 +132,13 @@ function TabbedProductShelf({
       </div>
 
 
-      div
+      <div class="container flex flex-row justify-start lg:justify-end  py-5 cursor-pointer px-5 "> 
+        <a href={`/${tabs[ti].title}`}> Ver mais {`${tabs[ti].title} `}              </a> 
+ 
+    
+      
+      </div>
+
     </div>
   );
 }
