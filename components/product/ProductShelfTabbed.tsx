@@ -51,7 +51,6 @@ function TabbedProductShelf({
   if (!products || products.length === 0) {
     return null;
   }
-
   return (
     <div class="w-full container py-3 flex flex-col gap-4 lg:gap-6 lg:py-5">
       <Header
@@ -61,11 +60,11 @@ function TabbedProductShelf({
         alignment={layout?.headerAlignment || "left"}
       />
 
-      <div class="flex justify-start">
-        <div class="tabs">
+      <div class="flex justify-start px-4">
+        <div class="tabs gap-5">
           {tabs.map((tab, index) => (
             <button
-              class={`tab tab-lg uppercase text-base ${index=== 0 ? "pl-0" : ""} ${index === ti ? "tab-active bg-transparent underline" : ""}`}
+              class={`tab tab-lg gap-2 p-0  uppercase text-base ${index=== 0 ? "pl-0" : ""} ${index === ti ? "tab-active bg-transparent underline" : ""}`}
               {...usePartial({ id: sectionId, props: { tabIndex: index } })}
             >
               {tab.title}
@@ -76,10 +75,10 @@ function TabbedProductShelf({
 
       <div
         id={id}
-        class="flex-grow"
+        class="hidden lg:flex flex-grow"
       >
         {/* class="grid grid-cols-2 gap-2 items-center sm:grid-cols-5 sm:gap-[30px]  " */}
-        <div class="flex flex-row  justify-evenly items-start h-[400px] ">
+        <div class="flex flex-row  justify-between items-start h-[400px] w-full ">
           {products?.map((product, index) => (
             <div
               class="w-[170px] sm:w-[220px]"
@@ -95,34 +94,45 @@ function TabbedProductShelf({
           ))}
         </div>
 
-        {/* <>
+       
+      </div>
+      <div
+        id={id}
+        class="lg:hidden container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5  flex-grow  h-[450px] "
+      >
+        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  h-[450px]">
+          {products?.map((product, index) => (
+            <Slider.Item
+              index={index}
+              class="w-[170px] sm:w-[220px] first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
+            >
+              <ProductCard
+                product={product}
+                itemListName={title}
+                layout={cardLayout}
+                platform={platform}
+              />
+            </Slider.Item>
+          ))}
+        </Slider>
+
+        <>
           <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
-            <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-base-100">
-              <Icon size={24} id="ChevronLeft" strokeWidth={3} />
+            <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+              <Icon size={24} id="ChevronLeft" strokeWidth={1} />
             </Slider.PrevButton>
           </div>
           <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
-            <Slider.NextButton class="btn btn-circle btn-outline absolute left-1/2 bg-base-100">
-              <Icon size={24} id="ChevronRight" strokeWidth={3} />
+            <Slider.NextButton class="btn btn-circle btn-outline absolute left-1/2 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+              <Icon size={24} id="ChevronRight" strokeWidth={1} />
             </Slider.NextButton>
           </div>
-        </> */}
-        {/* <SliderJS rootId={id} />
-        <SendEventOnLoad
-          event={{
-            name: "view_item_list",
-            params: {
-              item_list_name: title,
-              items: products.map((product) =>
-                mapProductToAnalyticsItem({
-                  product,
-                  ...(useOffer(product.offers)),
-                })
-              ),
-            },
-          }}
-        /> */}
+        </>
+        <SliderJS rootId={id} />
       </div>
+
+
+      div
     </div>
   );
 }

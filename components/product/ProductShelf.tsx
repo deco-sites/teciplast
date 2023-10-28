@@ -45,16 +45,15 @@ function ProductShelf({
         fontSize={layout?.headerfontSize || "Large"}
         alignment={layout?.headerAlignment || "center"}
       />
-      <div class ="container h-[450px]">
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5   "
+        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5  flex-grow  h-[450px] "
       >
-        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start">
+        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  h-[450px]">
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item w-[170px] sm:w-[220px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+              class="w-[170px] sm:w-[220px] min-h-[320px] first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
             >
               <ProductCard
                 product={product}
@@ -95,7 +94,6 @@ function ProductShelf({
         />
       </div>
       </div>
-    </div>
   );
 }
 
