@@ -76,13 +76,12 @@ function TabbedProductShelf({
 
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
+        class="flex-grow"
       >
-        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
+        <div class="grid grid-cols-2 gap-2 items-center sm:grid-cols-5 sm:gap-[30px] ">
           {products?.map((product, index) => (
-            <Slider.Item
-              index={index}
-              class="carousel-item w-[270px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+            <div
+              class="carousel-item w-[170px] sm:w-[220px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
             >
               <ProductCard
                 product={product}
@@ -91,11 +90,11 @@ function TabbedProductShelf({
                 platform={platform}
                 
               />
-            </Slider.Item>
+            </div>
           ))}
-        </Slider>
+        </div>
 
-        <>
+        {/* <>
           <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
             <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-base-100">
               <Icon size={24} id="ChevronLeft" strokeWidth={3} />
@@ -106,8 +105,8 @@ function TabbedProductShelf({
               <Icon size={24} id="ChevronRight" strokeWidth={3} />
             </Slider.NextButton>
           </div>
-        </>
-        <SliderJS rootId={id} />
+        </> */}
+        {/* <SliderJS rootId={id} />
         <SendEventOnLoad
           event={{
             name: "view_item_list",
@@ -121,7 +120,7 @@ function TabbedProductShelf({
               ),
             },
           }}
-        />
+        /> */}
       </div>
     </div>
   );

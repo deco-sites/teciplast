@@ -24,7 +24,7 @@ function Navbar({ items, searchbar, logo }: {
   searchbar?: SearchbarProps;
   logo?: { src: string; alt: string };
 }) {
-  console.log(items);
+  
   const platform = usePlatform();
   const help = "/help.png";
   return (
