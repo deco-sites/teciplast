@@ -257,9 +257,9 @@ function ProductCard(
               )} */}
             </div>
           )}
-       <div class="flex py-2 ">
+       <div class="flex py-2 text-xs ">
           <div className="hidden  group-hover:flex  ">
-            <div className="rating rating-xs">
+            <div className="rating rating-xs mr-2 mb-1">
               <input
                 type="radio"
                 name="rating-0"
@@ -290,10 +290,10 @@ function ProductCard(
                 className="mask mask-star bg-yellow-400"
                 disabled              
               />
-            </div> {review}
+            </div> (25)
           </div>
-          <div className="flex  lg:hidden  ">
-             <div className="rating rating-xs">
+          <div className="flex  lg:hidden">
+             <div className="rating rating-xs  mr-2 mb-1   ">
                 <input
                   type="radio"
                   name="rating-0"
@@ -324,8 +324,8 @@ function ProductCard(
                   name="rating-0"
                   className="mask mask-star bg-yellow-400"
                   disabled              
-                />
-              </div>{review}
+                /> 
+              </div>(25)
           </div>
         </div>
         {l?.hide?.allPrices ? "" : (
