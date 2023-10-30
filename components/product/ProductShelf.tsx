@@ -53,7 +53,7 @@ function ProductShelf({
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="w-[170px] sm:w-[220px] min-h-[320px] first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
+              class="w-[200px] sm:w-[240px] min-h-[320px] first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
             >
               <ProductCard
                 product={product}

@@ -81,7 +81,7 @@ function TabbedProductShelf({
         <div class="flex flex-row  justify-between items-start h-[400px] w-full ">
           {products?.map((product, index) => (
             <div
-              class="w-[170px] sm:w-[220px]"
+              class="w-[200px] sm:w-[240px] min-h-[400px] "
             >
               <ProductCard
                 product={product}
@@ -104,7 +104,7 @@ function TabbedProductShelf({
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="w-[170px] sm:w-[220px] first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
+              class="w-[200px] sm:w-[220px]  min-h-[400px]  first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
             >
               <ProductCard
                 product={product}
