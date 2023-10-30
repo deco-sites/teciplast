@@ -242,10 +242,10 @@ function ProductCard(
         {l?.hide?.productName && l?.hide?.productDescription
           ? ""
           : (
-            <div class="flex flex-col  ">
+            <div class="flex flex-col h-[60px]  ">
               {l?.hide?.productName ? "" : (
                 <h2
-                  class="text-[12px]  text-[#303030] font-bold"
+                  class="text-[12px]  h-full  text-[#303030] font-bold"
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}
