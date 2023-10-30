@@ -4,11 +4,10 @@ import { headerHeight, marginTopDrop } from "./constants.ts";
 import Icon from "$store/components/ui/Icon.tsx";
 
 function NavItem(
-  { item, index }: { item: SiteNavigationElement; index: number },
+  { item, index }: { item: SiteNavigationElement; index: number }
 ) {
   const { url, name, children } = item;
   const image = item?.image?.[0];
-  console.log(index);
   return (
     <li
       class={` group grid overflow-y-hidden items-center  ease-out duration-300 py-2 `}

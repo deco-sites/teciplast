@@ -46,14 +46,14 @@ function TabbedProductShelf({
   const ti = typeof tabIndex === "number"
     ? Math.min(Math.max(tabIndex, 0), tabs.length)
     : 0;
-  const { products } = tabs[ti];
+  const { products, } = tabs[ti];
+
 
   if (!products || products.length === 0) {
     return null;
   }
-
   return (
-    <div class="w-full container py-8 flex flex-col gap-8 lg:gap-12 lg:py-10">
+    <div class="w-full container py-3 flex flex-col gap-4 lg:gap-6 lg:py-5">
       <Header
         title={title || ""}
         description={description || ""}
@@ -61,11 +61,11 @@ function TabbedProductShelf({
         alignment={layout?.headerAlignment || "left"}
       />
 
-      <div class="flex justify-start">
-        <div class="tabs">
+      <div class="flex justify-start px-4">
+        <div class="tabs gap-5">
           {tabs.map((tab, index) => (
             <button
-              class={`tab tab-lg uppercase text-base ${index=== 0 ? "pl-0" : ""} ${index === ti ? "tab-active bg-transparent underline" : ""}`}
+              class={`tab tab-lg gap-2 p-0  uppercase text-base ${index=== 0 ? "pl-0" : ""} ${index === ti ? "tab-active bg-transparent underline" : ""}`}
               {...usePartial({ id: sectionId, props: { tabIndex: index } })}
             >
               {tab.title}
@@ -76,13 +76,12 @@ function TabbedProductShelf({
 
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
+        class="hidden lg:flex flex-grow"
       >
-        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
+        <div class="flex flex-row  justify-between items-start h-[400px] w-full ">
           {products?.map((product, index) => (
-            <Slider.Item
-              index={index}
-              class="carousel-item w-[270px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+            <div
+              class="w-[200px] sm:w-[240px] min-h-[400px] "
             >
               <ProductCard
                 product={product}
@@ -91,38 +90,55 @@ function TabbedProductShelf({
                 platform={platform}
                 
               />
+            </div>
+          ))}
+        </div>
+
+       
+      </div>
+      <div
+        id={id}
+        class="lg:hidden container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5  flex-grow  sm:h-[450px] "
+      >
+        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px]">
+          {products?.map((product, index) => (
+            <Slider.Item
+              index={index}
+              class="w-[200px] sm:w-[220px]  min-h-[400px]  first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
+            >
+              <ProductCard
+                product={product}
+                itemListName={title}
+                layout={cardLayout}
+                platform={platform}
+              />
             </Slider.Item>
           ))}
         </Slider>
 
         <>
           <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
-            <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-base-100">
-              <Icon size={24} id="ChevronLeft" strokeWidth={3} />
+            <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+              <Icon size={24} id="ChevronLeft" strokeWidth={1} />
             </Slider.PrevButton>
           </div>
           <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
-            <Slider.NextButton class="btn btn-circle btn-outline absolute left-1/2 bg-base-100">
-              <Icon size={24} id="ChevronRight" strokeWidth={3} />
+            <Slider.NextButton class="btn btn-circle btn-outline absolute left-1/2 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+              <Icon size={24} id="ChevronRight" strokeWidth={1} />
             </Slider.NextButton>
           </div>
         </>
         <SliderJS rootId={id} />
-        <SendEventOnLoad
-          event={{
-            name: "view_item_list",
-            params: {
-              item_list_name: title,
-              items: products.map((product) =>
-                mapProductToAnalyticsItem({
-                  product,
-                  ...(useOffer(product.offers)),
-                })
-              ),
-            },
-          }}
-        />
       </div>
+
+
+      <div class="container flex flex-row justify-start lg:justify-end  py-5 cursor-pointer px-5 "> 
+        <a href={`/${tabs[ti].title}`}> Ver mais {`${tabs[ti].title} `}              </a> 
+ 
+    
+      
+      </div>
+
     </div>
   );
 }

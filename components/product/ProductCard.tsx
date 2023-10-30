@@ -21,6 +21,7 @@ export interface Layout {
   };
   hide?: {
     productName?: boolean;
+    showFavoriteIcon?: boolean;
     productDescription?: boolean;
     allPrices?: boolean;
     installments?: boolean;
@@ -28,7 +29,7 @@ export interface Layout {
     cta?: boolean;
   };
   onMouseOver?: {
-    image?: "Change image" | "Zoom image";
+    image?: "Change image" | "Zoom image" | "OutZoom image";
     card?: "None" | "Move up";
     showFavoriteIcon?: boolean;
     showSkuSelector?: boolean;
@@ -54,8 +55,8 @@ const relative = (url: string) => {
   return `${link.pathname}${link.search}`;
 };
 
-const WIDTH = 200;
-const HEIGHT = 279;
+const WIDTH = 220;
+const HEIGHT = 190;
 
 function ProductCard(
   { product, preload, itemListName, layout, platform }: Props,
@@ -66,7 +67,7 @@ function ProductCard(
     name,
     image: images,
     offers,
-    isVariantOf,
+    isVariantOf,review
   } = product;
   const id = `product-card-${productID}`;
   const hasVariant = isVariantOf?.hasVariant ?? [];
@@ -96,7 +97,7 @@ function ProductCard(
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-block btn-primary"
+      class="btn btn-block btn-primary text-xs "
     >
       {l?.basics?.ctaText || "Ver produto"}
     </a>
@@ -105,7 +106,7 @@ function ProductCard(
   return (
     <div
       id={id}
-      class={`group w-full bg-white border-b-[#002A70] border-4 rounded-none text-[#303030] ${
+      class={`group flex flex-col justify-between  w-full min-w-[170px] lg:min-w-[240px]  h-full  min-h-[400px] max-h-[400px]  bg-white border-b-[#002A70] border-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:border-4" : ""}
         ${
@@ -132,21 +133,26 @@ function ProductCard(
         }}
       />
       <figure
-        class="relative overflow-hidden"
+        class="relative overflow-hidden  lg:h-[200px]"
         style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}
       >
         {/* Wishlist button */}
         <div
-          class={`absolute top-2 z-10
+          class={`absolute top-1 z-10
           ${
             l?.elementsPositions?.favoriteIcon === "Top left"
-              ? "left-2"
-              : "right-2"
+              ? "left-1"
+              : "right-1"
           }
           ${
             l?.onMouseOver?.showFavoriteIcon
               ? "lg:hidden lg:group-hover:block"
-              : "lg:hidden"
+              : ""
+          }
+          ${
+            l?.hide?.showFavoriteIcon
+              ? "lg:block "
+              : ""
           }
         `}
         >
@@ -161,18 +167,24 @@ function ProductCard(
         <a
           href={url && relative(url)}
           aria-label="view product"
-          class="grid grid-cols-1 grid-rows-1 w-full"
+          class="grid grid-cols-1 grid-rows-1 w-full h-[200px]"
         >
           <Image
             src={front.url!}
             alt={front.alternateName}
             width={WIDTH}
             height={HEIGHT}
-            class={`bg-base-100 col-span-full row-span-full rounded w-full ${
+            class={`bg-base-100 col-span-full row-span-full  w-full ${
               l?.onMouseOver?.image == "Zoom image"
                 ? "duration-100 transition-scale scale-100 lg:group-hover:scale-125"
                 : ""
-            }`}
+            }
+            ${
+              l?.onMouseOver?.image == "OutZoom image"
+                ? "duration-100 transition-scale scale-100 lg:group-hover:scale-90"
+                : ""
+            }
+            `}
             sizes="(max-width: 640px) 50vw, 20vw"
             preload={preload}
             loading={preload ? "eager" : "lazy"}
@@ -185,7 +197,7 @@ function ProductCard(
               alt={back?.alternateName ?? front.alternateName}
               width={WIDTH}
               height={HEIGHT}
-              class="bg-base-100 col-span-full row-span-full transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"
+              class="bg-base-100 col-span-full row-span-full transition-opacity  w-full opacity-0 lg:group-hover:opacity-100"
               sizes="(max-width: 640px) 50vw, 20vw"
               loading="lazy"
               decoding="async"
@@ -210,7 +222,7 @@ function ProductCard(
         </figcaption>
       </figure>
       {/* Prices & Name */}
-      <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4">
+      <div class="flex-auto flex flex-col p-2">
         {/* SKU Selector */}
         {(!l?.elementsPositions?.skuSelector ||
           l?.elementsPositions?.skuSelector === "Top") && (
@@ -230,10 +242,10 @@ function ProductCard(
         {l?.hide?.productName && l?.hide?.productDescription
           ? ""
           : (
-            <div class="flex flex-col gap-0">
+            <div class="flex flex-col  ">
               {l?.hide?.productName ? "" : (
                 <h2
-                  class="truncate text-base lg:text-lg text-[#303030] font-bold"
+                  class="text-[12px]  text-[#303030] font-bold"
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}
@@ -245,8 +257,78 @@ function ProductCard(
               )} */}
             </div>
           )}
+       <div class="flex py-2 ">
+          <div className="hidden  group-hover:flex  ">
+            <div className="rating">
+              <input
+                type="radio"
+                name="rating-0"
+                className="mask mask-star bg-yellow-400"
+                disabled              
+              />
+              <input
+                type="radio"
+                name="rating-0"
+                className="mask mask-star bg-yellow-400"
+                disabled              
+              />
+              <input
+                type="radio"
+                name="rating-0"
+                className="mask mask-star bg-yellow-400"
+                disabled                
+              />
+              <input
+                type="radio"
+                name="rating-0"
+                className="mask mask-star bg-yellow-400"
+                disabled              
+              />
+              <input
+                type="radio"
+                name="rating-0"
+                className="mask mask-star bg-yellow-400"
+                disabled              
+              />
+            </div> {review}
+          </div>
+          <div className="flex  lg:hidden  ">
+             <div className="rating">
+                <input
+                  type="radio"
+                  name="rating-0"
+                  className="mask mask-star bg-yellow-400"
+                  disabled              
+                />
+                <input
+                  type="radio"
+                  name="rating-0"
+                  className="mask mask-star bg-yellow-400"
+                  disabled              
+                />
+                <input
+                  type="radio"
+                  name="rating-0"
+                  className="mask mask-star bg-yellow-400"
+                  disabled                
+                />
+                <input
+                  type="radio"
+                  name="rating-0"
+                  className="mask mask-star bg-yellow-400"
+                  disabled              
+                />
+                <input
+                  type="radio"
+                  name="rating-0"
+                  className="mask mask-star bg-yellow-400"
+                  disabled              
+                />
+              </div>{review}
+          </div>
+        </div>
         {l?.hide?.allPrices ? "" : (
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-10 group-hover:gap-2 h-full justify-center py-1">
             <div
               class={`flex flex-col gap-0 ${
                 l?.basics?.oldPriceSize === "Normal"
@@ -261,17 +343,18 @@ function ProductCard(
               >
                 {formatPrice(listPrice, offers?.priceCurrency)}
               </div>
-              <div class="text-[#3e3e3e] font-bold text-base lg:text-xl">
+              <div class="text-[#3e3e3e]  font-bold text-base lg:text-[15px]">
                 {formatPrice(price, offers?.priceCurrency)}
               </div>
-            </div>
-            {l?.hide?.installments
-              ? ""
-              : (
-                <div class="text-base-300 text-sm lg:text-base truncate">
-                  até <span class="text-[#007C2C] ">{installments}</span>
-                </div>
-              )}
+         
+              {l?.hide?.installments
+                ? ""
+                : (
+                  <div class="text-base-300 lg:text-[15px] text-xs ">
+                    até <span class="text-[#007C2C] ">{installments}</span>
+                  </div>
+                )}
+          </div>
           </div>
         )}
 
@@ -298,7 +381,7 @@ function ProductCard(
         {!l?.hide?.cta
           ? (
             <div
-              class={`flex-auto flex items-end ${
+              class={`flex-auto flex items-end  ${
                 l?.onMouseOver?.showCta ? "lg:hidden" : ""
               }`}
             >
