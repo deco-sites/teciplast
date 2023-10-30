@@ -259,7 +259,7 @@ function ProductCard(
           )}
        <div class="flex py-2 ">
           <div className="hidden  group-hover:flex  ">
-            <div className="rating">
+            <div className="rating rating-xs">
               <input
                 type="radio"
                 name="rating-0"
@@ -293,11 +293,12 @@ function ProductCard(
             </div> {review}
           </div>
           <div className="flex  lg:hidden  ">
-             <div className="rating">
+             <div className="rating rating-xs">
                 <input
                   type="radio"
                   name="rating-0"
                   className="mask mask-star bg-yellow-400"
+                  
                   disabled              
                 />
                 <input
