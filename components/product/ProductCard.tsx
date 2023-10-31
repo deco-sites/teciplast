@@ -97,7 +97,7 @@ function ProductCard(
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-block btn-primary text-xs "
+      class="btn btn-block btn-primary text-xs uppercase"
     >
       {l?.basics?.ctaText || "Ver produto"}
     </a>
@@ -106,7 +106,7 @@ function ProductCard(
   return (
     <div
       id={id}
-      class={`group flex flex-col justify-between  w-full min-w-[170px] lg:min-w-[240px]  h-full  min-h-[400px] max-h-[400px]  bg-white border-b-[#002A70] border-4 rounded-none text-[#303030] ${
+      class={`group flex flex-col justify-between  w-full min-w-[220px] lg:min-w-[240px]  h-full  min-h-[400px] max-h-[400px]  bg-white border-b-[#002A70] border-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:border-4" : ""}
         ${
@@ -242,10 +242,10 @@ function ProductCard(
         {l?.hide?.productName && l?.hide?.productDescription
           ? ""
           : (
-            <div class="flex flex-col  ">
+            <div class="flex flex-col h-[60px]  ">
               {l?.hide?.productName ? "" : (
                 <h2
-                  class="text-[12px]  text-[#303030] font-bold"
+                  class="text-[12px]  h-full  text-[#303030] font-bold"
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}
@@ -257,9 +257,9 @@ function ProductCard(
               )} */}
             </div>
           )}
-       <div class="flex py-2 ">
-          <div className="hidden  group-hover:flex  ">
-            <div className="rating">
+       <div class="flex py-2 text-xs ">
+          <div className="hidden  lg:group-hover:flex  ">
+            <div className="rating rating-xs mr-2 mb-1">
               <input
                 type="radio"
                 name="rating-0"
@@ -290,14 +290,15 @@ function ProductCard(
                 className="mask mask-star bg-yellow-400"
                 disabled              
               />
-            </div> {review}
+            </div> (25)
           </div>
-          <div className="flex  lg:hidden  ">
-             <div className="rating">
+          <div className="flex  lg:hidden">
+             <div className="rating rating-xs  mr-2 mb-1   ">
                 <input
                   type="radio"
                   name="rating-0"
                   className="mask mask-star bg-yellow-400"
+                  
                   disabled              
                 />
                 <input
@@ -323,8 +324,8 @@ function ProductCard(
                   name="rating-0"
                   className="mask mask-star bg-yellow-400"
                   disabled              
-                />
-              </div>{review}
+                /> 
+              </div>(25)
           </div>
         </div>
         {l?.hide?.allPrices ? "" : (

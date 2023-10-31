@@ -81,7 +81,7 @@ function TabbedProductShelf({
         <div class="flex flex-row  justify-between items-start h-[400px] w-full ">
           {products?.map((product, index) => (
             <div
-              class="w-[200px] sm:w-[240px] min-h-[400px] "
+              class="w-[220px] sm:w-[240px] min-h-[400px] "
             >
               <ProductCard
                 product={product}
