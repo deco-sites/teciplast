@@ -60,7 +60,7 @@ function Searchbar({
   platform,
 }: Props) {
   const id = useId();
-  const { displaySearchPopup } = useUI();
+  const { displaySearchPopup, displaySearchSuggestions } = useUI();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { setQuery, payload, loading } = useSuggestions(loader);
   const { products = [], searches = [] } = payload.value ?? {};
@@ -80,11 +80,15 @@ function Searchbar({
           <input
             ref={searchInputRef}
             id="search-input"
-            class="input input-bordered join-item flex-grow bg-base-100 border-r-0"
+            class="input input-bordered join-item flex-grow bg-base-100 border-r-0 focus:outline-none"
             name={name}
             onInput={(e) => {
               const value = e.currentTarget.value;
-
+              if (value) {
+                displaySearchSuggestions.value = true;
+              } else {
+                displaySearchSuggestions.value = false;
+              }
               if (value) {
                 sendEvent({
                   name: "search",
@@ -94,6 +98,7 @@ function Searchbar({
 
               setQuery(value);
             }}
+            onBlur={() => displaySearchSuggestions.value = false}
             placeholder={placeholder}
             role="combobox"
             aria-controls="search-suggestion"
@@ -107,13 +112,13 @@ function Searchbar({
             tabIndex={-1}
           >
             {loading.value
-              ? <span class="loading loading-spinner loading-xs bg-base-100" />
+              ? <span class="loading loading-spinner loading-xs bg-black" />
               : <Icon id="MagnifyingGlass" size={24} strokeWidth={0.01} />}
           </Button>
         </form>
       </div>
 
-      {hasProducts &&
+      {(displaySearchSuggestions.value) &&
         (
           <div
             class={`absolute  w-full overflow-y-scroll z-50 ${
@@ -121,31 +126,39 @@ function Searchbar({
             } max-w-[500px] mt-[50px]`}
           >
             <div class="gap-4 grid grid-cols-1  bg-base-100  py-5 px-5">
-              <div class="flex flex-col gap-3 ">
-                <span
-                  class="font-medium text-base"
-                  role="heading"
-                  aria-level={3}
-                >
-                  Sugestões
-                </span>
-                <ul id="search-suggestion" class="flex flex-col gap-4 text-sm">
-                  {searches.map(({ term }) => (
-                    <li>
-                      <a href={`/s?q=${term}`} class="flex gap-4 items-center">
-                        <span>
-                          <Icon
-                            id="MagnifyingGlass"
-                            size={16}
-                            strokeWidth={0.01}
-                          />
-                        </span>
-                        <span dangerouslySetInnerHTML={{ __html: term }} />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {hasTerms && (
+                <div class="flex flex-col gap-3 ">
+                  <span
+                    class="font-medium text-base"
+                    role="heading"
+                    aria-level={3}
+                  >
+                    Sugestões
+                  </span>
+                  <ul
+                    id="search-suggestion"
+                    class="flex flex-col gap-4 text-sm"
+                  >
+                    {searches.map(({ term }) => (
+                      <li>
+                        <a
+                          href={`/s?q=${term}`}
+                          class="flex gap-4 items-center"
+                        >
+                          <span>
+                            <Icon
+                              id="MagnifyingGlass"
+                              size={16}
+                              strokeWidth={0.01}
+                            />
+                          </span>
+                          <span dangerouslySetInnerHTML={{ __html: term }} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div class="flex flex-col pt-2 gap-1 overflow-y-hidden  ">
                 <span
                   class="font-medium text-base"

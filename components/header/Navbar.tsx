@@ -8,7 +8,7 @@ import CartButtonVTEX from "$store/islands/Header/Cart/vtex.tsx";
 import CartButtonVTEXMobile from "$store/islands/Header/Cart/vtexMobile.tsx";
 
 import CartButtonWake from "$store/islands/Header/Cart/wake.tsx";
-import SearchbarFixed from "$store/islands/Header/Searchbarfixa.tsx";
+import SearchbarFixed from "$store/components/header/SearchbarFixa.tsx";
 import SearchbarMObile from "$store/islands/Header/SearchbarMobileMenuWhite.tsx";
 
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
@@ -24,7 +24,6 @@ function Navbar({ items, searchbar, logo }: {
   searchbar?: SearchbarProps;
   logo?: { src: string; alt: string };
 }) {
-  
   const platform = usePlatform();
   const help = "/help.png";
   return (
@@ -103,7 +102,6 @@ function Navbar({ items, searchbar, logo }: {
               {platform === "wake" && <CartButtonWake />}
               {platform === "linx" && <CartButtonLinx />}
               {platform === "shopify" && <CartButtonShopify />}
-              
             </div>
             <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
               <a
@@ -139,9 +137,8 @@ function Navbar({ items, searchbar, logo }: {
           </div>
         </div>
         <ul class="flex flex-row items-center justify-between w-full h-full shrink-0 ">
-          {items.map((item,index) => <NavItem item={item} index={index}/>)}
+          {items.map((item, index) => <NavItem item={item} index={index} />)}
         </ul>
-        
       </div>
     </>
   );
