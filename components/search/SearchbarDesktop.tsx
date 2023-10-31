@@ -107,7 +107,7 @@ function Searchbar({
             tabIndex={-1}
           >
             {loading.value
-              ? <span class="loading loading-spinner loading-xs bg-base-100" />
+              ? <span class="loading loading-spinner loading-xs bg-black" />
               : <Icon id="MagnifyingGlass" size={24} strokeWidth={0.01} />}
           </Button>
         </form>
@@ -122,7 +122,6 @@ function Searchbar({
           >
             <div class="gap-4 grid grid-cols-1  bg-base-100  py-5 px-5">
               {hasTerms && (
-
                 <div class="flex flex-col gap-3 ">
                   <span
                     class="font-medium text-base"
@@ -131,10 +130,16 @@ function Searchbar({
                   >
                     Sugestões
                   </span>
-                  <ul id="search-suggestion" class="flex flex-col gap-4 text-sm">
+                  <ul
+                    id="search-suggestion"
+                    class="flex flex-col gap-4 text-sm"
+                  >
                     {searches.map(({ term }) => (
                       <li>
-                        <a href={`/s?q=${term}`} class="flex gap-4 items-center">
+                        <a
+                          href={`/s?q=${term}`}
+                          class="flex gap-4 items-center"
+                        >
                           <span>
                             <Icon
                               id="MagnifyingGlass"
