@@ -7,6 +7,8 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import type { ProductListingPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductGallery, { Columns } from "../product/ProductGallery.tsx";
+import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
+
 
 export interface Layout {
   /**
@@ -43,7 +45,16 @@ function Result({
 
   return (
     <>
-      <div class="container px-4 sm:py-10">
+      <div class="hidden sm:flex w-full max-w-[90%] border-y border-[#DCDCDC] mx-auto">
+        <div class="container  flex-row items-center sm:p-0  ">
+          <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
+        </div>
+      </div>
+      <div class="container  sm:py-5">
+        
+      
+
+
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}
