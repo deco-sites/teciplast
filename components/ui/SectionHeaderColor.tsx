@@ -13,7 +13,6 @@ interface Props {
   description?: string;
   alignment: "center" | "left";
   colorReverse?: boolean;
-  text : ColorBG;
 
 }
 
@@ -39,7 +38,6 @@ function Header(props: Props) {
                   ${props.fontSize === "Normal" ? "lg:text-3xl" : "lg:text-4xl"}
 
                   `}
-                  style={{color:props.text.backGroundShelf}}
 
                 >
                   {props.title}
@@ -58,7 +56,6 @@ function Header(props: Props) {
                 
 
                 `}
-                style={{color:props.text.backGroundShelf}}
                 >
                   {props.description}
                 </h2>
