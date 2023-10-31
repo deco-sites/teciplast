@@ -105,6 +105,7 @@ function TabbedProductShelf({
                   {tab.title}
                 </button>
               ))}
+
             </div>
           </div>
 
