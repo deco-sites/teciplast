@@ -60,7 +60,7 @@ function Searchbar({
   platform,
 }: Props) {
   const id = useId();
-  const { displaySearchPopup } = useUI();
+  const { displaySearchPopup, displaySearchSuggestions } = useUI();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { setQuery, payload, loading } = useSuggestions(loader);
   const { products = [], searches = [] } = payload.value ?? {};
@@ -84,7 +84,11 @@ function Searchbar({
             name={name}
             onInput={(e) => {
               const value = e.currentTarget.value;
-
+              if (value) {
+                displaySearchSuggestions.value = true;
+              } else {
+                displaySearchSuggestions.value = false;
+              }
               if (value) {
                 sendEvent({
                   name: "search",
@@ -94,6 +98,7 @@ function Searchbar({
 
               setQuery(value);
             }}
+            onBlur={() => displaySearchSuggestions.value = false}
             placeholder={placeholder}
             role="combobox"
             aria-controls="search-suggestion"
@@ -113,7 +118,7 @@ function Searchbar({
         </form>
       </div>
 
-      {hasProducts &&
+      {(displaySearchSuggestions.value) &&
         (
           <div
             class={`absolute  w-full overflow-y-scroll z-50 ${
