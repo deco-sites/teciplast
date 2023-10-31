@@ -121,31 +121,34 @@ function Searchbar({
             } max-w-[500px] mt-[50px]`}
           >
             <div class="gap-4 grid grid-cols-1  bg-base-100  py-5 px-5">
-              <div class="flex flex-col gap-3 ">
-                <span
-                  class="font-medium text-base"
-                  role="heading"
-                  aria-level={3}
-                >
-                  Sugestões
-                </span>
-                <ul id="search-suggestion" class="flex flex-col gap-4 text-sm">
-                  {searches.map(({ term }) => (
-                    <li>
-                      <a href={`/s?q=${term}`} class="flex gap-4 items-center">
-                        <span>
-                          <Icon
-                            id="MagnifyingGlass"
-                            size={16}
-                            strokeWidth={0.01}
-                          />
-                        </span>
-                        <span dangerouslySetInnerHTML={{ __html: term }} />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {hasTerms && (
+
+                <div class="flex flex-col gap-3 ">
+                  <span
+                    class="font-medium text-base"
+                    role="heading"
+                    aria-level={3}
+                  >
+                    Sugestões
+                  </span>
+                  <ul id="search-suggestion" class="flex flex-col gap-4 text-sm">
+                    {searches.map(({ term }) => (
+                      <li>
+                        <a href={`/s?q=${term}`} class="flex gap-4 items-center">
+                          <span>
+                            <Icon
+                              id="MagnifyingGlass"
+                              size={16}
+                              strokeWidth={0.01}
+                            />
+                          </span>
+                          <span dangerouslySetInnerHTML={{ __html: term }} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div class="flex flex-col pt-2 gap-1 overflow-y-hidden  ">
                 <span
                   class="font-medium text-base"
