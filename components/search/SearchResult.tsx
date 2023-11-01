@@ -46,8 +46,6 @@ function Result({
     ? Math.ceil(pageInfo.records / pageInfo.recordPerPage)
     : 1;
 
-  console.log({ page });
-
   return (
     <>
       <div class="hidden sm:flex w-full max-w-[90%] border-y border-[#DCDCDC] mx-auto">
