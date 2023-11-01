@@ -1,6 +1,7 @@
 import Button from "$store/components/ui/Button.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Filters from "$store/components/search/Filters.tsx";
+
 import Sort from "$store/components/search/Sort.tsx";
 import Drawer from "$store/components/ui/Drawer.tsx";
 import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
@@ -34,6 +35,7 @@ function SearchControls(
                 <Icon id="XMark" size={24} strokeWidth={2} />
               </Button>
             </div>
+          
             <div class="flex-grow overflow-auto">
               <Filters filters={filters} />
             </div>

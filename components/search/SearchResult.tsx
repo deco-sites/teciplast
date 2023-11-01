@@ -1,6 +1,7 @@
 import { SendEventOnLoad } from "$store/components/Analytics.tsx";
 import { Layout as CardLayout } from "$store/components/product/ProductCard.tsx";
 import Filters from "$store/components/search/Filters.tsx";
+
 import Icon from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
 import { useOffer } from "$store/sdk/useOffer.ts";
@@ -40,7 +41,8 @@ function Result({
   cardLayout,
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
-
+  
+  
   return (
     <>
       <div class="container px-4 sm:py-10">
@@ -53,9 +55,12 @@ function Result({
 
         <div class="flex flex-row">
           {layout?.variant === "aside" && filters.length > 0 && (
-            <aside class="hidden sm:block w-min min-w-[250px]">
-              <Filters filters={filters} />
-            </aside>
+            <>
+            
+              <aside class="hidden sm:block w-min min-w-[250px]">
+                <Filters filters={filters} />
+              </aside>
+            </>
           )}
           <div class="flex-grow">
             <ProductGallery

@@ -74,6 +74,7 @@ function Header({
   const platform = usePlatform();
   const items = navItems ?? [];
 
+  console.log(window.location.pathname  )
   return (
     <>
       <header>
