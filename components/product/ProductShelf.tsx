@@ -3,7 +3,7 @@ import ProductCard, {
   Layout as cardLayout,
 } from "$store/components/product/ProductCard.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
-import Header from "$store/components/ui/SectionHeader.tsx";
+import Header from "$store/components/ui/SectionHeaderColor.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
