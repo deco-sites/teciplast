@@ -20,10 +20,9 @@ function ValueItem(
 ) {
   return (
     <li>
-      <a href={url} class="flex items-center gap-2">
-        <div aria-checked={selected} class="checkbox" />
-        <span class="text-sm">{label}</span>
-        {quantity > 0 && <span class="text-sm text-base-300">({quantity})</span>}
+      <a href={url} class="flex items-center gap-2 hover:underline px-5 ">
+        <span class="text-[15px] mr-auto">{label}</span>
+        {quantity > 0 && <span class="text-[15px]  ml-auto text-base-300">({quantity})</span>}
       </a>
     </li>
   );
@@ -35,7 +34,7 @@ function FilterValues({ key, values }: FilterToggle) {
     : "flex-col";
 
   return (
-    <ul class={`flex flex-col gap-1 pl-5 pt-2 ${flexDirection}`}>
+    <ul class={`flex flex-col gap-2  ${flexDirection}`}>
       {values.map((item) => {
         const { url, selected, value, quantity } = item;
 
@@ -69,19 +68,19 @@ function FilterValues({ key, values }: FilterToggle) {
 
 function Filters({ filters }: Props) {
   return (
-    <ul class="flex flex-col gap-6 p-4 ">
+    <ul class="flex flex-col gap-[6px]  mr-1 ">
       {filters
         .filter(isToggle)
         .map((filter) => (
-          <li >
-            <div class="collapse collapse-arrow ">
-              <input type="checkbox" class="min-h-[0]" />
-                <div class="collapse-title min-h-[0] !p-0 flex gap-2">
+          <li  >
+            <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300">
+              <input type="checkbox" class="min-h-[0px]" />
+                <div class="collapse-title min-h-[0px] rounded-none flex gap-2">
                   <span>{filter.label} </span>
                 </div>
                
                 <div class="collapse-content">
-                  <ul  class={`flex flex-col gap-1 pl-5 pt-2`}>
+                  <ul  class={`flex flex-col `}>
                     <FilterValues {...filter} />
                   </ul>
                 </div>
