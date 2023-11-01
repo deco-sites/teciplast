@@ -1,11 +1,16 @@
 function SearchTerm() {
-  const location = window.location.search;
-  const urlParams = new URLSearchParams(location);
+  const query = window.location.search;
+  const pathName = window.location.pathname;
+  const urlParams = new URLSearchParams(query);
   const searchTerm = urlParams.get("q");
   if(!searchTerm) return null;
+  const pageTitle = pathName ? pathName.replace("/", "") : "";
+
   return (
     <div>
-      <span class="text-2xl">"{searchTerm}"</span>
+      <span class={`text-2xl ${!searchTerm && "capitalize"}`}>
+        {searchTerm ? `Busca: "${searchTerm}"` : pageTitle}
+      </span>
     </div>
   );
 }
