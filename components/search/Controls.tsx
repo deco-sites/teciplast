@@ -3,7 +3,6 @@ import Icon from "$store/components/ui/Icon.tsx";
 import Filters from "$store/components/search/Filters.tsx";
 import PriceFilter from "$store/components/search/PriceFilter.tsx";
 
-
 import Sort from "$store/components/search/Sort.tsx";
 import Drawer from "$store/components/ui/Drawer.tsx";
 import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
@@ -42,7 +41,7 @@ function SearchControls(
               <div class="flex-grow overflow-auto  w-full pb-10  px-5">
                 <Filters filters={filters} />
                 <PriceFilter filters={filters} />
-
+                {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
               </div>
             </div>
           </div>
@@ -55,15 +54,15 @@ function SearchControls(
             <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
           </div>
           <Button
-            class={displayFilter ? "btn-ghost" : "btn-ghost sm:hidden"}
+            class={displayFilter ? "btn-ghost " : "btn-ghost  flex flex-row border border-[#CBCBCB] text-xs justify-center items-center gap-3 px-3 text-[#818181] sm:hidden"}
             onClick={() => {
               open.value = true;
             }}
           >
-            Filtrar
-            <Icon id="FilterList" width={16} height={16} />
+            Filtrar produtos
+            <Icon id="FilterList" width={24} height={24} class="text-[#818181] " />
           </Button>
-          {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
+          <div class="hidden lg:flex">  {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}</div>
         </div>
       </div>
     </Drawer>

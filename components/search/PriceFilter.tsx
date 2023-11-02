@@ -148,7 +148,7 @@ function PriceFilter({ filters }: Props) {
         .map((filter) => (
           filter.key == "price" && 
             <li>
-              <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300">
+              <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none">
                 <input type="checkbox" class="min-h-[0px]" />
                   <div class="collapse-title min-h-[0px] rounded-none flex gap-2  px-0 lg:px-5">
                     <span>{filter.label} </span>
