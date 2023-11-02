@@ -30,7 +30,7 @@ function SearchControls(
         <div class="w-full  flex justify-center items-center ">
           <div class="left-auto  absolute top-5  rounded-none  bg-base-100 w-10/12  ">
             <div class="flex flex-col w-full  items-center justify-center">
-              <div class="flex justify-between items-center w-full  border-b border-[#C3C3C3] lg:border-none px-8 py-5">
+              <div class="flex justify-between  w-full  border-b border-[#C3C3C3] lg:border-none   px-5  py-5">
                 <h1 class="">
                   <span class="font-medium text-[18px]">Filtrar Produtos</span>
                 </h1>
@@ -39,7 +39,7 @@ function SearchControls(
                 </Button>
               </div>
             
-              <div class="flex-grow overflow-auto   w-11/12 pb-10 ">
+              <div class="flex-grow overflow-auto  w-full pb-10  px-5">
                 <Filters filters={filters} />
                 <PriceFilter filters={filters} />
 
