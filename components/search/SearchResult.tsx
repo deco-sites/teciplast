@@ -59,10 +59,10 @@ function Result({
           {layout?.variant === "aside" && filters.length > 0 && (
             <>
             
-              <aside class="hidden sm:block w-min min-w-[250px] mr-[20px]">
+              <aside class="hidden sm:block w-min min-w-[250px] mb-[8px]">
                 <Filters filters={filters} />
               </aside>
-              <aside class="hidden sm:block w-min min-w-[250px] mr-[20px]">
+              <aside class="hidden sm:block w-min min-w-[250px] ">
                 <PriceFilter filters={filters} />
               </aside>
             </>

@@ -142,26 +142,23 @@ function Filter(filter: FilterToggle) {
 function PriceFilter({ filters }: Props) {
 
   return (
-      <ul class="flex flex-col gap-[6px]  mr-1 ">
+      <ul class="flex flex-col gap-[6px]  ">
       {filters
         .filter(isToggle)
         .map((filter) => (
+          filter.key == "price" && 
             <li>
               <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300">
-                  {filter.key == "price" && 
-                  <>
-                  <input type="checkbox" class="min-h-[0px]" />
-                    <div class="collapse-title min-h-[0px] rounded-none flex gap-2">
-                      <span>{filter.label} </span>
-                    </div>
-                  
-                    <div class="collapse-content">
-                      <ul  class={`flex flex-col `}>
-                        <Filter {...filter} />
-                      </ul>
-                    </div>
-                    </>
-                    }
+                <input type="checkbox" class="min-h-[0px]" />
+                  <div class="collapse-title min-h-[0px] rounded-none flex gap-2">
+                    <span>{filter.label} </span>
+                  </div>
+                
+                  <div class="collapse-content">
+                    <ul  class={`flex flex-col `}>
+                      <Filter {...filter} />
+                    </ul>
+                  </div>
               </div>
             </li>
             )

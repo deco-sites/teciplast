@@ -20,7 +20,7 @@ function ValueItem(
 ) {
   return (
     <li>
-      <a href={url} class="flex items-center gap-2 hover:underline px-5">
+      <a href={url} class="flex items-center gap-2 hover:underline lg:px-5">
         <span class="text-sm mr-auto">{label}</span>
         {quantity > 0 && <span class="text-sm  ml-auto text-base-300">({quantity})</span>}
       </a>
@@ -62,15 +62,15 @@ function FilterValues({ key, values }: FilterToggle) {
 
 function Filters({ filters }: Props) {
   return (
-    <ul class="flex flex-col lg:gap-[6px]  mr-1 border-b border-[#C3C3C3] lg:border-none ">
+    <ul class="flex flex-col lg:gap-[6px]  ">
       {filters
         .filter(isToggle)
         .map((filter) => (
           filter.key !== "price" && 
             <li>
-              <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300">
+              <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none ">
                 <input type="checkbox" class="min-h-[0px]" />
-                <div class="collapse-title min-h-[0px] rounded-none flex gap-2">
+                <div class="collapse-title min-h-[0px] rounded-none flex gap-2 px-0 lg:px-5">
                   <span>{filter.label} </span>
                 </div>
               
