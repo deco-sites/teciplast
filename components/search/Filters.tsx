@@ -66,25 +66,21 @@ function Filters({ filters }: Props) {
       {filters
         .filter(isToggle)
         .map((filter) => (
-          <li  >
-            <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300">
-             
-                {filter.key !== "price" && 
-                  <>
-                  <input type="checkbox" class="min-h-[0px]" />
-                    <div class="collapse-title min-h-[0px] rounded-none flex gap-2">
-                      <span>{filter.label} </span>
-                    </div>
-                  
-                    <div class="collapse-content">
-                      <ul  class={`flex flex-col `}>
-                        <FilterValues {...filter} />
-                      </ul>
-                    </div>
-                  </>
-                  }
-            </div>
-          </li>
+          filter.key !== "price" && 
+            <li>
+              <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300">
+                <input type="checkbox" class="min-h-[0px]" />
+                <div class="collapse-title min-h-[0px] rounded-none flex gap-2">
+                  <span>{filter.label} </span>
+                </div>
+              
+                <div class="collapse-content">
+                  <ul  class={`flex flex-col `}>
+                    <FilterValues {...filter} />
+                  </ul>
+                </div>
+              </div>
+            </li>
         ))}
     </ul>
   );
