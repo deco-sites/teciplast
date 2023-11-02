@@ -58,7 +58,7 @@ function Sort({ sortOptions }: Props) {
       id="sort"
       name="sort"
       onInput={applySort}
-      class="select text-base-300 w-full max-w-xs px-0 border-none focus:outline-none"
+      class=" flex sm:hidden select text-base-300 w-full max-w-xs px-0 border-none focus:outline-none"
     >
       {sortOptions.map(({ value, label }) => ({
         value,
