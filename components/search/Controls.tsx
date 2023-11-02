@@ -1,6 +1,8 @@
 import Button from "$store/components/ui/Button.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Filters from "$store/components/search/Filters.tsx";
+import PriceFilter from "$store/components/search/PriceFilter.tsx";
+
 
 import Sort from "$store/components/search/Sort.tsx";
 import Drawer from "$store/components/ui/Drawer.tsx";
@@ -38,6 +40,8 @@ function SearchControls(
           
             <div class="flex-grow overflow-auto">
               <Filters filters={filters} />
+              <PriceFilter filters={filters} />
+
             </div>
           </div>
         </>

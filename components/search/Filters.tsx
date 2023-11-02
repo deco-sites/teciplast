@@ -20,9 +20,9 @@ function ValueItem(
 ) {
   return (
     <li>
-      <a href={url} class="flex items-center gap-2 hover:underline px-5 ">
-        <span class="text-[15px] mr-auto">{label}</span>
-        {quantity > 0 && <span class="text-[15px]  ml-auto text-base-300">({quantity})</span>}
+      <a href={url} class="flex items-center gap-2 hover:underline px-5">
+        <span class="text-sm mr-auto">{label}</span>
+        {quantity > 0 && <span class="text-sm  ml-auto text-base-300">({quantity})</span>}
       </a>
     </li>
   );
@@ -50,14 +50,8 @@ function FilterValues({ key, values }: FilterToggle) {
         }
 
         if (key === "price") {
-          const range = parseRange(item.value);
 
-          return range && (
-            <ValueItem
-              {...item}
-              label={`${formatPrice(range.from)} - ${formatPrice(range.to)}`}
-            />
-          );
+          return null;
         }
 
         return <ValueItem {...item} />;
@@ -68,28 +62,33 @@ function FilterValues({ key, values }: FilterToggle) {
 
 function Filters({ filters }: Props) {
   return (
-    <ul class="flex flex-col gap-[6px]  mr-1 ">
+    <ul class="flex flex-col lg:gap-[6px]  mr-1 border-b border-[#C3C3C3] lg:border-none ">
       {filters
         .filter(isToggle)
         .map((filter) => (
           <li  >
             <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300">
-              <input type="checkbox" class="min-h-[0px]" />
-                <div class="collapse-title min-h-[0px] rounded-none flex gap-2">
-                  <span>{filter.label} </span>
-                </div>
-               
-                <div class="collapse-content">
-                  <ul  class={`flex flex-col `}>
-                    <FilterValues {...filter} />
-                  </ul>
-                </div>
-           
+             
+                {filter.key !== "price" && 
+                  <>
+                  <input type="checkbox" class="min-h-[0px]" />
+                    <div class="collapse-title min-h-[0px] rounded-none flex gap-2">
+                      <span>{filter.label} </span>
+                    </div>
+                  
+                    <div class="collapse-content">
+                      <ul  class={`flex flex-col `}>
+                        <FilterValues {...filter} />
+                      </ul>
+                    </div>
+                  </>
+                  }
             </div>
           </li>
         ))}
     </ul>
   );
 }
+
 
 export default Filters;

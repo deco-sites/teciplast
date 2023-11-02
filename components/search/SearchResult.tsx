@@ -1,6 +1,7 @@
 import { SendEventOnLoad } from "$store/components/Analytics.tsx";
 import { Layout as CardLayout } from "$store/components/product/ProductCard.tsx";
 import Filters from "$store/components/search/Filters.tsx";
+import PriceFilter from "$store/components/search/PriceFilter.tsx";
 
 import Icon from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
@@ -54,14 +55,19 @@ function Result({
         />
 
         <div class="flex flex-row gap-5">
+         <div class="flex flex-col">
           {layout?.variant === "aside" && filters.length > 0 && (
             <>
             
-              <aside class="hidden sm:block w-min min-w-[250px] ">
+              <aside class="hidden sm:block w-min min-w-[250px] mr-[20px]">
                 <Filters filters={filters} />
+              </aside>
+              <aside class="hidden sm:block w-min min-w-[250px] mr-[20px]">
+                <PriceFilter filters={filters} />
               </aside>
             </>
           )}
+             </div>
           <div class="flex-grow">
             <ProductGallery
               products={products}
