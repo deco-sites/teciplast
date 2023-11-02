@@ -30,7 +30,7 @@ function SearchControls(
         <div class="w-full  flex justify-center items-center ">
           <div class="left-auto  absolute top-5  rounded-none  bg-base-100 w-10/12  ">
             <div class="flex flex-col w-full  items-center justify-center">
-              <div class="flex justify-between items-center w-full  border-b border-[#C3C3C3] lg:border-none px-5 py-5">
+              <div class="flex justify-between items-center w-full  border-b border-[#C3C3C3] lg:border-none px-8 py-5">
                 <h1 class="">
                   <span class="font-medium text-[18px]">Filtrar Produtos</span>
                 </h1>
@@ -50,11 +50,10 @@ function SearchControls(
       }
     >
       <div class="flex flex-col justify-between mb-4 p-4 sm:mb-0 sm:p-0 sm:gap-4 sm:flex-row sm:h-[53px] sm:border-b sm:border-base-200">
-        <div class="flex flex-row items-center sm:p-0 mb-2">
-          <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
-        </div>
-
         <div class="flex flex-row items-center justify-between border-b border-base-200 sm:gap-4 sm:border-none">
+          <div class="flex flex-row sm:hidden items-center sm:p-0 mb-2">
+            <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
+          </div>
           <Button
             class={displayFilter ? "btn-ghost" : "btn-ghost sm:hidden"}
             onClick={() => {

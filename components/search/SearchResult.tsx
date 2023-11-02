@@ -5,10 +5,12 @@ import PriceFilter from "$store/components/search/PriceFilter.tsx";
 
 import Icon from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
+import SearchTerm from "$store/islands/SearchTerm.tsx";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import type { ProductListingPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductGallery, { Columns } from "../product/ProductGallery.tsx";
+import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
 
 export interface Layout {
   /**
@@ -46,13 +48,22 @@ function Result({
   
   return (
     <>
-      <div class="container px-4 sm:py-10">
+      <div class="hidden sm:flex w-full max-w-[90%] border-y border-[#DCDCDC] mx-auto">
+        <div class="container  flex-row items-center sm:p-0  ">
+          <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
+        </div>
+      </div>
+      <div class="container  sm:py-5">
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}
           breadcrumb={breadcrumb}
           displayFilter={layout?.variant === "drawer"}
         />
+        <div>
+          <SearchTerm />
+          <span class="text-sm">{breadcrumb.numberOfItems} resultados</span>
+        </div>
 
         <div class="flex flex-row gap-5">
          <div class="flex flex-col">
