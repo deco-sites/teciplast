@@ -42,6 +42,9 @@ function Result({
   cardLayout,
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
+  const totalPages = pageInfo.records && pageInfo.recordPerPage
+    ? Math.ceil(pageInfo.records / pageInfo.recordPerPage)
+    : 1;
 
   return (
     <>
@@ -59,7 +62,7 @@ function Result({
         />
         <div>
           <SearchTerm />
-          <span class="text-sm">{breadcrumb.numberOfItems} resultados</span>
+          <span class="text-sm">{pageInfo.records} resultados</span>
         </div>
 
         <div class="flex flex-row">
@@ -77,7 +80,7 @@ function Result({
         </div>
 
         <div class="flex justify-center my-4">
-          <div class="join">
+          <div class="join bg-white shadow-sm shadow-[#c7c7c7]">
             <a
               aria-label="previous page link"
               rel="prev"
@@ -87,7 +90,7 @@ function Result({
               <Icon id="ChevronLeft" size={24} strokeWidth={2} />
             </a>
             <span class="btn btn-ghost join-item">
-              Page {pageInfo.currentPage + 1}
+              Página {pageInfo.currentPage} de {totalPages}
             </span>
             <a
               aria-label="next page link"

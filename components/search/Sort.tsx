@@ -36,22 +36,25 @@ function Sort({ sortOptions }: Props) {
   const sort = useSort();
 
   return (
-    <select
-      id="sort"
-      name="sort"
-      onInput={applySort}
-      class="w-min h-[36px] px-1 rounded m-2 text-base-content cursor-pointer outline-none"
-    >
-      {sortOptions.map(({ value, label }) => ({
-        value,
-        label: portugueseMappings[label as keyof typeof portugueseMappings] ??
-          label,
-      })).filter(({ label }) => label).map(({ value, label }) => (
-        <option key={value} value={value} selected={value === sort}>
-          <span class="text-sm">{label}</span>
-        </option>
-      ))}
-    </select>
+    <div>
+      <span class="text-[#999999] font-normal text-[14px]">Ordenar por</span>
+      <select
+        id="sort"
+        name="sort"
+        onInput={applySort}
+        class="w-min h-[36px] px-1 m-2 cursor-pointer outline-none lowercase font-bold border-b border-[#999999] text-[#999999] bg-transparent text-[14px]"
+      >
+        {sortOptions.map(({ value, label }) => ({
+          value,
+          label: portugueseMappings[label as keyof typeof portugueseMappings] ??
+            label,
+        })).filter(({ label }) => label).map(({ value, label }) => (
+          <option key={value} value={value} selected={value === sort}>
+            <span class="text-sm">{label}</span>
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }
 
