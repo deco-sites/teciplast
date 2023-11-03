@@ -37,7 +37,7 @@ function Sort({ sortOptions }: Props) {
 
   return (
     <>
-      <div>
+      <div class="flex items-center">
         <span class="text-[#999999] font-normal text-[14px]">Ordenar por</span>
         <select
           id="sort"
