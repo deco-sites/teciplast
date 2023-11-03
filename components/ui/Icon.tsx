@@ -51,7 +51,8 @@ export type AvailableIcons =
   | "ReturnBox"
   | "FastTruck"
   | "GreenShield"
-  | "Layer_1";
+  | "Layer_1"
+  | "Filter";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**

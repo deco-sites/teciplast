@@ -1,9 +1,11 @@
 import { SendEventOnLoad } from "$store/components/Analytics.tsx";
 import { Layout as CardLayout } from "$store/components/product/ProductCard.tsx";
 import Filters from "$store/components/search/Filters.tsx";
+import PriceFilter from "$store/components/search/PriceFilter.tsx";
+
 import Icon from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
-import SearchTerm from "$store/islands/SearchTerm.tsx";
+import PageTitle from "$store/islands/PageTitle.tsx";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import type { ProductListingPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
@@ -60,17 +62,24 @@ function Result({
           breadcrumb={breadcrumb}
           displayFilter={layout?.variant === "drawer"}
         />
-        <div>
-          <SearchTerm />
+        <div id="title">
+          <PageTitle />
           <span class="text-sm">{pageInfo.records} resultados</span>
         </div>
 
-        <div class="flex flex-row">
-          {layout?.variant === "aside" && filters.length > 0 && (
-            <aside class="hidden sm:block w-min min-w-[250px]">
-              <Filters filters={filters} />
-            </aside>
-          )}
+        <div class="flex flex-row gap-5">
+          <div class="flex flex-col">
+            {layout?.variant === "aside" && filters.length > 0 && (
+              <>
+                <aside class="hidden sm:block w-min min-w-[250px] mb-[8px]">
+                  <Filters filters={filters} />
+                </aside>
+                <aside class="hidden sm:block w-min min-w-[250px] ">
+                  <PriceFilter filters={filters} />
+                </aside>
+              </>
+            )}
+          </div>
           <div class="flex-grow">
             <ProductGallery
               products={products}

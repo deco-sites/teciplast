@@ -1,6 +1,8 @@
 import Button from "$store/components/ui/Button.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Filters from "$store/components/search/Filters.tsx";
+import PriceFilter from "$store/components/search/PriceFilter.tsx";
+
 import Sort from "$store/components/search/Sort.tsx";
 import Drawer from "$store/components/ui/Drawer.tsx";
 import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
@@ -24,21 +26,29 @@ function SearchControls(
       open={open.value}
       onClose={() => open.value = false}
       aside={
-        <>
-          <div class="bg-base-100 flex flex-col h-full divide-y overflow-y-hidden">
-            <div class="flex justify-between items-center">
-              <h1 class="px-4 py-3">
-                <span class="font-medium text-2xl">Filtrar</span>
-              </h1>
-              <Button class="btn btn-ghost" onClick={() => open.value = false}>
-                <Icon id="XMark" size={24} strokeWidth={2} />
-              </Button>
-            </div>
-            <div class="flex-grow overflow-auto">
-              <Filters filters={filters} />
+        <div class="w-full  flex justify-center items-center ">
+          <div class="left-auto  absolute top-5  rounded-none  bg-base-100 w-10/12  ">
+            <div class="flex flex-col w-full  items-center justify-center">
+              <div class="flex justify-between  w-full  border-b border-[#C3C3C3] lg:border-none   px-5  py-5">
+                <h1 class="">
+                  <span class="font-medium text-[18px]">Filtrar Produtos</span>
+                </h1>
+                <Button
+                  class="btn btn-ghost text-[##6A6A6A]"
+                  onClick={() => open.value = false}
+                >
+                  <Icon id="XMark" size={24} strokeWidth={2} />
+                </Button>
+              </div>
+
+              <div class="flex-grow overflow-auto  w-full pb-10  px-5">
+                <Filters filters={filters} />
+                <PriceFilter filters={filters} />
+                {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
+              </div>
             </div>
           </div>
-        </>
+        </div>
       }
     >
       <div class="flex flex-col mb-4 p-4 sm:mb-0 sm:p-0 sm:gap-4 sm:flex-row sm:h-[53px] sm:border-b sm:border-base-200 justify-end">
@@ -47,15 +57,24 @@ function SearchControls(
             <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
           </div>
           <Button
-            class={displayFilter ? "btn-ghost" : "btn-ghost md:hidden"}
+            class={displayFilter
+              ? "btn-ghost "
+              : "btn-ghost  flex flex-row border border-[#CBCBCB] text-xs justify-center items-center gap-3 px-3 text-[#818181] sm:hidden"}
             onClick={() => {
               open.value = true;
             }}
           >
-            Filtrar
-            <Icon id="FilterList" width={16} height={16} />
+            Filtrar produtos
+            <Icon
+              id="FilterList"
+              width={24}
+              height={24}
+              class="text-[#818181] "
+            />
           </Button>
-          {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
+          <div class="hidden lg:flex">
+            {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
+          </div>
         </div>
       </div>
     </Drawer>
