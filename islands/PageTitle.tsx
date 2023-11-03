@@ -1,4 +1,4 @@
-import Component from "$store/components/search/SearchTerm.tsx";
+import Component from "$store/components/search/PageTitle.tsx";
 
 function Island() {
   return <Component />;

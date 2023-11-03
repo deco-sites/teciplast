@@ -5,7 +5,7 @@ import PriceFilter from "$store/components/search/PriceFilter.tsx";
 
 import Icon from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
-import SearchTerm from "$store/islands/SearchTerm.tsx";
+import PageTitle from "$store/islands/PageTitle.tsx";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import type { ProductListingPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
@@ -62,8 +62,8 @@ function Result({
           breadcrumb={breadcrumb}
           displayFilter={layout?.variant === "drawer"}
         />
-        <div>
-          <SearchTerm />
+        <div id="title">
+          <PageTitle />
           <span class="text-sm">{pageInfo.records} resultados</span>
         </div>
 

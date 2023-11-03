@@ -23,10 +23,10 @@ import * as $$16 from "./islands/Header/SearchbarMobileMenu.tsx";
 import * as $$17 from "./islands/Header/SearchbarMobileMenuWhite.tsx";
 import * as $$18 from "./islands/Newsletter.tsx";
 import * as $$19 from "./islands/OutOfStock.tsx";
-import * as $$20 from "./islands/PriceFilter.tsx";
-import * as $$21 from "./islands/ProductImageZoom.tsx";
-import * as $$22 from "./islands/SearchControls.tsx";
-import * as $$23 from "./islands/SearchTerm.tsx";
+import * as $$20 from "./islands/PageTitle.tsx";
+import * as $$21 from "./islands/PriceFilter.tsx";
+import * as $$22 from "./islands/ProductImageZoom.tsx";
+import * as $$23 from "./islands/SearchControls.tsx";
 import * as $$24 from "./islands/ShippingSimulation.tsx";
 import * as $$25 from "./islands/SliderJS.tsx";
 import * as $$26 from "./islands/WishlistButton.tsx";
@@ -56,10 +56,10 @@ const manifest = {
     "./islands/Header/SearchbarMobileMenuWhite.tsx": $$17,
     "./islands/Newsletter.tsx": $$18,
     "./islands/OutOfStock.tsx": $$19,
-    "./islands/PriceFilter.tsx": $$20,
-    "./islands/ProductImageZoom.tsx": $$21,
-    "./islands/SearchControls.tsx": $$22,
-    "./islands/SearchTerm.tsx": $$23,
+    "./islands/PageTitle.tsx": $$20,
+    "./islands/PriceFilter.tsx": $$21,
+    "./islands/ProductImageZoom.tsx": $$22,
+    "./islands/SearchControls.tsx": $$23,
     "./islands/ShippingSimulation.tsx": $$24,
     "./islands/SliderJS.tsx": $$25,
     "./islands/WishlistButton.tsx": $$26,
