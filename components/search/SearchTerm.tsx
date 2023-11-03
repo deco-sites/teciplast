@@ -3,6 +3,7 @@ function SearchTerm() {
   const pathName = window.location.pathname;
   const urlParams = new URLSearchParams(query);
   const searchTerm = urlParams.get("q");
+  if(!searchTerm) return null;
   const pageTitle = pathName ? pathName.replace("/", "") : "";
 
   return (

@@ -30,10 +30,10 @@ function Navbar({ items, searchbar, logo }: {
     <>
       {/* Mobile Version */}
       <div
-        class="md:hidden flex flex-col justify-center items-center  border-base-200 w-full py-2"
+        class="lg:hidden flex flex-col justify-center items-center  border-base-200 w-full py-2"
         style={{ minHeight: navbarHeight }}
       >
-        <div class="md:hidden flex flex-row justify-between items-center  w-full  gap-2 mb-3 px-2">
+        <div class="lg:hidden flex flex-row justify-between items-center  w-full  gap-2 mb-3 px-2">
           <MenuButton />
 
           {logo && (
@@ -58,7 +58,7 @@ function Navbar({ items, searchbar, logo }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden md:flex flex-col justify-between items-center w-full container py-1 max-h-[170px] ">
+      <div class="hidden lg:flex flex-col justify-between items-center w-full container py-1 max-h-[170px] ">
         <div class="flex flex-row justify-around items-center w-full  border-b-2 py-2 shrink-0">
           <div class="flex-none w-44 mr-auto">
             {logo && (
