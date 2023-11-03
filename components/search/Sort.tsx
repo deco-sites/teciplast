@@ -35,41 +35,42 @@ const portugueseMappings = {
 function Sort({ sortOptions }: Props) {
   const sort = useSort();
 
-  return (<>
-    <select
-      id="sort"
-      name="sort"
-      onInput={applySort}
-      class="hidden sm:flex w-min h-[36px] px-1 rounded m-2 text-base-content cursor-pointer outline-none"
-    >
-      {sortOptions.map(({ value, label }) => ({
-        value,
-        label: portugueseMappings[label as keyof typeof portugueseMappings] ??
-          label,
-      })).filter(({ label }) => label).map(({ value, label }) => (
-        <option key={value} value={value} selected={value === sort}>
-          <span class="text-sm">{label}</span>
-        </option>
-      ))}
-    </select>
-    {/* onInput={applySort} */}
-   
-    <select
-      id="sort"
-      name="sort"
-      onInput={applySort}
-      class=" flex sm:hidden select text-base-300 w-full max-w-xs px-0 border-none focus:outline-none"
-    >
-      {sortOptions.map(({ value, label }) => ({
-        value,
-        label: portugueseMappings[label as keyof typeof portugueseMappings] ??
-          label,
-      })).filter(({ label }) => label).map(({ value, label }) => (
-        <option key={value} value={value} selected={value === sort}>
-          <span class="text-sm">{label}</span>
-        </option>
-      ))}
-    </select>
+  return (
+    <>
+      <select
+        id="sort"
+        name="sort"
+        onInput={applySort}
+        class="hidden sm:flex w-min h-[36px] px-1 rounded m-2 text-base-content cursor-pointer outline-none"
+      >
+        {sortOptions.map(({ value, label }) => ({
+          value,
+          label: portugueseMappings[label as keyof typeof portugueseMappings] ??
+            label,
+        })).filter(({ label }) => label).map(({ value, label }) => (
+          <option key={value} value={value} selected={value === sort}>
+            <span class="text-sm">{label}</span>
+          </option>
+        ))}
+      </select>
+      {/* onInput={applySort} */}
+
+      <select
+        id="sort"
+        name="sort"
+        onInput={applySort}
+        class=" flex sm:hidden select text-base-300 w-full max-w-xs px-0 border-none focus:outline-none"
+      >
+        {sortOptions.map(({ value, label }) => ({
+          value,
+          label: portugueseMappings[label as keyof typeof portugueseMappings] ??
+            label,
+        })).filter(({ label }) => label).map(({ value, label }) => (
+          <option key={value} value={value} selected={value === sort}>
+            <span class="text-sm">{label}</span>
+          </option>
+        ))}
+      </select>
     </>
   );
 }

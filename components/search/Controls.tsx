@@ -33,11 +33,14 @@ function SearchControls(
                 <h1 class="">
                   <span class="font-medium text-[18px]">Filtrar Produtos</span>
                 </h1>
-                <Button class="btn btn-ghost text-[##6A6A6A]" onClick={() => open.value = false}>
+                <Button
+                  class="btn btn-ghost text-[##6A6A6A]"
+                  onClick={() => open.value = false}
+                >
                   <Icon id="XMark" size={24} strokeWidth={2} />
                 </Button>
               </div>
-            
+
               <div class="flex-grow overflow-auto  w-full pb-10  px-5">
                 <Filters filters={filters} />
                 <PriceFilter filters={filters} />
@@ -48,21 +51,30 @@ function SearchControls(
         </div>
       }
     >
-      <div class="flex flex-col justify-between mb-4 p-4 sm:mb-0 sm:p-0 sm:gap-4 sm:flex-row sm:h-[53px] sm:border-b sm:border-base-200">
+      <div class="flex flex-col mb-4 p-4 sm:mb-0 sm:p-0 sm:gap-4 sm:flex-row sm:h-[53px] sm:border-b sm:border-base-200 justify-end">
         <div class="flex flex-row items-center justify-between border-b border-base-200 sm:gap-4 sm:border-none">
           <div class="flex flex-row sm:hidden items-center sm:p-0 mb-2">
             <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
           </div>
           <Button
-            class={displayFilter ? "btn-ghost " : "btn-ghost  flex flex-row border border-[#CBCBCB] text-xs justify-center items-center gap-3 px-3 text-[#818181] sm:hidden"}
+            class={displayFilter
+              ? "btn-ghost "
+              : "btn-ghost  flex flex-row border border-[#CBCBCB] text-xs justify-center items-center gap-3 px-3 text-[#818181] sm:hidden"}
             onClick={() => {
               open.value = true;
             }}
           >
             Filtrar produtos
-            <Icon id="FilterList" width={24} height={24} class="text-[#818181] " />
+            <Icon
+              id="FilterList"
+              width={24}
+              height={24}
+              class="text-[#818181] "
+            />
           </Button>
-          <div class="hidden lg:flex">  {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}</div>
+          <div class="hidden lg:flex">
+            {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
+          </div>
         </div>
       </div>
     </Drawer>
