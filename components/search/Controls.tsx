@@ -47,7 +47,7 @@ function SearchControls(
             <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
           </div>
           <Button
-            class={displayFilter ? "btn-ghost" : "btn-ghost sm:hidden"}
+            class={displayFilter ? "btn-ghost" : "btn-ghost md:hidden"}
             onClick={() => {
               open.value = true;
             }}

@@ -111,35 +111,13 @@ function TabbedProductShelf({
 
           <div
             id={id}
-            class="hidden lg:flex flex-grow"
-          >
-            <div class="flex flex-row  justify-between items-start h-[400px] w-full ">
-              {products?.map((product, index) => (
-                <div
-                  class="w-[200px] sm:w-[240px] min-h-[400px] "
-                >
-                  <ProductCard
-                    product={product}
-                    itemListName={title}
-                    layout={cardLayout}
-                    platform={platform}
-                    
-                  />
-                </div>
-              ))}
-            </div>
-
-          
-          </div>
-          <div
-            id={id}
-            class="lg:hidden container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5  flex-grow  sm:h-[450px] "
+            class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5  flex-grow  sm:h-[450px] "
           >
             <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px]">
               {products?.map((product, index) => (
                 <Slider.Item
                   index={index}
-                  class="w-[200px] sm:w-[220px]  min-h-[400px]  first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
+                  class="w-[220px] sm:w-[240px] min-h-[320px] first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
                 >
                   <ProductCard
                     product={product}
