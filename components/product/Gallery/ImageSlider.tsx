@@ -68,13 +68,13 @@ export default function GallerySlider(props: Props) {
         </div>
 
         {/* Dots */}
-        <ul class="flex flex-row justify-center items-center  lg:carousel lg:carousel-center gap-2  sm:px-0 sm:flex-col order-2 sm:order-1 ">
+        <ul class="flex flex-row justify-center items-center  sm:carousel sm:carousel-center sm:justify-start sm:items-start gap-2  sm:px-0 sm:flex-col order-2 sm:order-1 ">
           {images.map((img, index) => (
             <li class="lg:carousel-item  sm:min-w-[76px] max-h-[76px] gap-2 ">
               <Slider.Dot index={index}>
                 <Image
                   style={{ aspectRatio }}
-                  class="hidden lg:flex group-disabled:border-[#7EABEE] border-base-300 border-4    max-h-[76px]"                
+                  class="hidden lg:flex  group-disabled:border-[#7EABEE] border group-disabled:border-4    max-h-[76px]"                
                   width={76}
                   height={76}
                   src={img.url!}
