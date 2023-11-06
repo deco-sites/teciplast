@@ -5,6 +5,8 @@ import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import Image from "apps/website/components/Image.tsx";
+import ShareButton from "$store/islands/ShareButton.tsx";
+
 
 export interface Props {
   /** @title Integration */
@@ -34,7 +36,8 @@ export default function GallerySlider(props: Props) {
     layout: { width, height },
   } = props;
   const aspectRatio = `${width} / ${height}`;
-
+  const { page } = props;
+  const { product } = page;
   return (
     <div id={id} class="grid grid-flow-row sm:grid-flow-col">
       {/* Image Slider */}
@@ -75,11 +78,11 @@ export default function GallerySlider(props: Props) {
           <Icon size={24} id="ChevronRight" strokeWidth={3} />
         </Slider.NextButton>
 
-        <div class="absolute top-2 right-2 bg-base-100 rounded-full">
-          <ProductImageZoom
-            images={images}
-            width={700}
-            height={Math.trunc(700 * height / width)}
+        <div class="absolute top-2 right-2 flex flex-col items-end">
+          <ShareButton
+            productGroupID={product.isVariantOf?.productGroupID}
+            productID={product.productID}
+            url={product.url!}
           />
         </div>
       </div>
