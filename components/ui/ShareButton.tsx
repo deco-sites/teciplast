@@ -38,6 +38,7 @@ function ShareButton({
           width={30}
           height={30}
           strokeWidth={2}
+          class="my-0 mx-auto"
         />
       </Button>
       {buttonShare.value === true

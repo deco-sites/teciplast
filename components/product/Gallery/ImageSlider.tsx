@@ -5,6 +5,7 @@ import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import Image from "apps/website/components/Image.tsx";
+import WishlistButton from "$store/islands/WishlistButton.tsx";
 import ShareButton from "$store/islands/ShareButton.tsx";
 
 
@@ -69,12 +70,21 @@ export default function GallerySlider(props: Props) {
 
 
               <div class="absolute top-2 right-2 flex flex-col items-end">
+                <WishlistButton
+                    productGroupID={product.isVariantOf?.productGroupID}
+                    productID={product.productID}
+                    pagePDP={true}
+                  /> 
+               
                 <ShareButton
                   productGroupID={product.isVariantOf?.productGroupID}
                   productID={product.productID}
                   url={product.url!}
                 />
+              
               </div>
+
+              
             </div>
             
             {/* Dots */}
@@ -97,7 +107,7 @@ export default function GallerySlider(props: Props) {
                 </li>
               ))}
             </ul>
-
+      
             <SliderJS rootId={id} />
        
         </div>
