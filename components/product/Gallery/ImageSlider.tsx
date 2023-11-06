@@ -70,16 +70,18 @@ export default function GallerySlider(props: Props) {
 
 
               <div class="absolute top-2 right-2 flex flex-col items-end">
+                <WishlistButton
+                    productGroupID={product.isVariantOf?.productGroupID}
+                    productID={product.productID}
+                    pagePDP={true}
+                  /> 
+               
                 <ShareButton
                   productGroupID={product.isVariantOf?.productGroupID}
                   productID={product.productID}
                   url={product.url!}
                 />
-                <WishlistButton
-                  productGroupID={product.isVariantOf?.productGroupID}
-                  productID={product.productID}
-                  pagePDP={true}
-                /> 
+              
               </div>
 
               
