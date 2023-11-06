@@ -52,7 +52,11 @@ export type AvailableIcons =
   | "FastTruck"
   | "GreenShield"
   | "Layer_1"
-  | "Filter";
+  | "Filter"
+  | "TwitterLogo"
+  | "WhatsApp"
+  | "pinterest"
+  | "share" ;
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
