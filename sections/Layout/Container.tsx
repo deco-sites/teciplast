@@ -6,7 +6,7 @@ interface Props {
 
 function Container({ children }: Props) {
   return (
-    <div class="container">
+    <div class="container bg-white sm:p-4 rounded-md mt-5">
       <children.Component {...children.props} />
     </div>
   );

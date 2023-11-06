@@ -11,12 +11,12 @@ import WishlistButton from "$store/islands/WishlistButton.tsx";
 export interface Props {
   /** @title Integration */
   page: ProductDetailsPage | null;
-
   layout: {
     width: number;
     height: number;
   };
 }
+
 
 /**
  * @title Product Image Slider
@@ -40,44 +40,35 @@ export default function GallerySlider(props: Props) {
   const { product } = page;
 
   return (
-    <div id={id} class="grid grid-flow-row sm:grid-flow-col">
-      {/* Image Slider */}
-      <div class="relative order-1 sm:order-2">
-        <Slider class="carousel carousel-center gap-6 w-screen sm:w-[40vw]">
-          {images.map((img, index) => (
-            <Slider.Item
-              index={index}
-              class="carousel-item w-full"
-            >
-              <Image
-                class="w-full"
-                sizes="(max-width: 640px) 100vw, 40vw"
-                style={{ aspectRatio }}
-                src={img.url!}
-                alt={img.alternateName}
-                width={width}
-                height={height}
-                // Preload LCP image for better web vitals
-                preload={index === 0}
-                loading={index === 0 ? "eager" : "lazy"}
-              />
-            </Slider.Item>
-          ))}
-        </Slider>
+    <>
+      <div id={id} class=" grid grid-flow-row sm:grid-flow-col lg:gap-5">
+        
+        {/* Image Slider */}
 
-        <Slider.PrevButton
-          class="no-animation absolute left-2 top-1/2 btn btn-circle btn-outline"
-          disabled
-        >
-          <Icon size={24} id="ChevronLeft" strokeWidth={3} />
-        </Slider.PrevButton>
+        <div class="relative order-1 sm:order-2 ">
+          <Slider class="carousel carousel-center gap-6 w-screen h-[220px]  sm:w-[700px]   sm:h-[700px]">
+            {images.map((img, index) => (
+              <Slider.Item
+                index={index}
+                class="carousel-item w-full"
+              >
+                <Image
+                  class="w-full"
+                  sizes="(max-width: 640px) 100vw, 40vw"
+                  style={{ aspectRatio }}
+                  src={img.url!}
+                  alt={img.alternateName}
+                  width={width}
+                  height={height}
+                  // Preload LCP image for better web vitals
+                  preload={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </Slider.Item>
+            ))}
+          </Slider>
 
-        <Slider.NextButton
-          class="no-animation absolute right-2 top-1/2 btn btn-circle btn-outline"
-          disabled={images.length < 2}
-        >
-          <Icon size={24} id="ChevronRight" strokeWidth={3} />
-        </Slider.NextButton>
+
 
         <div class="absolute top-2 right-2 bg-transparent ">
          
@@ -90,27 +81,33 @@ export default function GallerySlider(props: Props) {
         </div>
 
        
+
+        </div>
+
+        {/* Dots */}
+        <ul class="flex flex-row justify-center items-center  sm:carousel sm:carousel-center sm:justify-start sm:items-start gap-2  sm:px-0 sm:flex-col order-2 sm:order-1 ">
+          {images.map((img, index) => (
+            <li class="lg:carousel-item  sm:min-w-[76px] max-h-[76px] gap-2 ">
+              <Slider.Dot index={index}>
+                <Image
+                  style={{ aspectRatio }}
+                  class="hidden lg:flex  group-disabled:border-[#7EABEE] border group-disabled:border-4    max-h-[76px]"                
+                  width={76}
+                  height={76}
+                  src={img.url!}
+                  alt={img.alternateName}
+                />
+                <div>
+                  <div class=" lg:hidden first-line:flex w-[10px] h-[10px]  rounded border border-[#7EABEE]  group-disabled:bg-[#7EABEE] "/>
+                </div>
+              </Slider.Dot>
+            </li>
+          ))}
+        </ul>
+
+        <SliderJS rootId={id} />
       </div>
-
-      {/* Dots */}
-      <ul class="carousel carousel-center gap-1 px-4 sm:px-0 sm:flex-col order-2 sm:order-1">
-        {images.map((img, index) => (
-          <li class="carousel-item min-w-[63px] sm:min-w-[100px]">
-            <Slider.Dot index={index}>
-              <Image
-                style={{ aspectRatio }}
-                class="group-disabled:border-base-300 border rounded "
-                width={63}
-                height={87.5}
-                src={img.url!}
-                alt={img.alternateName}
-              />
-            </Slider.Dot>
-          </li>
-        ))}
-      </ul>
-
-      <SliderJS rootId={id} />
-    </div>
+  
+  </>
   );
 }
