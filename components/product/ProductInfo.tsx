@@ -14,6 +14,7 @@ import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ColorSelector from "./ProductColorSelector.tsx";
+import BedSizeSelector from "./ProductBedSizeSelector.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -169,7 +170,10 @@ function ProductInfo({ page, layout }: Props) {
           até {installments}
         </span>
       </div>
-      {/* Sku Selector */}
+      {/* Sku Selectors */}
+      <div class="mt-4 sm:mt-6">
+        <BedSizeSelector product={product} />
+      </div>
       <div class="mt-4 sm:mt-6">
         <ColorSelector product={product} />
       </div>

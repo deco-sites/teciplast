@@ -56,7 +56,11 @@ export type AvailableIcons =
   | "TwitterLogo"
   | "WhatsApp"
   | "pinterest"
-  | "share" ;
+  | "singleBed"
+  | "doubleBed"
+  | "queenBed"
+  | "kingBed"
+  | "share";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
