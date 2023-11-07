@@ -39,11 +39,11 @@ function BedSizeSelector({ product }: Props) {
             <button>
               <div class="text-[#818181] h-[110px] w-24 flex items-center justify-center rounded-md hover:border hover:border-[#dadada] hover:bg-[#fafafa] hover:text-[#686868]">
                 <div class="flex flex-col items-center">
-                  <Icon id="singleBed" height={45} width={27} />
+                  <Icon id="doubleBed" height={45} width={32} />
                   <span class="uppercase text-[9px] font-bold mt-2">
-                    solteiro
+                    casal
                   </span>
-                  <span class="uppercase text-[9px]">1,60 X 2,40</span>
+                  <span class="uppercase text-[9px]">2,20 X 2,40</span>
                 </div>
               </div>
             </button>
@@ -52,11 +52,11 @@ function BedSizeSelector({ product }: Props) {
             <button>
               <div class="text-[#818181] h-[110px] w-24 flex items-center justify-center rounded-md hover:border hover:border-[#dadada] hover:bg-[#fafafa] hover:text-[#686868]">
                 <div class="flex flex-col items-center">
-                  <Icon id="singleBed" height={45} width={27} />
+                  <Icon id="queenBed" height={45} width={37} />
                   <span class="uppercase text-[9px] font-bold mt-2">
-                    solteiro
+                    queen
                   </span>
-                  <span class="uppercase text-[9px]">1,60 X 2,40</span>
+                  <span class="uppercase text-[9px]">2,40 X 2,60</span>
                 </div>
               </div>
             </button>
@@ -65,11 +65,11 @@ function BedSizeSelector({ product }: Props) {
             <button>
               <div class="text-[#818181] h-[110px] w-24 flex items-center justify-center rounded-md hover:border hover:border-[#dadada] hover:bg-[#fafafa] hover:text-[#686868]">
                 <div class="flex flex-col items-center">
-                  <Icon id="singleBed" height={45} width={27} />
+                  <Icon id="kingBed" height={45} width={41} />
                   <span class="uppercase text-[9px] font-bold mt-2">
-                    solteiro
+                    king
                   </span>
-                  <span class="uppercase text-[9px]">1,60 X 2,40</span>
+                  <span class="uppercase text-[9px]">2,60 X 2,80</span>
                 </div>
               </div>
             </button>

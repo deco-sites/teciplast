@@ -15,6 +15,8 @@ import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ColorSelector from "./ProductColorSelector.tsx";
 import BedSizeSelector from "./ProductBedSizeSelector.tsx";
+import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
+import Icon from "$store/components/ui/Icon.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -177,68 +179,39 @@ function ProductInfo({ page, layout }: Props) {
       <div class="mt-4 sm:mt-6">
         <ColorSelector product={product} />
       </div>
-      {/* Add to Cart and Favorites button */}
-      <div class="mt-4 sm:mt-10 flex flex-col gap-2">
-        {availability === "https://schema.org/InStock"
-          ? (
-            <>
-              {platform === "vtex" && (
-                <>
-                  <AddToCartButtonVTEX
-                    name={name}
-                    productID={productID}
-                    productGroupID={productGroupID}
-                    price={price}
-                    discount={discount}
-                    seller={seller}
-                  />
-                  <WishlistButton
-                    variant="full"
-                    productID={productID}
-                    productGroupID={productGroupID}
-                  />
-                </>
-              )}
-              {platform === "wake" && (
-                <AddToCartButtonWake
-                  name={name}
-                  productID={productID}
-                  productGroupID={productGroupID}
-                  price={price}
-                  discount={discount}
-                />
-              )}
-              {platform === "linx" && (
-                <AddToCartButtonLinx
-                  name={name}
-                  productID={productID}
-                  productGroupID={productGroupID}
-                  price={price}
-                  discount={discount}
-                />
-              )}
-              {platform === "vnda" && (
-                <AddToCartButtonVNDA
-                  name={name}
-                  productID={productID}
-                  productGroupID={productGroupID}
-                  price={price}
-                  discount={discount}
-                  additionalProperty={additionalProperty}
-                />
-              )}
-              {platform === "shopify" && (
-                <AddToCartButtonShopify
-                  name={name}
-                  productID={productID}
-                  productGroupID={productGroupID}
-                  price={price}
-                  discount={discount}
-                />
-              )}
-            </>
-          )
-          : <OutOfStock productID={productID} />}
+      {/* Add to Cart and quantity */}
+      <div class="mt-4 sm:mt-10 grid grid-cols-5 gap-4">
+        <div class="col-span-2">
+          <QuantitySelector
+            quantity={1}
+            widthFull={true}
+            coloredButtons={true}
+          />
+        </div>
+        <div class="col-span-3">
+          {availability === "https://schema.org/InStock"
+            ? (
+              <>
+                {platform === "vtex" && (
+                  <>
+                    <AddToCartButtonVTEX
+                      name={name}
+                      productID={productID}
+                      productGroupID={productGroupID}
+                      price={price}
+                      discount={discount}
+                      seller={seller}
+                    />
+                    <div class="text-[#818181] items-center flex gap-2 mt-1">
+                      <Icon id="secureIcon" height={15} width={13} />
+                      <span>Compra 100% Segura</span>
+                    </div>
+                  </>
+                )}
+              </>
+            )
+            : <OutOfStock productID={productID} />}
+        </div>
       </div>
       {/* Shipping Simulation */}
       <div class="mt-8">

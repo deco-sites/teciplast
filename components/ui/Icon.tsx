@@ -60,6 +60,7 @@ export type AvailableIcons =
   | "doubleBed"
   | "queenBed"
   | "kingBed"
+  | "secureIcon"
   | "share";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
