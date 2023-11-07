@@ -10,13 +10,15 @@ const displayMenu = signal(false);
 const displaySearchPopup = signal(false);
 const displaySearchDrawer = signal(false);
 const displaySearchSuggestions = signal(false);
+const buttonShare = signal(false);
+
 
 const state = {
   displayCart,
   displayMenu,
   displaySearchPopup,
   displaySearchDrawer,
-  displaySearchSuggestions
+  displaySearchSuggestions,buttonShare
 };
 
 // Keyboard event listeners
