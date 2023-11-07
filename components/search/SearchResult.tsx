@@ -57,7 +57,7 @@ function Result({
       </div>
       <div class="container  sm:py-5">
        
-        <div id="title" class="hidden sm:flex ">
+        <div id="title" class="hidden sm:flex flex-col ">
           <PageTitle />
           <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
         </div>
