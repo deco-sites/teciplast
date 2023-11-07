@@ -56,15 +56,22 @@ function Result({
         </div>
       </div>
       <div class="container  sm:py-5">
+       
+        <div id="title" class="hidden sm:flex flex-col ">
+          <PageTitle />
+          <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
+        </div>
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}
           breadcrumb={breadcrumb}
           displayFilter={layout?.variant === "drawer"}
         />
-        <div id="title">
+
+        
+        <div id="title" class="flex sm:hidden w-full items-center flex-col mb-5">
           <PageTitle />
-          <span class="text-sm">{pageInfo.records} resultados</span>
+          <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
         </div>
 
         <div class="flex flex-row gap-5">
