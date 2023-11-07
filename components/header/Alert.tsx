@@ -113,7 +113,7 @@ function Alert(
 
   return (
     <>
-      <div class={`w-screen bg-secondary  flex justify-center items-center`}>
+      <div class={` bg-secondary  flex justify-center items-center`}>
         <div
           id={id}
           class={`container bg-secondary  text-xs text-secondary-content flex justify-between items-center  px-2 lg:px-0`}
