@@ -7,7 +7,7 @@ function PageTitle() {
 
   return (
     <div>
-      <span class={`text-2xl ${!searchTerm && "capitalize"}`}>
+      <span class={`text-lg sm:text-2xl ${!searchTerm && "capitalize"}`}>
         {searchTerm ? `Busca: "${searchTerm}"` : pageTitle}
       </span>
     </div>

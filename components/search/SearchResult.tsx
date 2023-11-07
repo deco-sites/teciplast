@@ -57,7 +57,7 @@ function Result({
       </div>
       <div class="container  sm:py-5">
        
-        <div id="title">
+        <div id="title" class="hidden sm:flex ">
           <PageTitle />
           <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
         </div>
@@ -67,6 +67,13 @@ function Result({
           breadcrumb={breadcrumb}
           displayFilter={layout?.variant === "drawer"}
         />
+
+        
+        <div id="title" class="flex sm:hidden w-full items-center flex-col mb-5">
+          <PageTitle />
+          <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
+        </div>
+
         <div class="flex flex-row gap-5">
           <div class="flex flex-col">
             {layout?.variant === "aside" && filters.length > 0 && (
