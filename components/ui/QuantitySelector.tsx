@@ -4,21 +4,31 @@ interface Props {
   quantity: number;
   disabled?: boolean;
   loading?: boolean;
+  widthFull?: boolean;
+  coloredButtons?: boolean;
   onChange?: (quantity: number) => void;
 }
 
 const QUANTITY_MAX_VALUE = 100;
 
-function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
+function QuantitySelector(
+  { onChange, quantity, disabled, loading, widthFull, coloredButtons }: Props,
+) {
   const decrement = () => onChange?.(Math.max(0, quantity - 1));
 
   const increment = () =>
     onChange?.(Math.min(quantity + 1, QUANTITY_MAX_VALUE));
 
   return (
-    <div class="join border border-[#DADADA] rounded-none max-w-[140px] w-full ">
+    <div
+      class={`join border border-[#DADADA] rounded-none ${
+        !widthFull && "max-w-[140px]"
+      } ${widthFull && "justify-between"} w-full`}
+    >
       <Button
-        class="btn-square btn-ghost join-item max-h-8 border-[#DADADA]"
+        class={`btn-square btn-ghost join-item ${
+          widthFull ? "h-[40px]" : "max-h-8"
+        } ${coloredButtons && "bg-[#ebebeb]"}`}
         onClick={decrement}
         disabled={disabled}
         loading={loading}
@@ -26,7 +36,9 @@ function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
         -
       </Button>
       <input
-        class="input text-center join-item [appearance:textfield] max-h-8"
+        class={`input text-center join-item [appearance:textfield] ${
+          widthFull ? "h-[40px]" : "max-h-8"
+        }`}
         type="number"
         inputMode="numeric"
         pattern="[0-9]*"
@@ -39,7 +51,9 @@ function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
         size={3}
       />
       <Button
-        class="btn-square btn-ghost join-item  max-h-8 border-[#DADADA]"
+        class={`btn-square btn-ghost join-item ${
+          widthFull ? "h-[40px]" : "max-h-8"
+        } ${coloredButtons && "bg-[#ebebeb]"}`}
         onClick={increment}
         disabled={disabled}
         loading={loading}
