@@ -51,7 +51,7 @@ function SearchControls(
         </div>
       }
     >
-      <div class="flex flex-col mb-4 p-4 sm:mb-0 sm:p-0 sm:gap-4 sm:flex-row sm:h-[53px] sm:border-b sm:border-base-200 justify-end">
+      <div class="flex flex-col mb-4 p-4 sm:mb-0 sm:p-0 sm:gap-4 sm:flex-row sm:h-[53px] justify-end">
         <div class="flex flex-row items-center justify-between border-b border-base-200 sm:gap-4 sm:border-none">
           <div class="flex flex-row sm:hidden items-center sm:p-0 mb-2">
             <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
