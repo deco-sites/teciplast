@@ -4,6 +4,7 @@ import Button from "$store/components/ui/Button.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import { useCart } from "apps/vtex/hooks/useCart.ts";
 import type { SimulationOrderForm, SKU, Sla } from "apps/vtex/utils/types.ts";
+import Icon from "$store/components/ui/Icon.tsx";
 
 export interface Props {
   items: Array<SKU>;
@@ -43,7 +44,7 @@ function ShippingContent({ simulation }: {
   }
 
   return (
-    <ul class="flex flex-col gap-4 p-4 bg-base-200 rounded-[4px]">
+    <ul class="flex flex-col gap-4 p-4 bg-base-200 mt-5">
       {methods.map((method) => (
         <li class="flex justify-between items-center border-base-200 not-first-child:border-t">
           <span class="text-button text-center">
@@ -92,37 +93,40 @@ function ShippingSimulation({ items }: Props) {
   }, []);
 
   return (
-    <div class="flex flex-col gap-2">
-      <div class="flex flex-col">
-        <span>Calcular frete</span>
-        <span>
-          Informe seu CEP para consultar os prazos de entrega
-        </span>
-      </div>
+    <div class="flex flex-col">
+      <div class="flex gap-2">
+        <div class="w-1/3 flex items-center">
+          <span>Frete e Prazo</span>
+        </div>
 
-      <form
-        class="join"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSimulation();
-        }}
-      >
-        <input
-          as="input"
-          type="text"
-          class="input input-bordered join-item"
-          placeholder="Seu cep aqui"
-          value={postalCode.value}
-          maxLength={8}
-          size={8}
-          onChange={(e: { currentTarget: { value: string } }) => {
-            postalCode.value = e.currentTarget.value;
+        <form
+          class="join w-full border border-[#cecece]"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSimulation();
           }}
-        />
-        <Button type="submit" loading={loading.value} class="join-item">
-          Calcular
-        </Button>
-      </form>
+        >
+          <input
+            as="input"
+            type="text"
+            class="input join-item w-full focus:outline-none"
+            placeholder="Seu cep aqui"
+            value={postalCode.value}
+            maxLength={8}
+            size={8}
+            onChange={(e: { currentTarget: { value: string } }) => {
+              postalCode.value = e.currentTarget.value;
+            }}
+          />
+          <Button
+            type="submit"
+            loading={loading.value}
+            class="join-item flex items-center justify-center min-w-[50px]"
+          >
+            <Icon id="ChevronRight" height={24} width={20} />
+          </Button>
+        </form>
+      </div>
 
       <div>
         <div>

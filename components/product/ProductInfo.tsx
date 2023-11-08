@@ -13,7 +13,10 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
-import ProductSelector from "./ProductVariantSelector.tsx";
+import ColorSelector from "./ProductColorSelector.tsx";
+import BedSizeSelector from "./ProductBedSizeSelector.tsx";
+import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
+import Icon from "$store/components/ui/Icon.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -59,21 +62,10 @@ function ProductInfo({ page, layout }: Props) {
 
   return (
     <div class="flex flex-col">
-      {/* Breadcrumb */}
-      <Breadcrumb
-        itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
-      />
       {/* Code and name */}
-      <div class="mt-4 sm:mt-8">
-        <div>
-          {gtin && (
-            <span class="text-sm text-base-300">
-              Cod. {gtin}
-            </span>
-          )}
-        </div>
+      <div>
         <h1>
-          <span class="font-medium text-xl capitalize">
+          <span class="font-semibold text-2xl capitalize text-[#403F3F]">
             {layout?.name === "concat"
               ? `${isVariantOf?.name} ${name}`
               : layout?.name === "productGroup"
@@ -82,91 +74,154 @@ function ProductInfo({ page, layout }: Props) {
           </span>
         </h1>
       </div>
+      {/* Rating */}
+      <div class="flex py-2 text-xs ">
+        <div className="flex text-[#3a3a3a] items-center">
+          <div class="mt-1">
+            <span class="font-bold text-base mr-1">4.8</span>
+          </div>
+          <div className="rating rating-sm mr-1 rating-half flex items-center">
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+          </div>
+          <div>(25 avaliações)</div>
+        </div>
+      </div>
       {/* Prices */}
       <div class="mt-4">
-        <div class="flex flex-row gap-2 items-center">
-          {(listPrice ?? 0) > price && (
+        <div class="flex flex-col">
+          {
+            /* {(listPrice ?? 0) > price && (
             <span class="line-through text-base-300 text-xs">
               {formatPrice(listPrice, offers?.priceCurrency)}
             </span>
-          )}
-          <span class="font-medium text-xl text-secondary">
-            {formatPrice(price, offers?.priceCurrency)}
+          )} */
+          }
+          <span class="line-through text-base-300 text-xs">
+            {formatPrice(listPrice, offers?.priceCurrency)}
           </span>
+          <div class="flex items-center">
+            <span class="text-2xl text-[#403F3F] font-bold">
+              {formatPrice(price, offers?.priceCurrency)}
+            </span>
+            <div class="bg-[#008000] text-white rounded py-[2px] px-2 ml-3">
+              <span class="text-sm font-semibold">25% OFF</span>
+            </div>
+          </div>
         </div>
-        <span class="text-sm text-base-300">
-          {installments}
+        <span class="text-base text-base-300">
+          até {installments}
         </span>
       </div>
-      {/* Sku Selector */}
+      {/* Sku Selectors */}
       <div class="mt-4 sm:mt-6">
-        <ProductSelector product={product} />
+        <BedSizeSelector product={product} />
       </div>
-      {/* Add to Cart and Favorites button */}
-      <div class="mt-4 sm:mt-10 flex flex-col gap-2">
-        {availability === "https://schema.org/InStock"
-          ? (
-            <>
-              {platform === "vtex" && (
-                <>
-                  <AddToCartButtonVTEX
-                    name={name}
-                    productID={productID}
-                    productGroupID={productGroupID}
-                    price={price}
-                    discount={discount}
-                    seller={seller}
-                  />
-                  <WishlistButton
-                    variant="full"
-                    productID={productID}
-                    productGroupID={productGroupID}
-                  />
-                </>
-              )}
-              {platform === "wake" && (
-                <AddToCartButtonWake
-                  name={name}
-                  productID={productID}
-                  productGroupID={productGroupID}
-                  price={price}
-                  discount={discount}
-                />
-              )}
-              {platform === "linx" && (
-                <AddToCartButtonLinx
-                  name={name}
-                  productID={productID}
-                  productGroupID={productGroupID}
-                  price={price}
-                  discount={discount}
-                />
-              )}
-              {platform === "vnda" && (
-                <AddToCartButtonVNDA
-                  name={name}
-                  productID={productID}
-                  productGroupID={productGroupID}
-                  price={price}
-                  discount={discount}
-                  additionalProperty={additionalProperty}
-                />
-              )}
-              {platform === "shopify" && (
-                <AddToCartButtonShopify
-                  name={name}
-                  productID={productID}
-                  productGroupID={productGroupID}
-                  price={price}
-                  discount={discount}
-                />
-              )}
-            </>
-          )
-          : <OutOfStock productID={productID} />}
+      <div class="mt-4 sm:mt-6">
+        <ColorSelector product={product} />
       </div>
+      {/* Add to Cart and quantity */}
+      <div class="mt-4 sm:mt-10 grid grid-cols-5 gap-4">
+        <div class="col-span-2">
+          <QuantitySelector
+            quantity={1}
+            widthFull={true}
+            coloredButtons={true}
+          />
+        </div>
+        <div class="col-span-3">
+          {availability === "https://schema.org/InStock"
+            ? (
+              <>
+                {platform === "vtex" && (
+                  <>
+                    <AddToCartButtonVTEX
+                      name={name}
+                      productID={productID}
+                      productGroupID={productGroupID}
+                      price={price}
+                      discount={discount}
+                      seller={seller}
+                    />
+                    <div class="text-[#818181] items-center flex gap-2 mt-1">
+                      <Icon id="secureIcon" height={15} width={13} />
+                      <span>Compra 100% Segura</span>
+                    </div>
+                  </>
+                )}
+              </>
+            )
+            : <OutOfStock productID={productID} />}
+        </div>
+      </div>
+      {/* More Details link */}
+      <a href={"#"} class="mt-5 flex items-center text-[#403F3F]">
+        <span class="uppercase underline text-[#403F3F] text-xs">
+          Mais detalhes sobre o produto
+        </span>
+        <Icon id="ChevronRight" height={20} width={15} />
+      </a>
       {/* Shipping Simulation */}
-      <div class="mt-8">
+      <div class="mt-4 border border-[#cecece] p-6">
         {platform === "vtex" && (
           <ShippingSimulation
             items={[{
