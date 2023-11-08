@@ -13,6 +13,8 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
+import ProductSelector from "./ProductVariantSelector.tsx";
+import BenefitsBarPdp from "$store/islands/BenefitsBarPdp.tsx";
 import ColorSelector from "./ProductColorSelector.tsx";
 import BedSizeSelector from "./ProductBedSizeSelector.tsx";
 import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
@@ -179,6 +181,9 @@ function ProductInfo({ page, layout }: Props) {
       <div class="mt-4 sm:mt-6">
         <ColorSelector product={product} />
       </div>
+            
+
+
       {/* Add to Cart and quantity */}
       <div class="mt-4 sm:mt-10 grid grid-cols-5 gap-4">
         <div class="col-span-2">
@@ -220,6 +225,11 @@ function ProductInfo({ page, layout }: Props) {
         </span>
         <Icon id="ChevronRight" height={20} width={15} />
       </a>
+
+      <div class="lg:hidden flex">
+            <BenefitsBarPdp/>
+      </div>  
+
       {/* Shipping Simulation */}
       <div class="mt-4 border border-[#cecece] p-6">
         {platform === "vtex" && (

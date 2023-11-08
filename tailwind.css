@@ -30,6 +30,18 @@
     background-size: 100% 100%; /* Set the height to 100% and let the width adjust automatically */
     background-position: center; /* Start from the right side */
   }
+  .benefits-bg-last-gray {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjk5IiBoZWlnaHQ9Ijg2IiB2aWV3Qm94PSIwIDAgMjk5IDg2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMCAwSDI5OVY0M1Y4NkgwTDI0LjE0NiA0M0wwIDBaIiBmaWxsPSIjRUJFQkVCIi8+Cjwvc3ZnPgo=");
+    background-size: 100% 100%; /* Set the height to 100% and let the width adjust automatically */
+    background-position: center; /* Start from the right side */
+    
+  }
+  .benefits-bg-first-gray{
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIyIiBoZWlnaHQ9Ijg2IiB2aWV3Qm94PSIwIDAgMzIyIDg2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMCAwSDI5Ny45NEwzMjIgNDNMMjk3Ljk0IDg2SDBWMFoiIGZpbGw9IiNFQkVCRUIiLz4KPC9zdmc+Cg==");
+    background-size: 100% 100%; /* Set the height to 100% and let the width adjust automatically */
+    background-position: center; /* Start from the right side */
+  }
+
 
   mark {
     @apply bg-accent text-accent-content;
