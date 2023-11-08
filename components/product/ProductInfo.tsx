@@ -214,7 +214,7 @@ function ProductInfo({ page, layout }: Props) {
         </div>
       </div>
       {/* Shipping Simulation */}
-      <div class="mt-8">
+      <div class="mt-8 border border-[#cecece] p-6">
         {platform === "vtex" && (
           <ShippingSimulation
             items={[{
