@@ -14,6 +14,8 @@ import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductSelector from "./ProductVariantSelector.tsx";
+import BenefitsBarPdp from "$store/islands/BenefitsBarPdp.tsx";
+
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -165,6 +167,10 @@ function ProductInfo({ page, layout }: Props) {
           )
           : <OutOfStock productID={productID} />}
       </div>
+      <div class="lg:hidden flex">
+            <BenefitsBarPdp/>
+      </div>          
+
       {/* Shipping Simulation */}
       <div class="mt-8">
         {platform === "vtex" && (
