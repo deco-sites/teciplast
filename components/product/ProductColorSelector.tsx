@@ -1,7 +1,6 @@
-import Avatar from "$store/components/ui/Avatar.tsx";
 import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 import type { Product } from "apps/commerce/types.ts";
-import { usePartial } from "apps/website/hooks/usePartial.ts";
+
 
 interface Props {
   product: Product;

@@ -11,7 +11,7 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
-import { usePartial } from "apps/website/hooks/usePartial.ts";
+import { usePartialSection } from "deco/hooks/usePartialSection.ts";
 import { Color } from "https://deno.land/x/color@v0.3.0/mod.ts";
 
 
@@ -100,7 +100,7 @@ function TabbedProductShelf({
                 <button
                   class={`tab tab-lg gap-2 p-0  uppercase text-base ${index=== 0 ? "pl-0" : ""} ${index === ti ? "tab-active bg-transparent underline" : ""}`}
                   style={ {color:text.backGroundShelf}}
-                  {...usePartial({ id: sectionId, props: { tabIndex: index } })}
+                  {...usePartialSection({ props: { tabIndex: index } })}
                 >
                   {tab.title}
                 </button>
