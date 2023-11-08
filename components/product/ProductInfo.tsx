@@ -213,8 +213,15 @@ function ProductInfo({ page, layout }: Props) {
             : <OutOfStock productID={productID} />}
         </div>
       </div>
+      {/* More Details link */}
+      <a href={"#"} class="mt-5 flex items-center text-[#403F3F]">
+        <span class="uppercase underline text-[#403F3F] text-xs">
+          Mais detalhes sobre o produto
+        </span>
+        <Icon id="ChevronRight" height={20} width={15} />
+      </a>
       {/* Shipping Simulation */}
-      <div class="mt-8 border border-[#cecece] p-6">
+      <div class="mt-4 border border-[#cecece] p-6">
         {platform === "vtex" && (
           <ShippingSimulation
             items={[{
