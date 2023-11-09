@@ -9,7 +9,7 @@ interface ColorBG {
 }
 interface Props {
   title?: string;
-  fontSize?: "Normal" | "Large";
+  fontSize?: "Small" | "Normal" | "Large";
   description?: string;
   alignment: "center" | "left";
   colorReverse?: boolean;
@@ -36,6 +36,8 @@ function Header(props: Props) {
                       : "text-base-content"
                   }
                   ${props.fontSize === "Normal" ? "lg:text-3xl" : "lg:text-4xl"}
+                  ${props.fontSize === "Small" ? "text-[15px] lg:text-[15px]" : ""}
+
 
                   `}
 

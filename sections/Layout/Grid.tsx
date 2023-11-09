@@ -63,12 +63,12 @@ interface Props {
       desktop?: "center" | "start" | "end" | "baseline" | "stretch";
     };
   };
-  product: Product[] | null;
+  product?: Product[] | null;
   title?: string;
   description?: string;
   layout2?: {
     headerAlignment?: "center" | "left";
-    headerfontSize?: "Normal" | "Large";
+    headerfontSize?: "Small"|"Normal" | "Large";
   };
   cardLayout?: cardLayout;
 }
@@ -100,10 +100,9 @@ function Section({ layout, children,product,title,
     
 
     </div>
-   
-     <ProductShelfPdp products={product}  title={title} description={description} layout={layout2} cardLayout={cardLayout} />
 
-
+        {product && <ProductShelfPdp products={product}  title={title} description={description} layout={layout2} cardLayout={cardLayout} /> }
+     
     </>
   );
 }

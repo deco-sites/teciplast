@@ -18,7 +18,8 @@ export interface Props {
   description?: string;
   layout?: {
     headerAlignment?: "center" | "left";
-    headerfontSize?: "Normal" | "Large";
+    headerfontSize?:   "Small" |"Normal" | "Large";
+
   };
   cardLayout?: cardLayout;
 }
@@ -38,13 +39,20 @@ function PdpProductShelf({
   }
 
   return (
-    <div class="w-full flex flex-col justify-center items-center  py-4 gap-5 lg:py-5">
+    <div class="w-full flex flex-col justify-center items-center  py-4 gap-5 lg:py-5 border-t-2 border-[#DEDEDE] mt-5">
+      
+      <div class="w-full max-w-[1300px]">
       <Header
         title={title || ""}
         description={description || ""}
         fontSize={layout?.headerfontSize || "Large"}
         alignment={layout?.headerAlignment || "center"}
       />
+
+      </div>
+
+      
+
       <div
         id={id}
         class="grid grid-cols-[36px_1fr_36px] px-0 flex-grow sm:h-[450px]"
