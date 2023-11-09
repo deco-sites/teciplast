@@ -19,6 +19,7 @@ import ColorSelector from "./ProductColorSelector.tsx";
 import BedSizeSelector from "./ProductBedSizeSelector.tsx";
 import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
+import RatingStars from "$store/components/ui/RatingStars.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -77,77 +78,13 @@ function ProductInfo({ page, layout }: Props) {
         </h1>
       </div>
       {/* Rating */}
-      <div class="flex py-2 text-xs ">
-        <div className="flex text-[#3a3a3a] items-center">
-          <div class="mt-1">
-            <span class="font-bold text-base mr-1">4.8</span>
-          </div>
-          <div className="rating rating-sm mr-1 rating-half flex items-center">
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-              checked
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-          </div>
-          <div>(25 avaliações)</div>
-        </div>
-      </div>
+      <RatingStars
+        productId={productID}
+        display="detailsPage"
+        size="sm"
+        extraClasses="py-2 text-xs"
+        average={4.8}
+      />
       {/* Prices */}
       <div class="mt-4">
         <div class="flex flex-col">
@@ -181,8 +118,6 @@ function ProductInfo({ page, layout }: Props) {
       <div class="mt-4 sm:mt-6">
         <ColorSelector product={product} />
       </div>
-            
-
 
       {/* Add to Cart and quantity */}
       <div class="mt-4 sm:mt-10 grid grid-cols-5 gap-4">
@@ -227,8 +162,8 @@ function ProductInfo({ page, layout }: Props) {
       </a>
 
       <div class="lg:hidden flex">
-            <BenefitsBarPdp/>
-      </div>  
+        <BenefitsBarPdp />
+      </div>
 
       {/* Shipping Simulation */}
       <div class="mt-4 border border-[#cecece] p-6">

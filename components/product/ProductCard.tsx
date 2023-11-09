@@ -8,6 +8,7 @@ import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import Image from "apps/website/components/Image.tsx";
+import RatingStars from "$store/components/ui/RatingStars.tsx";
 
 export interface Layout {
   basics?: {
@@ -261,137 +262,18 @@ function ProductCard(
             </div>
           )}
         <div class="flex py-2 text-xs ">
-          <div className="hidden lg:group-hover:flex">
-            <div className="rating rating-xs rating-half mr-2 mb-1">
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                checked
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-            </div>{" "}
-            (25)
-          </div>
-          <div className="flex lg:hidden">
-            <div className="rating rating-xs rating-half mr-2 mb-1">
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-1 bg-yellow-400"
-                disabled
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star mask-half-2 bg-yellow-400"
-                disabled
-              />
-            </div>(25)
-          </div>
+          <RatingStars
+            productId={productID}
+            size="xs"
+            extraClasses="hidden lg:group-hover:flex"
+            display="productCard"
+          />
+          <RatingStars
+            productId={`mobile-${productID}`}
+            size="xs"
+            extraClasses="lg:hidden mr-2 mb-1"
+            display="productCard"
+          />
         </div>
         {l?.hide?.allPrices
           ? ""
