@@ -19,6 +19,7 @@ import ColorSelector from "./ProductColorSelector.tsx";
 import BedSizeSelector from "./ProductBedSizeSelector.tsx";
 import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
+import RatingStars from "$store/components/ui/RatingStars.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -78,7 +79,14 @@ function ProductInfo({ page, layout }: Props) {
       </div>
       {/* Rating */}
       <div class="flex py-2 text-xs ">
-        <div className="flex text-[#3a3a3a] items-center">
+        <RatingStars
+          productId={productID}
+          display="detailsPage"
+          size="sm"
+          average={4.8}
+        />
+        {
+          /* <div className="flex text-[#3a3a3a] items-center">
           <div class="mt-1">
             <span class="font-bold text-base mr-1">4.8</span>
           </div>
@@ -146,7 +154,8 @@ function ProductInfo({ page, layout }: Props) {
             />
           </div>
           <div>(25 avaliações)</div>
-        </div>
+        </div> */
+        }
       </div>
       {/* Prices */}
       <div class="mt-4">
@@ -181,8 +190,6 @@ function ProductInfo({ page, layout }: Props) {
       <div class="mt-4 sm:mt-6">
         <ColorSelector product={product} />
       </div>
-            
-
 
       {/* Add to Cart and quantity */}
       <div class="mt-4 sm:mt-10 grid grid-cols-5 gap-4">
@@ -227,8 +234,8 @@ function ProductInfo({ page, layout }: Props) {
       </a>
 
       <div class="lg:hidden flex">
-            <BenefitsBarPdp/>
-      </div>  
+        <BenefitsBarPdp />
+      </div>
 
       {/* Shipping Simulation */}
       <div class="mt-4 border border-[#cecece] p-6">
