@@ -42,6 +42,9 @@
     background-position: center; /* Start from the right side */
   }
 
+  .shadowCard{
+    box-shadow: 0px 2px 6px 2px#00000026;
+  }
 
   mark {
     @apply bg-accent text-accent-content;
@@ -189,6 +192,3 @@
   position: relative;
 }
 
-.shadowCard{
-  box-shadow: 0px 2px 6px 2px#00000026;
-}
