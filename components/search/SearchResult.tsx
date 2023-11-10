@@ -3,7 +3,7 @@ import { Layout as CardLayout } from "$store/components/product/ProductCard.tsx"
 import Filters from "$store/components/search/Filters.tsx";
 import FeaturedFilters from "$store/components/search/FeaturedFilters.tsx";
 import PriceFilter from "$store/components/search/PriceFilter.tsx";
-
+import type { ImageWidget } from "apps/admin/widgets.ts";
 import Icon from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
 import PageTitle from "$store/islands/PageTitle.tsx";
@@ -24,11 +24,24 @@ export interface Layout {
   columns?: Columns;
 }
 
+export interface FeaturedFiltersInfo {
+  key: string;
+  image: ImageWidget;
+  title: string;
+}
+export interface AllowedFilters {
+  key: string;
+  title: string;
+  type: "carousel" | "dropdown" | "img-dropdown";
+  values: FeaturedFiltersInfo[]
+}
+
 export interface Props {
   /** @title Integration */
   page: ProductListingPage | null;
   layout?: Layout;
   cardLayout?: CardLayout;
+  featuredFilters: AllowedFilters[];
 }
 
 function NotFound() {
@@ -43,6 +56,7 @@ function Result({
   page,
   layout,
   cardLayout,
+  featuredFilters
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
   const totalPages = pageInfo.records && pageInfo.recordPerPage
@@ -63,7 +77,7 @@ function Result({
           <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
         </div>
         <div class="flex flex-row gap-5">
-          <FeaturedFilters filters={filters} />
+          <FeaturedFilters filters={filters} allowedFilters={featuredFilters}/>
         </div>
         <SearchControls
           sortOptions={sortOptions}
