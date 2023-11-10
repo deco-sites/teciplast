@@ -33,7 +33,6 @@ function ValueItem(
     </li>
   );
 }
-
 function isAllowedFilter(
   allowedFilter: AllowedFilters[],
   filter: FilterToggle,

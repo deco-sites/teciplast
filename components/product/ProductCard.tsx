@@ -8,6 +8,7 @@ import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import Image from "apps/website/components/Image.tsx";
+import RatingStars from "$store/components/ui/RatingStars.tsx";
 
 export interface Layout {
   basics?: {
@@ -26,6 +27,7 @@ export interface Layout {
     allPrices?: boolean;
     installments?: boolean;
     skuSelector?: boolean;
+    showCardShadow?: boolean;
     cta?: boolean;
   };
   onMouseOver?: {
@@ -67,7 +69,8 @@ function ProductCard(
     name,
     image: images,
     offers,
-    isVariantOf,review
+    isVariantOf,
+    review,
   } = product;
   const id = `product-card-${productID}`;
   const hasVariant = isVariantOf?.hasVariant ?? [];
@@ -108,11 +111,16 @@ function ProductCard(
       id={id}
       class={`group flex flex-col justify-between  w-full min-w-[220px]  h-full  lg:min-h-[400px] bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
-      } ${l?.onMouseOver?.showCardShadow ? "lg:hover:border-b-4 lg:hover:shadow-md lg:hover:shadow-[#00000061] transition-shadow duration-150"  : ""}
+      } ${
+        l?.onMouseOver?.showCardShadow
+          ? "lg:hover:border-b-4 lg:hover:shadow-md lg:hover:shadow-[#00000061] transition-shadow duration-150"
+          : ""
+      }
         ${
         l?.onMouseOver?.card === "Move up" &&
         "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
       }
+      ${l?.hide?.showCardShadow ? "border-b-4 shadowCard "  : ""}
       `}
       data-deco="view-product"
     >
@@ -149,11 +157,7 @@ function ProductCard(
               ? "lg:hidden lg:group-hover:block"
               : ""
           }
-          ${
-            l?.hide?.showFavoriteIcon
-              ? "lg:block "
-              : ""
-          }
+          ${l?.hide?.showFavoriteIcon ? "lg:block " : ""}
         `}
         >
           {platform === "vtex" && (
@@ -249,115 +253,62 @@ function ProductCard(
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}
-              {/* {l?.hide?.productDescription ? "" : (
+              {
+                /* {l?.hide?.productDescription ? "" : (
                 <div
                   class="truncate text-sm lg:text-sm text-neutral"
                   dangerouslySetInnerHTML={{ __html: description ?? "" }}
                 />
-              )} */}
+              )} */
+              }
             </div>
           )}
-       <div class="flex py-2 text-xs ">
-          <div className="hidden  lg:group-hover:flex  ">
-            <div className="rating rating-xs mr-2 mb-1">
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star bg-yellow-400"
-                disabled              
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star bg-yellow-400"
-                disabled              
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star bg-yellow-400"
-                disabled                
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star bg-yellow-400"
-                disabled              
-              />
-              <input
-                type="radio"
-                name="rating-0"
-                className="mask mask-star bg-yellow-400"
-                disabled              
-              />
-            </div> (25)
-          </div>
-          <div className="flex  lg:hidden">
-             <div className="rating rating-xs  mr-2 mb-1   ">
-                <input
-                  type="radio"
-                  name="rating-0"
-                  className="mask mask-star bg-yellow-400"
-                  
-                  disabled              
-                />
-                <input
-                  type="radio"
-                  name="rating-0"
-                  className="mask mask-star bg-yellow-400"
-                  disabled              
-                />
-                <input
-                  type="radio"
-                  name="rating-0"
-                  className="mask mask-star bg-yellow-400"
-                  disabled                
-                />
-                <input
-                  type="radio"
-                  name="rating-0"
-                  className="mask mask-star bg-yellow-400"
-                  disabled              
-                />
-                <input
-                  type="radio"
-                  name="rating-0"
-                  className="mask mask-star bg-yellow-400"
-                  disabled              
-                /> 
-              </div>(25)
-          </div>
+        <div class="flex py-2 text-xs ">
+          <RatingStars
+            productId={productID}
+            size="xs"
+            extraClasses="hidden lg:group-hover:flex"
+            display="productCard"
+          />
+          <RatingStars
+            productId={`mobile-${productID}`}
+            size="xs"
+            extraClasses="lg:hidden mr-2 mb-1"
+            display="productCard"
+          />
         </div>
-        {l?.hide?.allPrices ? "" : (
-          <div class="flex flex-col gap-10 group-hover:gap-2 h-full justify-center py-1">
-            <div
-              class={`flex flex-col gap-0 ${
-                l?.basics?.oldPriceSize === "Normal"
-                  ? "lg:flex-row lg:gap-2"
-                  : ""
-              } ${align === "center" ? "justify-center" : "justify-start"}`}
-            >
+        {l?.hide?.allPrices
+          ? ""
+          : (
+            <div class="flex flex-col gap-10 group-hover:gap-2 h-full justify-center py-1">
               <div
-                class={`line-through text-base-300 text-xs ${
-                  l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
-                }`}
+                class={`flex flex-col gap-0 ${
+                  l?.basics?.oldPriceSize === "Normal"
+                    ? "lg:flex-row lg:gap-2"
+                    : ""
+                } ${align === "center" ? "justify-center" : "justify-start"}`}
               >
-                {formatPrice(listPrice, offers?.priceCurrency)}
+                <div
+                  class={`line-through text-base-300 text-xs ${
+                    l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
+                  }`}
+                >
+                  {formatPrice(listPrice, offers?.priceCurrency)}
+                </div>
+                <div class="text-[#3e3e3e]  font-bold text-base lg:text-[15px]">
+                  {formatPrice(price, offers?.priceCurrency)}
+                </div>
+
+                {l?.hide?.installments
+                  ? ""
+                  : (
+                    <div class="text-base-300 lg:text-[15px] text-xs ">
+                      até <span class="text-[#007C2C] ">{installments}</span>
+                    </div>
+                  )}
               </div>
-              <div class="text-[#3e3e3e]  font-bold text-base lg:text-[15px]">
-                {formatPrice(price, offers?.priceCurrency)}
-              </div>
-         
-              {l?.hide?.installments
-                ? ""
-                : (
-                  <div class="text-base-300 lg:text-[15px] text-xs ">
-                    até <span class="text-[#007C2C] ">{installments}</span>
-                  </div>
-                )}
-          </div>
-          </div>
-        )}
+            </div>
+          )}
 
         {/* SKU Selector */}
         {l?.elementsPositions?.skuSelector === "Bottom" && (
@@ -374,8 +325,11 @@ function ProductCard(
           </>
         )}
 
-        <div class={l?.onMouseOver?.showCta ? "hidden lg:group-hover:flex"
-              : "lg:hidden"}>
+        <div
+          class={l?.onMouseOver?.showCta
+            ? "hidden lg:group-hover:flex"
+            : "lg:hidden"}
+        >
           {l?.onMouseOver?.showCta && cta}
         </div>
 
