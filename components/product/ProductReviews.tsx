@@ -113,6 +113,9 @@ function ProductReviews() {
       <div>
         <ReviewsList productId={productId} reviews={reviews} />
       </div>
+      <span class="text-[#006299] cursor-pointer">
+        Mostrar todas avaliações
+      </span>
     </div>
   );
 }
