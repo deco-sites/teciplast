@@ -27,6 +27,7 @@ export interface Layout {
     allPrices?: boolean;
     installments?: boolean;
     skuSelector?: boolean;
+    showCardShadow?: boolean;
     cta?: boolean;
   };
   onMouseOver?: {
@@ -119,6 +120,7 @@ function ProductCard(
         l?.onMouseOver?.card === "Move up" &&
         "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
       }
+      ${l?.hide?.showCardShadow ? "border-b-4 shadowCard "  : ""}
       `}
       data-deco="view-product"
     >
