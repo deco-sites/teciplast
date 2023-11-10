@@ -8,7 +8,7 @@ export type Props = {
   size?: string;
   extraClasses?: string;
   productId: string;
-  display: "productCard" | "detailsPage";
+  display: "productCard" | "detailsPage" | "reviews";
 };
 
 const RatingStars = (
@@ -51,7 +51,9 @@ const RatingStars = (
           />
         ))}
       </div>
-      <div>({count}{display === "detailsPage" && " avaliações"})</div>
+      {display !== "reviews" && (
+        <div>({count}{display === "detailsPage" && " avaliações"})</div>
+      )}
     </div>
   );
 };
