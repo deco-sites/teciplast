@@ -236,6 +236,20 @@ function ProductInfo({ page, layout }: Props) {
       <div class="lg:hidden flex">
         <BenefitsBarPdp />
       </div>
+        {/* Description card */}
+        <div class="mt-4 sm:mt-6">
+        <span class="text-sm">
+          {description && (
+            <details>
+              <summary class="cursor-pointer">Descrição</summary>
+              <div
+                class="ml-2 mt-2"
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
+            </details>
+          )}
+        </span>
+      </div>
 
       {/* Shipping Simulation */}
       <div class="mt-4 border border-[#cecece] p-6">
@@ -249,20 +263,7 @@ function ProductInfo({ page, layout }: Props) {
           />
         )}
       </div>
-      {/* Description card */}
-      <div class="mt-4 sm:mt-6">
-        <span class="text-sm">
-          {description && (
-            <details>
-              <summary class="cursor-pointer">Descrição</summary>
-              <div
-                class="ml-2 mt-2"
-                dangerouslySetInnerHTML={{ __html: description }}
-              />
-            </details>
-          )}
-        </span>
-      </div>
+    
       {/* Analytics Event */}
       <SendEventOnLoad
         event={{
