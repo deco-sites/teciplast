@@ -43,6 +43,11 @@ export default function GallerySlider(props: Props) {
   const { page } = props;
   const { product } = page;
 
+  const {
+    isVariantOf,
+  } = product;
+  const description = product.description || isVariantOf?.description;
+
   return (
     <>
     <div id={id} class=" grid grid-flow-row sm:grid-flow-col lg:gap-5">        
@@ -120,7 +125,7 @@ export default function GallerySlider(props: Props) {
     
     
     </div>
-
+   
   </>
   )
 }

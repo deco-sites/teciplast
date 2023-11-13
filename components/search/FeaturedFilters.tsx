@@ -119,13 +119,17 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[500px]"
+      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] min-w-[400px] w-[45vw]"
     >
       <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px]">
         {values.filter(isAllowedOption).map((item, index) => {
-          let allowedOption = allowedFilters.find((filter) => filter.key == key)
+          const allowedOption = allowedFilters.find((filter) =>
+            filter.key == key
+          )
             ?.values.find((option) => option.key == item.value);
-          const { title, image } = allowedOption || { title: "", image: "" };
+          if (!allowedOption) return null;
+          const { title = "", image = "" } = allowedOption;
+
           return (
             <Slider.Item
               index={index}
@@ -168,6 +172,74 @@ function CarouselFilter({ filter, allowedFilters }: CarouselFilterProps) {
   );
 }
 
+function IconsValueItem(
+  { title, item, icon }: IconsAllowedOption,
+) {
+  const { url, selected, label, quantity } = item;
+  return (
+    <a
+      href={url}
+      class={`${
+        selected
+          ? "text-[#70A4E0] border-[#DADADA] bg-base-100 border-2"
+          : "text-[#838383] border-none"
+      } flex flex-col items-center text-center p-5 rounded-md`}
+    >
+      <div>
+        <Icon
+          id={icon}
+          size={45}
+          strokeWidth={2}
+        />
+      </div>
+      <span class="text-xs uppercase font-bold mt-2">{title}</span>
+    </a>
+  );
+}
+
+function IconsFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
+  const { key, values } = filter;
+  const allowedFilter = allowedFilters.find((item) => item.key == key);
+
+  const isAllowedOption = (value: FilterToggleValue) => {
+    const allowedOption = allowedFilter?.values.find((item) =>
+      item.key == value.value
+    );
+    return Boolean(allowedOption);
+  };
+  return (
+    <div>
+      <p class="text-xs pl-1">{allowedFilter?.title}</p>
+      <div class="flex px-0  h-auto min-w-[300px] gap-2">
+        {values.filter(isAllowedOption).map((item, index) => {
+          const allowedOption = allowedFilters.find((filter) =>
+            filter.key == key
+          )
+            ?.values.find((option) => option.key == item.value);
+          if (!allowedOption) return null;
+          const { title = "", image = "", icon = "" } = allowedOption;
+          return <IconsValueItem {...{ item, title, image, icon }} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+function IconsFilter({ filter, allowedFilters }: CarouselFilterProps) {
+  return (
+    <div class="rounded-none text-base-300 lg:border-none">
+      <div class="flex">
+        <ul class={`flex`}>
+          <IconsFilterValues
+            filter={filter}
+            allowedFilters={allowedFilters}
+          />
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 interface DropdownFilterProps {
   filter: FilterToggle;
   label: string;
@@ -178,7 +250,7 @@ function DropdownFilter({ filter, label }: DropdownFilterProps) {
     <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none ">
       <input type="checkbox" class="min-h-[0px]" />
       <div class="collapse-title min-h-[0px] rounded-none flex gap-2 px-0 lg:px-5">
-        <span>{label || filter.label}</span>
+        <span>{filter.label}</span>
       </div>
 
       <div class="collapse-content">
@@ -196,7 +268,6 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
     const allowedFilter = allowedFilters.find((item) => item.key == filter.key);
     return allowedFilter;
   };
-
   const isAllowed = (filter: Filter): filter is FilterToggle =>
     Boolean(allowedFilters.find((item) => item.key == filter.key));
 
@@ -220,6 +291,15 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
 
               if (allowed?.type == "dropdown") {
                 return <DropdownFilter filter={filter} label={allowed.title} />;
+              }
+
+              if (allowed?.type == "icons") {
+                return (
+                  <IconsFilter
+                    filter={filter}
+                    allowedFilters={allowedFilters}
+                  />
+                );
               }
             })}
         </ul>

@@ -4,7 +4,7 @@ import Filters from "$store/components/search/Filters.tsx";
 import FeaturedFilters from "$store/components/search/FeaturedFilters.tsx";
 import PriceFilter from "$store/components/search/PriceFilter.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-import Icon from "$store/components/ui/Icon.tsx";
+import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
 import PageTitle from "$store/islands/PageTitle.tsx";
 import { useOffer } from "$store/sdk/useOffer.ts";
@@ -26,13 +26,14 @@ export interface Layout {
 
 export interface FeaturedFiltersInfo {
   key: string;
-  image: ImageWidget;
+  image?: ImageWidget;
+  icon?: AvailableIcons;
   title: string;
 }
 export interface AllowedFilters {
   key: string;
   title: string;
-  type: "carousel" | "dropdown" | "img-dropdown";
+  type: "carousel" | "icons" | "dropdown" | "img-dropdown";
   values: FeaturedFiltersInfo[]
 }
 

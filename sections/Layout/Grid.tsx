@@ -1,6 +1,7 @@
 import { Section } from "deco/blocks/section.ts";
 import { grid, VNode } from "../../constants.tsx";
 import { clx } from "../../sdk/clx.ts";
+import { ProductDetailsPage } from "apps/commerce/types.ts";
 import type { Product } from "apps/commerce/types.ts";
 import ProductShelfPdp from "$store/sections/Product/ProductShelfPdp.tsx";
 import ProductCard, {
@@ -64,19 +65,9 @@ interface Props {
       desktop?: "center" | "start" | "end" | "baseline" | "stretch";
     };
   };
-  product?: Product[] | null;
-  title?: string;
-  description?: string;
-  layout2?: {
-    headerAlignment?: "center" | "left";
-    headerfontSize?: "Small" | "Normal" | "Large";
-  };
-  cardLayout?: cardLayout;
 }
 
-function Section(
-  { layout, children, product, title, description, layout2, cardLayout }: Props,
-) {
+function Section({ layout, children }: Props) {
   return (
     <>
       <div
@@ -96,17 +87,6 @@ function Section(
       >
         {children}
       </div>
-
-      {product && (
-        <ProductShelfPdp
-          products={product}
-          title={title}
-          description={description}
-          layout={layout2}
-          cardLayout={cardLayout}
-        />
-      )}
-      <ProductReviews />
     </>
   );
 }
