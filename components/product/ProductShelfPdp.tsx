@@ -41,7 +41,7 @@ function PdpProductShelf({
   }
 
   return (
-    <div class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${borderRoundedBot && "rounded-b rounded-md"} `} >
+    <div class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${borderRoundedBot && "rounded-b border-b rounded-md"} `} >
       <div class="w-full flex flex-col justify-center items-center  py-4 gap-5 lg:py-5 border-t-2 border-[#DEDEDE] mt-5">
         
         <div class="w-full max-w-[1300px]">
