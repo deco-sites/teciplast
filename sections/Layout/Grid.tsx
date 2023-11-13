@@ -64,20 +64,10 @@ interface Props {
       desktop?: "center" | "start" | "end" | "baseline" | "stretch";
     };
   };
-  product?: Product[] | null;
-  title?: string;
-  description?: string;
-  layout2?: {
-    headerAlignment?: "center" | "left";
-    headerfontSize?: "Small"|"Normal" | "Large";
-  };
-  cardLayout?: cardLayout;
+ 
 }
 
-function Section({ layout, children,product,title,
-  description,
-  layout2,
-  cardLayout  }: Props) {
+function Section({ layout, children  }: Props) {
   return (
     <>
     <div
@@ -98,7 +88,6 @@ function Section({ layout, children,product,title,
       {children}
     </div>
 
-    {product && <ProductShelfPdp products={product}  title={title} description={description} layout={layout2} cardLayout={cardLayout} /> }
      
     </>
   );

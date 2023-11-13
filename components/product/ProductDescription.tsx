@@ -30,10 +30,13 @@ interface Props {
      * @default product
      */
     name?: "concat" | "productGroup" | "product";
+  
+
   };
+  borderRoundedBot?: boolean;
 }
 
-function ProductInfo({ page, layout }: Props) {
+function ProductInfo({ page, layout ,borderRoundedBot=false}: Props) {
   const platform = usePlatform();
 
   if (page === null) {
@@ -59,7 +62,7 @@ function ProductInfo({ page, layout }: Props) {
   console.log(description)
 
   return (
-    <div class="container bg-white p-5 lg:p-12  w-full border-x border-[#cecece]  ">
+    <div class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${borderRoundedBot && "rounded-b  border-b  rounded-md"} `}>
       <div class="flex flex-col w-full items-center border-t border-[#cecece}  mt-4 sm:mt-6 ">
        
           {/* Description card */}
