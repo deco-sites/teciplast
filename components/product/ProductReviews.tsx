@@ -1,6 +1,10 @@
 import RatingStars from "$store/components/ui/RatingStars.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 
+export interface Props {
+  borderRoundedBot?: boolean;
+}
+
 interface Review {
   reviewerName: string;
   verifiedPurchase: boolean;
@@ -23,7 +27,10 @@ const formatDate = (date: Date) => {
 };
 
 const ReviewsList = (
-  { productId, reviews }: { productId: string; reviews: Reviews },
+  { productId, reviews }: {
+    productId: string;
+    reviews: Reviews;
+  },
 ) => {
   return (
     <div>
@@ -60,7 +67,9 @@ const ReviewsList = (
   );
 };
 
-function ProductReviews() {
+function ProductReviews(props: Props) {
+  const { borderRoundedBot } = props;
+
   const productId = "asd11324";
   const averageReview = 4.8;
   const reviews: Reviews = [
@@ -84,8 +93,14 @@ function ProductReviews() {
     },
   ];
   return (
-    <div class="w-full max-w-[1300px] border-t border-[#dedede] pt-4 mx-auto mt-10">
-      <h3 class="uppercase my-5">Avaliações do produto</h3>
+    <div
+      class={`container bg-white px-5 pb-5 pt-[1px] lg:p-12  w-full border-x border-[#cecece] ${
+        borderRoundedBot && "rounded-b border-b"
+      } `}
+    >
+      <h3 class="uppercase my-5 pt-10 border-t border-[#cecece]">
+        Avaliações do produto
+      </h3>
       <div class="flex justify-between mb-6">
         <RatingStars
           productId={productId}
