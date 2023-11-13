@@ -94,7 +94,7 @@ function ProductReviews(props: Props) {
   ];
   return (
     <div
-      class={`container bg-white px-5 pb-5 pt-[1px] lg:p-12  w-full border-x border-[#cecece] ${
+      class={`container bg-white px-5 pb-5 pt-[2px] lg:p-12  w-full border-x border-[#cecece] ${
         borderRoundedBot && "rounded-b border-b"
       } `}
     >
