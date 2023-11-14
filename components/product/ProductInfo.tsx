@@ -64,7 +64,7 @@ function ProductInfo({ page, layout }: Props) {
   const discount = price && listPrice ? listPrice - price : 0;
 
   return (
-    <div class="flex flex-col">
+    <div class="flex flex-col max-w-[100vw]">
       {/* Code and name */}
       <div>
         <h1>
@@ -236,8 +236,8 @@ function ProductInfo({ page, layout }: Props) {
       <div class="lg:hidden flex">
         <BenefitsBarPdp />
       </div>
-        {/* Description card */}
-        <div class="mt-4 sm:mt-6">
+      {/* Description card */}
+      <div class="mt-4 sm:mt-6">
         <span class="text-sm">
           {description && (
             <details>
@@ -263,7 +263,7 @@ function ProductInfo({ page, layout }: Props) {
           />
         )}
       </div>
-    
+
       {/* Analytics Event */}
       <SendEventOnLoad
         event={{
