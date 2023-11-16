@@ -159,7 +159,7 @@ function PriceFilter({ filters }: Props) {
                  
                   </div>
               </div>
-            )
+            ) 
           )
         }
       </ul>
