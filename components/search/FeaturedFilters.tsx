@@ -10,6 +10,8 @@ import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import { AllowedFilters } from "./SearchResult.tsx";
+import SizeFilter from "$store/components/search/SizeFilter.tsx";
+
 
 interface Props {
   filters: ProductListingPage["filters"];
@@ -172,9 +174,8 @@ function CarouselFilter({ filter, allowedFilters }: CarouselFilterProps) {
   );
 }
 
-function IconsValueItem(
-  { title, item, icon }: IconsAllowedOption,
-) {
+
+function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
   const { url, selected, label, quantity } = item;
   return (
     <a
@@ -264,7 +265,6 @@ function DropdownFilter({ filter, label }: DropdownFilterProps) {
 
 function FeaturedFilters({ filters, allowedFilters }: Props) {
   const getAllowedFromFilter = (filter: FilterToggle) => {
-    console.log({ allowedFilters });
     const allowedFilter = allowedFilters.find((item) => item.key == filter.key);
     return allowedFilter;
   };
@@ -301,8 +301,11 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
                   />
                 );
               }
+            
             })}
+             <SizeFilter  filters={filters} />
         </ul>
+      
       </div>
     </div>
   );
