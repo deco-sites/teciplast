@@ -65,9 +65,7 @@ const MultiRangeSliderSize = (
           setMinVal(value);
           event.currentTarget.value = value.toString();
         }}
-        class={`thumb_ thumb--zindex-3 ${
-          (minVal > max - 100) && "thumb--zindex-5"
-        }`}
+        class={`thumbSize_ thumb--zindex-3 `}
       />
       <input
         type="range"
@@ -80,14 +78,14 @@ const MultiRangeSliderSize = (
           setMaxVal(value);
           event.currentTarget.value = value.toString();
         }}
-        class="thumb_ thumb--zindex-4"
+        class="thumbSize_ thumb--zindex-4"
       />
 
-      <div class="slider_">
+      <div class="sliderSize_">
         <div class="slider__track" />
         <div ref={range} class="slider__range" />
-        <div class="slider__left-value">{ minVal + "cm"}</div>
-        <div class="slider__right-value">{maxVal + "cm"}</div>
+        <div class="slider__left-value">{ minVal + " cm"}</div>
+        <div class="slider__right-value">{maxVal + " cm"}</div>
       </div>
     </div>
   );

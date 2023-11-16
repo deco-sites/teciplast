@@ -25,6 +25,7 @@ function FilterValues(props: { filter: FilterToggle;}) {
   const { key, values } = props.filter;
   const flexDirection = key === "avatar" ? "flex-row" : "flex-col";
 
+  // Tem que trocar a parte logica, pois esta com a do price. Não mexi pois não tem retorno ainda da api para isso. 
   if (key === "price") {
     //parsing range values for price filter
     const valuesArray = Object.entries(values);
@@ -59,8 +60,8 @@ function FilterValues(props: { filter: FilterToggle;}) {
     return (
       <div class={` h-12 mt-4`}>
         <MultiRangeSliderSize
-          min={minRange}
-          max={maxRange}
+          min={1}
+          max={1000}
           currentMin={currentMaxMin.min}
           currentMax={currentMaxMin.max}
           onChange={(query: { min: number; max: number }) => {
@@ -90,16 +91,10 @@ function FilterValues(props: { filter: FilterToggle;}) {
 
 
 function Filter(filter: FilterToggle) {
-  const [isOpen, setIsOpen] = useState(true);
   const { key, quantity } = filter;
 
-  if (key === "price") {
-    setIsOpen(true);
-  }
 
-  function toggle() {
-    setIsOpen(!isOpen);
-  }
+
 
   const unused_categories = ["category-1", "category-2", "brand"];
   if (
@@ -107,29 +102,11 @@ function Filter(filter: FilterToggle) {
   ) {
     return null;
   }
-  if ( key !== "price"){
-    return null;
-  }
+  
   return (
     <li class="flex flex-col">
       <div
-        class="flex justify-between relative cursor-pointer items-center "
-        onClick={() => toggle()}
-      >
-      
-        {key !== "price" && (
-          <Icon
-            class="flex items-center"
-            size={15}
-            id={isOpen ? "ChevronUp" : "ChevronDown"}
-            strokeWidth={3}
-          />
-        )}
-      </div>
-      <div
-        class={`grid border-solid ${
-          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-        } transition-[grid-template-rows] duration-600 ease-in-out`}
+        class={`grid border-solid "grid-rows-[1fr]" transition-[grid-template-rows] duration-600 ease-in-out`}
       >
         <div class={`overflow-y-auto overflow-x-hidden`}>
           <FilterValues filter={{ ...filter }}/> 
@@ -147,7 +124,7 @@ function PriceFilter({ filters }: Props) {
         .filter(isToggle)
         .map((filter) => (
           filter.key == "price" && 
-              <div class="text-base-300 w-[250px] h-full flex flex-col justify-between py-1  ">
+              <div class="text-base-300 w-[350px] h-full flex flex-col justify-between py-1  ">
              
                   <div class="rounded-none flex gap-2  px-5 text-sm text-[#999999] w-full">
                     <span>Tamanho (Largura) </span>
