@@ -121,9 +121,9 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] min-w-[400px] w-[45vw]"
+      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] lg:min-w-[400px] w-[45vw]"
     >
-      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px]">
+      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px] min-w-[350px] ml-5 lg:ml-0">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
             filter.key == key
@@ -135,7 +135,7 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
           return (
             <Slider.Item
               index={index}
-              class="w-[220px] sm:w-[240px] min-h-[320px] first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
+              class="w-[220px] sm:w-[240px] min-h-[320px] first:ml-2 sm:first:pl-0 last:mr-6 sm:last:pr-0"
             >
               <CarouselValueItem {...{ item, title, image }} />
             </Slider.Item>
@@ -161,7 +161,7 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
 
 function CarouselFilter({ filter, allowedFilters }: CarouselFilterProps) {
   return (
-    <div class="bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none py-4">
+    <div class="bg-base-100 rounded-none mb-1 text-base-300 lg:border-b border-[#C3C3C3] lg:border-none lg:py-4">
       <div class="flex">
         <ul class={`flex`}>
           <CarouselFilterValues
@@ -273,8 +273,8 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
 
   return (
     <div class="relative min-h-[90px] py-2">
-      <div class="absolute z-50">
-        <ul class="flex gap-2 z-50">
+      <div class="absolute ">
+        <ul class="flex gap-2 ">
           {filters
             .filter(isToggle)
             .filter(isAllowed)
@@ -303,7 +303,7 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
               }
             
             })}
-            <SizeFilter  filters={filters} />
+            {/* <SizeFilter  filters={filters} /> */}
         </ul>
       
       </div>
