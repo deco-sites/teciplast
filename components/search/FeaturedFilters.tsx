@@ -161,7 +161,7 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
 
 function CarouselFilter({ filter, allowedFilters }: CarouselFilterProps) {
   return (
-    <div class="bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none py-4">
+    <div class="bg-base-100 rounded-none mb-1 text-base-300 lg:border-b border-[#C3C3C3] lg:border-none lg:py-4">
       <div class="flex">
         <ul class={`flex`}>
           <CarouselFilterValues
@@ -273,8 +273,8 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
 
   return (
     <div class="relative min-h-[90px] py-2">
-      <div class="absolute z-50">
-        <ul class="flex gap-2 z-50">
+      <div class="absolute ">
+        <ul class="flex gap-2 ">
           {filters
             .filter(isToggle)
             .filter(isAllowed)
@@ -303,7 +303,7 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
               }
             
             })}
-            <SizeFilter  filters={filters} />
+            {/* <SizeFilter  filters={filters} /> */}
         </ul>
       
       </div>
