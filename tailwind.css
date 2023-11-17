@@ -99,6 +99,7 @@
   width: 200px;
 }
 
+
 .slider__track,
 .slider__range,
 .slider__left-value,
@@ -192,3 +193,16 @@
   position: relative;
 }
 
+
+.sliderSize_ {
+  position: relative;
+  width: 300px;
+}
+
+.thumbSize_ {
+  pointer-events: none;
+  position: absolute;
+  height: 0;
+  width: 300px;
+  outline: none;
+}

@@ -1,25 +1,8 @@
-import { SendEventOnLoad } from "$store/components/Analytics.tsx";
-import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
-import AddToCartButtonLinx from "$store/islands/AddToCartButton/linx.tsx";
-import AddToCartButtonShopify from "$store/islands/AddToCartButton/shopify.tsx";
-import AddToCartButtonVNDA from "$store/islands/AddToCartButton/vnda.tsx";
-import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
-import AddToCartButtonWake from "$store/islands/AddToCartButton/wake.tsx";
-import OutOfStock from "$store/islands/OutOfStock.tsx";
-import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
-import WishlistButton from "$store/islands/WishlistButton.tsx";
-import { formatPrice } from "$store/sdk/format.ts";
+
 import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
-import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
-import ProductSelector from "./ProductVariantSelector.tsx";
-import BenefitsBarPdp from "$store/islands/BenefitsBarPdp.tsx";
-import ColorSelector from "./ProductColorSelector.tsx";
-import BedSizeSelector from "./ProductBedSizeSelector.tsx";
-import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
-import Icon from "$store/components/ui/Icon.tsx";
-import RatingStars from "$store/components/ui/RatingStars.tsx";
+
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -59,7 +42,6 @@ function ProductInfo({ page, layout ,borderRoundedBot=false}: Props) {
     availability,
   } = useOffer(offers);
   const productGroupID = isVariantOf?.productGroupID ?? "";
-  console.log(description)
 
   return (
     <div class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${borderRoundedBot && "rounded-b  border-b  rounded-md"} `}>
