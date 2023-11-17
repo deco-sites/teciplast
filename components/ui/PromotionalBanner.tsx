@@ -1,6 +1,14 @@
 import { Picture, Source } from "apps/website/components/Picture.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-import { Banner } from "./BannerGrid.tsx";
+
+export interface Banner {
+  srcMobile: ImageWidget;
+  srcDesktop?: ImageWidget;
+  /**
+   * @description Image alt text
+   */
+  alt: string;
+}
 
 export interface Props {
   banner: Banner;
@@ -9,7 +17,6 @@ export interface Props {
 const DEFAULT_PROPS: Props = {
   banner: {
     alt: "a",
-    href: "a",
     srcMobile:
       "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/82727553-f670-4e7c-b9c2-9452aed1955f",
     srcDesktop:
@@ -22,14 +29,10 @@ export default function PromotionalBanner(props: Props) {
     banner,
   } = { ...DEFAULT_PROPS, ...props };
 
-  const { href, srcMobile, srcDesktop, alt } = banner;
+  const { srcMobile, srcDesktop, alt } = banner;
 
   return (
-    <section class="container w-full my-6">
-      <a
-        href={banner.href}
-        class={`overflow-hidden`}
-      >
+    <section class="container w-full my-6 overflow-hidden">
         <Picture>
           <Source
             media="(max-width: 767px)"
@@ -52,7 +55,6 @@ export default function PromotionalBanner(props: Props) {
             loading="lazy"
           />
         </Picture>
-      </a>
     </section>
   );
 }
