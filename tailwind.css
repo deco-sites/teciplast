@@ -196,13 +196,13 @@
 
 .sliderSize_ {
   position: relative;
-  width: 350px;
+  width: 300px;
 }
 
 .thumbSize_ {
   pointer-events: none;
   position: absolute;
   height: 0;
-  width: 350px;
+  width: 300px;
   outline: none;
 }
