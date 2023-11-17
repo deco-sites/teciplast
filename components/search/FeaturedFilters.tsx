@@ -123,7 +123,7 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
       id={id}
       class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] lg:min-w-[400px] w-[45vw]"
     >
-      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px] min-w-[350px]">
+      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px] min-w-[350px] ml-5 lg:ml-0">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
             filter.key == key
@@ -135,7 +135,7 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
           return (
             <Slider.Item
               index={index}
-              class="w-[220px] sm:w-[240px] min-h-[320px] first:ml-6 sm:first:pl-0 last:mr-6 sm:last:pr-0"
+              class="w-[220px] sm:w-[240px] min-h-[320px] first:ml-2 sm:first:pl-0 last:mr-6 sm:last:pr-0"
             >
               <CarouselValueItem {...{ item, title, image }} />
             </Slider.Item>
