@@ -303,7 +303,7 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
               }
             
             })}
-              <SizeFilter  filters={filters} /> 
+            <SizeFilter  filters={filters} />
         </ul>
       
       </div>
