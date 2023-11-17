@@ -13,7 +13,7 @@ function FreeShippingProgressBar({ target, total, currency, locale }: Props) {
   const percent = Math.floor((total / target) * 100);
 
   return (
-    <div class="flex flex-col w-full gap-2 bg-[#807f7f] text-base-100 px-5 min-h-[70px] justify-center items-center">
+    <div class="flex flex-col w-full gap-2 bg-[#606060] text-base-100 px-5 min-h-[70px] justify-center items-center">
       <div class="flex justify-center items-start gap-2 text-xs w-full">
         <Icon id="Truck" size={24} strokeWidth={1} />
         {remaining > 0
