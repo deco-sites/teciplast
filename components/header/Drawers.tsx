@@ -72,7 +72,7 @@ function ModalCart(
   const { displayCart} = useUI();
   return(
     <div class={`${displayCart.value === true ? "grid": "hidden"} bg-base-100  grid-rows-[auto_1fr]    lg:max-w-[100vw] max-h-[900px]  mt-5  lg:mr-10`}>     
-      <div class="flex justify-center items-center text-center bg-[#807f7f] text-base-100 px-5 ">
+      <div class="flex justify-center items-center text-center bg-[#606060] text-base-100 px-5 ">
       {onClose && (
           <Button class="btn btn-ghost left-0" onClick={onClose}>
             <Icon id="XMark" size={24} strokeWidth={2} />

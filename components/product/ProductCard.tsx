@@ -109,7 +109,7 @@ function ProductCard(
   return (
     <div
       id={id}
-      class={`group flex flex-col justify-between  w-full min-w-[220px]  h-full  lg:min-h-[400px] bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
+      class={`group flex flex-col justify-between  w-full min-w-[220px]  h-full  lg:min-h-[425px]  bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
       } ${
         l?.onMouseOver?.showCardShadow
@@ -210,7 +210,7 @@ function ProductCard(
         </a>
         <figcaption
           class={`
-          absolute bottom-1 left-0 w-full flex flex-col gap-3 p-2 ${
+          absolute bottom-1 left-0 w-full flex flex-col gap-2  p-2 ${
             l?.onMouseOver?.showSkuSelector || l?.onMouseOver?.showCta
               ? "transition-opacity opacity-0 lg:group-hover:opacity-100"
               : "lg:hidden"
@@ -218,7 +218,7 @@ function ProductCard(
         >
           {/* SKU Selector */}
           {l?.onMouseOver?.showSkuSelector && (
-            <ul class="flex justify-center items-center gap-2 w-full">
+            <ul class="flex justify-center items-center gap-1 w-full">
               {skuSelector}
             </ul>
           )}
@@ -233,7 +233,7 @@ function ProductCard(
           <>
             {l?.hide?.skuSelector ? "" : (
               <ul
-                class={`flex items-center gap-2 w-full overflow-auto p-3 ${
+                class={`flex items-center gap-1 w-full overflow-auto p-2 ${
                   align === "center" ? "justify-center" : "justify-start"
                 } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
               >
@@ -246,7 +246,7 @@ function ProductCard(
         {l?.hide?.productName && l?.hide?.productDescription
           ? ""
           : (
-            <div class="flex flex-col h-[60px]  ">
+            <div class="flex flex-col h-[50px]  ">
               {l?.hide?.productName ? "" : (
                 <h2
                   class="text-[12px]  h-full  text-[#303030] font-bold"
@@ -273,14 +273,14 @@ function ProductCard(
           <RatingStars
             productId={`mobile-${productID}`}
             size="xs"
-            extraClasses="lg:hidden mr-2 mb-1"
+            extraClasses="lg:hidden mr-2 "
             display="productCard"
           />
         </div>
         {l?.hide?.allPrices
           ? ""
           : (
-            <div class="flex flex-col gap-10 group-hover:gap-2 h-full justify-center py-1">
+            <div class="flex flex-col gap-5 group-hover:gap-1  py-1">
               <div
                 class={`flex flex-col gap-0 ${
                   l?.basics?.oldPriceSize === "Normal"
@@ -315,7 +315,7 @@ function ProductCard(
           <>
             {l?.hide?.skuSelector ? "" : (
               <ul
-                class={`flex items-center gap-2 w-full ${
+                class={`flex items-center gap-1 w-full ${
                   align === "center" ? "justify-center" : "justify-start"
                 } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
               >
@@ -327,7 +327,7 @@ function ProductCard(
 
         <div
           class={l?.onMouseOver?.showCta
-            ? "hidden lg:group-hover:flex"
+            ? "hidden lg:group-hover:flex mt-auto"
             : "lg:hidden"}
         >
           {l?.onMouseOver?.showCta && cta}

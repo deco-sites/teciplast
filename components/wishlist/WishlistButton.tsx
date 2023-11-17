@@ -101,7 +101,7 @@ function WishlistButton({
           id="Heart"
           size={24}
           strokeWidth={2}
-          fill={inWishlist ? "black" : "none"}
+          fill={inWishlist ? "red" : "none"}
           class="my-0 mx-auto"
         />
         {variant === "icon" ? null : inWishlist ? "Remover" : "Favoritar"}
