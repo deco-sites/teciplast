@@ -121,9 +121,9 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] min-w-[400px] w-[45vw]"
+      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] lg:min-w-[400px] w-[45vw]"
     >
-      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px]">
+      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px] min-w-[350px]">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
             filter.key == key
