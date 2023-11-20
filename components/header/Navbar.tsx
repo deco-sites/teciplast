@@ -26,6 +26,8 @@ function Navbar({ items, searchbar, logo }: {
 }) {
   const platform = usePlatform();
   const help = "/help.png";
+  const isLogged = false;
+
   return (
     <>
       {/* Mobile Version */}
@@ -81,21 +83,23 @@ function Navbar({ items, searchbar, logo }: {
           <SearchbarFixed searchbar={searchbar} />
 
           <div class="flex-none flex items-center justify-center gap-14">
-            <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
-              <a
-                class="flex flex-row  justify-center items-center "
-                href="/login"
-                aria-label="Log in"
-              >
-                <Icon
-                  id="User-Circle2"
-                  class={`w-full  justify-center items-center  object-cover mr-2`}
-                  size={24}
-                  strokeWidth={0.4}
-                />
-                Entrar
-              </a>
-            </div>
+            {!isLogged && (
+              <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
+                <a
+                  class="flex flex-row  justify-center items-center "
+                  href="/login"
+                  aria-label="Log in"
+                >
+                  <Icon
+                    id="User-Circle2"
+                    class={`w-full  justify-center items-center  object-cover mr-2`}
+                    size={24}
+                    strokeWidth={0.4}
+                  />
+                  Entrar
+                </a>
+              </div>
+            )}
             <div class="uppercase flex flex-row text-base gap-2 justify-center items-center">
               {platform === "vtex" && <CartButtonVTEX />}
               {platform === "vnda" && <CartButtonVDNA />}
@@ -134,6 +138,23 @@ function Navbar({ items, searchbar, logo }: {
                 Ajuda
               </a>
             </div>
+            {isLogged && (
+              <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
+                <a
+                  class="flex flex-row  justify-center items-center "
+                  href="/login"
+                  aria-label="Log in"
+                >
+                  <Icon
+                    id="User-Circle2"
+                    class={`w-full  justify-center items-center  object-cover mr-2`}
+                    size={24}
+                    strokeWidth={0.4}
+                  />
+                  Sair
+                </a>
+              </div>
+            )}
           </div>
         </div>
         <ul class="flex flex-row items-center justify-between w-full h-full shrink-0 ">
