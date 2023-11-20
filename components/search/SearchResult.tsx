@@ -71,7 +71,7 @@ function Result({
           <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
         </div>
       </div>
-      <div class="container  sm:py-5">
+      <div class="container  sm:py-5 px-2 sm:px-0">
        
         <div id="title" class="hidden sm:flex flex-col ">
           <PageTitle />
@@ -93,7 +93,7 @@ function Result({
           <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
         </div>
 
-        <div class="flex flex-row gap-5">
+        <div class="flex flex-row sm:gap-5">
           <div class="flex flex-col">
             {layout?.variant === "aside" && filters.length > 0 && (
               <>
