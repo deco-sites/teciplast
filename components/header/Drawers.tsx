@@ -18,6 +18,7 @@ import CartButtonShopify from "$store/islands/Header/Cart/shopify.tsx";
 import CartButtonVDNA from "$store/islands/Header/Cart/vnda.tsx";
 import CartButtonVTEX from "$store/islands/Header/Cart/vtex.tsx";
 import CartButtonWake from "$store/islands/Header/Cart/wake.tsx";
+import { useUser } from "apps/vtex/hooks/useUser.ts";
 
 const Menu = lazy(() => import("$store/components/header/Menu.tsx"));
 const Searchbar = lazy(() => import("$store/components/search/Searchbar.tsx"));
@@ -110,7 +111,8 @@ function Central(
     platform?: ReturnType<typeof usePlatform>;
   },
 ) {
-  const isLogged = true;
+  const { user } = useUser();
+  const isLogged = Boolean(user.value?.email);
 
   return (
     <div class="w-full flex px-5 justify-center items-center ">
@@ -198,8 +200,8 @@ function Central(
             <div class="uppercase flex flex-col text-[9px] justify-end items-center  gap-2">
               <a
                 class="flex items-center flex-col justify-center"
-                href="/login"
-                aria-label="Log in"
+                href="/logout"
+                aria-label="Log out"
               >
                 <Icon
                   id="logOut"
@@ -212,7 +214,6 @@ function Central(
             </div>
           )}
         </div>
-
 
         <Suspense
           fallback={

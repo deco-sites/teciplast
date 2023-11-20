@@ -17,6 +17,8 @@ import Image from "apps/website/components/Image.tsx";
 import NavItem from "./NavItem.tsx";
 
 import { navbarHeight } from "./constants.ts";
+import { useUser } from "apps/vtex/hooks/useUser.ts";
+
 import SearchButton from "deco-sites/teciplast/components/header/Buttons/Search.tsx";
 
 function Navbar({ items, searchbar, logo }: {
@@ -26,7 +28,8 @@ function Navbar({ items, searchbar, logo }: {
 }) {
   const platform = usePlatform();
   const help = "/help.png";
-  const isLogged = false;
+  const { user } = useUser();
+  const isLogged = Boolean(user.value?.email);
 
   return (
     <>
@@ -142,8 +145,8 @@ function Navbar({ items, searchbar, logo }: {
               <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
                 <a
                   class="flex flex-row  justify-center items-center "
-                  href="/login"
-                  aria-label="Log in"
+                  href="/logout"
+                  aria-label="Log out"
                 >
                   <Icon
                     id="logOut"
