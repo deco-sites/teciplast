@@ -202,7 +202,7 @@ function Central(
                 aria-label="Log in"
               >
                 <Icon
-                  id="User-Circle2"
+                  id="logOut"
                   class={`w-full  justify-center items-center  object-cover mb-2`}
                   size={24}
                   strokeWidth={0.4}
