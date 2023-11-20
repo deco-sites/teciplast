@@ -69,20 +69,23 @@ function ModalCart(
     children: ComponentChildren;
   },
 ) {
-  const { displayCart} = useUI();
-  return(
-    <div class={`${displayCart.value === true ? "grid": "hidden"} bg-base-100  grid-rows-[auto_1fr]    lg:max-w-[100vw] max-h-[900px]  mt-5  lg:mr-10`}>     
+  const { displayCart } = useUI();
+  return (
+    <div
+      class={`${
+        displayCart.value === true ? "grid" : "hidden"
+      } bg-base-100  grid-rows-[auto_1fr]    lg:max-w-[100vw] max-h-[900px]  mt-5  lg:mr-10`}
+    >
       <div class="flex justify-center items-center text-center bg-[#606060] text-base-100 px-5 ">
-      {onClose && (
+        {onClose && (
           <Button class="btn btn-ghost left-0" onClick={onClose}>
             <Icon id="XMark" size={24} strokeWidth={2} />
           </Button>
         )}
-        
+
         <h1 class="m-auto">
           <span class="font-medium text-xl ml-[-24px]">{title}</span>
         </h1>
-        
       </div>
       <Suspense
         fallback={
@@ -93,8 +96,9 @@ function ModalCart(
       >
         {children}
       </Suspense>
-    </div>)
-;}
+    </div>
+  );
+}
 
 function Central(
   { onClose, children, imgMenu, searchbar, platform }: {
@@ -106,6 +110,8 @@ function Central(
     platform?: ReturnType<typeof usePlatform>;
   },
 ) {
+  const isLogged = true;
+
   return (
     <div class="w-full flex px-5 justify-center items-center ">
       <div class="left-auto  absolute top-5  rounded-none w-11/12 bg-base-100 py-[15px] px-[15px] ">
@@ -135,28 +141,29 @@ function Central(
         <SearchbarFixed searchbar={searchbar} />
 
         <div class="flex justify-around items-center w-full my-[15px] h-11">
-          <div class="uppercase flex flex-col text-[9px] justify-end items-center  gap-2">
-            <a
-              class="flex items-center flex-col justify-center"
-              href="/login"
-              aria-label="Log in"
-            >
-              <Icon
-                id="User-Circle2"
-                class={`w-full  justify-center items-center  object-cover mb-2`}
-                size={24}
-                strokeWidth={0.4}
-              />
-              Entrar
-            </a>
-          </div>
+          {!isLogged && (
+            <div class="uppercase flex flex-col text-[9px] justify-end items-center  gap-2">
+              <a
+                class="flex items-center flex-col justify-center"
+                href="/login"
+                aria-label="Log in"
+              >
+                <Icon
+                  id="User-Circle2"
+                  class={`w-full  justify-center items-center  object-cover mb-2`}
+                  size={24}
+                  strokeWidth={0.4}
+                />
+                Entrar
+              </a>
+            </div>
+          )}
           <div class="uppercase flex flex-col  gap-2 text-[9px] justify-end items-center">
             {platform === "vtex" && <CartButtonVTEX />}
             {platform === "vnda" && <CartButtonVDNA />}
             {platform === "wake" && <CartButtonWake />}
             {platform === "linx" && <CartButtonLinx />}
             {platform === "shopify" && <CartButtonShopify />}
-            
           </div>
           <div class="uppercase flex flex-col text-[9px] justify-end items-center gap-2">
             <a
@@ -187,7 +194,25 @@ function Central(
               />Ajuda
             </a>
           </div>
+          {isLogged && (
+            <div class="uppercase flex flex-col text-[9px] justify-end items-center  gap-2">
+              <a
+                class="flex items-center flex-col justify-center"
+                href="/login"
+                aria-label="Log in"
+              >
+                <Icon
+                  id="User-Circle2"
+                  class={`w-full  justify-center items-center  object-cover mb-2`}
+                  size={24}
+                  strokeWidth={0.4}
+                />
+                Sair
+              </a>
+            </div>
+          )}
         </div>
+
 
         <Suspense
           fallback={
