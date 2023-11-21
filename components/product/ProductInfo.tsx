@@ -51,6 +51,7 @@ function ProductInfo({ page, layout }: Props) {
     gtin,
     isVariantOf,
     additionalProperty = [],
+    category,
   } = product;
   const description = product.description || isVariantOf?.description;
   const {
@@ -62,6 +63,8 @@ function ProductInfo({ page, layout }: Props) {
   } = useOffer(offers);
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
+
+  console.log(product.description)
 
   return (
     <div class="flex flex-col max-w-[100vw]">
@@ -184,9 +187,22 @@ function ProductInfo({ page, layout }: Props) {
         </span>
       </div>
       {/* Sku Selectors */}
-      <div class="mt-4 sm:mt-6">
-        <BedSizeSelector product={product} />
-      </div>
+      {description && 
+      <div class={`py-2 `}
+      dangerouslySetInnerHTML={{ __html: description.replaceAll(name, '').replaceAll("font-family: Verdana;",'').replaceAll("text-align: justify;","").replaceAll("font-size: 14px","").replaceAll('vertical-align: top; font-family: inherit; font-weight: bolder; font-style: inherit; outline: 0px; padding: 0px; margin: 0px; border: 0px;','display:flex; flex-direction: column; text-align: start;') }}>
+
+        
+      </div>}
+          
+
+      {
+      category?.includes('Cama') &&
+      
+        <div class="mt-4 sm:mt-6">
+          <BedSizeSelector product={product} />
+        </div>
+        
+      }
       <div class="mt-4 sm:mt-6">
         <ColorSelector product={product} />
       </div>
@@ -236,7 +252,7 @@ function ProductInfo({ page, layout }: Props) {
       <div class="lg:hidden flex">
         <BenefitsBarPdp />
       </div>
-      {/* Description card */}
+      {/* Description card 
       <div class="mt-4 sm:mt-6">
         <span class="text-sm">
           {description && (
@@ -249,7 +265,7 @@ function ProductInfo({ page, layout }: Props) {
             </details>
           )}
         </span>
-      </div>
+      </div> */}
 
       {/* Shipping Simulation */}
       <div class="mt-4 border border-[#cecece] p-6">
