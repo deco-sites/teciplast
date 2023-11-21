@@ -64,7 +64,7 @@ function ProductInfo({ page, layout }: Props) {
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
 
-  console.log(product.description)
+  console.log(product.description);
 
   return (
     <div class="flex flex-col max-w-[100vw]">
@@ -187,22 +187,41 @@ function ProductInfo({ page, layout }: Props) {
         </span>
       </div>
       {/* Sku Selectors */}
-      {description && 
-      <div class={`py-2 `}
-      dangerouslySetInnerHTML={{ __html: description.replaceAll(name, '').replaceAll("font-family: Verdana;",'').replaceAll("text-align: justify;","").replaceAll("font-size: 14px","").replaceAll('vertical-align: top; font-family: inherit; font-weight: bolder; font-style: inherit; outline: 0px; padding: 0px; margin: 0px; border: 0px;','display:flex; flex-direction: column; text-align: start;') }}>
+      {description &&
+        (
+          <div
+            class={`py-2 `}
+            dangerouslySetInnerHTML={{
+              __html: description.replaceAll(name, "").replaceAll(
+                "font-family: Verdana;",
+                "",
+              ).replaceAll("text-align: justify;", "").replaceAll(
+                "font-size: 14px",
+                "",
+              ).replaceAll(
+                "vertical-align: top; font-family: inherit; font-weight: bolder; font-style: inherit; outline: 0px; padding: 0px; margin: 0px; border: 0px;",
+                "display:flex; flex-direction: column; text-align: start;",
+              ).replaceAll("_x000D_ ",''),
+            }}
+          >
+          </div>
+        )}
 
-        
-      </div>}
-          
+      {category?.includes("Cama") &&
+        (
+          <div class="mt-4 sm:mt-6">
+            <BedSizeSelector product={product} />
+          </div>
+        )}
 
-      {
-      category?.includes('Cama') &&
-      
-        <div class="mt-4 sm:mt-6">
-          <BedSizeSelector product={product} />
-        </div>
-        
-      }
+      {/* More Details link */}
+      <a href={"#"} class="mt-5 flex items-center text-[#403F3F]">
+        <span class="uppercase underline text-[#403F3F] text-xs">
+          Mais detalhes sobre o produto
+        </span>
+        <Icon id="ChevronRight" height={20} width={15} />
+      </a>
+
       <div class="mt-4 sm:mt-6">
         <ColorSelector product={product} />
       </div>
@@ -241,18 +260,12 @@ function ProductInfo({ page, layout }: Props) {
             : <OutOfStock productID={productID} />}
         </div>
       </div>
-      {/* More Details link */}
-      <a href={"#"} class="mt-5 flex items-center text-[#403F3F]">
-        <span class="uppercase underline text-[#403F3F] text-xs">
-          Mais detalhes sobre o produto
-        </span>
-        <Icon id="ChevronRight" height={20} width={15} />
-      </a>
 
       <div class="lg:hidden flex">
         <BenefitsBarPdp />
       </div>
-      {/* Description card 
+      {
+        /* Description card
       <div class="mt-4 sm:mt-6">
         <span class="text-sm">
           {description && (
@@ -265,7 +278,8 @@ function ProductInfo({ page, layout }: Props) {
             </details>
           )}
         </span>
-      </div> */}
+      </div> */
+      }
 
       {/* Shipping Simulation */}
       <div class="mt-4 border border-[#cecece] p-6">
