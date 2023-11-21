@@ -33,8 +33,6 @@ function Navbar({ items, searchbar, logo }: Props) {
   const { user } = useUser();
   const isLogged = Boolean(user.value?.email);
 
-  console.log({ user });
-
   return (
     <>
       {/* Mobile Version */}
