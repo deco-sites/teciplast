@@ -21,11 +21,13 @@ import { useUser } from "apps/vtex/hooks/useUser.ts";
 
 import SearchButton from "deco-sites/teciplast/components/header/Buttons/Search.tsx";
 
-function Navbar({ items, searchbar, logo }: {
+export interface Props {
   items: SiteNavigationElement[];
   searchbar?: SearchbarProps;
   logo?: { src: string; alt: string };
-}) {
+}
+
+function Navbar({ items, searchbar, logo }: Props) {
   const platform = usePlatform();
   const help = "/help.png";
   const { user } = useUser();
