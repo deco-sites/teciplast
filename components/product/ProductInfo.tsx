@@ -87,7 +87,79 @@ function ProductInfo({ page, layout }: Props) {
           display="detailsPage"
           size="sm"
           average={4.8}
+        
         />
+        {
+          /* <div className="flex text-[#3a3a3a] items-center">
+          <div class="mt-1">
+            <span class="font-bold text-base mr-1">4.8</span>
+          </div>
+          <div className="rating rating-sm mr-1 rating-half flex items-center">
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-1 bg-yellow-400"
+              disabled
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-0"
+              className="mask mask-star mask-half-2 bg-yellow-400"
+              disabled
+            />
+          </div>
+          <div>(25 avaliações)</div>
+        </div> */
+        }
       </div>
       {/* Prices */}
       <div class="mt-4">
@@ -138,7 +210,7 @@ function ProductInfo({ page, layout }: Props) {
         )}
 
       {/* More Details link */}
-      <a href={"#"} class="mt-5 flex items-center text-[#403F3F]">
+      <a href="#more"  class="mt-5 flex items-center text-[#403F3F]">
         <span class="uppercase underline text-[#403F3F] text-xs">
           Mais detalhes sobre o produto
         </span>

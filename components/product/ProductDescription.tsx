@@ -44,15 +44,15 @@ function ProductInfo({ page, layout ,borderRoundedBot=false}: Props) {
   const productGroupID = isVariantOf?.productGroupID ?? "";
 
   return (
-    <div class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${borderRoundedBot && "rounded-b  border-b  rounded-md"} `}>
+    <div  class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${borderRoundedBot && "rounded-b  border-b  rounded-md"} `}>
       <div class="flex flex-col w-full items-center border-t border-[#cecece}  mt-4 sm:mt-6 ">
        
           {/* Description card */}
-        <div class="pt-5 ">
+        <div class="pt-5 "  >
           <div class="py-0 lg:py-5" >
             {description && (
               <div class="flex flex-col lg:flex-row justify-start items-start" >
-                <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base">Descrição do Produto</span>
+                <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base"><a name="more">Descrição do Produto</a></span>
                 {/* <div
                   class="ml-2 mt-2"
                   dangerouslySetInnerHTML={{ __html: description }}
