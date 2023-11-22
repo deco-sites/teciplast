@@ -64,7 +64,6 @@ function ProductInfo({ page, layout }: Props) {
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
 
-  console.log(product);
 
   return (
     <div class="flex flex-col max-w-[100vw]">
@@ -88,88 +87,10 @@ function ProductInfo({ page, layout }: Props) {
           size="sm"
           average={4.8}
         />
-        {
-          /* <div className="flex text-[#3a3a3a] items-center">
-          <div class="mt-1">
-            <span class="font-bold text-base mr-1">4.8</span>
-          </div>
-          <div className="rating rating-sm mr-1 rating-half flex items-center">
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-              checked
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-          </div>
-          <div>(25 avaliações)</div>
-        </div> */
-        }
       </div>
       {/* Prices */}
       <div class="mt-4">
         <div class="flex flex-col">
-          {
-            /* {(listPrice ?? 0) > price && (
-            <span class="line-through text-base-300 text-xs">
-              {formatPrice(listPrice, offers?.priceCurrency)}
-            </span>
-          )} */
-          }
           <span class="line-through text-base-300 text-xs">
             {formatPrice(listPrice, offers?.priceCurrency)}
           </span>
@@ -189,21 +110,23 @@ function ProductInfo({ page, layout }: Props) {
       {/* Sku Selectors */}
       {description &&
         (
-          <div
-            class={`py-2 `}
-            dangerouslySetInnerHTML={{
-              __html: description.replaceAll(name, "").replaceAll(
-                "font-family: Verdana;",
-                "",
-              ).replaceAll("text-align: justify;", "").replaceAll(
-                "font-size: 14px",
-                "",
-              ).replaceAll(
-                "vertical-align: top; font-family: inherit; font-weight: bolder; font-style: inherit; outline: 0px; padding: 0px; margin: 0px; border: 0px;",
-                "display:flex; flex-direction: column; text-align: start;",
-              ).replaceAll("_x000D_ ",''),
-            }}
+          <div 
+            class={`py-2 w-full `}
+            dangerouslySetInnerHTML={{ __html: description }}
           >
+          </div>
+        )}
+
+      {additionalProperty &&
+        (
+          <div class="flex flex-row justify-start w-full  gap-5 py-3">
+            {additionalProperty.map((item) => {
+            if(item.name  && item.value !== undefined && item.name !== 'category')
+            {return   <div class={`flex flex-col `}>
+                      <span class="font-bold text-lg">{item.name}</span>
+                      <span>{item.value}</span>
+                    </div>}
+            })}
           </div>
         )}
 
