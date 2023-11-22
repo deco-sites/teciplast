@@ -21,7 +21,7 @@ export interface Props {
   /** @title Logo */
   logo?: { src: ImageWidget; alt: string };
   data?: number;
-  
+
   /**
    * @title Text
    * @default Time left for a campaign to end wth a link
@@ -29,7 +29,7 @@ export interface Props {
   text?: HTMLWidget;
   textMobile?: HTMLWidget;
   textLink?: HTMLWidget;
-  
+
   /**
    * @title Expires at date
    * @format datetime

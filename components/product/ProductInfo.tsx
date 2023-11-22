@@ -64,6 +64,7 @@ function ProductInfo({ page, layout }: Props) {
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
 
+  console.log(product)
 
   return (
     <div class="flex flex-col max-w-[100vw]">
@@ -110,9 +111,9 @@ function ProductInfo({ page, layout }: Props) {
       {/* Sku Selectors */}
       {description &&
         (
-          <div 
+          <div
             class={`py-2 w-full `}
-            dangerouslySetInnerHTML={{ __html: description }}
+            dangerouslySetInnerHTML={{ __html: description.replaceAll("_x000D_",'') }}
           >
           </div>
         )}
@@ -121,19 +122,18 @@ function ProductInfo({ page, layout }: Props) {
         (
           <div class="flex flex-row justify-start w-full  gap-5 py-3">
             {additionalProperty.map((item) => {
-            if(item.name  && item.value !== undefined && item.name !== 'category')
-            {return   <div class={`flex flex-col `}>
-                      <span class="font-bold text-lg">{item.name}</span>
-                      <span>{item.value}</span>
-                    </div>}
+              if (
+                item.name && item.value !== undefined &&
+                item.name !== "category" && item.name !== "RefId"
+              ) {
+                return (
+                  <div class={`flex flex-col `}>
+                    <span class="font-bold text-lg">{item.name}</span>
+                    <span>{item.value}</span>
+                  </div>
+                );
+              }
             })}
-          </div>
-        )}
-
-      {category?.includes("Cama") &&
-        (
-          <div class="mt-4 sm:mt-6">
-            <BedSizeSelector product={product} />
           </div>
         )}
 
@@ -144,6 +144,13 @@ function ProductInfo({ page, layout }: Props) {
         </span>
         <Icon id="ChevronRight" height={20} width={15} />
       </a>
+
+      {category?.includes("Cama") &&
+        (
+          <div class="mt-4 sm:mt-6">
+            <BedSizeSelector product={product} />
+          </div>
+        )}
 
       <div class="mt-4 sm:mt-6">
         <ColorSelector product={product} />
