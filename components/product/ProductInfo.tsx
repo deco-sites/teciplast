@@ -64,7 +64,7 @@ function ProductInfo({ page, layout }: Props) {
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
 
-  console.log(product.description);
+  console.log(product);
 
   return (
     <div class="flex flex-col max-w-[100vw]">
