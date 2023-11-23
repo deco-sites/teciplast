@@ -30,7 +30,7 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
     offers,
     isVariantOf,
     additionalProperty = [],
-
+    brand
   } = product;
   const description = product.description || isVariantOf?.description;
   const {
@@ -76,6 +76,15 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
                   INFORMAÇÕES DO PRODUTO
                 </span>
                 <div class="flex flex-row  flex-wrap  flex-grow  w-full lg:min-w-[900px] lg:max-w-[900px] gap-5 ">
+                  {
+                    brand && (
+                      <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
+                      <span class="text-base uppercase font-bold">Marca</span>
+                      <span class="text-sm uppercase ">{brand.name}</span>
+                    </div>
+                    )
+                  }
+                  
                   {isVariantOf?.additionalProperty.map((item) => {
                     if (
                       item.name && item.value !== undefined &&
@@ -84,7 +93,7 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
                       return (
                         <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
                           <span class="text-base uppercase font-bold">{item.name}</span>
-                          <span class="text-sm uppercase underline">{item.value}</span>
+                          <span class="text-sm uppercase ">{item.value}</span>
                         </div>
                       );
                     }
