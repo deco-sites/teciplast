@@ -1,5 +1,3 @@
-import { useUser } from 'apps/vtex/hooks/useUser.ts';
-
 export interface PropsLoad {
   productId: string;
 }
@@ -100,8 +98,6 @@ const loader = async (props: PropsLoad): Promise<ResponseReviews | null> => {
     const response = (await fetch(
       url + '/reviews?product_id=' + productId
     ).then((r) => r.json())) as ResponseReviews;
-
-    console.log({ response });
 
     // const response = await fetchAPI<ResponseReviews>(
     //   url + "/reviews?product_id=" + productId,
