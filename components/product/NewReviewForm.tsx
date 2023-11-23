@@ -1,14 +1,14 @@
 import Button from "$store/components/ui/Button.tsx";
 import { useCallback, useState } from "preact/hooks";
 import { invoke } from "$store/runtime.ts";
+import { useUser } from "apps/vtex/hooks/useUser.ts";
 
 export interface Props {
   productId: string;
+  userHasReviewed: boolean;
 }
 
-const NewReviewForm = (
-  { productId }: Props,
-) => {
+const Form = ({ productId }: { productId: string }) => {
   const [title, setTitle] = useState<string | undefined>(undefined);
   const [reviewerName, setReviewerName] = useState<string | undefined>(
     undefined,
@@ -153,6 +153,41 @@ const NewReviewForm = (
           )}
       </div>
     </form>
+  );
+};
+
+const NewReviewForm = ({ productId, userHasReviewed }: Props) => {
+  const { user } = useUser();
+  // const isLogged = true;
+  const isLogged = Boolean(user.value?.email);
+
+  return (
+    <div>
+      {isLogged && (
+        <div class="text-left mt-4">
+          <div
+            tabIndex={0}
+            className="collapse collapse-arrow bg-white rounded-none shadow-none font-semibold text-base p-0 text-black"
+          >
+            <input type="checkbox" className="peer" />
+            <div className="collapse-title font-medium w-60 bg-black text-white peer-checked:bg-white peer-checked:text-black peer-checked:border peer-checked:border-black">
+              Escreva uma avaliação
+            </div>
+            <div className="collapse-content transition duration-[800ms]">
+              {userHasReviewed
+                ? (
+                  <div>
+                    <span>
+                      Você já enviou uma avaliação para este produto
+                    </span>
+                  </div>
+                )
+                : <Form productId={productId} />}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

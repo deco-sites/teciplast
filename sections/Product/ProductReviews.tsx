@@ -1,6 +1,5 @@
 import RatingStars from "$store/components/ui/RatingStars.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
-import { useUser } from "apps/vtex/hooks/useUser.ts";
 import Button from "$store/components/ui/Button.tsx";
 import {
   ResponseReviews,
@@ -10,7 +9,6 @@ import { default as reviewsLoader } from "$store/loaders/Reviews/reviewsandratin
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import type { SectionProps } from "deco/mod.ts";
 import NewReviewForm from "$store/islands/NewReviewForm.tsx";
-import { useCallback } from "preact/hooks";
 
 export interface Props {
   borderRoundedBot?: boolean;
@@ -130,10 +128,6 @@ function ProductReviews(
   //   },
   // ];
 
-  const { user } = useUser();
-  // const isLogged = true;
-  const isLogged = Boolean(user.value?.email);
-
   return (
     <div
       class={`container bg-white px-5 pb-5 pt-[2px] lg:p-12  w-full border-x border-[#cecece] ${
@@ -180,30 +174,10 @@ function ProductReviews(
             Mostrar todas avaliações
           </span> */
         }
-        {isLogged && (
-          <div class="text-left mt-4">
-            <div
-              tabIndex={0}
-              className="collapse collapse-arrow bg-white rounded-none shadow-none font-semibold text-base p-0 text-black"
-            >
-              <input type="checkbox" className="peer" />
-              <div className="collapse-title font-medium w-60 bg-black text-white peer-checked:bg-white peer-checked:text-black peer-checked:border peer-checked:border-black">
-                Escreva uma avaliação
-              </div>
-              <div className="collapse-content transition duration-[800ms]">
-                {userHasReviewed
-                  ? (
-                    <div>
-                      <span>
-                        Você já enviou uma avaliação para este produto
-                      </span>
-                    </div>
-                  )
-                  : <NewReviewForm productId={productId} />}
-              </div>
-            </div>
-          </div>
-        )}
+        <NewReviewForm
+          productId={productId}
+          userHasReviewed={reviews.userHasReviewed || false}
+        />
       </div>
     </div>
   );
