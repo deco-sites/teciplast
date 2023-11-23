@@ -104,7 +104,7 @@ const NoReviews = () => {
 function ProductReviews(
   { page, reviews, debug, borderRoundedBot }: SectionProps<typeof loader>,
 ) {
-  const productId = "asd11324";
+  const productId = page!.product.productID;
   const userHasReviewed = false;
   const averageReview = 4.8;
   // const rreviews: Reviews = [
