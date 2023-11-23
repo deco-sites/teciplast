@@ -24,9 +24,7 @@ export async function loader(
 
   try {
     reviews = (await reviewsLoader({
-      productId: page!.product!.isVariantOf
-        ? page!.product!.isVariantOf?.productGroupID
-        : page!.product!.productID,
+      productId: page!.product!.productID,
     })) as ResponseReviews;
     console.log({ reviewsss: reviews });
   } catch (e) {
@@ -64,12 +62,10 @@ const ReviewsList = (
         <div class="grid grid-cols-5 border-t border-[#dadada] py-8">
           <div class="flex flex-col col-span-1 mt-1">
             <span class="font-semibold">{r.reviewerName}</span>
-            {r.verifiedPurchaser && (
-              <div class="text-blue-500 flex items-center gap-1">
-                <Icon id="secureCircle" height={12} width={12} />
-                <span class="text-xs">Compra Verificada</span>
-              </div>
-            )}
+            <div class="text-blue-500 flex items-center gap-1">
+              <Icon id="secureCircle" height={12} width={12} />
+              <span class="text-xs">Compra Verificada</span>
+            </div>
           </div>
           <div class="col-span-4 flex flex-col">
             <div class="flex justify-between mb-3">
