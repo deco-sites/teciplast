@@ -46,7 +46,7 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
         borderRoundedBot && "rounded-b  border-b  rounded-md"
       } `}
     >
-      <div class="flex flex-col w-full items-center border-t border-[#cecece}  mt-4 sm:mt-6 ">
+      <div class="flex flex-col w-full items-center justify-between border-t border-[#cecece}  mt-4 sm:mt-6 ">
         {/* Description card */}
         <div class="pt-5 ">
           <div class="py-0 lg:py-5">
@@ -58,7 +58,7 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
                 {description &&
                   (
                     <div
-                      class={`py-2 w-full `}
+                      class={`py-2 flex-row flex-wrap flex-grow w-full lg:min-w-[900px] lg:max-w-[900px] gap-5`}
                       dangerouslySetInnerHTML={{
                         __html: description.replaceAll("_x000D_", ""),
                       }}
@@ -75,22 +75,23 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
                 <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base">
                   INFORMAÇÕES DO PRODUTO
                 </span>
-                <div class="flex flex-row  flex-wrap  flex-grow  w-full max-w-[900px] gap-5 ">
+                <div class="flex flex-row  flex-wrap  flex-grow  w-full lg:min-w-[900px] lg:max-w-[900px] gap-5 ">
                   {additionalProperty.map((item) => {
                     if (
                       item.name && item.value !== undefined &&
                       item.name !== "category" && item.name !== "RefId"
                     ) {
                       return (
-                        <div class={`flex flex-col `}>
-                          <span class="font-bold text-lg">{item.name}</span>
-                          <span>{item.value}</span>
+                        <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
+                          <span class="text-base uppercase font-bold">{item.name}</span>
+                          <span class="text-sm uppercase underline">{item.value}</span>
                         </div>
                       );
                     }
                   })}
                   {
-                    /*  <div class="flex flex-col sm:min-w-[200px] mb-5">
+                    /*  
+                  <div class="flex flex-col sm:min-w-[200px] mb-5">
                     <span class="text-base  uppercase font-bold">
                       Linha
                     </span>

@@ -229,7 +229,7 @@ function ProductInfo({ page, layout }: Props) {
       </div>
 
       {/* Add to Cart and quantity */}
-      <div class="mt-4 sm:mt-10 flex flex-row flex-wrap gap-2  justify-between">
+      <div class="mt-4 sm:mt-10 flex flex-row flex-wrap gap-2 lg:gap-5 justify-between">
         <div class=" w-[48%] ">
           <QuantitySelector
             quantity={1}
@@ -238,7 +238,7 @@ function ProductInfo({ page, layout }: Props) {
           />
         </div>
 
-        <button class={'btn-square btn-ghost join-item  w-[48%] h-11 border border-[#403F3F] text-base'}>Quantos mestros comprar</button>
+        <button class={'btn-square btn-ghost join-item  w-[48%] h-11 border border-[#403F3F] lg:text-base flex justify-start gap-10 px-4  items-center'}><Icon class={`rotate-180`} id="ruler" width={16} height={16 } /> Quantos mestros comprar</button>
       
         <div class="w-full" >
           {availability === "https://schema.org/InStock"
