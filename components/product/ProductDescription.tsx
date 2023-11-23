@@ -76,10 +76,10 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
                   INFORMAÇÕES DO PRODUTO
                 </span>
                 <div class="flex flex-row  flex-wrap  flex-grow  w-full lg:min-w-[900px] lg:max-w-[900px] gap-5 ">
-                  {additionalProperty.map((item) => {
+                  {isVariantOf?.additionalProperty.map((item) => {
                     if (
                       item.name && item.value !== undefined &&
-                      item.name !== "category" && item.name !== "RefId"
+                      item.name !== "category" && item.name !== "RefId" && item.name !== "sellerId"
                     ) {
                       return (
                         <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
