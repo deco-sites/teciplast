@@ -34,13 +34,22 @@ const Form = ({ productId }: { productId: string }) => {
     setReviewerName(undefined);
     setTitle(undefined);
     setIsLoading(false);
-    console.log({ data });
+    console.log({ createReturn: data });
   }, []);
 
   return (
     <form
       className="form-control w-full  mt-8"
-      onSubmit={() => alert("submitted!!")}
+      onSubmit={(e) => {
+        e.preventDefault();
+        createReview({
+          text: text!,
+          title: title!,
+          rating,
+          reviewerName: reviewerName!,
+          productId,
+        });
+      }}
     >
       <h2 class="font-bold uppercase">Adicionar avaliação</h2>
       <label className="label mt-4">
