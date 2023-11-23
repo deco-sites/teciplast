@@ -229,15 +229,18 @@ function ProductInfo({ page, layout }: Props) {
       </div>
 
       {/* Add to Cart and quantity */}
-      <div class="mt-4 sm:mt-10 grid grid-cols-5 gap-4">
-        <div class="col-span-2">
+      <div class="mt-4 sm:mt-10 flex flex-row flex-wrap gap-2  justify-between">
+        <div class=" w-[48%] ">
           <QuantitySelector
             quantity={1}
             widthFull={true}
             coloredButtons={true}
           />
         </div>
-        <div class="col-span-3">
+
+        <button class={'btn-square btn-ghost join-item  w-[48%] h-11 border border-[#403F3F] text-base'}>Quantos mestros comprar</button>
+      
+        <div class="w-full" >
           {availability === "https://schema.org/InStock"
             ? (
               <>
@@ -251,7 +254,7 @@ function ProductInfo({ page, layout }: Props) {
                       discount={discount}
                       seller={seller}
                     />
-                    <div class="text-[#818181] items-center flex gap-2 mt-1">
+                    <div class="text-[#818181] items-center flex gap-2 w-full mt-1">
                       <Icon id="secureIcon" height={15} width={13} />
                       <span>Compra 100% Segura</span>
                     </div>
