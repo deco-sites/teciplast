@@ -4,6 +4,7 @@
 
 import * as $$$0 from "./loaders/Layouts/ProductCard.tsx";
 import * as $$$1 from "./loaders/List/Sections.tsx";
+import * as $$$2 from "./loaders/Reviews/reviewsandratings.ts";
 import * as $$$$$$0 from "./sections/Gallery.tsx";
 import * as $$$$$$1 from "./sections/Footer/Footer.tsx";
 import * as $$$$$$2 from "./sections/Category/CategoryBanner.tsx";
@@ -56,6 +57,7 @@ const manifest = {
   "loaders": {
     "deco-sites/teciplast/loaders/Layouts/ProductCard.tsx": $$$0,
     "deco-sites/teciplast/loaders/List/Sections.tsx": $$$1,
+    "deco-sites/teciplast/loaders/Reviews/reviewsandratings.ts": $$$2,
   },
   "sections": {
     "deco-sites/teciplast/sections/Category/CategoryBanner.tsx": $$$$$$2,

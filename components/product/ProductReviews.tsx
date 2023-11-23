@@ -3,9 +3,16 @@ import Icon from "$store/components/ui/Icon.tsx";
 import { useUser } from "apps/vtex/hooks/useUser.ts";
 import Button from "$store/components/ui/Button.tsx";
 import { useState } from "preact/hooks";
+import { ResponseReviews } from "$store/loaders/Reviews/reviewsandratings.ts";
+import { default as reviewsLoader } from "$store/loaders/Reviews/reviewsandratings.ts";
+import { ProductDetailsPage } from "apps/commerce/types.ts";
+import type { SectionProps } from "deco/mod.ts";
+
+import { useCallback } from "preact/hooks";
 
 export interface Props {
   borderRoundedBot?: boolean;
+  page: ProductDetailsPage | null;
 }
 
 interface Review {
@@ -18,6 +25,34 @@ interface Review {
 }
 
 type Reviews = Review[];
+
+export async function loader(
+  { page, borderRoundedBot }: Props,
+  _req: Request,
+) {
+  let reviews = {} as ResponseReviews;
+  let debug = {};
+
+  console.log("Entrou no loader!!!");
+
+  // try {
+  //   reviews = (await reviewsLoader({
+  //     productId: page!.product!.isVariantOf
+  //       ? page!.product!.isVariantOf?.productGroupID
+  //       : page!.product!.productID,
+  //   })) as ResponseReviews;
+  // } catch (e) {
+  //   debug = { ...debug, reviewsError: e };
+  //   console.log({ e });
+  // }
+
+  return {
+    page,
+    borderRoundedBot,
+    reviews,
+    debug,
+  };
+}
 
 const formatDate = (date: Date) => {
   const formattedDate = date.toLocaleDateString("pt-BR", {
@@ -42,6 +77,26 @@ const NewRatingForm = (
   const [rating, setRating] = useState<number>(5);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formSent, setFormSent] = useState<boolean>(false);
+
+  // const createReview = useCallback(async (body: {
+  //   productId: string;
+  //   rating: number;
+  //   title: string;
+  //   text: string;
+  //   reviewerName: string;
+  // }) => {
+  //   setIsLoading(true);
+  //   const data = await Runtime.invoke({
+  //     key: "deco-sites/riquezzz/actions/createReview.ts",
+  //     props: body,
+  //   });
+  //   setFormSent(true);
+  //   setText(undefined);
+  //   setReviewerName(undefined);
+  //   setTitle(undefined);
+  //   setIsLoading(false);
+  //   // console.log({ data });
+  // }, []);
 
   return (
     <form
@@ -211,14 +266,15 @@ const NoReviews = () => {
   );
 };
 
-function ProductReviews(props: Props) {
-  const { borderRoundedBot } = props;
-
+function ProductReviews(
+  { page, reviews, debug, borderRoundedBot }: SectionProps<typeof loader>,
+) {
+  // console.log({ page, reviews, debug, borderRoundedBot });
   const productId = "asd11324";
   const userHasReviewed = false;
   const averageReview = 4.8;
-  const reviews2: Reviews = [];
-  const reviews: Reviews = [
+  const rreviews2: Reviews = [];
+  const rreviews: Reviews = [
     {
       reviewerName: "Sônia Soares",
       verifiedPurchase: true,
@@ -252,7 +308,7 @@ function ProductReviews(props: Props) {
       <h3 class="uppercase my-5 pt-10 border-t border-[#cecece]">
         Avaliações do produto
       </h3>
-      {Boolean(reviews.length) && (
+      {Boolean(rreviews.length) && (
         <div class="flex justify-between mb-6">
           <RatingStars
             productId={productId}
@@ -279,15 +335,15 @@ function ProductReviews(props: Props) {
         </div>
       )}
       <div>
-        {reviews.length
-          ? <ReviewsList productId={productId} reviews={reviews} />
+        {rreviews.length
+          ? <ReviewsList productId={productId} reviews={rreviews} />
           : <NoReviews />}
       </div>
       <div class="flex flex-col gap-2">
         {
           /* <span class="text-[#006299] cursor-pointer">
-          Mostrar todas avaliações
-        </span> */
+            Mostrar todas avaliações
+          </span> */
         }
         {isLogged && (
           <div class="text-left mt-4">
