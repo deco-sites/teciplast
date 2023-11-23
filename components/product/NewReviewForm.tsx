@@ -1,5 +1,6 @@
 import Button from "$store/components/ui/Button.tsx";
-import { useState } from "preact/hooks";
+import { useCallback, useState } from "preact/hooks";
+import { invoke } from "$store/runtime.ts";
 
 export interface Props {
   productId: string;
@@ -17,25 +18,24 @@ const NewReviewForm = (
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formSent, setFormSent] = useState<boolean>(false);
 
-  // const createReview = useCallback(async (body: {
-  //   productId: string;
-  //   rating: number;
-  //   title: string;
-  //   text: string;
-  //   reviewerName: string;
-  // }) => {
-  //   setIsLoading(true);
-  //   const data = await Runtime.invoke({
-  //     key: "deco-sites/riquezzz/actions/createReview.ts",
-  //     props: body,
-  //   });
-  //   setFormSent(true);
-  //   setText(undefined);
-  //   setReviewerName(undefined);
-  //   setTitle(undefined);
-  //   setIsLoading(false);
-  //   // console.log({ data });
-  // }, []);
+  const createReview = useCallback(async (body: {
+    productId: string;
+    rating: number;
+    title: string;
+    text: string;
+    reviewerName: string;
+  }) => {
+    setIsLoading(true);
+    const data = await invoke["deco-sites/teciplast"].actions.createReview(
+      body,
+    );
+    setFormSent(true);
+    setText(undefined);
+    setReviewerName(undefined);
+    setTitle(undefined);
+    setIsLoading(false);
+    console.log({ data });
+  }, []);
 
   return (
     <form

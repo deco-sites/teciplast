@@ -1,3 +1,5 @@
+import { useUser } from 'apps/vtex/hooks/useUser.ts';
+
 export interface PropsLoad {
   productId: string;
 }
@@ -41,79 +43,54 @@ const url = 'https://tecilar.myvtex.com/reviews-and-ratings/api';
 // let productId = "1944875713";
 
 const loader = async (props: PropsLoad): Promise<ResponseReviews | null> => {
-  // const { user } = useUser();
-  // const shopperId = user.value?.email;
-  // let userHasReviewed = false;
-  // let averageRating: AverageResponse;
+  const { user } = useUser();
+  const shopperId = user.value?.email;
+  let userHasReviewed = false;
+  let averageRating: AverageResponse;
 
   let productId = '';
-
-  // console.log({ propsProductId: props.productId });
 
   if (props.productId) {
     productId = props.productId;
   }
 
-  // if (shopperId) {
-  //   try {
-  //     const r = await fetchAPI<ResponseReviews>(
-  //       url + "/reviews?product_id=" + productId + "&search_term=" +
-  //         shopperId + "&status=false",
-  //       {
-  //         method: "GET",
-  //         headers: {
-  //           "content-type": "application/json",
-  //           accept: "application/json",
-  //         },
-  //       },
-  //     );
+  if (shopperId) {
+    try {
+      const r = (await fetch(
+        url +
+          '/reviews?product_id=' +
+          productId +
+          '&search_term=' +
+          shopperId +
+          '&status=false'
+      ).then((r) => r.json())) as ResponseReviews;
 
-  //     if (r.data && r.data.length > 0) {
-  //       userHasReviewed = true;
-  //     }
-  //   } catch (e) {
-  //     console.log({ e });
-  //     return null;
-  //   }
-  // }
+      if (r.data && r.data.length > 0) {
+        userHasReviewed = true;
+      }
+    } catch (e) {
+      console.log({ e });
+      return null;
+    }
+  }
 
-  // try {
-  //   const resp = await fetchAPI<AverageResponse>(
-  //     url + "/rating/" + productId,
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         "content-type": "application/json",
-  //         accept: "application/json",
-  //       },
-  //     },
-  //   );
-  //   averageRating = resp;
-  // } catch (e) {
-  //   console.log({ e });
-  //   return null;
-  // }
+  try {
+    const resp = (await fetch(url + '/rating/' + productId).then((r) =>
+      r.json()
+    )) as AverageResponse;
+
+    averageRating = resp;
+  } catch (e) {
+    console.log({ e });
+    return null;
+  }
 
   try {
     const response = (await fetch(
       url + '/reviews?product_id=' + productId
     ).then((r) => r.json())) as ResponseReviews;
 
-    // const response = await fetchAPI<ResponseReviews>(
-    //   url + "/reviews?product_id=" + productId,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       "content-type": "application/json",
-    //       accept: "application/json",
-    //     },
-    //   },
-    // );
-
-    // console.log({ resposta: { ...response, userHasReviewed, averageRating } });
-
-    // return { ...response, userHasReviewed, averageRating };
-    return response;
+    return { ...response, userHasReviewed, averageRating };
   } catch (e) {
     console.log({ e });
     return null;

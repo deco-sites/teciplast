@@ -30,6 +30,7 @@ export async function loader(
         ? page!.product!.isVariantOf?.productGroupID
         : page!.product!.productID,
     })) as ResponseReviews;
+    console.log({ reviewsss: reviews });
   } catch (e) {
     debug = { ...debug, reviewsError: e };
     console.log({ e });
@@ -105,7 +106,6 @@ const NoReviews = () => {
 function ProductReviews(
   { page, reviews, debug, borderRoundedBot }: SectionProps<typeof loader>,
 ) {
-  console.log({ reviews });
   const productId = "asd11324";
   const userHasReviewed = false;
   const averageReview = 4.8;
@@ -131,8 +131,8 @@ function ProductReviews(
   // ];
 
   const { user } = useUser();
-  const isLogged = true;
-  // const isLogged = Boolean(user.value?.email);
+  // const isLogged = true;
+  const isLogged = Boolean(user.value?.email);
 
   return (
     <div
