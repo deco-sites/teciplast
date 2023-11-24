@@ -97,4 +97,29 @@ const loader = async (props: PropsLoad): Promise<ResponseReviews | null> => {
   }
 };
 
+export const ratingLoader = async (
+  props: PropsLoad
+): Promise<AverageResponse | null> => {
+  let averageRating: AverageResponse;
+
+  let productId = '';
+
+  if (props.productId) {
+    productId = props.productId;
+  }
+
+  try {
+    const resp = (await fetch(url + '/rating/' + productId).then((r) =>
+      r.json()
+    )) as AverageResponse;
+
+    averageRating = resp;
+
+    return averageRating;
+  } catch (e) {
+    console.log({ e });
+    return null;
+  }
+};
+
 export default loader;

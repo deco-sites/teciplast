@@ -20,6 +20,11 @@ import BedSizeSelector from "./ProductBedSizeSelector.tsx";
 import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import RatingStars from "$store/components/ui/RatingStars.tsx";
+import {
+  AverageResponse,
+  ratingLoader,
+} from "$store/loaders/Reviews/reviewsandratings.ts";
+import type { SectionProps } from "deco/mod.ts";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -33,7 +38,34 @@ interface Props {
   };
 }
 
-function ProductInfo({ page, layout }: Props) {
+export async function loader(
+  { page, layout }: Props,
+  _req: Request,
+) {
+  let rating = {} as AverageResponse;
+  let debug = {};
+
+  try {
+    rating = (await ratingLoader({
+      productId: page!.product!.productID,
+    })) as AverageResponse;
+    console.log({ ratinggg: rating });
+  } catch (e) {
+    debug = { ...debug, reviewsError: e };
+    console.log({ e });
+  }
+
+  return {
+    page,
+    layout,
+    rating,
+    debug,
+  };
+}
+
+function ProductInfo(
+  { page, layout, debug, rating }: SectionProps<typeof loader>,
+) {
   const platform = usePlatform();
 
   if (page === null) {
@@ -64,8 +96,6 @@ function ProductInfo({ page, layout }: Props) {
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
 
-  console.log(product)
-
   return (
     <div class="flex flex-col max-w-[100vw]">
       {/* Code and name */}
@@ -87,79 +117,7 @@ function ProductInfo({ page, layout }: Props) {
           display="detailsPage"
           size="sm"
           average={4.8}
-        
         />
-        {
-          /* <div className="flex text-[#3a3a3a] items-center">
-          <div class="mt-1">
-            <span class="font-bold text-base mr-1">4.8</span>
-          </div>
-          <div className="rating rating-sm mr-1 rating-half flex items-center">
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-1 bg-yellow-400"
-              disabled
-              checked
-            />
-            <input
-              type="radio"
-              name="rating-0"
-              className="mask mask-star mask-half-2 bg-yellow-400"
-              disabled
-            />
-          </div>
-          <div>(25 avaliações)</div>
-        </div> */
-        }
       </div>
       {/* Prices */}
       <div class="mt-4">
@@ -185,7 +143,9 @@ function ProductInfo({ page, layout }: Props) {
         (
           <div
             class={`py-2 w-full `}
-            dangerouslySetInnerHTML={{ __html: description.replaceAll("_x000D_",'') }}
+            dangerouslySetInnerHTML={{
+              __html: description.replaceAll("_x000D_", ""),
+            }}
           >
           </div>
         )}
@@ -210,7 +170,7 @@ function ProductInfo({ page, layout }: Props) {
         )}
 
       {/* More Details link */}
-      <a href="#more"  class="mt-5 flex items-center text-[#403F3F]">
+      <a href="#more" class="mt-5 flex items-center text-[#403F3F]">
         <span class="uppercase underline text-[#403F3F] text-xs">
           Mais detalhes sobre o produto
         </span>
@@ -238,9 +198,14 @@ function ProductInfo({ page, layout }: Props) {
           />
         </div>
 
-        <button class={'btn-square btn-ghost join-item  w-[48%] h-11 border border-[#403F3F] lg:text-base flex justify-start gap-10 px-4  items-center'}><Icon class={`rotate-180`} id="ruler" width={16} height={16 } /> Quantos mestros comprar</button>
-      
-        <div class="w-full" >
+        <button
+          class={"btn-square btn-ghost join-item  w-[48%] h-11 border border-[#403F3F] lg:text-base flex justify-start gap-10 px-4  items-center"}
+        >
+          <Icon class={`rotate-180`} id="ruler" width={16} height={16} />{" "}
+          Quantos mestros comprar
+        </button>
+
+        <div class="w-full">
           {availability === "https://schema.org/InStock"
             ? (
               <>
