@@ -104,6 +104,9 @@ const manifest = {
     "deco-sites/teciplast/sections/Social/WhatsApp.tsx": $$$$$$26,
     "deco-sites/teciplast/sections/Theme/Theme.tsx": $$$$$$27,
   },
+  "actions": {
+    "deco-sites/teciplast/actions/createReview.ts": $$$$$$$$$0,
+  },
   "apps": {
     "deco-sites/teciplast/apps/decohub.ts": $$$$$$$$$$$0,
     "deco-sites/teciplast/apps/site.ts": $$$$$$$$$$$1,

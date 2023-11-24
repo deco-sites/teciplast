@@ -7,7 +7,6 @@ import ProductShelfPdp from "$store/sections/Product/ProductShelfPdp.tsx";
 import ProductCard, {
   Layout as cardLayout,
 } from "$store/components/product/ProductCard.tsx";
-import ProductReviews from "$store/components/product/ProductReviews.tsx";
 
 interface Props {
   children: VNode[] | null;
