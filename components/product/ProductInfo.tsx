@@ -51,6 +51,7 @@ function ProductInfo({ page, layout }: Props) {
     gtin,
     isVariantOf,
     additionalProperty = [],
+    category,
   } = product;
   const description = product.description || isVariantOf?.description;
   const {
@@ -62,6 +63,8 @@ function ProductInfo({ page, layout }: Props) {
   } = useOffer(offers);
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
+
+  console.log(product)
 
   return (
     <div class="flex flex-col max-w-[100vw]">
@@ -84,6 +87,7 @@ function ProductInfo({ page, layout }: Props) {
           display="detailsPage"
           size="sm"
           average={4.8}
+        
         />
         {
           /* <div className="flex text-[#3a3a3a] items-center">
@@ -160,13 +164,6 @@ function ProductInfo({ page, layout }: Props) {
       {/* Prices */}
       <div class="mt-4">
         <div class="flex flex-col">
-          {
-            /* {(listPrice ?? 0) > price && (
-            <span class="line-through text-base-300 text-xs">
-              {formatPrice(listPrice, offers?.priceCurrency)}
-            </span>
-          )} */
-          }
           <span class="line-through text-base-300 text-xs">
             {formatPrice(listPrice, offers?.priceCurrency)}
           </span>
@@ -184,23 +181,66 @@ function ProductInfo({ page, layout }: Props) {
         </span>
       </div>
       {/* Sku Selectors */}
-      <div class="mt-4 sm:mt-6">
-        <BedSizeSelector product={product} />
-      </div>
+      {description &&
+        (
+          <div
+            class={`py-2 w-full `}
+            dangerouslySetInnerHTML={{ __html: description.replaceAll("_x000D_",'') }}
+          >
+          </div>
+        )}
+
+      {additionalProperty &&
+        (
+          <div class="flex flex-row justify-start w-full  gap-5 py-3">
+            {additionalProperty.map((item) => {
+              if (
+                item.name && item.value !== undefined &&
+                item.name !== "category" && item.name !== "RefId"
+              ) {
+                return (
+                  <div class={`flex flex-col `}>
+                    <span class="font-bold text-lg">{item.name}</span>
+                    <span>{item.value}</span>
+                  </div>
+                );
+              }
+            })}
+          </div>
+        )}
+
+      {/* More Details link */}
+      <a href="#more"  class="mt-5 flex items-center text-[#403F3F]">
+        <span class="uppercase underline text-[#403F3F] text-xs">
+          Mais detalhes sobre o produto
+        </span>
+        <Icon id="ChevronRight" height={20} width={15} />
+      </a>
+
+      {category?.includes("Cama") &&
+        (
+          <div class="mt-4 sm:mt-6">
+            <BedSizeSelector product={product} />
+          </div>
+        )}
+
       <div class="mt-4 sm:mt-6">
         <ColorSelector product={product} />
       </div>
 
       {/* Add to Cart and quantity */}
-      <div class="mt-4 sm:mt-10 grid grid-cols-5 gap-4">
-        <div class="col-span-2">
+      <div class="mt-4 sm:mt-10 flex flex-row flex-wrap gap-2 lg:gap-5 justify-between">
+        <div class=" w-[48%] ">
           <QuantitySelector
             quantity={1}
             widthFull={true}
             coloredButtons={true}
           />
         </div>
-        <div class="col-span-3">
+
+        <button class={'btn-square btn-ghost join-item  w-[48%] h-11 border border-[#403F3F] lg:text-base flex justify-start gap-10 px-4  items-center'}><Icon class={`rotate-180`} id="ruler" width={16} height={16 } /> Quantos mestros comprar</button>
+      
+        <div class="w-full" >
           {availability === "https://schema.org/InStock"
             ? (
               <>
@@ -214,7 +254,7 @@ function ProductInfo({ page, layout }: Props) {
                       discount={discount}
                       seller={seller}
                     />
-                    <div class="text-[#818181] items-center flex gap-2 mt-1">
+                    <div class="text-[#818181] items-center flex gap-2 w-full mt-1">
                       <Icon id="secureIcon" height={15} width={13} />
                       <span>Compra 100% Segura</span>
                     </div>
@@ -225,18 +265,12 @@ function ProductInfo({ page, layout }: Props) {
             : <OutOfStock productID={productID} />}
         </div>
       </div>
-      {/* More Details link */}
-      <a href={"#"} class="mt-5 flex items-center text-[#403F3F]">
-        <span class="uppercase underline text-[#403F3F] text-xs">
-          Mais detalhes sobre o produto
-        </span>
-        <Icon id="ChevronRight" height={20} width={15} />
-      </a>
 
       <div class="lg:hidden flex">
         <BenefitsBarPdp />
       </div>
-      {/* Description card */}
+      {
+        /* Description card
       <div class="mt-4 sm:mt-6">
         <span class="text-sm">
           {description && (
@@ -249,7 +283,8 @@ function ProductInfo({ page, layout }: Props) {
             </details>
           )}
         </span>
-      </div>
+      </div> */
+      }
 
       {/* Shipping Simulation */}
       <div class="mt-4 border border-[#cecece] p-6">
