@@ -49,7 +49,7 @@ export async function loader(
     rating = (await ratingLoader({
       productId: page!.product!.productID,
     })) as AverageResponse;
-    console.log({ ratinggg: rating });
+    // console.log({ ratinggg: rating });
   } catch (e) {
     debug = { ...debug, reviewsError: e };
     console.log({ e });
