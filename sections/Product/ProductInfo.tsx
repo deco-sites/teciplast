@@ -113,7 +113,7 @@ function ProductInfo(
       {/* Rating */}
       <div class="flex py-2 text-xs ">
         <RatingStars
-          productId={productID}
+          productId={"productInfo-" + productID}
           display="detailsPage"
           size="sm"
           average={rating.average}

@@ -25,8 +25,14 @@ const RatingStars = (
   const halfStars = Math.floor(average) * 2;
   const hasHalfStar = average % 1 !== 0;
 
+  const starFilled = hasHalfStar ? halfStars + 1 : halfStars;
+
+  console.log({ average, count, starFilled });
+
   // Create an array of 10 elements (5 stars, each divided into half)
-  const stars = new Array(10).fill(null);
+  // const stars = new Array(10).fill(null);
+  // stars[2] = "filled";
+  // console.log({ stars });
 
   return (
     <div className={`flex text-[#3a3a3a] items-center ${extraClasses}`}>
@@ -38,7 +44,9 @@ const RatingStars = (
       <div
         className={`rating rating-${size} mr-1 rating-half flex items-center`}
       >
-        {stars.map((_, index) => (
+        {
+          /* <input type="radio" name={productId} class="rating-hidden" />
+        {stars.map((star, index) => (
           <input
             key={index}
             type="radio"
@@ -47,12 +55,78 @@ const RatingStars = (
               index % 2 === 0 ? "1" : "2"
             } bg-yellow-400`}
             disabled
-            checked={index < halfStars || (index === halfStars && hasHalfStar)}
+            checked={star === "filled"}
           />
-        ))}
+        ))} */
+        }
+        <input type="radio" name={productId} class="rating-hidden" />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-1"
+          checked={starFilled === 1}
+        />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-2"
+          checked={starFilled === 2}
+        />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-1"
+          checked={starFilled === 3}
+        />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-2"
+          checked={starFilled === 4}
+        />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-1"
+          checked={starFilled === 5}
+        />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-2"
+          checked={starFilled === 6}
+        />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-1"
+          checked={starFilled === 7}
+        />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-2"
+          checked={starFilled === 8}
+        />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-1"
+          checked={starFilled === 9}
+        />
+        <input
+          type="radio"
+          name={productId}
+          class="bg-yellow-400 mask mask-star mask-half-2"
+          checked={starFilled === 10}
+        />
       </div>
       {display !== "reviews" && (
-        <div>({count}{display === "detailsPage" && " avaliações"})</div>
+        <div>
+          ({count}
+          {display === "detailsPage" &&
+            (count > 1 ? " avaliações" : " avaliação")})
+        </div>
       )}
     </div>
   );
