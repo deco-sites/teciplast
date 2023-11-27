@@ -27,7 +27,7 @@ const RatingStars = (
 
   const starFilled = hasHalfStar ? halfStars + 1 : halfStars;
 
-  console.log({ average, count, starFilled });
+  // console.log({ average, count, starFilled });
 
   // Create an array of 10 elements (5 stars, each divided into half)
   // const stars = new Array(10).fill(null);
