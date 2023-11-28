@@ -200,7 +200,7 @@ function Central(
             <div class="uppercase flex flex-col text-[9px] justify-end items-center  gap-2">
               <a
                 class="flex items-center flex-col justify-center"
-                href="/logout"
+                href="/api/vtexid/pub/logout?scope=tecilar&returnUrl=/"
                 aria-label="Log out"
               >
                 <Icon
