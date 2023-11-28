@@ -26,6 +26,7 @@ export async function loader(
     reviews = (await reviewsLoader({
       productId: page!.product!.productID,
     })) as ResponseReviews;
+    // console.log({ reviewsss: reviews });
   } catch (e) {
     debug = { ...debug, reviewsError: e };
   }
@@ -100,7 +101,6 @@ function ProductReviews(
 ) {
   const productId = page!.product.productID;
   const userHasReviewed = false;
-  const averageReview = 4.8;
   // const rreviews: Reviews = [
   //   {
   //     reviewerName: "Sônia Soares",
@@ -134,9 +134,10 @@ function ProductReviews(
       {Boolean(reviews.data?.length) && (
         <div class="flex justify-between mb-6">
           <RatingStars
-            productId={productId}
+            productId={"averageReviews-" + productId}
             display="detailsPage"
-            average={averageReview}
+            average={reviews.averageRating!.average}
+            count={reviews.averageRating!.totalCount}
           />
           <div class="flex gap-2">
             <select class="select select-bordered w-full max-w-xs">
