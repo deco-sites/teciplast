@@ -184,16 +184,17 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
         selected
           ? "text-[#70A4E0] border-[#DADADA] bg-base-100 border-2"
           : "text-[#838383] border-none"
-      } flex flex-col items-center text-center p-5 rounded-md`}
+      } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px]`}
     >
       <div>
         <Icon
           id={icon}
-          size={45}
+          size={50}
           strokeWidth={2}
+          class=""
         />
       </div>
-      <span class="text-xs uppercase font-bold mt-2">{title}</span>
+      <span class="text-[9px] uppercase font-bold mt-1">{title}</span>
     </a>
   );
 }
@@ -209,8 +210,8 @@ function IconsFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
     return Boolean(allowedOption);
   };
   return (
-    <div>
-      <p class="text-xs pl-1">{allowedFilter?.title}</p>
+    <div >
+      <p class="text-xs pl-1 mb-2">{allowedFilter?.title}</p>
       <div class="flex px-0  h-auto min-w-[300px] gap-2">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
@@ -228,7 +229,7 @@ function IconsFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
 
 function IconsFilter({ filter, allowedFilters }: CarouselFilterProps) {
   return (
-    <div class="rounded-none text-base-300 lg:border-none">
+    <div class="rounded-none text-base-300 lg:border-none min-h-[120px]">
       <div class="flex">
         <ul class={`flex`}>
           <IconsFilterValues
@@ -275,10 +276,9 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
   const isAllowed = (filter: Filter): filter is FilterToggle => Boolean(allowedFilters.find((item) => item.key == filter.key));
   
 
-  console.log(filters)
   return (
     <div class="relative min-h-[90px] py-2">
-      <div class="absolute ">
+      <div class=" ">
         <ul class="flex gap-2 ">
           {filters
             .filter(isToggle)
