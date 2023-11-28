@@ -1,0 +1,117 @@
+{
+    "@type": "Product",
+    category: "Tecidos",
+    productID: "3202",
+    url: "http://localhost:8000/tecido-sacaria-azul-bebe/p?skuId=3202",
+    name: "Tecido Sacaria - Azul Bebê",
+    description: "Tecido Sacaria para Pano de Prato<br /><br /> <br />Também chamado como tecido de copa ou pano de pr"... 606 more characters,
+    brand: {
+      "@type": "Brand",
+      "@id": "2000045",
+      name: "Tecimais",
+      logo: undefined
+    },
+    isAccessoryOrSparePartFor: undefined,
+    inProductGroupWithID: "3483",
+    sku: "3202",
+    gtin: "",
+    releaseDate: 1695945600000,
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "category",
+        propertyID: "27",
+        value: "Tecidos"
+      },
+      {
+        "@type": "PropertyValue",
+        name: "RefId",
+        value: "2042-2",
+        valueReference: "ReferenceID"
+      }
+    ],
+    isVariantOf: {
+      "@type": "ProductGroup",
+      productGroupID: "3483",
+      hasVariant: [
+        {
+          "@type": "Product",
+          category: "Tecidos",
+          productID: "3202",
+          url: "http://localhost:8000/tecido-sacaria-azul-bebe/p?skuId=3202",
+          name: "Tecido Sacaria - Azul Bebê",
+          description: "Tecido Sacaria para Pano de Prato<br /><br /> <br />Também chamado como tecido de copa ou pano de pr"... 606 more characters,
+          brand: {  
+            "@type": "Brand",
+            "@id": "2000045",
+            name: "Tecimais",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "3483",
+          sku: "3202",
+          gtin: "",
+          releaseDate: 1695945600000,
+          additionalProperty: [ [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 4.99,
+            lowPrice: 4.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        }
+      ],
+      url: "http://localhost:8000/tecido-sacaria-azul-bebe/p",
+      name: "Tecido Sacaria - Azul Bebê",
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          name: "sellerId",
+          value: "1",
+          valueReference: "PROPERTY"
+        }
+      ],
+      model: "2042-2"
+    },
+    image: [
+      {
+        "@type": "ImageObject",
+        alternateName: "",
+        url: "https://tecilar.vtexassets.com/arquivos/ids/165224/tecido-sacaria-azul-bebe_0.jpg?v=6383160400773000"... 2 more characters,
+        name: ""
+      }
+    ],
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "BRL",
+      highPrice: 4.99,
+      lowPrice: 4.99,
+      offerCount: 1,
+      offers: [
+        {
+          "@type": "Offer",
+          price: 4.99,
+          seller: "1",
+          priceValidUntil: "2024-11-27T16:26:45Z",
+          inventoryLevel: { value: 10000 },
+          giftSkuIds: [],
+          teasers: [],
+          priceSpecification: [
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object]
+          ],
+          availability: "https://schema.org/InStock"
+        }
+      ]
+    }
+  }

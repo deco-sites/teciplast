@@ -123,7 +123,7 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
       id={id}
       class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] lg:min-w-[400px] w-[45vw]"
     >
-      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:h-[450px] min-w-[350px] ml-5 lg:ml-0">
+      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:max-h-[450px] min-w-[350px] ml-5 lg:ml-0">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
             filter.key == key
@@ -137,7 +137,7 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
               index={index}
               class="w-[220px] sm:w-[240px] min-h-[320px] first:ml-2 sm:first:pl-0 last:mr-6 sm:last:pr-0"
             >
-              <CarouselValueItem {...{ item, title, image }} />
+              <CarouselValueItem {...{ item, title, image }} /> a
             </Slider.Item>
           );
         })}
@@ -264,13 +264,18 @@ function DropdownFilter({ filter, label }: DropdownFilterProps) {
 }
 
 function FeaturedFilters({ filters, allowedFilters }: Props) {
-  const getAllowedFromFilter = (filter: FilterToggle) => {
-    const allowedFilter = allowedFilters.find((item) => item.key == filter.key);
-    return allowedFilter;
-  };
-  const isAllowed = (filter: Filter): filter is FilterToggle =>
-    Boolean(allowedFilters.find((item) => item.key == filter.key));
 
+
+  const getAllowedFromFilter = (filter: FilterToggle) => {
+      const allowedFilter = allowedFilters.find((item) => item.key == filter.key);
+      return allowedFilter;
+    };
+
+
+  const isAllowed = (filter: Filter): filter is FilterToggle => Boolean(allowedFilters.find((item) => item.key == filter.key));
+  
+
+  console.log(filters)
   return (
     <div class="relative min-h-[90px] py-2">
       <div class="absolute ">
@@ -280,6 +285,8 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
             .filter(isAllowed)
             .map((filter) => {
               const allowed = getAllowedFromFilter(filter);
+              console.log(allowed)
+
               if (allowed?.type == "carousel") {
                 return (
                   <CarouselFilter

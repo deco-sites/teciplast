@@ -26,10 +26,8 @@ export async function loader(
     reviews = (await reviewsLoader({
       productId: page!.product!.productID,
     })) as ResponseReviews;
-    console.log({ reviewsss: reviews });
   } catch (e) {
     debug = { ...debug, reviewsError: e };
-    console.log({ e });
   }
 
   return {

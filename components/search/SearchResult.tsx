@@ -33,6 +33,7 @@ export interface FeaturedFiltersInfo {
 export interface AllowedFilters {
   key: string;
   title: string;
+  category?: string;
   type: "carousel" | "icons" | "dropdown" | "img-dropdown";
   values: FeaturedFiltersInfo[]
 }
