@@ -1,4 +1,3 @@
-import type { AppContext } from '$store/apps/site.ts';
 import { parseCookie } from 'apps/vtex/utils/vtexId.ts';
 
 export interface PropsCreate {
