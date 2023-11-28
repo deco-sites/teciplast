@@ -51,6 +51,7 @@ import * as $$$$$$42 from "./sections/Links/Shortcuts.tsx";
 import * as $$$$$$43 from "./sections/Newsletter/Newsletter.tsx";
 import * as $$$$$$44 from "./sections/Header/Header.tsx";
 import * as $$$$$$$$$0 from "./actions/createReview.ts";
+import * as $$$$$$$$$1 from "./actions/logout.ts";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
@@ -109,6 +110,7 @@ const manifest = {
   },
   "actions": {
     "deco-sites/teciplast/actions/createReview.ts": $$$$$$$$$0,
+    "deco-sites/teciplast/actions/logout.ts": $$$$$$$$$1,
   },
   "apps": {
     "deco-sites/teciplast/apps/decohub.ts": $$$$$$$$$$$0,
