@@ -70,7 +70,8 @@ export type AvailableIcons =
   | 'toalha-de-mao'
   | 'roupao-de-banho'
   | 'jogo-de-toalha'
-  | 'tapete-para-banheiro' ;
+  | 'tapete-para-banheiro' 
+   ;
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
