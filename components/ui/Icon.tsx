@@ -63,6 +63,8 @@ export type AvailableIcons =
   | "secureIcon"
   | "secureCircle"
   | "logOut"
+  | "beachTowel"
+  | "bathAccessories"
   | "share"
   | "ruler";
 
