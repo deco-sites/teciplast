@@ -1,4 +1,8 @@
-function PageTitle() {
+export interface Props {
+  matchingTitle?: string;
+}
+
+function PageTitle({ matchingTitle }: Props) {
   const query = window.location.search;
   const pathName = window.location.pathname;
   const urlParams = new URLSearchParams(query);
@@ -7,9 +11,17 @@ function PageTitle() {
 
   return (
     <div>
-      <span class={`text-lg sm:text-2xl ${!searchTerm && "capitalize"}`}>
-        {searchTerm ? `Busca: "${searchTerm}"` : pageTitle}
-      </span>
+      {matchingTitle
+        ? (
+          <span class={`text-lg sm:text-2xl ${!searchTerm && "capitalize"}`}>
+            {matchingTitle}
+          </span>
+        )
+        : (
+          <span class={`text-lg sm:text-2xl ${!searchTerm && "capitalize"}`}>
+            {searchTerm ? `Busca: "${searchTerm}"` : pageTitle}
+          </span>
+        )}
     </div>
   );
 }
