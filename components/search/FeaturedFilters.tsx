@@ -184,17 +184,17 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
         selected
           ? "text-[#70A4E0] border-[#DADADA] bg-base-100 border-2"
           : "text-[#838383] border-none"
-      } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px]`}
+      } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px] gap-2`}
     >
       <div>
         <Icon
           id={icon}
-          size={50}
+          size={45}
           strokeWidth={2}
           class=""
         />
       </div>
-      <span class="text-[9px] uppercase font-bold mt-1">{title}</span>
+      <span class="text-[9px] uppercase font-bold mt-1 h-7">{title}</span>
     </a>
   );
 }
@@ -211,7 +211,7 @@ function IconsFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   };
   return (
     <div >
-      <p class="text-xs pl-1 mb-2">{allowedFilter?.title}</p>
+      <p class="text-xs pl-1 mb-3">{allowedFilter?.title}</p>
       <div class="flex px-0  h-auto min-w-[300px] gap-2">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
@@ -285,7 +285,7 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
             .filter(isAllowed)
             .map((filter) => {
               const allowed = getAllowedFromFilter(filter);
-              console.log(allowed)
+              //console.log(allowed)
 
               if (allowed?.type == "carousel") {
                 return (

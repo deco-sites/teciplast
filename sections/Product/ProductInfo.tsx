@@ -95,7 +95,6 @@ function ProductInfo(
   } = useOffer(offers);
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
-
   return (
     <div class="flex flex-col max-w-[100vw]">
       {/* Code and name */}
