@@ -9,6 +9,7 @@ import { default as reviewsLoader } from "$store/loaders/Reviews/reviewsandratin
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import type { SectionProps } from "deco/mod.ts";
 import NewReviewForm from "$store/islands/NewReviewForm.tsx";
+import LoginToReview from "$store/islands/LoginToReview.tsx";
 
 export interface Props {
   borderRoundedBot?: boolean;
@@ -170,6 +171,7 @@ function ProductReviews(
             Mostrar todas avaliações
           </span> */
         }
+        <LoginToReview/>
         <NewReviewForm
           productId={productId}
           userHasReviewed={reviews.userHasReviewed || false}
