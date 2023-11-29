@@ -184,7 +184,7 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
         selected
           ? "text-[#70A4E0] border-[#DADADA] bg-base-100 border-2"
           : "text-[#838383] border-none"
-      } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px] gap-2`}
+      } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px] gap-2 h-[90px]`}
     >
       <div>
         <Icon
@@ -212,7 +212,7 @@ function IconsFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   return (
     <div >
       <p class="text-xs pl-1 mb-3">{allowedFilter?.title}</p>
-      <div class="flex px-0  h-auto min-w-[300px] gap-2">
+      <div class="flex flex-row flex-wrap  justify-start px-0  h-auto min-w-[300px] gap-2 lg: max-w-full h-[90px]">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
             filter.key == key
