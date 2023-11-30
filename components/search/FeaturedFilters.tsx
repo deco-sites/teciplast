@@ -186,15 +186,15 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
           : "text-[#838383] border-none"
       } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px] gap-2 h-[90px]`}
     >
-      <div>
+      <div class="w-full flex justify-center items-center">
         <Icon
           id={icon}
-          size={45}
+          size={45} 
           strokeWidth={2}
           class=""
         />
       </div>
-      <span class="text-[9px] uppercase font-bold mt-1 h-7">{title}</span>
+      <span class="text-[9px] w-full uppercase font-bold mt-1 h-7">{title}</span>
     </a>
   );
 }
@@ -212,7 +212,8 @@ function IconsFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   return (
     <div >
       <p class="text-xs pl-1 mb-3">{allowedFilter?.title}</p>
-      <div class="flex flex-row flex-wrap  justify-start px-0  h-auto min-w-[300px] gap-2 lg: max-w-full h-[90px]">
+
+      <div class="carousel carousel-start sm:carousel-end  justify-start min-w-[300px] max-w-[350px]  h-[100px] gap-10 lg:max-w-[900px] ">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
             filter.key == key
@@ -229,7 +230,7 @@ function IconsFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
 
 function IconsFilter({ filter, allowedFilters }: CarouselFilterProps) {
   return (
-    <div class="rounded-none text-base-300 lg:border-none min-h-[120px]">
+    <div class="rounded-none text-base-300 lg:border-none h-[120px]">
       <div class="flex">
         <ul class={`flex`}>
           <IconsFilterValues
@@ -249,10 +250,11 @@ interface DropdownFilterProps {
 
 function DropdownFilter({ filter, label }: DropdownFilterProps) {
   return (
-    <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none ">
+    <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none absolute right-[100%] z-50">
+      
       <input type="checkbox" class="min-h-[0px]" />
       <div class="collapse-title min-h-[0px] rounded-none flex gap-2 px-0 lg:px-5">
-        <span>{filter.label}</span>
+        <span>{filter.label}deasdasdas</span>
       </div>
 
       <div class="collapse-content">
@@ -261,6 +263,8 @@ function DropdownFilter({ filter, label }: DropdownFilterProps) {
         </ul>
       </div>
     </div>
+
+
   );
 }
 
@@ -277,7 +281,7 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
   
 
   return (
-    <div class="relative min-h-[90px] py-2">
+    <div class="relative min-h-[90px] py-2 ">
       <div class=" ">
         <ul class="flex gap-2 ">
           {filters
