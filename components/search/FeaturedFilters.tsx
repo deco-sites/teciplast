@@ -27,7 +27,7 @@ function ValueItem(
   return (
     <li>
       <a href={url} class="flex items-center gap-2 hover:underline lg:px-5">
-        <span class="text-sm mr-auto">{label}</span>
+        <span class="text-sm mr-auto truncate max-w-[250px]">{label}</span>
         {quantity > 0 && (
           <span class="text-sm  ml-auto text-base-300">({quantity})</span>
         )}
@@ -121,9 +121,9 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] lg:min-w-[400px] w-[45vw]"
+      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] lg:min-w-[400px] w-full"
     >
-      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:max-h-[450px] min-w-[350px] ml-5 lg:ml-0">
+      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:max-h-[450px] min-w-[350px]">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
             filter.key == key
@@ -135,9 +135,9 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
           return (
             <Slider.Item
               index={index}
-              class="w-[220px] sm:w-[240px] min-h-[320px] first:ml-2 sm:first:pl-0 last:mr-6 sm:last:pr-0"
+              class="w-[220px] sm:w-[240px] first:ml-2 sm:first:pl-0 last:mr-6 sm:last:pr-0"
             >
-              <CarouselValueItem {...{ item, title, image }} /> a
+              <CarouselValueItem {...{ item, title, image }} /> 
             </Slider.Item>
           );
         })}
@@ -250,18 +250,15 @@ interface DropdownFilterProps {
 
 function DropdownFilter({ filter, label }: DropdownFilterProps) {
   return (
-    <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none absolute right-[100%] z-50">
+    <div class="group bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none w-full relative max-w-[300px] lg:ml-[50px] pl-[5px] ml-[5px]">
       
-      <input type="checkbox" class="min-h-[0px]" />
-      <div class="collapse-title min-h-[0px] rounded-none flex gap-2 px-0 lg:px-5">
-        <span>{filter.label}deasdasdas</span>
+      <div class="group collapse-title min-h-[0px] max-w-[300px] w-full rounded-none flex gap-2 px-0 lg:px-5">
+        <span>{filter.label}</span>
       </div>
 
-      <div class="collapse-content">
-        <ul class={`flex flex-col `}>
+        <ul class=" hidden  group-hover:flex flex-col items-center justify-between w-full h-full shrink-0 absolute top-[60px] left-0   max-w-[300px] z-50  bg-[#fff]">
           <FilterValues {...filter} />
         </ul>
-      </div>
     </div>
 
 
@@ -281,7 +278,8 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
   
 
   return (
-    <div class="relative min-h-[90px] py-2 ">
+    <>
+    <div class="hidden lg:flex relative min-h-[90px] py-2 ">
       <div class=" ">
         <ul class="flex gap-2 ">
           {filters
@@ -319,6 +317,45 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
       
       </div>
     </div>
+    
+     <div class="flex lg:hidden relative min-h-[90px] py-2 ">
+        <div class=" ">
+          <ul class="flex flex-col gap-2 ">
+            {filters
+              .filter(isToggle)
+              .filter(isAllowed)
+              .map((filter) => {
+                const allowed = getAllowedFromFilter(filter);
+                //console.log(allowed)
+
+                if (allowed?.type == "carousel") {
+                  return (
+                    <CarouselFilter
+                      filter={filter}
+                      allowedFilters={allowedFilters}
+                    />
+                  );
+                }
+
+                if (allowed?.type == "dropdown") {
+                  return <DropdownFilter filter={filter} label={allowed.title} />;
+                }
+
+                if (allowed?.type == "icons") {
+                  return (
+                    <IconsFilter
+                      filter={filter}
+                      allowedFilters={allowedFilters}
+                    />
+                  );
+                }
+              
+              })}
+              {/* <SizeFilter  filters={filters} /> */}
+          </ul>
+        
+        </div>
+      </div></>
   );
 }
 
