@@ -27,7 +27,7 @@ import {
 import type { SectionProps } from "deco/mod.ts";
 import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
 
-export interface Record {
+export interface RecordItem {
   name: string;
   pSize: number;
   mSize: number;
@@ -37,7 +37,7 @@ export interface Record {
 export interface TableItem {
   title: string;
   /** @format textarea */
-  records: Record[];
+  records: RecordItem[];
 }
 
 interface Props {
@@ -219,7 +219,7 @@ function ProductInfo(
           />
         </div>
 
-        {isFabric && <FabricSizeTableModal />}
+        {isFabric && <FabricSizeTableModal table={fabricSizeTable} />}
 
         <div class={`${isFabric ? "w-full" : "w-[48%]"}`}>
           {availability === "https://schema.org/InStock"

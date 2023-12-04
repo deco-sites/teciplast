@@ -1,187 +1,11 @@
 import Modal from "$store/components/ui/Modal.tsx";
 import { useUI } from "$store/sdk/useUI.ts";
 import Icon from "$store/components/ui/Icon.tsx";
-// import { TableItem } from "$store/sections/Product/ProductInfo.tsx";
+import { TableItem } from "$store/sections/Product/ProductInfo.tsx";
 
-// export interface Record {
-//   name: string;
-//   pSize: number;
-//   mSize: number;
-//   gSize: number;
-// }
-
-// export interface TableItem {
-//   title: string;
-//   records: Record[];
-// }
-
-// export interface Props {
-//   searchbar?: SearchbarProps;
-// }
-
-function FabricSizeTable({ onClose }: { onClose: () => void }) {
-  const mockTable = [
-    {
-      title: "Moda Feminina",
-      records: [
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-      ],
-    },
-    {
-      title: "Moda Masculina",
-      records: [
-        {
-          name: "Blazer manga curta masc",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta masc",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-      ],
-    },
-    {
-      title: "Moda Infantil",
-      records: [
-        {
-          name: "Blazer manga curta infantil",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta infantil",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-        {
-          name: "Blazer manga curta",
-          pSize: 1,
-          mSize: 1.7,
-          gSize: 2,
-        },
-      ],
-    },
-  ];
-
+function FabricSizeTable(
+  { onClose, table }: { onClose: () => void; table: TableItem[] },
+) {
   const { fabricTabOpen } = useUI();
 
   return (
@@ -203,14 +27,14 @@ function FabricSizeTable({ onClose }: { onClose: () => void }) {
         </span>
       </div>
       <div class="flex justify-center gap-14 my-12">
-        {mockTable.map((t) => (
+        {table.map((t) => (
           <button
             class={`btn ${
-              Number(fabricTabOpen) === mockTable.indexOf(t)
+              Number(fabricTabOpen) === table.indexOf(t)
                 ? "bg-black text-white"
                 : "border bg-white text-black"
             }  w-44`}
-            onClick={() => fabricTabOpen.value = mockTable.indexOf(t)}
+            onClick={() => fabricTabOpen.value = table.indexOf(t)}
           >
             {t.title}
           </button>
@@ -218,7 +42,7 @@ function FabricSizeTable({ onClose }: { onClose: () => void }) {
       </div>
       <div class="grid grid-cols-6 p-3 font-bold">
         <div class="col-span-3">
-          <span>{mockTable[Number(fabricTabOpen)].title}</span>
+          <span>{table[Number(fabricTabOpen)].title}</span>
         </div>
         <div class="col-span-1">
           <span>P (36-42)</span>
@@ -230,7 +54,7 @@ function FabricSizeTable({ onClose }: { onClose: () => void }) {
           <span>G (54-60)</span>
         </div>
       </div>
-      {mockTable[Number(fabricTabOpen)].records.map((r, i) => (
+      {table[Number(fabricTabOpen)].records.map((r, i) => (
         <div class={`grid grid-cols-6 p-3 ${i % 2 === 0 && "bg-[#e0e0e0]"}`}>
           <div class="col-span-3">
             <span class="uppercase">{r.name}</span>
@@ -250,8 +74,7 @@ function FabricSizeTable({ onClose }: { onClose: () => void }) {
   );
 }
 
-// function FabricSizeTableModal({ table }: { table: TableItem[] }) {
-function FabricSizeTableModal() {
+function FabricSizeTableModal({ table }: { table: TableItem[] }) {
   const { displayFabricSizeTable } = useUI();
 
   return (
@@ -268,9 +91,10 @@ function FabricSizeTableModal() {
         open={displayFabricSizeTable.value}
         onClose={() => displayFabricSizeTable.value = false}
       >
-        <div class="absolute bg-base-100 container">
+        <div class="absolute bg-base-100 container h-[80vh] overflow-auto">
           <FabricSizeTable
             onClose={() => displayFabricSizeTable.value = false}
+            table={table}
           />
         </div>
       </Modal>
