@@ -111,10 +111,15 @@ function ProductInfo(
   } = useOffer(offers);
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
+  const percentageDiscount = listPrice
+    ? Math.round((discount / listPrice) * 100)
+    : 0;
 
   const isFabric = product.additionalProperty!.find((p) =>
     p.value === "Tecidos"
   );
+
+  console.log({ product });
 
   return (
     <div class="flex flex-col max-w-[100vw]">
@@ -143,19 +148,25 @@ function ProductInfo(
       {/* Prices */}
       <div class="mt-4">
         <div class="flex flex-col">
-          <span class="line-through text-base-300 text-xs">
-            {formatPrice(listPrice, offers?.priceCurrency)}
-          </span>
+          {listPrice !== price && (
+            <span class="line-through text-base-300 text-xs">
+              {formatPrice(listPrice, offers?.priceCurrency)}
+            </span>
+          )}
           <div class="flex items-center">
             <span class="text-2xl text-[#403F3F] font-bold">
               {formatPrice(price, offers?.priceCurrency)}
             </span>
-            <div class="bg-[#008000] text-white rounded py-[2px] px-2 ml-3">
-              <span class="text-sm font-semibold">25% OFF</span>
-            </div>
+            {discount > 0 && (
+              <div class="bg-[#008000] text-white rounded py-[2px] px-2 ml-3">
+                <span class="text-sm font-semibold">
+                  {percentageDiscount}% OFF
+                </span>
+              </div>
+            )}
           </div>
         </div>
-        <span class="text-base text-base-300">
+        <span class="text-base text-[#007C2C]">
           até {installments}
         </span>
       </div>
