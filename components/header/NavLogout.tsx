@@ -11,7 +11,7 @@ function NavLogout() {
         <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
           <a
             class="flex flex-row  justify-center items-center "
-            href="/logout"
+            href="/api/vtexid/pub/logout?scope=tecilar&returnUrl=/"
             aria-label="Log out"
           >
             <Icon

@@ -121,7 +121,7 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px] max-w-[600px] lg:min-w-[400px] w-full"
+      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px]  max-w-[350px]  lg:max-w-[600px] lg:min-w-[400px] w-full mx-5"
     >
       <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:max-h-[450px] min-w-[350px]">
         {values.filter(isAllowedOption).map((item, index) => {
@@ -135,7 +135,7 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
           return (
             <Slider.Item
               index={index}
-              class="w-[220px] sm:w-[240px] first:ml-2 sm:first:pl-0 last:mr-6 sm:last:pr-0"
+              class="w-[220px] sm:w-[240px] lg:first:ml-1 sm:first:pl-0 last:mr-6 sm:last:pr-0"
             >
               <CarouselValueItem {...{ item, title, image }} /> 
             </Slider.Item>
@@ -144,12 +144,12 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
       </Slider>
       <>
         <div class="hidden relative sm:block z-10 col-start-1 row-start-1">
-          <Slider.PrevButton class="btn btn-circle btn-outline absolute top-1/2 right-1/2 mr-6 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+          <Slider.PrevButton class="btn btn-circle btn-outline absolute top-1/2 right-1/2 mr-4 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
             <Icon size={24} id="ChevronLeft" strokeWidth={1} />
           </Slider.PrevButton>
         </div>
         <div class="hidden relative sm:block z-10 col-start-3 row-start-1">
-          <Slider.NextButton class="btn btn-circle btn-outline absolute top-1/2 left-1/2 ml-6 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+          <Slider.NextButton class="btn btn-circle btn-outline absolute top-1/2 left-1/2 ml-4 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
             <Icon size={24} id="ChevronRight" strokeWidth={1} />
           </Slider.NextButton>
         </div>
@@ -290,7 +290,7 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
 
   const isAllowed = (filter: Filter): filter is FilterToggle => Boolean(allowedFilters.find((item) => item.key == filter.key));
   
-
+  console.log()
   return (
     <div class="flex relative min-h-[90px] py-2 ">
       <div class=" ">

@@ -73,7 +73,40 @@ export type AvailableIcons =
   | 'roupao-de-banho'
   | 'jogo-de-toalha'
   | 'tapete-para-banheiro' 
-   ;
+  | "max-lav-95"
+  | "max-lav-95-suave"
+  | "max-lav-70"
+  | "max-lav-60"
+  | "max-lav-60-suave"
+  | "max-lav-50"
+  | "max-lav-50-suave"
+  | "max-lav-40"
+  | "max-lav-40-suave"
+  | "max-lav-40-m-suave"
+  | "max-lav-30"
+  | "max-lav-30-suave"
+  | "max-lav-30-m-suave"
+  | "lav-mao-40"
+  | "nao-lavar"
+  | "alv-sim"
+  | "alv-ox"
+  | "nao-alv"
+  | "sec-tambor"
+  | "sec-tambor-baixa"
+  | "nao-secar-tambor"
+  | "temp-max-200"
+  | "temp-max-150"
+  | "temp-max-110-n-vap"
+  | "nao-passar"
+  | "seco-pro"
+  | "seco-pro-suave"
+  | "seco-pro-150"
+  | "seco-pro-150-suave"
+  | "nao-seco"
+  | "umido-pro"
+  | "umido-pro-suave"
+  | "umido-pro-m-suave"
+  | "ruler";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**

@@ -79,7 +79,7 @@ function Result({
             <PageTitle />
             <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
           </div>
-        
+          
           <FeaturedFilters filters={filters} allowedFilters={featuredFilters}/>
         </div>
         
