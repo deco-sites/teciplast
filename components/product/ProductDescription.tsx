@@ -57,135 +57,133 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
         <div class="pt-5 ">
           <div class="py-0 lg:py-5">
             {description && (
-              <div class="flex flex-col lg:flex-row justify-start items-start">
-                <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base">
-                  <a name="more">Descrição do Produto</a>
-                </span>
-                {description &&
-                  (
-                    <div
-                      class={`py-2 flex-row flex-wrap flex-grow w-full lg:min-w-[900px] lg:max-w-[900px] gap-5`}
-                      dangerouslySetInnerHTML={{
-                        __html: description.replaceAll("_x000D_", ""),
-                      }}
-                    >
-                    </div>
-                  )}
-              </div>
-            )}
-          </div>
-
-          <div class="py-5">
-            {description && (
-              <div class="flex flex-col lg:flex-row justify-start items-start">
-                <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base">
-                  INFORMAÇÕES DO PRODUTO
-                </span>
-                <div class="flex flex-row  flex-wrap  flex-grow  w-full lg:min-w-[900px] lg:max-w-[900px] gap-5 ">
-                  {brand && (
-                    <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
-                      <span class="text-base uppercase font-bold">Marca</span>
-                      <span class="text-sm uppercase ">{brand.name}</span>
-                    </div>
-                  )}
-
-                  {isVariantOf?.additionalProperty.map((item) => {
-                    if (
-                      item.name && item.value !== undefined &&
-                      item.name !== "category" && item.name !== "RefId" &&
-                      item.name !== "sellerId" &&
-                      item.name !== "Instruções de Lavagem"
-                    ) {
-                      return (
-                        <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
-                          <span class="text-base uppercase font-bold">
-                            {item.name}
-                          </span>
-                          <span class="text-sm uppercase ">{item.value}</span>
-                        </div>
-                      );
-                    }
-                  })}
-                  {
-                    /*
-                  <div class="flex flex-col sm:min-w-[200px] mb-5">
-                    <span class="text-base  uppercase font-bold">
-                      Linha
-                    </span>
-                    <span class="text-sm uppercase underline">
-                      Flannel
-                    </span>
-                  </div>
-                  <div class="flex flex-col sm:min-w-[200px] mb-5">
-                    <span class="text-base  uppercase font-bold">
-                      Coleção
-                    </span>
-                    <span class="text-sm uppercase underline">
-                      Plush
-                    </span>
-                  </div>
-                  <div class="flex flex-col sm:min-w-[200px] mb-5">
-                    <span class="text-base  uppercase font-bold">
-                      Tecido
-                    </span>
-                    <span class="text-sm uppercase underline">
-                      Microfibra
-                    </span>
-                  </div>
-                  <div class="flex flex-col sm:min-w-[200px] mb-5">
-                    <span class="text-base  uppercase font-bold">
-                      Composição
-                    </span>
-                    <span class="text-sm uppercase underline">
-                      100% Poliéster
-                    </span>
-                  </div>
-                  <div class="flex flex-col sm:min-w-[200px] mb-5">
-                    <span class="text-base  uppercase font-bold">
-                      Acabamento
-                    </span>
-                    <span class="text-sm uppercase font-normal">
-                      ALTO BRILHO
-                    </span>
-                  </div>
-                  <div class="flex flex-col sm:min-w-[200px] mb-5">
-                    <span class="text-base  uppercase font-bold">
-                      GARANTIA
-                    </span>
-                    <span class="text-sm uppercase font-normal">
-                      30 DIAS
-                    </span>
-                  </div>
-                  <div class="flex flex-col sm:min-w-[200px] mb-5">
-                    <span class="text-base  uppercase font-bold">
-                      DETALHE
-                    </span>
-                    <span class="text-sm uppercase font-normal">
-                      TOQUE MACIO E CONFORTÁVEL MUITO ACONCHEGANTE
-                    </span>
-                  </div>
-                  <div class="flex flex-col sm:min-w-[200px] mb-5">
-                    <span class="text-base  uppercase font-bold">
-                      OBSERVAÇÕES
-                    </span>
-                    <span class="text-sm uppercase font-normal">
-                      DEVIDO A VARIAÇÕES DE MODELOS DE MONITORES DE COMPUTADOR,
-                      AS CORES QUE VOCÊ VÊ NESTA PÁGINA PODEM VARIAR COM A COR
-                      REAL DO PRODUTO
-                    </span>
-                  </div> */
-
-                    instructions.length && (
-                      <div class="flex flex-col sm:min-w-[200px] mb-5">
-                        <span class="text-base  uppercase font-bold">
-                          INSTRUÇÕES
-                        </span>
-                        <span class="text-sm uppercase font-normal">
-                          <LaundryInstructions instructions={instructions} />
-                        </span>
+              <div class="flex-col">
+                <div class="flex flex-col lg:flex-row lg:grid-cols-5 justify-start items-start">
+                  <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base lg:col-span-1 pt-2">
+                    Descrição do Produto
+                  </span>
+                  {description &&
+                    (
+                      <div
+                        class={`py-2 flex-row flex-wrap flex-grow w-full lg:min-w-[900px] lg:max-w-[900px] gap-5 lg:col-span-4`}
+                        dangerouslySetInnerHTML={{
+                          __html: description.replaceAll("_x000D_", ""),
+                        }}
+                      >
                       </div>
-                    )
-                  }
+                    )}
+                </div>
+                <div></div>
+                <div class="flex flex-col lg:flex-row lg:grid-cols-5 justify-start items-start">
+                  <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base lg:col-span-1 pt-2">
+                    INFORMAÇÕES DO PRODUTO
+                  </span>
+                  <div class="flex flex-row  flex-wrap  flex-grow  w-full lg:min-w-[900px] lg:max-w-[900px] gap-5 lg:col-span-4">
+                    {brand && (
+                      <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
+                        <span class="text-base uppercase font-bold">Marca</span>
+                        <span class="text-sm uppercase ">{brand.name}</span>
+                      </div>
+                    )}
+
+                    {isVariantOf?.additionalProperty.map((item) => {
+                      if (
+                        item.name && item.value !== undefined &&
+                        item.name !== "category" && item.name !== "RefId" &&
+                        item.name !== "sellerId" &&
+                        item.name !== "Instruções de Lavagem"
+                      ) {
+                        return (
+                          <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
+                            <span class="text-base uppercase font-bold">
+                              {item.name}
+                            </span>
+                            <span class="text-sm uppercase ">{item.value}</span>
+                          </div>
+                        );
+                      }
+                    })}
+                    {
+                      /*
+                    <div class="flex flex-col sm:min-w-[200px] mb-5">
+                      <span class="text-base  uppercase font-bold">
+                        Linha
+                      </span>
+                      <span class="text-sm uppercase underline">
+                        Flannel
+                      </span>
+                    </div>
+                    <div class="flex flex-col sm:min-w-[200px] mb-5">
+                      <span class="text-base  uppercase font-bold">
+                        Coleção
+                      </span>
+                      <span class="text-sm uppercase underline">
+                        Plush
+                      </span>
+                    </div>
+                    <div class="flex flex-col sm:min-w-[200px] mb-5">
+                      <span class="text-base  uppercase font-bold">
+                        Tecido
+                      </span>
+                      <span class="text-sm uppercase underline">
+                        Microfibra
+                      </span>
+                    </div>
+                    <div class="flex flex-col sm:min-w-[200px] mb-5">
+                      <span class="text-base  uppercase font-bold">
+                        Composição
+                      </span>
+                      <span class="text-sm uppercase underline">
+                        100% Poliéster
+                      </span>
+                    </div>
+                    <div class="flex flex-col sm:min-w-[200px] mb-5">
+                      <span class="text-base  uppercase font-bold">
+                        Acabamento
+                      </span>
+                      <span class="text-sm uppercase font-normal">
+                        ALTO BRILHO
+                      </span>
+                    </div>
+                    <div class="flex flex-col sm:min-w-[200px] mb-5">
+                      <span class="text-base  uppercase font-bold">
+                        GARANTIA
+                      </span>
+                      <span class="text-sm uppercase font-normal">
+                        30 DIAS
+                      </span>
+                    </div>
+                    <div class="flex flex-col sm:min-w-[200px] mb-5">
+                      <span class="text-base  uppercase font-bold">
+                        DETALHE
+                      </span>
+                      <span class="text-sm uppercase font-normal">
+                        TOQUE MACIO E CONFORTÁVEL MUITO ACONCHEGANTE
+                      </span>
+                    </div>
+                    <div class="flex flex-col sm:min-w-[200px] mb-5">
+                      <span class="text-base  uppercase font-bold">
+                        OBSERVAÇÕES
+                      </span>
+                      <span class="text-sm uppercase font-normal">
+                        DEVIDO A VARIAÇÕES DE MODELOS DE MONITORES DE COMPUTADOR,
+                        AS CORES QUE VOCÊ VÊ NESTA PÁGINA PODEM VARIAR COM A COR
+                        REAL DO PRODUTO
+                      </span>
+                    </div> */
+
+                      instructions.length && (
+                        <div class="flex flex-col sm:min-w-[200px] mb-5">
+                          <span class="text-base  uppercase font-bold">
+                            INSTRUÇÕES
+                          </span>
+                          <span class="text-sm uppercase font-normal">
+                            <LaundryInstructions instructions={instructions} />
+                          </span>
+                        </div>
+                      )
+                    }
+                  </div>
                 </div>
               </div>
             )}
