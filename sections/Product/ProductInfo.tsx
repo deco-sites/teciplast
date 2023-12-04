@@ -27,8 +27,22 @@ import {
 import type { SectionProps } from "deco/mod.ts";
 import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
 
+export interface Record {
+  name: string;
+  pSize: number;
+  mSize: number;
+  gSize: number;
+}
+
+export interface TableItem {
+  title: string;
+  /** @format textarea */
+  records: Record[];
+}
+
 interface Props {
   page: ProductDetailsPage | null;
+  fabricSizeTable: TableItem[];
   layout: {
     /**
      * @title Product Name
@@ -40,7 +54,7 @@ interface Props {
 }
 
 export async function loader(
-  { page, layout }: Props,
+  { page, layout, fabricSizeTable }: Props,
   _req: Request,
 ) {
   let rating = { average: 4, totalCount: 3 } as AverageResponse;
@@ -59,13 +73,14 @@ export async function loader(
   return {
     page,
     layout,
+    fabricSizeTable,
     rating,
     debug,
   };
 }
 
 function ProductInfo(
-  { page, layout, debug, rating }: SectionProps<typeof loader>,
+  { page, layout, fabricSizeTable, debug, rating }: SectionProps<typeof loader>,
 ) {
   const platform = usePlatform();
 

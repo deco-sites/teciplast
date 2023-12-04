@@ -12,6 +12,7 @@ const displaySearchDrawer = signal(false);
 const displaySearchSuggestions = signal(false);
 const displayFabricSizeTable = signal(false);
 const buttonShare = signal(false);
+const fabricTabOpen = signal(0);
 
 const state = {
   displayCart,
@@ -21,6 +22,7 @@ const state = {
   displaySearchSuggestions,
   displayFabricSizeTable,
   buttonShare,
+  fabricTabOpen,
 };
 
 // Keyboard event listeners
