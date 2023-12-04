@@ -26,8 +26,8 @@ function ValueItem(
 ) {
   return (
     <li>
-      <a href={url} class="flex items-center gap-2 hover:underline lg:px-5">
-        <span class="text-sm mr-auto truncate max-w-[250px]">{label}</span>
+      <a href={url} class="flex items-center gap-2 hover:underline lg:px-5 ">
+        <span class="text-sm mr-auto truncate max-w-[300px] bg-[#fff]">{label}</span>
         {quantity > 0 && (
           <span class="text-sm  ml-auto text-base-300">({quantity})</span>
         )}
@@ -49,7 +49,7 @@ function FilterValues({ key, values }: FilterToggle) {
     : "flex-col";
 
   return (
-    <ul class={`flex flex-col gap-2  ${flexDirection}`}>
+    <ul class={`flex  gap-3  bg-[#fff] ${flexDirection} max-w-[300px] border border-[#DEDEDE] border-t-[0px] py-2 `}>
       {values.map((item) => {
         const { url, selected, value, quantity } = item;
 
@@ -144,12 +144,12 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
       </Slider>
       <>
         <div class="hidden relative sm:block z-10 col-start-1 row-start-1">
-          <Slider.PrevButton class="btn btn-circle btn-outline absolute top-1/2 right-1/2 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+          <Slider.PrevButton class="btn btn-circle btn-outline absolute top-1/2 right-1/2 mr-6 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
             <Icon size={24} id="ChevronLeft" strokeWidth={1} />
           </Slider.PrevButton>
         </div>
         <div class="hidden relative sm:block z-10 col-start-3 row-start-1">
-          <Slider.NextButton class="btn btn-circle btn-outline absolute top-1/2 left-1/2 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+          <Slider.NextButton class="btn btn-circle btn-outline absolute top-1/2 left-1/2 ml-6 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
             <Icon size={24} id="ChevronRight" strokeWidth={1} />
           </Slider.NextButton>
         </div>
@@ -250,17 +250,31 @@ interface DropdownFilterProps {
 
 function DropdownFilter({ filter, label }: DropdownFilterProps) {
   return (
-    <div class="group bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none w-full relative max-w-[300px] lg:ml-[50px] pl-[5px] ml-[5px]">
+   <div class="flex items-end  w-full group  max-w-[350px]">
+    <div class="hidden lg:flex   group-hover:flex rounded-md mb-1 text-base-300 border border-[#DEDEDE] w-full relative max-w-[350px] lg:ml-[50px] pl-[5px] max-h-[40px] bg-[#fff]">
       
-      <div class="group collapse-title min-h-[0px] max-w-[300px] w-full rounded-none flex gap-2 px-0 lg:px-5">
+      <div class=" group-hover:flex w-full flex h-[40px] pl-5  items-center max-w-[350px]">
         <span>{filter.label}</span>
       </div>
 
-        <ul class=" hidden  group-hover:flex flex-col items-center justify-between w-full h-full shrink-0 absolute top-[60px] left-0   max-w-[300px] z-50  bg-[#fff]">
+        <ul class=" hidden  group-hover:flex flex-col items-center w-full h-full shrink-0 absolute top-[30px] left-0 border border-[#DEDEDE] border-t-0  max-w-[350px] z-50 ">
           <FilterValues {...filter} />
         </ul>
-    </div>
+    </div>  
 
+    <div class="lg:hidden collapse collapse-arrow bg-base-100 rounded-md mb-1 text-base-300 border-[#DEDEDE]   max-w-[360px]">
+      <input type="checkbox" class="min-h-[0px]" />
+      <div class="collapse-title min-h-[0px] flex gap-2 px-5">
+        <span>{filter.label}</span>
+      </div>
+
+      <div class="collapse-content ">
+        <ul class={`flex flex-col max-w-[360px] `}>
+          <FilterValues {...filter} />
+        </ul>
+      </div>
+    </div>
+    </div>
 
   );
 }
@@ -278,10 +292,9 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
   
 
   return (
-    <>
-    <div class="hidden lg:flex relative min-h-[90px] py-2 ">
+    <div class="flex relative min-h-[90px] py-2 ">
       <div class=" ">
-        <ul class="flex gap-2 ">
+        <ul class="flex flex-col  lg:flex-row gap-2 ">
           {filters
             .filter(isToggle)
             .filter(isAllowed)
@@ -318,44 +331,6 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
       </div>
     </div>
     
-     <div class="flex lg:hidden relative min-h-[90px] py-2 ">
-        <div class=" ">
-          <ul class="flex flex-col gap-2 ">
-            {filters
-              .filter(isToggle)
-              .filter(isAllowed)
-              .map((filter) => {
-                const allowed = getAllowedFromFilter(filter);
-                //console.log(allowed)
-
-                if (allowed?.type == "carousel") {
-                  return (
-                    <CarouselFilter
-                      filter={filter}
-                      allowedFilters={allowedFilters}
-                    />
-                  );
-                }
-
-                if (allowed?.type == "dropdown") {
-                  return <DropdownFilter filter={filter} label={allowed.title} />;
-                }
-
-                if (allowed?.type == "icons") {
-                  return (
-                    <IconsFilter
-                      filter={filter}
-                      allowedFilters={allowedFilters}
-                    />
-                  );
-                }
-              
-              })}
-              {/* <SizeFilter  filters={filters} /> */}
-          </ul>
-        
-        </div>
-      </div></>
   );
 }
 
