@@ -2,6 +2,7 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import LaundryInstructions from "$store/components/product/LaundryInstructions.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
+import { AvailableIcons } from "$store/components/ui/Icon.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -40,6 +41,10 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
     availability,
   } = useOffer(offers);
   const productGroupID = isVariantOf?.productGroupID ?? "";
+
+  const instructions = isVariantOf?.additionalProperty.filter((p) =>
+    p.name === "Instruções de Lavagem"
+  ).map((item) => item.value) as AvailableIcons[];
 
   return (
     <div
@@ -88,7 +93,8 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
                     if (
                       item.name && item.value !== undefined &&
                       item.name !== "category" && item.name !== "RefId" &&
-                      item.name !== "sellerId"
+                      item.name !== "sellerId" &&
+                      item.name !== "Instruções de Lavagem"
                     ) {
                       return (
                         <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
@@ -169,16 +175,16 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
                     </span>
                   </div> */
 
-
+                    instructions.length && (
                       <div class="flex flex-col sm:min-w-[200px] mb-5">
                         <span class="text-base  uppercase font-bold">
                           INSTRUÇÕES
                         </span>
                         <span class="text-sm uppercase font-normal">
-                          <LaundryInstructions />
+                          <LaundryInstructions instructions={instructions} />
                         </span>
                       </div>
-
+                    )
                   }
                 </div>
               </div>
