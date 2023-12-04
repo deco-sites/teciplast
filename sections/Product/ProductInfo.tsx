@@ -119,8 +119,6 @@ function ProductInfo(
     p.value === "Tecidos"
   );
 
-  console.log({ product });
-
   return (
     <div class="flex flex-col max-w-[100vw]">
       {/* Code and name */}
