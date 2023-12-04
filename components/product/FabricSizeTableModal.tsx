@@ -24,11 +24,10 @@ function FabricSizeTableModal() {
         open={displayFabricSizeTable.value}
         onClose={() => displayFabricSizeTable.value = false}
       >
-        <div
-          class="absolute bg-base-100 container"
-          style={{ marginTop: 200 }}
-        >
-          <FabricSizeTable />
+        <div class="absolute bg-base-100 container">
+          <FabricSizeTable
+            onClose={() => displayFabricSizeTable.value = false}
+          />
         </div>
       </Modal>
     </>
