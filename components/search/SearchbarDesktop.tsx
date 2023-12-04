@@ -98,7 +98,7 @@ function Searchbar({
 
               setQuery(value);
             }}
-            onBlur={() => displaySearchSuggestions.value = false}
+            // onBlur={() => displaySearchSuggestions.value = false}
             placeholder={placeholder}
             role="combobox"
             aria-controls="search-suggestion"
@@ -126,6 +126,11 @@ function Searchbar({
             } max-w-[500px] mt-[50px]`}
           >
             <div class="gap-4 grid grid-cols-1  bg-base-100  py-5 px-5">
+              <div class="flex justify-end">
+                <button onClick={() => displaySearchSuggestions.value = false}>
+                  <Icon id="XMark" size={24} strokeWidth={2} />
+                </button>
+              </div>
               {hasTerms && (
                 <div class="flex flex-col gap-3 ">
                   <span
