@@ -117,7 +117,8 @@ export type AvailableIcons =
   | 'espelho'  
   | 'bandeja'
   | 'tabuleiros'
-  | 'escultura';
+  | 'escultura'
+  ;
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
