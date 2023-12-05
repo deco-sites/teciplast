@@ -300,9 +300,11 @@ function FeaturedFilters({ filters, allowedFilters, url }: Props) {
 
   const isAllowed = (filter: Filter): filter is FilterToggle => Boolean(allowedFilters.find((item) => item.key == filter.key && item.pageName == url[0].name))
 
+  console.log(url)
+
 
   return (
-    <div class="flex relative min-h-[90px] py-2 ">
+    <div class="flex relative w-full justify-center min-h-[90px] py-2 ">
       <div class=" ">
         <ul class="flex flex-col  lg:flex-row gap-2 ">
           {filters
@@ -311,7 +313,6 @@ function FeaturedFilters({ filters, allowedFilters, url }: Props) {
             .map((filter) => {
               const allowed = getAllowedFromFilter(filter);
 
-              console.log(allowed)
 
               if (allowed?.type == "carousel"  && allowed?.pageName == url[0].name ) {
                 return (

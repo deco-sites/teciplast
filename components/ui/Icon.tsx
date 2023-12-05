@@ -106,7 +106,10 @@ export type AvailableIcons =
   | "umido-pro"
   | "umido-pro-suave"
   | "umido-pro-m-suave"
-  | "ruler";
+  | "ruler"
+  | "acessorios"
+  | "elastico"
+  | "fita-de-cetin";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
