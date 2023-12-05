@@ -2,83 +2,87 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $0 from "./routes/_app.tsx";
-import * as $$0 from "./islands/AddToCartButton/linx.tsx";
-import * as $$1 from "./islands/AddToCartButton/shopify.tsx";
-import * as $$2 from "./islands/AddToCartButton/vnda.tsx";
-import * as $$3 from "./islands/AddToCartButton/vtex.tsx";
-import * as $$4 from "./islands/AddToCartButton/wake.tsx";
-import * as $$5 from "./islands/BenefitsBarPdp.tsx";
-import * as $$6 from "./islands/CategoryReadMore.tsx";
-import * as $$7 from "./islands/Header/Buttons.tsx";
-import * as $$8 from "./islands/Header/Cart/linx.tsx";
-import * as $$9 from "./islands/Header/Cart/shopify.tsx";
-import * as $$10 from "./islands/Header/Cart/vnda.tsx";
-import * as $$11 from "./islands/Header/Cart/vtex.tsx";
-import * as $$12 from "./islands/Header/Cart/vtexMobile.tsx";
-import * as $$13 from "./islands/Header/Cart/wake.tsx";
-import * as $$14 from "./islands/Header/Drawers.tsx";
-import * as $$15 from "./islands/Header/Searchbar.tsx";
-import * as $$16 from "./islands/Header/SearchbarDesktop.tsx";
-import * as $$17 from "./islands/Header/SearchbarMobileMenu.tsx";
-import * as $$18 from "./islands/Header/SearchbarMobileMenuWhite.tsx";
-import * as $$19 from "./islands/LoginToReview.tsx";
-import * as $$20 from "./islands/NavLogin.tsx";
-import * as $$21 from "./islands/NavLogout.tsx";
-import * as $$22 from "./islands/NewReviewForm.tsx";
-import * as $$23 from "./islands/Newsletter.tsx";
-import * as $$24 from "./islands/OutOfStock.tsx";
-import * as $$25 from "./islands/PageTitle.tsx";
-import * as $$26 from "./islands/PriceFilter.tsx";
-import * as $$27 from "./islands/ProductImageZoom.tsx";
-import * as $$28 from "./islands/SearchControls.tsx";
-import * as $$29 from "./islands/ShareButton.tsx";
-import * as $$30 from "./islands/ShippingSimulation.tsx";
-import * as $$31 from "./islands/SizeFilte.tsx";
-import * as $$32 from "./islands/SliderJS.tsx";
-import * as $$33 from "./islands/WishlistButton.tsx";
+import * as $_app from "./routes/_app.tsx";
+import * as $AddToCartButton_linx from "./islands/AddToCartButton/linx.tsx";
+import * as $AddToCartButton_shopify from "./islands/AddToCartButton/shopify.tsx";
+import * as $AddToCartButton_vnda from "./islands/AddToCartButton/vnda.tsx";
+import * as $AddToCartButton_vtex from "./islands/AddToCartButton/vtex.tsx";
+import * as $AddToCartButton_wake from "./islands/AddToCartButton/wake.tsx";
+import * as $BenefitsBarPdp from "./islands/BenefitsBarPdp.tsx";
+import * as $CategoryReadMore from "./islands/CategoryReadMore.tsx";
+import * as $FabricSizeTableModal from "./islands/FabricSizeTableModal.tsx";
+import * as $Header_Buttons from "./islands/Header/Buttons.tsx";
+import * as $Header_Cart_linx from "./islands/Header/Cart/linx.tsx";
+import * as $Header_Cart_shopify from "./islands/Header/Cart/shopify.tsx";
+import * as $Header_Cart_vnda from "./islands/Header/Cart/vnda.tsx";
+import * as $Header_Cart_vtex from "./islands/Header/Cart/vtex.tsx";
+import * as $Header_Cart_vtexMobile from "./islands/Header/Cart/vtexMobile.tsx";
+import * as $Header_Cart_wake from "./islands/Header/Cart/wake.tsx";
+import * as $Header_Drawers from "./islands/Header/Drawers.tsx";
+import * as $Header_Searchbar from "./islands/Header/Searchbar.tsx";
+import * as $Header_SearchbarDesktop from "./islands/Header/SearchbarDesktop.tsx";
+import * as $Header_SearchbarMobileMenu from "./islands/Header/SearchbarMobileMenu.tsx";
+import * as $Header_SearchbarMobileMenuWhite from "./islands/Header/SearchbarMobileMenuWhite.tsx";
+import * as $LoginToReview from "./islands/LoginToReview.tsx";
+import * as $NavLogin from "./islands/NavLogin.tsx";
+import * as $NavLogout from "./islands/NavLogout.tsx";
+import * as $NewReviewForm from "./islands/NewReviewForm.tsx";
+import * as $Newsletter from "./islands/Newsletter.tsx";
+import * as $OutOfStock from "./islands/OutOfStock.tsx";
+import * as $PageTitle from "./islands/PageTitle.tsx";
+import * as $PriceFilter from "./islands/PriceFilter.tsx";
+import * as $ProductImageZoom from "./islands/ProductImageZoom.tsx";
+import * as $SearchControls from "./islands/SearchControls.tsx";
+import * as $ShareButton from "./islands/ShareButton.tsx";
+import * as $ShippingSimulation from "./islands/ShippingSimulation.tsx";
+import * as $SizeFilte from "./islands/SizeFilte.tsx";
+import * as $SliderJS from "./islands/SliderJS.tsx";
+import * as $WishlistButton from "./islands/WishlistButton.tsx";
+import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/_app.tsx": $0,
+    "./routes/_app.tsx": $_app,
   },
   islands: {
-    "./islands/AddToCartButton/linx.tsx": $$0,
-    "./islands/AddToCartButton/shopify.tsx": $$1,
-    "./islands/AddToCartButton/vnda.tsx": $$2,
-    "./islands/AddToCartButton/vtex.tsx": $$3,
-    "./islands/AddToCartButton/wake.tsx": $$4,
-    "./islands/BenefitsBarPdp.tsx": $$5,
-    "./islands/CategoryReadMore.tsx": $$6,
-    "./islands/Header/Buttons.tsx": $$7,
-    "./islands/Header/Cart/linx.tsx": $$8,
-    "./islands/Header/Cart/shopify.tsx": $$9,
-    "./islands/Header/Cart/vnda.tsx": $$10,
-    "./islands/Header/Cart/vtex.tsx": $$11,
-    "./islands/Header/Cart/vtexMobile.tsx": $$12,
-    "./islands/Header/Cart/wake.tsx": $$13,
-    "./islands/Header/Drawers.tsx": $$14,
-    "./islands/Header/Searchbar.tsx": $$15,
-    "./islands/Header/SearchbarDesktop.tsx": $$16,
-    "./islands/Header/SearchbarMobileMenu.tsx": $$17,
-    "./islands/Header/SearchbarMobileMenuWhite.tsx": $$18,
-    "./islands/LoginToReview.tsx": $$19,
-    "./islands/NavLogin.tsx": $$20,
-    "./islands/NavLogout.tsx": $$21,
-    "./islands/NewReviewForm.tsx": $$22,
-    "./islands/Newsletter.tsx": $$23,
-    "./islands/OutOfStock.tsx": $$24,
-    "./islands/PageTitle.tsx": $$25,
-    "./islands/PriceFilter.tsx": $$26,
-    "./islands/ProductImageZoom.tsx": $$27,
-    "./islands/SearchControls.tsx": $$28,
-    "./islands/ShareButton.tsx": $$29,
-    "./islands/ShippingSimulation.tsx": $$30,
-    "./islands/SizeFilte.tsx": $$31,
-    "./islands/SliderJS.tsx": $$32,
-    "./islands/WishlistButton.tsx": $$33,
+    "./islands/AddToCartButton/linx.tsx": $AddToCartButton_linx,
+    "./islands/AddToCartButton/shopify.tsx": $AddToCartButton_shopify,
+    "./islands/AddToCartButton/vnda.tsx": $AddToCartButton_vnda,
+    "./islands/AddToCartButton/vtex.tsx": $AddToCartButton_vtex,
+    "./islands/AddToCartButton/wake.tsx": $AddToCartButton_wake,
+    "./islands/BenefitsBarPdp.tsx": $BenefitsBarPdp,
+    "./islands/CategoryReadMore.tsx": $CategoryReadMore,
+    "./islands/FabricSizeTableModal.tsx": $FabricSizeTableModal,
+    "./islands/Header/Buttons.tsx": $Header_Buttons,
+    "./islands/Header/Cart/linx.tsx": $Header_Cart_linx,
+    "./islands/Header/Cart/shopify.tsx": $Header_Cart_shopify,
+    "./islands/Header/Cart/vnda.tsx": $Header_Cart_vnda,
+    "./islands/Header/Cart/vtex.tsx": $Header_Cart_vtex,
+    "./islands/Header/Cart/vtexMobile.tsx": $Header_Cart_vtexMobile,
+    "./islands/Header/Cart/wake.tsx": $Header_Cart_wake,
+    "./islands/Header/Drawers.tsx": $Header_Drawers,
+    "./islands/Header/Searchbar.tsx": $Header_Searchbar,
+    "./islands/Header/SearchbarDesktop.tsx": $Header_SearchbarDesktop,
+    "./islands/Header/SearchbarMobileMenu.tsx": $Header_SearchbarMobileMenu,
+    "./islands/Header/SearchbarMobileMenuWhite.tsx":
+      $Header_SearchbarMobileMenuWhite,
+    "./islands/LoginToReview.tsx": $LoginToReview,
+    "./islands/NavLogin.tsx": $NavLogin,
+    "./islands/NavLogout.tsx": $NavLogout,
+    "./islands/NewReviewForm.tsx": $NewReviewForm,
+    "./islands/Newsletter.tsx": $Newsletter,
+    "./islands/OutOfStock.tsx": $OutOfStock,
+    "./islands/PageTitle.tsx": $PageTitle,
+    "./islands/PriceFilter.tsx": $PriceFilter,
+    "./islands/ProductImageZoom.tsx": $ProductImageZoom,
+    "./islands/SearchControls.tsx": $SearchControls,
+    "./islands/ShareButton.tsx": $ShareButton,
+    "./islands/ShippingSimulation.tsx": $ShippingSimulation,
+    "./islands/SizeFilte.tsx": $SizeFilte,
+    "./islands/SliderJS.tsx": $SliderJS,
+    "./islands/WishlistButton.tsx": $WishlistButton,
   },
   baseUrl: import.meta.url,
-};
+} satisfies Manifest;
 
 export default manifest;
