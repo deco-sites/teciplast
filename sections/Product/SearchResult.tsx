@@ -36,6 +36,7 @@ export interface FeaturedFiltersInfo {
 export interface AllowedFilters {
   key: string;
   title: string;
+  pageName: string;
   type: "carousel" | "icons" | "dropdown" | "img-dropdown";
   values: FeaturedFiltersInfo[];
 }
@@ -99,6 +100,8 @@ function Result(
     ? Math.ceil(pageInfo.records / pageInfo.recordPerPage)
     : 1;
 
+
+
   return (
     <>
       <div class="hidden sm:flex w-full max-w-[90%] border-y border-[#DCDCDC] mx-auto">
@@ -113,7 +116,7 @@ function Result(
               <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
             </div>
             
-            <FeaturedFilters filters={filters} allowedFilters={featuredFilters}/>
+            <FeaturedFilters filters={filters} allowedFilters={featuredFilters} url={breadcrumb?.itemListElement}/>
           </div>
 
         <SearchControls

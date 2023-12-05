@@ -8,14 +8,16 @@ import type {
 import { useId } from "$store/sdk/useId.ts";
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
-import Icon from "$store/components/ui/Icon.tsx";
 import { AllowedFilters } from "./SearchResult.tsx";
 import SizeFilter from "$store/components/search/SizeFilter.tsx";
+import type { BreadcrumbList } from "apps/commerce/types.ts";
+import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
 
 
 interface Props {
   filters: ProductListingPage["filters"];
   allowedFilters: AllowedFilters[];
+  url:  BreadcrumbList["itemListElement"];
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
@@ -35,13 +37,7 @@ function ValueItem(
     </li>
   );
 }
-function isAllowedFilter(
-  allowedFilter: AllowedFilters[],
-  filter: FilterToggle,
-) {
-  const allowedFilters = allowedFilter.map((item) => item.key);
-  return allowedFilters.includes(filter.key);
-}
+
 
 function FilterValues({ key, values }: FilterToggle) {
   const flexDirection = key === "tamanho" || key === "cor"
@@ -78,22 +74,23 @@ interface CarouselAllowedOption {
   image: string;
   title: string;
   item: FilterToggleValue;
+  url?:  BreadcrumbList["itemListElement"]
+
 }
 
 function CarouselValueItem(
-  { image, title, item }: CarouselAllowedOption,
+  { image, title, item  }: CarouselAllowedOption,
 ) {
-  const { url, selected, label, quantity } = item;
   return (
     <a
-      href={url}
+      href={item.url}
       class="flex flex-col items-center text-center gap-1 hover:underline lg:px-2"
     >
       <div class="w-[48px] h-[48px]">
         <img
           src={image}
           class={`w-full h-full border-4 shadow-lg rounded-md block ${
-            selected ? "border-[#70A4E0]" : "border-white"
+            item.selected ? "border-[#70A4E0]" : "border-white"
           }`}
         />
       </div>
@@ -105,23 +102,22 @@ function CarouselValueItem(
 interface CarouselFilterProps {
   filter: FilterToggle;
   allowedFilters: AllowedFilters[];
+  url:  BreadcrumbList["itemListElement"]
 }
 
-function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
+function CarouselFilterValues({ filter, allowedFilters,url  }: CarouselFilterProps) {
   const id = useId();
   const { key, values } = filter;
 
   const isAllowedOption = (value: FilterToggleValue) => {
-    const allowedFilter = allowedFilters.find((item) => item.key == key);
-    const allowedOption = allowedFilter?.values.find((item) =>
-      item.key == value.value
-    );
+    const allowedFilter = allowedFilters.find((item) => item.key == key && item?.pageName == url[0].name);
+    const allowedOption = allowedFilter?.values.find((item) =>      item.key == value.value );
     return Boolean(allowedOption);
   };
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px]  max-w-[350px]  lg:max-w-[600px] lg:min-w-[400px] w-full mx-5"
+      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px]  max-w-[350px]  lg:max-w-[600px] lg:min-w-[400px] w-full mx-1 lg:mx-10"
     >
       <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:max-h-[450px] min-w-[350px]">
         {values.filter(isAllowedOption).map((item, index) => {
@@ -159,7 +155,9 @@ function CarouselFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   );
 }
 
-function CarouselFilter({ filter, allowedFilters }: CarouselFilterProps) {
+
+
+function CarouselFilter({ filter, allowedFilters,url }: CarouselFilterProps) {
   return (
     <div class="bg-base-100 rounded-none mb-1 text-base-300 lg:border-b border-[#C3C3C3] lg:border-none lg:py-4">
       <div class="flex">
@@ -167,21 +165,25 @@ function CarouselFilter({ filter, allowedFilters }: CarouselFilterProps) {
           <CarouselFilterValues
             filter={filter}
             allowedFilters={allowedFilters}
+            url={url}
           />
         </ul>
       </div>
     </div>
   );
 }
-
+// interface IconsAllowedOption {
+//   icon: AvailableIcons ;
+//   title: string;
+//   item: FilterToggleValue;
+// }
 
 function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
-  const { url, selected, label, quantity } = item;
   return (
     <a
-      href={url}
+      href={item.url}
       class={`${
-        selected
+        item.selected
           ? "text-[#70A4E0] border-[#DADADA] bg-base-100 border-2"
           : "text-[#838383] border-none"
       } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px] gap-2 h-[90px]`}
@@ -199,15 +201,15 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
   );
 }
 
-function IconsFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
+function IconsFilterValues({ filter, allowedFilters,url }: CarouselFilterProps) {
   const { key, values } = filter;
-  const allowedFilter = allowedFilters.find((item) => item.key == key);
+  const allowedFilter = allowedFilters.find((item) => item.key == key && item?.pageName == url[0].name);
 
   const isAllowedOption = (value: FilterToggleValue) => {
     const allowedOption = allowedFilter?.values.find((item) =>
       item.key == value.value
     );
-    return Boolean(allowedOption);
+    return Boolean(allowedOption); 
   };
   return (
     <div >
@@ -228,7 +230,8 @@ function IconsFilterValues({ filter, allowedFilters }: CarouselFilterProps) {
   );
 }
 
-function IconsFilter({ filter, allowedFilters }: CarouselFilterProps) {
+function IconsFilter({ filter, allowedFilters,url }: CarouselFilterProps) {
+  console.log(filter, 111 , allowedFilters, 111 , url)
   return (
     <div class="rounded-none text-base-300 lg:border-none h-[120px]">
       <div class="flex">
@@ -236,6 +239,7 @@ function IconsFilter({ filter, allowedFilters }: CarouselFilterProps) {
           <IconsFilterValues
             filter={filter}
             allowedFilters={allowedFilters}
+            url={url}
           />
         </ul>
       </div>
@@ -246,20 +250,23 @@ function IconsFilter({ filter, allowedFilters }: CarouselFilterProps) {
 interface DropdownFilterProps {
   filter: FilterToggle;
   label: string;
+  url:  BreadcrumbList["itemListElement"]
+
 }
 
-function DropdownFilter({ filter, label }: DropdownFilterProps) {
+function DropdownFilter({ filter, label,url }: DropdownFilterProps) {
   return (
    <div class="flex items-end  w-full group  max-w-[350px]">
     <div class="hidden lg:flex   group-hover:flex rounded-md mb-1 text-base-300 border border-[#DEDEDE] w-full relative max-w-[350px] lg:ml-[50px] pl-[5px] max-h-[40px] bg-[#fff]">
       
-      <div class=" group-hover:flex w-full flex h-[40px] pl-5  items-center max-w-[350px]">
-        <span>{filter.label}</span>
-      </div>
+        <div class=" group-hover:flex w-full flex h-[40px] pl-5  items-center max-w-[350px]">
+          <span>{filter.label}</span>
+        </div>
 
-        <ul class=" hidden  group-hover:flex flex-col items-center w-full h-full shrink-0 absolute top-[30px] left-0 border border-[#DEDEDE] border-t-0  max-w-[350px] z-50 ">
+        <ul class=" hidden group-hover:flex flex-col items-center w-full h-full shrink-0 absolute top-[28px] left-0 border border-[#DEDEDE] border-t-0  max-w-[350px] z-50 ">
           <FilterValues {...filter} />
         </ul>
+
     </div>  
 
     <div class="lg:hidden collapse collapse-arrow bg-base-100 rounded-md mb-1 text-base-300 border-[#DEDEDE]   max-w-[360px]">
@@ -279,18 +286,17 @@ function DropdownFilter({ filter, label }: DropdownFilterProps) {
   );
 }
 
-function FeaturedFilters({ filters, allowedFilters }: Props) {
-
+function FeaturedFilters({ filters, allowedFilters, url }: Props) {
 
   const getAllowedFromFilter = (filter: FilterToggle) => {
-      const allowedFilter = allowedFilters.find((item) => item.key == filter.key);
+    
+      const allowedFilter = allowedFilters.find((item) => item.key == filter.key && item.pageName == url[0].name);
+      
       return allowedFilter;
     };
 
+  const isAllowed = (filter: Filter): filter is FilterToggle => Boolean(allowedFilters.find((item) => item.key == filter.key && item.pageName == url[0].name))
 
-  const isAllowed = (filter: Filter): filter is FilterToggle => Boolean(allowedFilters.find((item) => item.key == filter.key));
-  
-  console.log()
   return (
     <div class="flex relative min-h-[90px] py-2 ">
       <div class=" ">
@@ -300,30 +306,34 @@ function FeaturedFilters({ filters, allowedFilters }: Props) {
             .filter(isAllowed)
             .map((filter) => {
               const allowed = getAllowedFromFilter(filter);
-              //console.log(allowed)
 
-              if (allowed?.type == "carousel") {
+              if (allowed?.type == "carousel"  && allowed?.pageName == url[0].name ) {
                 return (
                   <CarouselFilter
                     filter={filter}
                     allowedFilters={allowedFilters}
+                    url={url}
                   />
                 );
               }
 
-              if (allowed?.type == "dropdown") {
-                return <DropdownFilter filter={filter} label={allowed.title} />;
+              if (allowed?.type == "dropdown"  && allowed?.pageName == url[0].name) {
+                return <DropdownFilter filter={filter} label={allowed.title} url={url}  />;
               }
 
-              if (allowed?.type == "icons") {
+              if (allowed?.type == "icons"  && allowed?.pageName == url[0].name)  {
                 return (
-                  <IconsFilter
+                
+                 <IconsFilter
                     filter={filter}
                     allowedFilters={allowedFilters}
+                    url={url}
                   />
+
+
                 );
               }
-            
+              
             })}
             {/* <SizeFilter  filters={filters} /> */}
         </ul>
