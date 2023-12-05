@@ -38,7 +38,7 @@ const RatingStars = (
     <div className={`flex text-[#3a3a3a] items-center ${extraClasses}`}>
       {display === "detailsPage" && (
         <div class="mt-1">
-          <span class="font-bold text-base mr-1">{average}</span>
+          <span class="font-bold text-base mr-1">{average.toFixed(1)}</span>
         </div>
       )}
       <div

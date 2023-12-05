@@ -9,6 +9,8 @@ import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import Image from "apps/website/components/Image.tsx";
 import RatingStars from "$store/components/ui/RatingStars.tsx";
+import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
+
 
 export interface Layout {
   basics?: {
@@ -97,13 +99,15 @@ function ProductCard(
     </li>
   ));
   const cta = (
-    <a
-      href={url && relative(url)}
-      aria-label="view product"
-      class="btn btn-block btn-primary text-xs uppercase"
-    >
-      {l?.basics?.ctaText || "Ver produto"}
-    </a>
+    <AddToCartButtonVTEX
+      name={name}
+      productID={productID}
+      productGroupID={productGroupID}
+      price={price}
+      seller={"1"}
+      quantity={1}
+      extraClasses="text-xs rounded"
+    />
   );
 
   return (
