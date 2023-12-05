@@ -204,13 +204,16 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
 function IconsFilterValues({ filter, allowedFilters,url }: CarouselFilterProps) {
   const { key, values } = filter;
   const allowedFilter = allowedFilters.find((item) => item.key == key && item?.pageName == url[0].name);
-
+  
   const isAllowedOption = (value: FilterToggleValue) => {
     const allowedOption = allowedFilter?.values.find((item) =>
       item.key == value.value
     );
     return Boolean(allowedOption); 
   };
+
+  console.log(allowedFilters)
+
   return (
     <div >
       <p class="text-xs pl-1 mb-3">{allowedFilter?.title}</p>
@@ -218,7 +221,7 @@ function IconsFilterValues({ filter, allowedFilters,url }: CarouselFilterProps) 
       <div class="carousel carousel-start sm:carousel-end  justify-start min-w-[300px] max-w-[350px]  h-[100px] gap-10 lg:max-w-[900px] ">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
-            filter.key == key
+            filter.key == key && filter?.pageName == url[0].name
           )
             ?.values.find((option) => option.key == item.value);
           if (!allowedOption) return null;
@@ -231,7 +234,7 @@ function IconsFilterValues({ filter, allowedFilters,url }: CarouselFilterProps) 
 }
 
 function IconsFilter({ filter, allowedFilters,url }: CarouselFilterProps) {
-  console.log(filter, 111 , allowedFilters, 111 , url)
+  // console.log(filter, 111 , allowedFilters, 111 , url)
   return (
     <div class="rounded-none text-base-300 lg:border-none h-[120px]">
       <div class="flex">

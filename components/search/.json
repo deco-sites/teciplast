@@ -54,7 +54,9 @@
         label: "Toalhas de Praia e Cangas"
       }
     ]
-  } 111 [
+  } 111 
+  
+  [
     {
       key: "category-2",
       type: "carousel",
