@@ -26,6 +26,7 @@ import {
 } from "$store/loaders/Reviews/reviewsandratings.ts";
 import type { SectionProps } from "deco/mod.ts";
 import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
+import ProductInfoQuantityIsland from "$store/islands/ProductInfoQuantityIsland.tsx"
 
 export interface RecordItem {
   name: string;
@@ -219,42 +220,7 @@ function ProductInfo(
       </div>
 
       {/* Add to Cart and quantity */}
-      <div class="mt-4 sm:mt-10 flex flex-row flex-wrap gap-2 lg:gap-5 justify-between">
-        <div class={`w-[48%]`}>
-          <QuantitySelector
-            quantity={1}
-            widthFull={true}
-            coloredButtons={true}
-          />
-        </div>
-
-        {isFabric && <FabricSizeTableModal table={fabricSizeTable} />}
-
-        <div class={`${isFabric ? "w-full" : "w-[48%]"}`}>
-          {availability === "https://schema.org/InStock"
-            ? (
-              <>
-                {platform === "vtex" && (
-                  <>
-                    <AddToCartButtonVTEX
-                      name={name}
-                      productID={productID}
-                      productGroupID={productGroupID}
-                      price={price}
-                      discount={discount}
-                      seller={seller}
-                    />
-                    <div class="text-[#818181] items-center flex gap-2 w-full mt-1">
-                      <Icon id="secureIcon" height={15} width={13} />
-                      <span>Compra 100% Segura</span>
-                    </div>
-                  </>
-                )}
-              </>
-            )
-            : <OutOfStock productID={productID} />}
-        </div>
-      </div>
+      <ProductInfoQuantityIsland isFabric={isFabric} availability={availability} platform={platform} fabricSizeTable={fabricSizeTable} name={name} productID={productID} productGroupID={productGroupID} price={price} discount={discount} seller={seller} />
 
       <div class="lg:hidden flex">
         <BenefitsBarPdp />
