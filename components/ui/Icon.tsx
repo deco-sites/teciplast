@@ -109,7 +109,15 @@ export type AvailableIcons =
   | "ruler"
   | "acessorios"
   | "elastico"
-  | "fita-de-cetin";
+  | "fita-de-cetin"
+  | 'quadros'
+  | 'vasos'
+  | 'luminarias'
+  | 'almofadas'
+  | 'espelho'  
+  | 'bandeja'
+  | 'tabuleiros'
+  | 'escultura';
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**

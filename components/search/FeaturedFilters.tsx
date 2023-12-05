@@ -300,7 +300,7 @@ function FeaturedFilters({ filters, allowedFilters, url }: Props) {
 
   const isAllowed = (filter: Filter): filter is FilterToggle => Boolean(allowedFilters.find((item) => item.key == filter.key && item.pageName == url[0].name))
 
-  console.log(url)
+  console.log(filters)
 
 
   return (
