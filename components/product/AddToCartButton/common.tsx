@@ -10,6 +10,7 @@ export interface Props {
   productGroupID: string;
   price: number;
   discount: number;
+  extraClasses: string;
   onAddItem: () => Promise<void>;
 }
 
@@ -58,12 +59,13 @@ const useAddToCart = ({
 
 export default function AddToCartButton(props: Props) {
   const btnProps = useAddToCart(props);
+  const {extraClasses=""} = props
 
   return (
     <Button
       {...btnProps}
       data-deco="add-to-cart"
-      class="btn-primary w-full h-10 uppercase text-center"
+      class={`btn-primary w-full h-10 uppercase text-center ${extraClasses}`}
     >
       Adicionar ao carrinho
     </Button>

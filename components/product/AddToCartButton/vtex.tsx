@@ -4,10 +4,11 @@ import Button, { Props as BtnProps } from "./common.tsx";
 export interface Props extends Omit<BtnProps, "onAddItem" | "platform"> {
   seller: string;
   quantity?: number;
+  extraClasses?: string;
 }
 
 function AddToCartButton(props: Props) {
-  const {quantity=1} = props;
+  const {quantity=1, extraClasses} = props;
   const { addItems } = useCart();
 
   const onAddItem = () =>
@@ -19,7 +20,7 @@ function AddToCartButton(props: Props) {
       }],
     });
 
-  return <Button onAddItem={onAddItem} {...props} />;
+  return <Button extraClasses={extraClasses} onAddItem={onAddItem} {...props} />;
 }
 
 export default AddToCartButton;
