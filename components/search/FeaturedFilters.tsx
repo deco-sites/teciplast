@@ -260,7 +260,7 @@ interface DropdownFilterProps {
 function DropdownFilter({ filter, label,url }: DropdownFilterProps) {
   return (
    <div class="flex items-end  w-full group min-w-[250px] max-w-[250px]">
-    <div class="hidden lg:flex   group-hover:flex rounded-md mb-1 text-base-300 border border-[#DEDEDE] w-full relative min-w-[250px] max-w-[250px] lg:ml-[50px] pl-[5px] max-h-[40px] bg-[#fff]">
+    <div class="hidden lg:flex   group-hover:flex rounded-md mb-1 text-base-300 border border-[#DEDEDE] w-full relative min-w-[250px] max-w-[250px]  pl-[5px] max-h-[40px] bg-[#fff]">
       
         <div class=" group-hover:flex w-full flex h-[40px] pl-5  items-center  min-w-[250px] max-w-[250px]">
           <span>{filter.label}</span>
@@ -300,7 +300,7 @@ function FeaturedFilters({ filters, allowedFilters, url }: Props) {
 
   const isAllowed = (filter: Filter): filter is FilterToggle => Boolean(allowedFilters.find((item) => item.key == filter.key && item.pageName == url[0].name))
 
-  console.log(allowedFilters)
+
   return (
     <div class="flex relative min-h-[90px] py-2 ">
       <div class=" ">
@@ -324,7 +324,8 @@ function FeaturedFilters({ filters, allowedFilters, url }: Props) {
               }
 
               if (allowed?.type == "dropdown"  && allowed?.pageName == url[0].name) {
-                return <DropdownFilter filter={filter} label={allowed.title} url={url}  />;
+
+                return  <DropdownFilter filter={filter} label={allowed.title} url={url}  />;
               }
 
               if (allowed?.type == "icons"  && allowed?.pageName == url[0].name)  {
