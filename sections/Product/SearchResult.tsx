@@ -101,7 +101,7 @@ function Result(
     : 1;
 
 
-
+console.log(products)
   return (
     <>
       <div class="hidden sm:flex w-full max-w-[90%] border-y border-[#DCDCDC] mx-auto">
