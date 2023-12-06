@@ -11,6 +11,7 @@ import type { HTMLWidget } from "apps/admin/widgets.ts";
 export interface Props {
   /** @title Search Bar */
   searchbar?: Omit<SearchbarProps, "platform">;
+  freeShippingTarget: number;
 
   /**
    * @title Navigation items
@@ -68,6 +69,7 @@ function Header({
   data,
   textMobile,
   searchbar,
+  freeShippingTarget,
   navItems,
   logo,
 }: Props) {
@@ -82,6 +84,7 @@ function Header({
           searchbar={searchbar}
           platform={platform}
           imgMenu={logo}
+          freeShippingTarget={freeShippingTarget}
         >
           <div class="bg-base-100 bg-opacity-0  w-full z-30">
             <Alert

@@ -25,6 +25,7 @@ const Searchbar = lazy(() => import("$store/components/search/Searchbar.tsx"));
 
 export interface Props {
   menu: MenuProps;
+  freeShippingTarget: number;
   searchbar?: SearchbarProps;
   imgMenu?: { src: ImageWidget; alt: string };
   /**
@@ -229,7 +230,7 @@ function Central(
   );
 }
 
-function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
+function Drawers({ menu, searchbar, children, platform, imgMenu, freeShippingTarget }: Props) {
   const { displayCart, displayMenu, displaySearchDrawer } = useUI();
 
   return (
@@ -268,7 +269,7 @@ function Drawers({ menu, searchbar, children, platform, imgMenu }: Props) {
             title="Carrinho de Compras"
             onClose={() => displayCart.value = false}
           >
-            <Cart platform={platform} />
+            <Cart platform={platform} freeShippingTarget={freeShippingTarget} />
           </ModalCart>
         }
       >
