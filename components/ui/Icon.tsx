@@ -99,6 +99,9 @@ export type AvailableIcons =
   | "umido-pro"
   | "umido-pro-suave"
   | "umido-pro-m-suave"
+  | "squareTable"
+  | "roundedTable"
+  | "rectangularTable"
   | "ruler";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
