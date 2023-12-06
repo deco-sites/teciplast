@@ -77,7 +77,7 @@ function Result({
         
         <div class="flex flex-row gap-5 lg:mb-[-25px]">
           <div id="title" class="hidden sm:flex flex-col w-full max-w-[250px]">
-            <PageTitle />
+            <PageTitle breadCrumbs={breadcrumb?.itemListElement}/>
             <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
           </div>
           
