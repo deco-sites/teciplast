@@ -236,8 +236,6 @@ function IconsFilterValues(
     return Boolean(allowedOption);
   };
 
-  console.log(allowedFilters);
-
   return (
     <div>
       <p class="text-xs pl-1 mb-3">{allowedFilter?.title}</p>
@@ -324,8 +322,6 @@ function FeaturedFilters({ filters, allowedFilters, url }: Props) {
         item.key == filter.key && item.pageName == url[0].name
       ),
     );
-
-  console.log(filters);
 
   return (
     <div class="flex relative w-full justify-center min-h-[90px] py-2 ">
