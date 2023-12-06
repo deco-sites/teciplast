@@ -32,7 +32,7 @@ function NavItem(
             class={` absolute hidden hover:flex group-hover:flex z-50 items-center justify-center  max-w-[350px] bg-gray-100 `}
             style={{ top: "0px", marginTop: marginTopDrop }}
           >
-            <ul class="flex flex-col items-center justify-start  flex-wrap gaṕ-3  ">
+            <ul class="flex flex-col items-center justify-start  flex-wrap gap-3  ">
               {children.map((node) => (
                 <li class="group/item text-start  text-[#626262] min-w-[175px] max-w-[175px] px-[15px] hover:font-bold hover:bg-[#d9d9d9] py-2 h-full  ">
                   <a

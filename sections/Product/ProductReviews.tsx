@@ -30,7 +30,6 @@ export async function loader(
     // console.log({ reviewsss: reviews });
   } catch (e) {
     debug = { ...debug, reviewsError: e };
-    console.log({ e });
   }
 
   return {
