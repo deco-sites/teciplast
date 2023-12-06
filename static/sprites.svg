@@ -1,30 +1,30 @@
 <svg style="display:none">
-<symbol fill="none" viewBox="0 0 97 97" id="rectangularTable" xmlns="http://www.w3.org/2000/svg">
-<rect x="42.997" y="66.34" width="8" height="8" rx="1" transform="rotate(90 42.997 66.34)" stroke="currentColor" stroke-width="2"/>
-<rect x="42.997" y="74.34" width="3" height="8" rx="1" transform="rotate(90 42.997 74.34)" stroke="currentColor" stroke-width="2"/>
-<rect x="46.108" y="74.229" width="3" height="8" rx="1" transform="rotate(180 46.108 74.229)" stroke="currentColor" stroke-width="2"/>
-<rect x="34.632" y="74.07" width="3" height="8" rx="1" transform="rotate(180 34.632 74.07)" stroke="currentColor" stroke-width="2"/>
-<rect x="62.365" y="66.34" width="8" height="8" rx="1" transform="rotate(90 62.365 66.34)" stroke="currentColor" stroke-width="2"/>
-<rect x="62.365" y="74.34" width="3" height="8" rx="1" transform="rotate(90 62.365 74.34)" stroke="currentColor" stroke-width="2"/>
-<rect x="65.476" y="74.229" width="3" height="8" rx="1" transform="rotate(180 65.476 74.229)" stroke="currentColor" stroke-width="2"/>
-<rect x="54" y="74.07" width="3" height="8" rx="1" transform="rotate(180 54 74.07)" stroke="currentColor" stroke-width="2"/>
-<rect x="34.744" y="30.401" width="8" height="8" rx="1" transform="rotate(-90 34.744 30.401)" stroke="currentColor" stroke-width="2"/>
-<rect x="34.744" y="22.401" width="3" height="8" rx="1" transform="rotate(-90 34.744 22.401)" stroke="currentColor" stroke-width="2"/>
-<rect x="31.633" y="22.512" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
-<rect x="43.108" y="22.671" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
-<rect x="54.111" y="30.401" width="8" height="8" rx="1" transform="rotate(-90 54.111 30.4)" stroke="currentColor" stroke-width="2"/>
-<rect x="54.111" y="22.401" width="3" height="8" rx="1" transform="rotate(-90 54.111 22.4)" stroke="currentColor" stroke-width="2"/>
-<rect x="51.001" y="22.512" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
-<rect x="62.476" y="22.671" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
-<rect x="70.84" y="44.243" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
-<rect x="78.84" y="44.243" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
-<rect x="78.729" y="41.132" width="3" height="8" rx="1" transform="rotate(90 78.729 41.132)" stroke="currentColor" stroke-width="2"/>
-<rect x="78.57" y="52.608" width="3" height="8" rx="1" transform="rotate(90 78.57 52.608)" stroke="currentColor" stroke-width="2"/>
-<rect x="24.901" y="51.083" width="8" height="8" rx="1" transform="rotate(-180 24.9 51.083)" stroke="currentColor" stroke-width="2"/>
-<rect x="16.901" y="51.083" width="3" height="8" rx="1" transform="rotate(-180 16.9 51.083)" stroke="currentColor" stroke-width="2"/>
-<rect x="17.012" y="54.194" width="3" height="8" rx="1" transform="rotate(-90 17.012 54.194)" stroke="currentColor" stroke-width="2"/>
-<rect x="17.171" y="42.718" width="3" height="8" rx="1" transform="rotate(-90 17.17 42.718)" stroke="currentColor" stroke-width="2"/>
-<rect x="68" y="33" width="30" height="40" rx="1" transform="rotate(90 68 33)" stroke="currentColor" stroke-width="2"/>
+<symbol fill="none" viewBox="0 0 79 62" id="rectangularTable" xmlns="http://www.w3.org/2000/svg">
+<rect x="32.997" y="49.34" width="8" height="8" rx="1" transform="rotate(90 32.997 49.34)" stroke="currentColor" stroke-width="2"/>
+<rect x="32.997" y="57.34" width="3" height="8" rx="1" transform="rotate(90 32.997 57.34)" stroke="currentColor" stroke-width="2"/>
+<rect x="36.108" y="57.228" width="3" height="8" rx="1" transform="rotate(180 36.108 57.228)" stroke="currentColor" stroke-width="2"/>
+<rect x="24.632" y="57.07" width="3" height="8" rx="1" transform="rotate(180 24.632 57.07)" stroke="currentColor" stroke-width="2"/>
+<rect x="53.364" y="49.34" width="8" height="8" rx="1" transform="rotate(90 53.364 49.34)" stroke="currentColor" stroke-width="2"/>
+<rect x="53.364" y="57.34" width="3" height="8" rx="1" transform="rotate(90 53.364 57.34)" stroke="currentColor" stroke-width="2"/>
+<rect x="56.475" y="57.228" width="3" height="8" rx="1" transform="rotate(180 56.475 57.228)" stroke="currentColor" stroke-width="2"/>
+<rect x="44.999" y="57.07" width="3" height="8" rx="1" transform="rotate(180 45 57.07)" stroke="currentColor" stroke-width="2"/>
+<rect x="24.743" y="12.401" width="8" height="8" rx="1" transform="rotate(-90 24.743 12.4)" stroke="currentColor" stroke-width="2"/>
+<rect x="24.743" y="4.401" width="3" height="8" rx="1" transform="rotate(-90 24.743 4.4)" stroke="currentColor" stroke-width="2"/>
+<rect x="21.632" y="4.512" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+<rect x="33.108" y="4.671" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+<rect x="45.11" y="12.401" width="8" height="8" rx="1" transform="rotate(-90 45.11 12.4)" stroke="currentColor" stroke-width="2"/>
+<rect x="45.11" y="4.401" width="3" height="8" rx="1" transform="rotate(-90 45.11 4.4)" stroke="currentColor" stroke-width="2"/>
+<rect x="41.999" y="4.512" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+<rect x="53.475" y="4.671" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+<rect x="66.27" y="27.243" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+<rect x="74.27" y="27.243" width="3" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+<rect x="74.159" y="24.132" width="3" height="8" rx="1" transform="rotate(90 74.16 24.132)" stroke="currentColor" stroke-width="2"/>
+<rect x="74" y="35.608" width="3" height="8" rx="1" transform="rotate(90 74 35.608)" stroke="currentColor" stroke-width="2"/>
+<rect x="12.901" y="34.083" width="8" height="8" rx="1" transform="rotate(-180 12.9 34.083)" stroke="currentColor" stroke-width="2"/>
+<rect x="4.901" y="34.083" width="3" height="8" rx="1" transform="rotate(-180 4.9 34.083)" stroke="currentColor" stroke-width="2"/>
+<rect x="5.012" y="37.194" width="3" height="8" rx="1" transform="rotate(-90 5.012 37.194)" stroke="currentColor" stroke-width="2"/>
+<rect x="5.171" y="25.718" width="3" height="8" rx="1" transform="rotate(-90 5.17 25.718)" stroke="currentColor" stroke-width="2"/>
+<rect x="63" y="16" width="30" height="47" rx="1" transform="rotate(90 63 16)" stroke="currentColor" stroke-width="2"/>
 </symbol>
 <symbol fill="none" viewBox="0 0 56 55" id="roundedTable" xmlns="http://www.w3.org/2000/svg">
 <circle cx="27.5" cy="26.5" r="15.5" transform="rotate(45 27.5 26.5)" stroke="currentColor" stroke-width="2"/>

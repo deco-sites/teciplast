@@ -13,11 +13,10 @@ import SizeFilter from "$store/components/search/SizeFilter.tsx";
 import type { BreadcrumbList } from "apps/commerce/types.ts";
 import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
 
-
 interface Props {
   filters: ProductListingPage["filters"];
   allowedFilters: AllowedFilters[];
-  url:  BreadcrumbList["itemListElement"];
+  url: BreadcrumbList["itemListElement"];
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
@@ -28,7 +27,10 @@ function ValueItem(
 ) {
   return (
     <li>
-      <a href={url} class="flex items-center hover:underline lg:px-5 min-w-[250px] max-w-[250px]">
+      <a
+        href={url}
+        class="flex items-center hover:underline lg:px-5 min-w-[250px] max-w-[250px]"
+      >
         <span class="text-sm mr-auto truncate w-full bg-[#fff]">{label}</span>
         {quantity > 0 && (
           <span class="text-sm  ml-auto text-base-300">({quantity})</span>
@@ -38,14 +40,15 @@ function ValueItem(
   );
 }
 
-
 function FilterValues({ key, values }: FilterToggle) {
   const flexDirection = key === "tamanho" || key === "cor"
     ? "flex-row"
     : "flex-col";
 
   return (
-    <ul class={`flex  justify-between  bg-[#fff] ${flexDirection} max-w-[249px] min-w-[249px] border border-[#DEDEDE] border-t-[0px] py-2 `}>
+    <ul
+      class={`flex  justify-between  bg-[#fff] ${flexDirection} max-w-[249px] min-w-[249px] border border-[#DEDEDE] border-t-[0px] py-2 `}
+    >
       {values.map((item) => {
         const { url, selected, value, quantity } = item;
 
@@ -74,12 +77,11 @@ interface CarouselAllowedOption {
   image: string;
   title: string;
   item: FilterToggleValue;
-  url?:  BreadcrumbList["itemListElement"]
-
+  url?: BreadcrumbList["itemListElement"];
 }
 
 function CarouselValueItem(
-  { image, title, item  }: CarouselAllowedOption,
+  { image, title, item }: CarouselAllowedOption,
 ) {
   return (
     <a
@@ -102,16 +104,22 @@ function CarouselValueItem(
 interface CarouselFilterProps {
   filter: FilterToggle;
   allowedFilters: AllowedFilters[];
-  url:  BreadcrumbList["itemListElement"]
+  url: BreadcrumbList["itemListElement"];
 }
 
-function CarouselFilterValues({ filter, allowedFilters,url  }: CarouselFilterProps) {
+function CarouselFilterValues(
+  { filter, allowedFilters, url }: CarouselFilterProps,
+) {
   const id = useId();
   const { key, values } = filter;
 
   const isAllowedOption = (value: FilterToggleValue) => {
-    const allowedFilter = allowedFilters.find((item) => item.key == key && item?.pageName == url[0].name);
-    const allowedOption = allowedFilter?.values.find((item) =>      item.key == value.value );
+    const allowedFilter = allowedFilters.find((item) =>
+      item.key == key && item?.pageName == url[0].name
+    );
+    const allowedOption = allowedFilter?.values.find((item) =>
+      item.key == value.value
+    );
     return Boolean(allowedOption);
   };
   return (
@@ -133,7 +141,7 @@ function CarouselFilterValues({ filter, allowedFilters,url  }: CarouselFilterPro
               index={index}
               class="w-[220px] sm:w-[240px] lg:first:ml-1 sm:first:pl-0 last:mr-6 sm:last:pr-0"
             >
-              <CarouselValueItem {...{ item, title, image }} /> 
+              <CarouselValueItem {...{ item, title, image }} />
             </Slider.Item>
           );
         })}
@@ -155,9 +163,7 @@ function CarouselFilterValues({ filter, allowedFilters,url  }: CarouselFilterPro
   );
 }
 
-
-
-function CarouselFilter({ filter, allowedFilters,url }: CarouselFilterProps) {
+function CarouselFilter({ filter, allowedFilters, url }: CarouselFilterProps) {
   return (
     <div class="bg-base-100 rounded-none mb-1 text-base-300 lg:border-b border-[#C3C3C3] lg:border-none lg:py-4">
       <div class="flex">
@@ -189,33 +195,51 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
       } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px] gap-2 h-[90px]`}
     >
       <div class="w-full flex justify-center items-center">
-        <Icon
-          id={icon}
-          size={45} 
-          strokeWidth={2}
-          class=""
-        />
+        {icon === "rectangularTable"
+          ? (
+            <Icon
+              id={icon}
+              height={51}
+              width={65}
+              strokeWidth={2}
+              class=""
+            />
+          )
+          : (
+            <Icon
+              id={icon}
+              size={45}
+              strokeWidth={2}
+              class=""
+            />
+          )}
       </div>
-      <span class="text-[9px] w-full uppercase font-bold mt-1 h-7">{title}</span>
+      <span class="text-[9px] w-full uppercase font-bold mt-1 h-7">
+        {title}
+      </span>
     </a>
   );
 }
 
-function IconsFilterValues({ filter, allowedFilters,url }: CarouselFilterProps) {
+function IconsFilterValues(
+  { filter, allowedFilters, url }: CarouselFilterProps,
+) {
   const { key, values } = filter;
-  const allowedFilter = allowedFilters.find((item) => item.key == key && item?.pageName == url[0].name);
-  
+  const allowedFilter = allowedFilters.find((item) =>
+    item.key == key && item?.pageName == url[0].name
+  );
+
   const isAllowedOption = (value: FilterToggleValue) => {
     const allowedOption = allowedFilter?.values.find((item) =>
       item.key == value.value
     );
-    return Boolean(allowedOption); 
+    return Boolean(allowedOption);
   };
 
-  console.log(allowedFilters)
+  console.log(allowedFilters);
 
   return (
-    <div >
+    <div>
       <p class="text-xs pl-1 mb-3">{allowedFilter?.title}</p>
 
       <div class="carousel carousel-start sm:carousel-end  justify-start min-w-[300px] max-w-[350px]  h-[100px] gap-10 lg:max-w-[900px] ">
@@ -233,7 +257,7 @@ function IconsFilterValues({ filter, allowedFilters,url }: CarouselFilterProps) 
   );
 }
 
-function IconsFilter({ filter, allowedFilters,url }: CarouselFilterProps) {
+function IconsFilter({ filter, allowedFilters, url }: CarouselFilterProps) {
   // console.log(filter, 111 , allowedFilters, 111 , url)
   return (
     <div class="rounded-none text-base-300 lg:border-none h-[120px]">
@@ -253,15 +277,13 @@ function IconsFilter({ filter, allowedFilters,url }: CarouselFilterProps) {
 interface DropdownFilterProps {
   filter: FilterToggle;
   label: string;
-  url:  BreadcrumbList["itemListElement"]
-
+  url: BreadcrumbList["itemListElement"];
 }
 
-function DropdownFilter({ filter, label,url }: DropdownFilterProps) {
+function DropdownFilter({ filter, label, url }: DropdownFilterProps) {
   return (
-   <div class="flex items-end  w-full group min-w-[250px] max-w-[250px]">
-    <div class="hidden lg:flex   group-hover:flex rounded-md mb-1 text-base-300 border border-[#DEDEDE] w-full relative min-w-[250px] max-w-[250px]  pl-[5px] max-h-[40px] bg-[#fff]">
-      
+    <div class="flex items-end  w-full group min-w-[250px] max-w-[250px]">
+      <div class="hidden lg:flex   group-hover:flex rounded-md mb-1 text-base-300 border border-[#DEDEDE] w-full relative min-w-[250px] max-w-[250px]  pl-[5px] max-h-[40px] bg-[#fff]">
         <div class=" group-hover:flex w-full flex h-[40px] pl-5  items-center  min-w-[250px] max-w-[250px]">
           <span>{filter.label}</span>
         </div>
@@ -269,39 +291,41 @@ function DropdownFilter({ filter, label,url }: DropdownFilterProps) {
         <ul class=" hidden group-hover:flex flex-col items-center w-full h-full shrink-0 absolute top-[28px] left-0 border border-[#DEDEDE] border-t-0 min-w-[250px] max-w-[250px] z-50 ">
           <FilterValues {...filter} />
         </ul>
-
-    </div>  
-
-    <div class="lg:hidden collapse collapse-arrow bg-base-100 rounded-md mb-1 text-base-300 border-[#DEDEDE]   max-w-[250px]">
-      <input type="checkbox" class="min-h-[0px]" />
-      <div class="collapse-title min-h-[0px] flex gap-2 px-5">
-        <span>{filter.label}</span>
       </div>
 
-      <div class="collapse-content ">
-        <ul class={`flex flex-col max-w-[250px] min-w-[250px] `}>
-          <FilterValues {...filter} />
-        </ul>
+      <div class="lg:hidden collapse collapse-arrow bg-base-100 rounded-md mb-1 text-base-300 border-[#DEDEDE]   max-w-[250px]">
+        <input type="checkbox" class="min-h-[0px]" />
+        <div class="collapse-title min-h-[0px] flex gap-2 px-5">
+          <span>{filter.label}</span>
+        </div>
+
+        <div class="collapse-content ">
+          <ul class={`flex flex-col max-w-[250px] min-w-[250px] `}>
+            <FilterValues {...filter} />
+          </ul>
+        </div>
       </div>
     </div>
-    </div>
-
   );
 }
 
 function FeaturedFilters({ filters, allowedFilters, url }: Props) {
-
   const getAllowedFromFilter = (filter: FilterToggle) => {
-    
-      const allowedFilter = allowedFilters.find((item) => item.key == filter.key && item.pageName == url[0].name);
-      
-      return allowedFilter;
-    };
+    const allowedFilter = allowedFilters.find((item) =>
+      item.key == filter.key && item.pageName == url[0].name
+    );
 
-  const isAllowed = (filter: Filter): filter is FilterToggle => Boolean(allowedFilters.find((item) => item.key == filter.key && item.pageName == url[0].name))
+    return allowedFilter;
+  };
 
-  console.log(filters)
+  const isAllowed = (filter: Filter): filter is FilterToggle =>
+    Boolean(
+      allowedFilters.find((item) =>
+        item.key == filter.key && item.pageName == url[0].name
+      ),
+    );
 
+  console.log(filters);
 
   return (
     <div class="flex relative w-full justify-center min-h-[90px] py-2 ">
@@ -313,8 +337,9 @@ function FeaturedFilters({ filters, allowedFilters, url }: Props) {
             .map((filter) => {
               const allowed = getAllowedFromFilter(filter);
 
-
-              if (allowed?.type == "carousel"  && allowed?.pageName == url[0].name ) {
+              if (
+                allowed?.type == "carousel" && allowed?.pageName == url[0].name
+              ) {
                 return (
                   <CarouselFilter
                     filter={filter}
@@ -324,31 +349,34 @@ function FeaturedFilters({ filters, allowedFilters, url }: Props) {
                 );
               }
 
-              if (allowed?.type == "dropdown"  && allowed?.pageName == url[0].name) {
-
-                return  <DropdownFilter filter={filter} label={allowed.title} url={url}  />;
+              if (
+                allowed?.type == "dropdown" && allowed?.pageName == url[0].name
+              ) {
+                return (
+                  <DropdownFilter
+                    filter={filter}
+                    label={allowed.title}
+                    url={url}
+                  />
+                );
               }
 
-              if (allowed?.type == "icons"  && allowed?.pageName == url[0].name)  {
+              if (
+                allowed?.type == "icons" && allowed?.pageName == url[0].name
+              ) {
                 return (
-                
-                 <IconsFilter
+                  <IconsFilter
                     filter={filter}
                     allowedFilters={allowedFilters}
                     url={url}
                   />
-
-
                 );
               }
-              
             })}
-            {/* <SizeFilter  filters={filters} /> */}
+          {/* <SizeFilter  filters={filters} /> */}
         </ul>
-      
       </div>
     </div>
-    
   );
 }
 
