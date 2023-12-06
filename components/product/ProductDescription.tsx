@@ -3,9 +3,11 @@ import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import LaundryInstructions from "$store/components/product/LaundryInstructions.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { AvailableIcons } from "$store/components/ui/Icon.tsx";
+import VideoTutorials, { Video } from "$store/components/ui/VideoTutorials.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
+  videoTutorials: Video[];
   layout: {
     /**
      * @title Product Name
@@ -17,7 +19,9 @@ interface Props {
   borderRoundedBot?: boolean;
 }
 
-function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
+function ProductInfo(
+  { page, videoTutorials, layout, borderRoundedBot = false }: Props,
+) {
   const platform = usePlatform();
 
   if (page === null) {
@@ -46,41 +50,42 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
     p.name === "Instruções de Lavagem"
   ).map((item) => item.value) as AvailableIcons[];
 
+  const isCurtain = product.name &&
+    product.name.toLowerCase().includes("cortina");
+
   return (
     <div
       class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${
         borderRoundedBot && "rounded-b  border-b  rounded-md"
       } `}
     >
-      <div class="flex flex-col w-full items-center justify-between border-t border-[#cecece}  mt-4 sm:mt-6 grid grid-cols-2">
+      <div class="w-full justify-between border-t border-[#cecece}  mt-4 sm:mt-6 grid grid-cols-5">
         {/* Description card */}
-        <div class="pt-5 col-span-1">
+        <div
+          class={`pt-5 ${
+            isCurtain ? "col-span-5 md:col-span-3" : "col-span-5"
+          }`}
+        >
           <div class="py-0 lg:py-5">
             {description && (
               <div class="flex-col">
-                {
-                  /* <div class="flex flex-col lg:flex-row lg:grid-cols-5 justify-start items-start">
-                  <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base lg:col-span-1 pt-2">
-                    Descrição do Produto
-                  </span>
-                  {description &&
-                    (
-                      <div
-                        class={`py-2 flex-row flex-wrap flex-grow w-full lg:min-w-[900px] lg:max-w-[900px] gap-5 lg:col-span-4`}
-                        dangerouslySetInnerHTML={{
-                          __html: description.replaceAll("_x000D_", ""),
-                        }}
-                      >
-                      </div>
-                    )}
-                </div>
-                <div></div> */
-                }
-                <div class="flex flex-col lg:flex-row lg:grid-cols-5 justify-start items-start">
-                  <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base lg:col-span-1 pt-2">
+                <div
+                  class={`flex flex-col ${
+                    !isCurtain && "lg:grid-cols-5 lg:flex-row"
+                  } justify-start items-start`}
+                >
+                  <span
+                    class={`flex justify-start items-start sm:min-w-[300px] uppercase text-base ${
+                      !isCurtain && "lg:col-span-1"
+                    } pt-2 mb-11 font-bold`}
+                  >
                     INFORMAÇÕES DO PRODUTO
                   </span>
-                  <div class="flex flex-row  flex-wrap  flex-grow  w-full lg:min-w-[900px] lg:max-w-[900px] gap-5 lg:col-span-4">
+                  <div
+                    class={`flex flex-row  flex-wrap  flex-grow  w-full ${
+                      !isCurtain && "lg:min-w-[900px] lg:col-span-4"
+                    } lg:max-w-full gap-5 `}
+                  >
                     {brand && (
                       <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
                         <span class="text-base uppercase font-bold">Marca</span>
@@ -105,94 +110,24 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
                         );
                       }
                     })}
-                    {
-                      /*
-                    <div class="flex flex-col sm:min-w-[200px] mb-5">
-                      <span class="text-base  uppercase font-bold">
-                        Linha
-                      </span>
-                      <span class="text-sm uppercase underline">
-                        Flannel
-                      </span>
-                    </div>
-                    <div class="flex flex-col sm:min-w-[200px] mb-5">
-                      <span class="text-base  uppercase font-bold">
-                        Coleção
-                      </span>
-                      <span class="text-sm uppercase underline">
-                        Plush
-                      </span>
-                    </div>
-                    <div class="flex flex-col sm:min-w-[200px] mb-5">
-                      <span class="text-base  uppercase font-bold">
-                        Tecido
-                      </span>
-                      <span class="text-sm uppercase underline">
-                        Microfibra
-                      </span>
-                    </div>
-                    <div class="flex flex-col sm:min-w-[200px] mb-5">
-                      <span class="text-base  uppercase font-bold">
-                        Composição
-                      </span>
-                      <span class="text-sm uppercase underline">
-                        100% Poliéster
-                      </span>
-                    </div>
-                    <div class="flex flex-col sm:min-w-[200px] mb-5">
-                      <span class="text-base  uppercase font-bold">
-                        Acabamento
-                      </span>
-                      <span class="text-sm uppercase font-normal">
-                        ALTO BRILHO
-                      </span>
-                    </div>
-                    <div class="flex flex-col sm:min-w-[200px] mb-5">
-                      <span class="text-base  uppercase font-bold">
-                        GARANTIA
-                      </span>
-                      <span class="text-sm uppercase font-normal">
-                        30 DIAS
-                      </span>
-                    </div>
-                    <div class="flex flex-col sm:min-w-[200px] mb-5">
-                      <span class="text-base  uppercase font-bold">
-                        DETALHE
-                      </span>
-                      <span class="text-sm uppercase font-normal">
-                        TOQUE MACIO E CONFORTÁVEL MUITO ACONCHEGANTE
-                      </span>
-                    </div>
-                    <div class="flex flex-col sm:min-w-[200px] mb-5">
-                      <span class="text-base  uppercase font-bold">
-                        OBSERVAÇÕES
-                      </span>
-                      <span class="text-sm uppercase font-normal">
-                        DEVIDO A VARIAÇÕES DE MODELOS DE MONITORES DE COMPUTADOR,
-                        AS CORES QUE VOCÊ VÊ NESTA PÁGINA PODEM VARIAR COM A COR
-                        REAL DO PRODUTO
-                      </span>
-                    </div> */
-
-                      instructions.length && (
-                        <div class="flex flex-col sm:min-w-[200px] mb-5">
-                          <span class="text-base  uppercase font-bold">
-                            INSTRUÇÕES
-                          </span>
-                          <span class="text-sm uppercase font-normal">
-                            <LaundryInstructions instructions={instructions} />
-                          </span>
-                        </div>
-                      )
-                    }
+                    {instructions.length && (
+                      <div class="flex flex-col sm:min-w-[200px] mb-5">
+                        <span class="text-base  uppercase font-bold">
+                          INSTRUÇÕES
+                        </span>
+                        <span class="text-sm uppercase font-normal">
+                          <LaundryInstructions instructions={instructions} />
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
             )}
           </div>
         </div>
-        <div class="col-span-1">
-          <span>outra div</span>
+        <div class={`${isCurtain ? "col-span-5 md:col-span-2" : "hidden"}`}>
+          <VideoTutorials videos={videoTutorials} />
         </div>
       </div>
     </div>
