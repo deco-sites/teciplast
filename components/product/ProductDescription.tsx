@@ -52,13 +52,14 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
         borderRoundedBot && "rounded-b  border-b  rounded-md"
       } `}
     >
-      <div class="flex flex-col w-full items-center justify-between border-t border-[#cecece}  mt-4 sm:mt-6 ">
+      <div class="flex flex-col w-full items-center justify-between border-t border-[#cecece}  mt-4 sm:mt-6 grid grid-cols-2">
         {/* Description card */}
-        <div class="pt-5 ">
+        <div class="pt-5 col-span-1">
           <div class="py-0 lg:py-5">
             {description && (
               <div class="flex-col">
-                <div class="flex flex-col lg:flex-row lg:grid-cols-5 justify-start items-start">
+                {
+                  /* <div class="flex flex-col lg:flex-row lg:grid-cols-5 justify-start items-start">
                   <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base lg:col-span-1 pt-2">
                     Descrição do Produto
                   </span>
@@ -73,7 +74,8 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
                       </div>
                     )}
                 </div>
-                <div></div>
+                <div></div> */
+                }
                 <div class="flex flex-col lg:flex-row lg:grid-cols-5 justify-start items-start">
                   <span class="flex justify-start items-start sm:min-w-[300px] uppercase text-base lg:col-span-1 pt-2">
                     INFORMAÇÕES DO PRODUTO
@@ -188,6 +190,9 @@ function ProductInfo({ page, layout, borderRoundedBot = false }: Props) {
               </div>
             )}
           </div>
+        </div>
+        <div class="col-span-1">
+          <span>outra div</span>
         </div>
       </div>
     </div>
