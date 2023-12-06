@@ -1,13 +1,16 @@
+import type { BreadcrumbList } from "apps/commerce/types.ts";
+
 export interface Props {
   matchingTitle?: string;
+  breadCrumbs?: BreadcrumbList["itemListElement"];
 }
 
-function PageTitle({ matchingTitle }: Props) {
+function PageTitle({ matchingTitle, breadCrumbs }: Props) {
   const query = window.location.search;
   const pathName = window.location.pathname;
   const urlParams = new URLSearchParams(query);
   const searchTerm = urlParams.get("q");
-  const pageTitle = pathName ? pathName.replace("/", "") : "";
+  const pageTitle = breadCrumbs ? breadCrumbs[breadCrumbs.length - 1].name : "";
 
   return (
     <div>
