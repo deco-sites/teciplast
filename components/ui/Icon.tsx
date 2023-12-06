@@ -118,7 +118,10 @@ export type AvailableIcons =
   | 'bandeja'
   | 'tabuleiros'
   | 'escultura'
-  ;
+  | "squareTable"
+  | "roundedTable"
+  | "rectangularTable"
+  | "ruler";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
