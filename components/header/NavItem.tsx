@@ -28,7 +28,7 @@ function NavItem(
 
       
           <div
-            class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center max-w-[500px] `}
+            class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center  max-w-[420px] `}
             style={{ top: "0px", marginTop: marginTopDrop }}
           >
             {image?.url && (
@@ -43,7 +43,7 @@ function NavItem(
             )}
             <ul class="flex flex-row items-center justify-start  flex-wrap ">
               {children?.map((node) => (
-                <li class=" text-start min-w-[250px] max-w-[250px] p-[7.5px] ">
+                <li class=" text-start min-w-[200px] max-w-[200px] p-[7.5px] ">
                   <a class="" href={node.url}>
                     <span>{node.name}</span>
                   </a>
