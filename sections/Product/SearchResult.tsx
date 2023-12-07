@@ -99,8 +99,11 @@ function Result(
   const totalPages = pageInfo.records && pageInfo.recordPerPage
     ? Math.ceil(pageInfo.records / pageInfo.recordPerPage)
     : 1;
+ 
+  const { numberOfItems} = breadcrumb
 
-
+  const hiddenDepartament = (numberOfItems > 0)
+  const hiddenCategory = (numberOfItems > 1)
 
   return (
     <>
@@ -116,7 +119,7 @@ function Result(
               <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
             </div>
             
-            <FeaturedFilters filters={filters} allowedFilters={featuredFilters} url={breadcrumb?.itemListElement}/>
+            <FeaturedFilters filters={filters} allowedFilters={featuredFilters} url={breadcrumb?.itemListElement} hiddenCategory={hiddenCategory}/>
           </div>
 
         <SearchControls
@@ -141,7 +144,7 @@ function Result(
             {layout?.variant === "aside" && filters.length > 0 && (
               <>
                 <aside class="hidden sm:block w-min min-w-[250px] mb-[8px]">
-                  <Filters filters={filters} />
+                  <Filters filters={filters} hiddenCategory={hiddenCategory} hiddenDepartament={hiddenDepartament} />
                 </aside>
                 <aside class="hidden sm:block w-min min-w-[250px] ">
                   <PriceFilter filters={filters} />

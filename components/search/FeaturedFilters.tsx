@@ -17,6 +17,7 @@ interface Props {
   filters: ProductListingPage["filters"];
   allowedFilters: AllowedFilters[];
   url: BreadcrumbList["itemListElement"];
+  hiddenCategory:boolean
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
@@ -192,7 +193,7 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
         item.selected
           ? "text-[#70A4E0] border-[#DADADA] bg-base-100 border-2"
           : "text-[#838383] border-none"
-      } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px] gap-2 h-[90px]`}
+      } flex flex-col items-center text-center rounded-md text-[9px] justify-center w-[100px] gap-2 h-[110px] py-2`}
     >
       <div class="w-full flex justify-center items-center">
         {icon === "rectangularTable"
@@ -236,13 +237,12 @@ function IconsFilterValues(
     return Boolean(allowedOption);
   };
 
-  console.log(allowedFilters);
 
   return (
     <div>
       <p class="text-xs pl-1 mb-3">{allowedFilter?.title}</p>
 
-      <div class="carousel carousel-start sm:carousel-end  justify-start min-w-[300px] max-w-[350px]  h-[100px] gap-10 lg:max-w-[900px] ">
+      <div class="carousel carousel-start sm:carousel-end  justify-start min-w-[300px] max-w-[350px]  h-[110px] gap-10 lg:max-w-[900px] ">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
             filter.key == key && filter?.pageName == url[0].name
@@ -258,7 +258,6 @@ function IconsFilterValues(
 }
 
 function IconsFilter({ filter, allowedFilters, url }: CarouselFilterProps) {
-  // console.log(filter, 111 , allowedFilters, 111 , url)
   return (
     <div class="rounded-none text-base-300 lg:border-none h-[120px]">
       <div class="flex">
@@ -309,7 +308,20 @@ function DropdownFilter({ filter, label, url }: DropdownFilterProps) {
   );
 }
 
-function FeaturedFilters({ filters, allowedFilters, url }: Props) {
+function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props) {
+
+  const ordenarListaComCorPrimeiro = (lista : Filter[])=> {
+    
+    const filtroCor = lista.find((item,index)=> item.key == "cor-principal")
+
+    if(filtroCor){
+      lista.splice(4,1)
+      lista.unshift(filtroCor);
+    }
+
+  }
+
+  ordenarListaComCorPrimeiro(filters)
   const getAllowedFromFilter = (filter: FilterToggle) => {
     const allowedFilter = allowedFilters.find((item) =>
       item.key == filter.key && item.pageName == url[0].name
@@ -317,23 +329,22 @@ function FeaturedFilters({ filters, allowedFilters, url }: Props) {
 
     return allowedFilter;
   };
-
   const isAllowed = (filter: Filter): filter is FilterToggle =>
     Boolean(
       allowedFilters.find((item) =>
         item.key == filter.key && item.pageName == url[0].name
       ),
     );
-
-  console.log(filters);
+    
 
   return (
-    <div class="flex relative w-full justify-center min-h-[90px] py-2 ">
+    <div class="flex relative w-full justify-center min-h-[110px] py-2 ">
       <div class=" ">
         <ul class="flex flex-col  lg:flex-row gap-2 ">
           {filters
             .filter(isToggle)
             .filter(isAllowed)
+            .filter((filter: Filter) => hiddenCategory? ( filter.key !== "category-2" ):( true ))
             .map((filter) => {
               const allowed = getAllowedFromFilter(filter);
 
