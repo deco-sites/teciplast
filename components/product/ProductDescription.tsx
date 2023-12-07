@@ -50,8 +50,12 @@ function ProductInfo(
     p.name === "Instruções de Lavagem"
   ).map((item) => item.value) as AvailableIcons[];
 
-  const isCurtain = product.name &&
-    product.name.toLowerCase().includes("cortina");
+  const curtainCategory = product.additionalProperty?.filter((p) =>
+    p.value?.toLocaleLowerCase().includes("cortina") ||
+    p.value?.toLocaleLowerCase().includes("persiana")
+  );
+
+  const isCurtain = curtainCategory && curtainCategory.length;
 
   return (
     <div

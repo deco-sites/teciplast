@@ -237,7 +237,6 @@ function IconsFilterValues(
     return Boolean(allowedOption);
   };
 
-
   return (
     <div>
       <p class="text-xs pl-1 mb-3">{allowedFilter?.title}</p>
@@ -314,8 +313,10 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
     
     const filtroCor = lista.find((item,index)=> item.key == "cor-principal")
 
+    const indexCor = lista.findIndex((item,index)=> item.key == "cor-principal")
+    
     if(filtroCor){
-      lista.splice(4,1)
+      lista.splice(indexCor,1)
       lista.unshift(filtroCor);
     }
 
@@ -335,7 +336,6 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
         item.key == filter.key && item.pageName == url[0].name
       ),
     );
-    
 
   return (
     <div class="flex relative w-full justify-center min-h-[110px] py-2 ">

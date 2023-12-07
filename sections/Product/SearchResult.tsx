@@ -113,14 +113,18 @@ function Result(
         </div>
       </div>
       <div class="container  sm:py-5 px-2 sm:px-0">
-          <div class="flex flex-row gap-5 lg:mb-[-20px]">
+        <div class="flex flex-row gap-5 lg:mb-[-20px]">
             <div id="title" class="hidden sm:flex flex-col w-full max-w-[250px]">
-              <PageTitle />
-              <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
+              <PageTitle breadCrumbs={breadcrumb?.itemListElement}/>
+              <span class="text-sm text-[#646464]">
+                {pageInfo.records} resultados
+              </span>
             </div>
             
             <FeaturedFilters filters={filters} allowedFilters={featuredFilters} url={breadcrumb?.itemListElement} hiddenCategory={hiddenCategory}/>
           </div>
+
+    
 
         <SearchControls
           sortOptions={sortOptions}
