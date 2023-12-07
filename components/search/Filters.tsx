@@ -10,10 +10,15 @@ import { parseRange } from "apps/commerce/utils/filters.ts";
 
 interface Props {
   filters: ProductListingPage["filters"];
+  hiddenCategory: boolean;
+  hiddenDepartament: boolean;
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
-  filter["@type"] === "FilterToggle";
+  filter["@type"] === "FilterToggle" ;
+
+const isPrice = (filter: Filter) =>
+  !["price"].includes(filter.key)
 
 function ValueItem(
   { url, selected, label, quantity }: FilterToggleValue,
@@ -60,13 +65,17 @@ function FilterValues({ key, values }: FilterToggle) {
   );
 }
 
-function Filters({ filters }: Props) {
+function Filters({ filters, hiddenCategory,hiddenDepartament }: Props) {
+  
+
   return (
     <ul class="flex flex-col lg:gap-[6px]  ">
       {filters
         .filter(isToggle)
+        .filter(isPrice)
+        .filter((filter: Filter) => hiddenDepartament ? ( filter.key !== "category-1" ):( true ))
+        .filter((filter: Filter) => hiddenCategory ? ( filter.key !== "category-2" ):( true ))
         .map((filter) => (
-          filter.key !== "price" && 
             <li>
               <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none ">
                 <input type="checkbox" class="min-h-[0px]" />
