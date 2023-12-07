@@ -102,6 +102,7 @@ function Result(
  
   const { numberOfItems} = breadcrumb
 
+
   const hiddenDepartament = (numberOfItems > 0)
   const hiddenCategory = (numberOfItems > 1)
 

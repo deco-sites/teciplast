@@ -337,7 +337,7 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
       ),
     );
 
-  return (
+    return (
     <div class="flex relative w-full justify-center min-h-[110px] py-2 ">
       <div class=" ">
         <ul class="flex flex-col  lg:flex-row gap-2 ">

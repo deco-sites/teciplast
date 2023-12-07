@@ -26,52 +26,9 @@ function NavItem(
         </div>
       </a>
 
-      {children && children.length > 0 && index == 0
-        ? (
+      
           <div
-            class={` absolute hidden hover:flex group-hover:flex z-50 items-center justify-center  max-w-[350px] bg-gray-100 `}
-            style={{ top: "0px", marginTop: marginTopDrop }}
-          >
-            <ul class="flex flex-col items-center justify-start  flex-wrap gap-3  ">
-              {children.map((node) => (
-                <li class="group/item text-start  text-[#626262] min-w-[175px] max-w-[175px] px-[15px] hover:font-bold hover:bg-[#d9d9d9] py-2 h-full  ">
-                  <a
-                    class="flex flex-row h-full justify-between items-center "
-                    href={node.url}
-                  >
-                    <span>{node.name}</span>
-                    <Icon
-                      id="ChevronRight"
-                      size={15}
-                      strokeWidth={2}
-                      fill="none"
-                    />
-                  </a>
-                  <div
-                    class={`group-hover/item:flex absolute hidden hover:flex  z-50 items-center justify-center border-l-2 border-[#d6d6d6] max-w-[350px] bg-[#EDEDED] `}
-                    style={{ top: "0px", marginLeft: "160px" }}
-                  >
-                    <ul class="flex flex-col items-center justify-start    min-w-[175px]">
-                      {node.children?.map((leaf) => (
-                        <li class="py-2" >
-                          <a
-                            class="flex flex-row h-full justify-start items-center "
-                            href={leaf.url}
-                          >
-                            <span class="font-normal">{leaf.name}</span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-        : (
-          <div
-            class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center max-w-[350px] `}
+            class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center  max-w-[420px] `}
             style={{ top: "0px", marginTop: marginTopDrop }}
           >
             {image?.url && (
@@ -86,7 +43,7 @@ function NavItem(
             )}
             <ul class="flex flex-row items-center justify-start  flex-wrap ">
               {children?.map((node) => (
-                <li class=" text-start min-w-[175px] p-[15px] ">
+                <li class=" text-start min-w-[200px] max-w-[200px] p-[7.5px] ">
                   <a class="" href={node.url}>
                     <span>{node.name}</span>
                   </a>
@@ -104,7 +61,7 @@ function NavItem(
               ))}
             </ul>
           </div>
-        )}
+       
     </li>
   );
 }
