@@ -99,9 +99,13 @@ function Result(
   const totalPages = pageInfo.records && pageInfo.recordPerPage
     ? Math.ceil(pageInfo.records / pageInfo.recordPerPage)
     : 1;
+ 
+  const { numberOfItems} = breadcrumb
 
 
-console.log(products)
+  const hiddenDepartament = (numberOfItems > 0)
+  const hiddenCategory = (numberOfItems > 1)
+
   return (
     <>
       <div class="hidden sm:flex w-full max-w-[90%] border-y border-[#DCDCDC] mx-auto">
@@ -110,14 +114,18 @@ console.log(products)
         </div>
       </div>
       <div class="container  sm:py-5 px-2 sm:px-0">
-          <div class="flex flex-row gap-5 lg:mb-[-20px]">
+        <div class="flex flex-row gap-5 lg:mb-[-20px]">
             <div id="title" class="hidden sm:flex flex-col w-full max-w-[250px]">
-              <PageTitle />
-              <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
+              <PageTitle breadCrumbs={breadcrumb?.itemListElement}/>
+              <span class="text-sm text-[#646464]">
+                {pageInfo.records} resultados
+              </span>
             </div>
             
-            <FeaturedFilters filters={filters} allowedFilters={featuredFilters} url={breadcrumb?.itemListElement}/>
+            <FeaturedFilters filters={filters} allowedFilters={featuredFilters} url={breadcrumb?.itemListElement} hiddenCategory={hiddenCategory}/>
           </div>
+
+    
 
         <SearchControls
           sortOptions={sortOptions}
@@ -141,7 +149,7 @@ console.log(products)
             {layout?.variant === "aside" && filters.length > 0 && (
               <>
                 <aside class="hidden sm:block w-min min-w-[250px] mb-[8px]">
-                  <Filters filters={filters} />
+                  <Filters filters={filters} hiddenCategory={hiddenCategory} hiddenDepartament={hiddenDepartament} />
                 </aside>
                 <aside class="hidden sm:block w-min min-w-[250px] ">
                   <PriceFilter filters={filters} />

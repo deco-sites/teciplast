@@ -82,13 +82,7 @@ function BedSizeSelector({ product }: Props) {
   const hasVariant = isVariantOf?.hasVariant ?? [];
   const possibilities = useVariantPossibilities(hasVariant, product);
 
-  console.log({ keys: Object.keys(possibilities) });
-
   if (Object.keys(possibilities).includes("Tamanho")) {
-    console.log({ tamanhos: Object.entries(possibilities["Tamanho"]) });
-    Object.entries(possibilities["Tamanho"]).map((entry) =>
-      console.log({ entry })
-    );
     return (
       <div class="border border-[#cecece] pt-1 pb-4 px-4">
         <div class="mb-1">
