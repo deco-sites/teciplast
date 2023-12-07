@@ -25,9 +25,9 @@ function ValueItem(
 ) {
   return (
     <li>
-      <a href={url} class="flex items-center gap-2 hover:underline lg:px-5">
+      <a href={url} class={`flex items-center gap-2 hover:underline lg:px-5  ${selected ? "font-extrabold text-black" : ""}`}>
         <span class="text-sm mr-auto">{label}</span>
-        {quantity > 0 && <span class="text-sm  ml-auto text-base-300">({quantity})</span>}
+        {quantity > 0 && <span class={`text-sm  ml-auto text-base-300 ${selected ? "font-extrabold text-black" : ""}`}>({quantity})</span>}
       </a>
     </li>
   );
