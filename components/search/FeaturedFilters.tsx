@@ -320,6 +320,14 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
       lista.unshift(filtroCor);
     }
 
+    const filtroLavagem = lista.find((item,index)=> item.key == "instrucoes-de-lavagem")
+
+    const lavagem = lista.findIndex((item,index)=> item.key == "instrucoes-de-lavagem")
+   
+    if(filtroLavagem){
+      lista.splice(lavagem,1)
+    }
+
   }
 
   ordenarListaComCorPrimeiro(filters)
@@ -336,7 +344,7 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
         item.key == filter.key && item.pageName == url[0].name
       ),
     );
-
+      console.log(filters)
     return (
     <div class="flex relative w-full justify-center min-h-[110px] py-2 ">
       <div class=" ">
