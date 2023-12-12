@@ -344,7 +344,6 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
         item.key == filter.key && item.pageName == url[0].name
       ),
     );
-      console.log(filters)
     return (
     <div class="flex relative w-full justify-center min-h-[110px] py-2 ">
       <div class=" ">
