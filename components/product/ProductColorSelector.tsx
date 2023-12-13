@@ -1,13 +1,13 @@
-import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 import type { Product } from "apps/commerce/types.ts";
 import { usePartialSection } from "deco/hooks/usePartialSection.ts";
+import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 
 
 interface Props {
   product: Product;
 }
 
-const CORES: { [cor: string]: string | null } = {
+const CORES: { [cor: string]: string} = {
   "Amarelo": "bg-[#FFFF00]",
   "Azul": "bg-[#0000FF]",
   "Azul Bebê": "bg-[#89CFF0]",

@@ -27,6 +27,7 @@ import {
 import type { SectionProps } from "deco/mod.ts";
 import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
 import ProductInfoQuantityIsland from "$store/islands/ProductInfoQuantityIsland.tsx"
+import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 
 export interface RecordItem {
   name: string;
@@ -119,6 +120,9 @@ function ProductInfo(
   const isFabric = product.additionalProperty!.find((p) =>
     p.value === "Tecidos"
   );
+  const hasVariant = isVariantOf?.hasVariant ?? [];
+
+  const possibilities = useVariantPossibilities(hasVariant, product);
 
   return (
     <div class="flex flex-col max-w-[100vw]">
@@ -214,10 +218,13 @@ function ProductInfo(
             <BedSizeSelector product={product} />
           </div>
         )}
-
-      <div class="mt-4 sm:mt-6">
-        <ColorSelector product={product} />
-      </div>
+      {Object.keys(possibilities).includes("Cor Principal") &&
+        (
+          <div class="mt-4 sm:mt-6">
+            <ColorSelector product={product} />
+          </div>
+      )}
+     
 
       {/* Add to Cart and quantity */}
       <ProductInfoQuantityIsland isFabric={isFabric} availability={availability} platform={platform} fabricSizeTable={fabricSizeTable} name={name} productID={productID} productGroupID={productGroupID} price={price} discount={discount} seller={seller} />
