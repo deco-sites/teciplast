@@ -311,18 +311,18 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
 
   const ordenarListaComCorPrimeiro = (lista : Filter[])=> {
     
-    const filtroCor = lista.find((item,index)=> item.key == "cor-principal")
+    const filtroCor = lista.find((item)=> item.key == "cor-principal")
 
-    const indexCor = lista.findIndex((item,index)=> item.key == "cor-principal")
+    const indexCor = lista.findIndex((item)=> item.key == "cor-principal")
     
     if(filtroCor){
       lista.splice(indexCor,1)
       lista.unshift(filtroCor);
     }
 
-    const filtroLavagem = lista.find((item,index)=> item.key == "instrucoes-de-lavagem")
+    const filtroLavagem = lista.find((item)=> item.key == "instrucoes-de-lavagem")
 
-    const lavagem = lista.findIndex((item,index)=> item.key == "instrucoes-de-lavagem")
+    const lavagem = lista.findIndex((item)=> item.key == "instrucoes-de-lavagem")
    
     if(filtroLavagem){
       lista.splice(lavagem,1)
