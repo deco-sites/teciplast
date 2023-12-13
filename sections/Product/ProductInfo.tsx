@@ -71,7 +71,6 @@ export async function loader(
     debug = { ...debug, reviewsError: e };
     console.log({ e });
   }
-
   return {
     page,
     layout,
@@ -217,13 +216,15 @@ function ProductInfo(
           <div class="mt-4 sm:mt-6">
             <BedSizeSelector product={product} />
           </div>
-        )}
+        )
+      }
       {Object.keys(possibilities).includes("Cor Principal") &&
         (
           <div class="mt-4 sm:mt-6">
-            <ColorSelector product={product} />
+            <ColorSelector product={product}/>
           </div>
-      )}
+        )
+      }
      
 
       {/* Add to Cart and quantity */}
