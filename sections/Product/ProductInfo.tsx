@@ -183,7 +183,6 @@ function ProductInfo(
           >
           </div>
         )}
-
       {additionalProperty &&
         (
           <div class="flex flex-row justify-start w-full  gap-5 py-3">
@@ -202,7 +201,6 @@ function ProductInfo(
             })}
           </div>
         )}
-
       {/* More Details link */}
       <a href="#more" class="mt-5 flex items-center text-[#403F3F]">
         <span class="uppercase underline text-[#403F3F] text-xs">
