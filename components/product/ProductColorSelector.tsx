@@ -57,12 +57,13 @@ function ColorSelector({ product }: Props) {
                 </li>
               );
             })}
-         
         
         </ul>
       </div>
     </div>
   );
+  } else {
+    return null;
   }
 }
 
