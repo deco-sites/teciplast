@@ -24,9 +24,9 @@ function ShareButton({
   return (
     <>
       <Button
-       class={variant === "icon"
-       ? "btn-circle btn-ghost gap-2 hover:bg-transparent text-[#403F3F]"
-       : "btn-primary btn-outline gap-2 text-center"}
+        class={variant === "icon"
+          ? "btn-circle btn-ghost gap-2 hover:bg-transparent text-[#403F3F]"
+          : "btn-primary btn-outline gap-2 text-center"}
         loading={false}
         aria-label="Share Button"
         onClick={(e) => {

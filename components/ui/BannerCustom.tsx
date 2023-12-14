@@ -184,11 +184,9 @@ export default function BannerCustom(props: Props) {
   return (
     <section class="md:container w-full md:px-0 mx-auto my-8">
       <div
-        class={`hidden md:grid gap-1 md:gap-2 ${
-          MOBILE_COLUMNS[gridColumns]
-        } ${DESKTOP_COLUMNS[gridColumns]} ${DESKTOP_ROWS[gridRows]} ${
-          DESKTOP_ROWS[gridRows]
-        } `}
+        class={`hidden md:grid gap-1 md:gap-2 ${MOBILE_COLUMNS[gridColumns]} ${
+          DESKTOP_COLUMNS[gridColumns]
+        } ${DESKTOP_ROWS[gridRows]} ${DESKTOP_ROWS[gridRows]} `}
       >
         {banners.map((
           {
@@ -254,7 +252,9 @@ export default function BannerCustom(props: Props) {
             />
             <Source
               media="(min-width: 845px)"
-              src={firstBanner.srcDesktop ? firstBanner.srcDesktop : firstBanner.srcMobile}
+              src={firstBanner.srcDesktop
+                ? firstBanner.srcDesktop
+                : firstBanner.srcMobile}
               width={firstBanner.widthProportion!}
               height={firstBanner.heightProportion}
             />

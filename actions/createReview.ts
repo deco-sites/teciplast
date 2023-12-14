@@ -1,4 +1,4 @@
-import { parseCookie } from 'apps/vtex/utils/vtexId.ts';
+import { parseCookie } from "apps/vtex/utils/vtexId.ts";
 
 export interface PropsCreate {
   productId: string;
@@ -26,12 +26,12 @@ export interface CreateResponse {
   pastReviews: string | null;
 }
 
-const url = 'https://tecilar.myvtex.com/reviews-and-ratings/api';
+const url = "https://tecilar.myvtex.com/reviews-and-ratings/api";
 
 const parseCookies = (str: string): { [key: string]: string } => {
   return str
-    .split(';')
-    .map((v) => v.split('='))
+    .split(";")
+    .map((v) => v.split("="))
     .reduce((acc, v) => {
       const [key, value] = v.map(decodeURIComponent);
       acc[key.trim()] = value.trim();
@@ -41,12 +41,12 @@ const parseCookies = (str: string): { [key: string]: string } => {
 
 export const create = async (
   props: PropsCreate,
-  req: Request
+  req: Request,
 ): Promise<CreateResponse | null> => {
   const { productId, rating, title, text, reviewerName } = props;
   // const url = new URL(req.url);
   // const page = Number(url.searchParams.get("page")) || 0;
-  const { cookie, payload } = parseCookie(req.headers, 'tecilar');
+  const { cookie, payload } = parseCookie(req.headers, "tecilar");
   const user = payload?.sub;
 
   if (!user) {
@@ -54,8 +54,8 @@ export const create = async (
   }
 
   try {
-    const response = await fetch(url + '/review', {
-      method: 'POST',
+    const response = await fetch(url + "/review", {
+      method: "POST",
       body: JSON.stringify({
         rating,
         title,
@@ -68,8 +68,8 @@ export const create = async (
         approved: false,
       }),
       headers: {
-        'content-type': 'application/json',
-        accept: 'application/json',
+        "content-type": "application/json",
+        accept: "application/json",
         cookie,
         VtexIdclientAutCookie:
           parseCookies(cookie).VtexIdclientAutCookie_tecilar,

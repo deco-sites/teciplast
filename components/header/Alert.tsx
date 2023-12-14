@@ -1,4 +1,3 @@
-
 import { useId } from "$store/sdk/useId.ts";
 import type { HTMLWidget } from "apps/admin/widgets.ts";
 
@@ -156,7 +155,7 @@ function Alert(
                     <span class="countdown text-xl lg:text-xl font-bold mr-1  lg:mr-0 ">
                       <span id={`${id}::hours`} />
                     </span>
-                    <span class='hidden lg:flex'>{labels?.hours || ""}</span>
+                    <span class="hidden lg:flex">{labels?.hours || ""}</span>
                   </div>
                   <div class="flex px-1">
                     :
@@ -165,7 +164,7 @@ function Alert(
                     <span class="countdown text-xl lg:text-xl font-bold mr-1  lg:mr-0 ">
                       <span id={`${id}::minutes`} />
                     </span>
-                    <span class='hidden lg:flex'>{labels?.minutes || ""}</span>
+                    <span class="hidden lg:flex">{labels?.minutes || ""}</span>
                   </div>
                   <div class="flex px-1">
                     :

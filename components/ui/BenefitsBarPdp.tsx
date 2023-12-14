@@ -1,8 +1,7 @@
 import Icon from "$store/components/ui/Icon.tsx";
 
-
 export interface Props {
-    valor? : number;
+  valor?: number;
 }
 export default function BenefitsBarPdp(props: Props) {
   return (
@@ -10,7 +9,8 @@ export default function BenefitsBarPdp(props: Props) {
       <div class="flex flex-row h-full w-full justify-between items-center">
         <div class="benefits-bg-first-gray w-1/2 grid grid-cols-3 h-full ">
           <div class="col-span-1 flex items-center">
-            <div class="bg-[#007C2C] w-[3px] h-[65px] flex-shrink-0 ml-1 lg:ml-3"></div>
+            <div class="bg-[#007C2C] w-[3px] h-[65px] flex-shrink-0 ml-1 lg:ml-3">
+            </div>
             <Icon height={25} id="GreenShield" />
           </div>
           <div class="col-span-2 flex flex-col justify-center">

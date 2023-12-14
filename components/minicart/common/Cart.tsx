@@ -42,7 +42,6 @@ function Cart({
   const { displayCart } = useUI();
   const isEmtpy = items.length === 0;
 
-
   return (
     <div
       class="flex flex-col justify-center items-center overflow-hidden px-5"
@@ -122,7 +121,7 @@ function Cart({
                 <div class="flex justify-between items-center w-full">
                   <span class={`px-4 font-bold text-[15px]`}>Total</span>
                   <span class="font-medium text-xl">
-                    {formatPrice(total , currency, locale)}
+                    {formatPrice(total, currency, locale)}
                   </span>
                 </div>
                 <span class="text-xs text-base-300 flex flex-row gap-2">

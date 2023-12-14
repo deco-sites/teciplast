@@ -35,7 +35,7 @@ export interface AllowedFilters {
   title: string;
   pageName: string;
   type: "carousel" | "icons" | "dropdown" | "img-dropdown";
-  values: FeaturedFiltersInfo[]
+  values: FeaturedFiltersInfo[];
 }
 
 export interface Props {
@@ -58,13 +58,12 @@ function Result({
   page,
   layout,
   cardLayout,
-  featuredFilters
+  featuredFilters,
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
   const totalPages = pageInfo.records && pageInfo.recordPerPage
     ? Math.ceil(pageInfo.records / pageInfo.recordPerPage)
     : 1;
-
 
   return (
     <>
@@ -74,16 +73,21 @@ function Result({
         </div>
       </div>
       <div class="container  sm:py-5 px-2 sm:px-0">
-        
         <div class="flex flex-row gap-5 lg:mb-[-25px]">
           <div id="title" class="hidden sm:flex flex-col w-full max-w-[250px]">
-            <PageTitle breadCrumbs={breadcrumb?.itemListElement}/>
-            <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
+            <PageTitle breadCrumbs={breadcrumb?.itemListElement} />
+            <span class="text-sm text-[#646464]">
+              {pageInfo.records} resultados
+            </span>
           </div>
-          
-          <FeaturedFilters filters={filters} allowedFilters={featuredFilters} url={breadcrumb?.itemListElement}/>
+
+          <FeaturedFilters
+            filters={filters}
+            allowedFilters={featuredFilters}
+            url={breadcrumb?.itemListElement}
+          />
         </div>
-        
+
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}
@@ -91,10 +95,14 @@ function Result({
           displayFilter={layout?.variant === "drawer"}
         />
 
-        
-        <div id="title" class="flex sm:hidden w-full items-center flex-col mb-5">
+        <div
+          id="title"
+          class="flex sm:hidden w-full items-center flex-col mb-5"
+        >
           <PageTitle />
-          <span class="text-sm text-[#646464]">{pageInfo.records} resultados</span>
+          <span class="text-sm text-[#646464]">
+            {pageInfo.records} resultados
+          </span>
         </div>
 
         <div class="flex flex-row sm:gap-5">

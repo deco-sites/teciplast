@@ -8,7 +8,7 @@ export interface Props extends Omit<BtnProps, "onAddItem" | "platform"> {
 }
 
 function AddToCartButton(props: Props) {
-  const {quantity=1, extraClasses} = props;
+  const { quantity = 1, extraClasses } = props;
   const { addItems } = useCart();
 
   const onAddItem = () =>
@@ -20,7 +20,13 @@ function AddToCartButton(props: Props) {
       }],
     });
 
-  return <Button extraClasses={extraClasses} onAddItem={onAddItem} {...props} />;
+  return (
+    <Button
+      extraClasses={extraClasses}
+      onAddItem={onAddItem}
+      {...props}
+    />
+  );
 }
 
 export default AddToCartButton;
