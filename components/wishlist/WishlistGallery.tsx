@@ -7,6 +7,8 @@ export type Props = SearchResultProps;
 function WishlistGallery(props: Props) {
   const isEmpty = !props.page || props.page.products.length === 0;
 
+  console.log({page:props.page})
+
   if (isEmpty) {
     return (
       <div class="container mx-4 sm:mx-auto">
