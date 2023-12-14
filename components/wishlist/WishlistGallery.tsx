@@ -46,6 +46,7 @@ export const loader = async (props: Props, req: Request, ctx: AppContext) => {
   }
 
   props.page.products = response;
+  props.pageTitle="Lista de Desejos"
 
   return props;
 };

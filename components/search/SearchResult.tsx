@@ -44,6 +44,7 @@ export interface Props {
   layout?: Layout;
   cardLayout?: CardLayout;
   featuredFilters: AllowedFilters[];
+  pageTitle?: string;
 }
 
 function NotFound() {
@@ -58,6 +59,7 @@ function Result({
   page,
   layout,
   cardLayout,
+  pageTitle,
   featuredFilters,
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
@@ -75,7 +77,10 @@ function Result({
       <div class="container  sm:py-5 px-2 sm:px-0">
         <div class="flex flex-row gap-5 lg:mb-[-25px]">
           <div id="title" class="hidden sm:flex flex-col w-full max-w-[250px]">
-            <PageTitle breadCrumbs={breadcrumb?.itemListElement} />
+            <PageTitle
+              breadCrumbs={breadcrumb?.itemListElement}
+              matchingTitle={pageTitle}
+            />
             <span class="text-sm text-[#646464]">
               {pageInfo.records} resultados
             </span>
