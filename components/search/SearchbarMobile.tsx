@@ -129,7 +129,7 @@ function Searchbar({
             } max-w-[350px] mt-[50px]`}
           >
             <div class="gap-4 grid grid-cols-1  bg-base-100 py-5 px-5">
-            <div class="flex flex-col gap-3 ">
+              <div class="flex flex-col gap-3 ">
                 <span
                   class="font-medium text-base"
                   role="heading"

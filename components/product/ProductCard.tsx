@@ -177,8 +177,8 @@ function ProductCard(
           class="grid grid-cols-1 grid-rows-1 w-full h-[200px]"
         >
           <Image
-            src={front.url!}
-            alt={front.alternateName}
+            src={front?.url!}
+            alt={front?.alternateName}
             width={WIDTH}
             height={HEIGHT}
             class={`bg-base-100 col-span-full row-span-full  w-full ${

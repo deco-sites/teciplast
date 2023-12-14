@@ -15,7 +15,7 @@ export interface Props {
 
 function Cart({ platform, freeShippingTarget }: Props) {
   if (platform === "vtex") {
-    return <CartVTEX freeShippingTarget={freeShippingTarget}/>;
+    return <CartVTEX freeShippingTarget={freeShippingTarget} />;
   }
 
   if (platform === "vnda") {
@@ -25,7 +25,7 @@ function Cart({ platform, freeShippingTarget }: Props) {
   if (platform === "wake") {
     return <CartWake />;
   }
-  
+
   if (platform === "linx") {
     return <CartLinx />;
   }

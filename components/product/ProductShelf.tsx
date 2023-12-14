@@ -93,7 +93,7 @@ function ProductShelf({
           }}
         />
       </div>
-      </div>
+    </div>
   );
 }
 

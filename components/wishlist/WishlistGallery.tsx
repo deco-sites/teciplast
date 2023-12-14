@@ -1,6 +1,8 @@
 import SearchResult, {
   Props as SearchResultProps,
 } from "$store/components/search/SearchResult.tsx";
+import productList from "apps/vtex/loaders/intelligentSearch/productList.ts";
+import { AppContext } from "deco-sites/teciplast/apps/site.ts";
 
 export type Props = SearchResultProps;
 
@@ -25,5 +27,28 @@ function WishlistGallery(props: Props) {
 
   return <SearchResult {...props} />;
 }
+
+export const loader = async (props: Props, req: Request, ctx: AppContext) => {
+  const productIds = props.page?.products.map((product) => product.sku);
+
+  if (!productIds) {
+    return props;
+  }
+
+  const response = await ctx.invoke.vtex.loaders.intelligentSearch.productList({
+    props: {
+      ids: productIds,
+    },
+  });
+
+  if (!props.page || !response) {
+    return props;
+  }
+
+  props.page.products = response;
+  props.pageTitle="Lista de Desejos"
+
+  return props;
+};
 
 export default WishlistGallery;

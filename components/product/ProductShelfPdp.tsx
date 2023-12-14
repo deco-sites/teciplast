@@ -18,12 +18,10 @@ export interface Props {
   description?: string;
   layout?: {
     headerAlignment?: "center" | "left";
-    headerfontSize?:   "Small" |"Normal" | "Large";
-
+    headerfontSize?: "Small" | "Normal" | "Large";
   };
   borderRoundedBot?: boolean;
   cardLayout?: cardLayout;
-
 }
 
 function PdpProductShelf({
@@ -31,7 +29,8 @@ function PdpProductShelf({
   title,
   description,
   layout,
-  cardLayout,borderRoundedBot=false
+  cardLayout,
+  borderRoundedBot = false,
 }: Props) {
   const id = useId();
   const platform = usePlatform();
@@ -41,20 +40,20 @@ function PdpProductShelf({
   }
 
   return (
-    <div class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${borderRoundedBot && "rounded-b border-b rounded-md"} `} >
+    <div
+      class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${
+        borderRoundedBot && "rounded-b border-b rounded-md"
+      } `}
+    >
       <div class="w-full flex flex-col justify-center items-center  py-4 gap-5 lg:py-5 border-t-2 border-[#DEDEDE] mt-5">
-        
         <div class="w-full max-w-[1300px]">
-        <Header
-          title={title || ""}
-          description={description || ""}
-          fontSize={layout?.headerfontSize || "Large"}
-          alignment={layout?.headerAlignment || "center"}
-        />
-
+          <Header
+            title={title || ""}
+            description={description || ""}
+            fontSize={layout?.headerfontSize || "Large"}
+            alignment={layout?.headerAlignment || "center"}
+          />
         </div>
-
-        
 
         <div
           id={id}
@@ -76,7 +75,8 @@ function PdpProductShelf({
             ))}
           </Slider>
 
-          {/* <>
+          {
+            /* <>
             <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
               <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
                 <Icon size={24} id="ChevronLeft" strokeWidth={1} />
@@ -87,7 +87,8 @@ function PdpProductShelf({
                 <Icon size={24} id="ChevronRight" strokeWidth={1} />
               </Slider.NextButton>
             </div>
-          </> */}
+          </> */
+          }
           <SliderJS rootId={id} />
           <SendEventOnLoad
             event={{
@@ -104,9 +105,8 @@ function PdpProductShelf({
             }}
           />
         </div>
-        </div>
-
       </div>
+    </div>
   );
 }
 

@@ -9,8 +9,6 @@ import WishlistButton from "$store/islands/WishlistButton.tsx";
 import ShareButton from "$store/islands/ShareButton.tsx";
 import BenefitsBarPdp from "$store/islands/BenefitsBarPdp.tsx";
 
-
-
 export interface Props {
   /** @title Integration */
   page: ProductDetailsPage | null;
@@ -19,7 +17,6 @@ export interface Props {
     height: number;
   };
 }
-
 
 /**
  * @title Product Image Slider
@@ -38,7 +35,7 @@ export default function GallerySlider(props: Props) {
     page: { product: { image: images = [] } },
     layout: { width, height },
   } = props;
-  
+
   const aspectRatio = `${width} / ${height}`;
   const { page } = props;
   const { product } = page;
@@ -50,8 +47,8 @@ export default function GallerySlider(props: Props) {
 
   return (
     <>
-    <div id={id} class=" grid grid-flow-row sm:grid-flow-col lg:gap-5">        
-      {/* Image Slider */}
+      <div id={id} class=" grid grid-flow-row sm:grid-flow-col lg:gap-5">
+        {/* Image Slider */}
 
         <div class="relative order-1 sm:order-2 ">
           <Slider class="carousel carousel-center gap-6 w-screen h-[220px]  sm:w-[700px]   sm:h-[700px]">
@@ -76,29 +73,24 @@ export default function GallerySlider(props: Props) {
             ))}
           </Slider>
 
-
           <div class="absolute top-2 right-2 flex flex-col items-end">
             <WishlistButton
-                productGroupID={product.isVariantOf?.productGroupID}
-                productID={product.productID}
-                pagePDP={true}
-              /> 
-            
+              productGroupID={product.isVariantOf?.productGroupID}
+              productID={product.productID}
+              pagePDP={true}
+            />
+
             <ShareButton
               productGroupID={product.isVariantOf?.productGroupID}
               productID={product.productID}
               url={product.url!}
             />
-          
           </div>
 
-      
           <div class="hidden lg:flex">
-            <BenefitsBarPdp/>
+            <BenefitsBarPdp />
           </div>
-        
         </div>
-      
 
         {/* Dots */}
         <ul class="flex flex-row justify-center items-center  sm:carousel sm:carousel-center sm:justify-start sm:items-start gap-2  sm:px-0 sm:flex-col order-2 sm:order-1 ">
@@ -107,25 +99,22 @@ export default function GallerySlider(props: Props) {
               <Slider.Dot index={index}>
                 <Image
                   style={{ aspectRatio }}
-                  class="hidden lg:flex  group-disabled:border-[#7EABEE] border group-disabled:border-4    max-h-[76px]"                
+                  class="hidden lg:flex  group-disabled:border-[#7EABEE] border group-disabled:border-4    max-h-[76px]"
                   width={76}
                   height={76}
                   src={img.url!}
                   alt={img.alternateName}
                 />
                 <div>
-                  <div class=" lg:hidden first-line:flex w-[10px] h-[10px]  rounded border border-[#7EABEE]  group-disabled:bg-[#7EABEE] "/>
+                  <div class=" lg:hidden first-line:flex w-[10px] h-[10px]  rounded border border-[#7EABEE]  group-disabled:bg-[#7EABEE] " />
                 </div>
               </Slider.Dot>
             </li>
           ))}
         </ul>
-            
+
         <SliderJS rootId={id} />
-    
-    
-    </div>
-   
-  </>
-  )
+      </div>
+    </>
+  );
 }

@@ -170,7 +170,7 @@ function ProductReviews(
             Mostrar todas avaliações
           </span> */
         }
-        <LoginToReview/>
+        <LoginToReview />
         <NewReviewForm
           productId={productId}
           userHasReviewed={reviews.userHasReviewed || false}

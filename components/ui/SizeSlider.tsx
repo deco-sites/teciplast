@@ -52,8 +52,7 @@ const MultiRangeSliderSize = (
   }, [minVal, maxVal, onChange]);
 
   return (
-    <div class="container-slideri"> 
-   
+    <div class="container-slideri">
       <input
         type="range"
         min={min}
@@ -84,7 +83,7 @@ const MultiRangeSliderSize = (
       <div class="sliderSize_">
         <div class="slider__track" />
         <div ref={range} class="slider__range" />
-        <div class="slider__left-value">{ minVal + " cm"}</div>
+        <div class="slider__left-value">{minVal + " cm"}</div>
         <div class="slider__right-value">{maxVal + " cm"}</div>
       </div>
     </div>

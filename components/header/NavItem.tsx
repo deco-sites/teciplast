@@ -4,7 +4,7 @@ import { headerHeight, marginTopDrop } from "./constants.ts";
 import Icon from "$store/components/ui/Icon.tsx";
 
 function NavItem(
-  { item, index }: { item: SiteNavigationElement; index: number }
+  { item, index }: { item: SiteNavigationElement; index: number },
 ) {
   const { url, name, children } = item;
   const image = item?.image?.[0];
@@ -26,42 +26,40 @@ function NavItem(
         </div>
       </a>
 
-      
-          <div
-            class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center  max-w-[420px] `}
-            style={{ top: "0px", marginTop: marginTopDrop }}
-          >
-            {image?.url && (
-              <Image
-                class="p-6"
-                src={image.url}
-                alt={image.alternateName}
-                width={300}
-                height={332}
-                loading="lazy"
-              />
-            )}
-            <ul class="flex flex-row items-center justify-start  flex-wrap ">
-              {children?.map((node) => (
-                <li class=" text-start min-w-[200px] max-w-[200px] p-[7.5px] ">
-                  <a class="" href={node.url}>
-                    <span>{node.name}</span>
-                  </a>
+      <div
+        class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center  max-w-[420px] `}
+        style={{ top: "0px", marginTop: marginTopDrop }}
+      >
+        {image?.url && (
+          <Image
+            class="p-6"
+            src={image.url}
+            alt={image.alternateName}
+            width={300}
+            height={332}
+            loading="lazy"
+          />
+        )}
+        <ul class="flex flex-row items-center justify-start  flex-wrap ">
+          {children?.map((node) => (
+            <li class=" text-start min-w-[200px] max-w-[200px] p-[7.5px] ">
+              <a class="" href={node.url}>
+                <span>{node.name}</span>
+              </a>
 
-                  <ul class="flex flex-col gap-1 mt-4">
-                    {node.children?.map((leaf) => (
-                      <li>
-                        <a class="" href={leaf.url}>
-                          <span class="text-xs">{leaf.name}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </div>
-       
+              <ul class="flex flex-col gap-1 mt-4">
+                {node.children?.map((leaf) => (
+                  <li>
+                    <a class="" href={leaf.url}>
+                      <span class="text-xs">{leaf.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
     </li>
   );
 }
