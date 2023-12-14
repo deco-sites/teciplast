@@ -10,8 +10,6 @@ import manifest, { Manifest } from "../manifest.gen.ts";
 import type {
   App as A,
   AppContext as AC,
-  AppMiddlewareContext as AMC,
-  ManifestOf,
 } from "deco/mod.ts";
 
 export type Props = {
