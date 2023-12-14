@@ -26,6 +26,7 @@ import * as $Header_SearchbarMobileMenuWhite from "./islands/Header/SearchbarMob
 import * as $LoginToReview from "./islands/LoginToReview.tsx";
 import * as $NavLogin from "./islands/NavLogin.tsx";
 import * as $NavLogout from "./islands/NavLogout.tsx";
+import * as $NavMyAccount from "./islands/NavMyAccount.tsx";
 import * as $NewReviewForm from "./islands/NewReviewForm.tsx";
 import * as $Newsletter from "./islands/Newsletter.tsx";
 import * as $OutOfStock from "./islands/OutOfStock.tsx";
@@ -70,6 +71,7 @@ const manifest = {
     "./islands/LoginToReview.tsx": $LoginToReview,
     "./islands/NavLogin.tsx": $NavLogin,
     "./islands/NavLogout.tsx": $NavLogout,
+    "./islands/NavMyAccount.tsx": $NavMyAccount,
     "./islands/NewReviewForm.tsx": $NewReviewForm,
     "./islands/Newsletter.tsx": $Newsletter,
     "./islands/OutOfStock.tsx": $OutOfStock,
