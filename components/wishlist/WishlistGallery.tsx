@@ -7,8 +7,8 @@ import { AppContext } from "deco-sites/teciplast/apps/site.ts";
 export type Props = SearchResultProps;
 
 function WishlistGallery(props: Props) {
-  const isEmpty = !props.page || props.page.products.length === 0;
 
+  const isEmpty = !props.page || props.page.products.length === 0;
   if (isEmpty) {
     return (
       <div class="container mx-4 sm:mx-auto">
@@ -30,8 +30,7 @@ function WishlistGallery(props: Props) {
 
 export const loader = async (props: Props, req: Request, ctx: AppContext) => {
   const productIds = props.page?.products.map((product) => product.sku);
-
-  if (!productIds) {
+  if (!productIds || productIds.length === 0) {
     return props;
   }
 
