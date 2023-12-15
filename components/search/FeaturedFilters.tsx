@@ -309,6 +309,8 @@ function DropdownFilter({ filter, label, url }: DropdownFilterProps) {
 
 function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props) {
 
+  console.log(filters)
+
   const ordenarListaComCorPrimeiro = (lista : Filter[])=> {
     
     const filtroCor = lista.find((item,index)=> item.key == "cor-principal")

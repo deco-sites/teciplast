@@ -1,0 +1,754 @@
+{
+    "@type": "Product",
+    category: "Tecidos>Oxford",
+    productID: "207",
+    url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=207",
+    name: "Mostarda",
+    description: "Oxford Liso 100% Poliester (1,50 Larg)",
+    brand: {
+      "@type": "Brand",
+      "@id": "2000003",
+      name: "Eurotextil",
+      logo: undefined
+    },
+    isAccessoryOrSparePartFor: undefined,
+    inProductGroupWithID: "113",
+    sku: "207",
+    gtin: "3308",
+    releaseDate: 1546300800000,
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Cor Principal",
+        value: "Amarelo",
+        propertyID: undefined,
+        valueReference: "SPECIFICATION"
+      },
+      {
+        "@type": "PropertyValue",
+        name: "category",
+        propertyID: "27",
+        value: "Tecidos"
+      },
+      {
+        "@type": "PropertyValue",
+        name: "category",
+        propertyID: "35",
+        value: "Oxford"
+      },
+      {
+        "@type": "PropertyValue",
+        name: "RefId",
+        value: "147",
+        valueReference: "ReferenceID"
+      }
+    ],
+    isVariantOf: {
+      "@type": "ProductGroup",
+      productGroupID: "113",
+      hasVariant: [
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "207",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=207",
+          name: "Mostarda",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "207",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "208",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=208",
+          name: "Amarelo Ouro",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "208",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "209",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=209",
+          name: "Azul Bebe",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "209",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "210",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=210",
+          name: "Azul Marinho",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "210",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "211",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=211",
+          name: "Azul Royal",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "211",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "212",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=212",
+          name: "Branco",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "212",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "213",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=213",
+          name: "Lilás",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "213",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "214",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=214",
+          name: "Marfim",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "214",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "215",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=215",
+          name: "Marrom",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "215",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "216",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=216",
+          name: "Pink",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "216",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "217",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=217",
+          name: "Preto",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "217",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "218",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=218",
+          name: "Rosa Bebe",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "218",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "219",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=219",
+          name: "Roxo",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "219",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "220",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=220",
+          name: "Verde Bandeira",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "220",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "221",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=221",
+          name: "Vermelho",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "221",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        },
+        {
+          "@type": "Product",
+          category: "Tecidos>Oxford",
+          productID: "222",
+          url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p?skuId=222",
+          name: "Vinho",
+          description: "Oxford Liso 100% Poliester (1,50 Larg)",
+          brand: {
+            "@type": "Brand",
+            "@id": "2000003",
+            name: "Eurotextil",
+            logo: undefined
+          },
+          isAccessoryOrSparePartFor: undefined,
+          inProductGroupWithID: "113",
+          sku: "222",
+          gtin: "3308",
+          releaseDate: 1546300800000,
+          additionalProperty: [ [Object], [Object], [Object], [Object] ],
+          isVariantOf: undefined,
+          image: [ [Object] ],
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "BRL",
+            highPrice: 7.99,
+            lowPrice: 7.99,
+            offerCount: 1,
+            offers: [Array]
+          }
+        }
+      ],
+      url: "http://localhost:8000/oxford-liso-100--poliester--1-50-larg-/p",
+      name: "Oxford Liso 100% Poliester (1,50 Larg)",
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          name: "Composição do Tecido",
+          value: "100% poliéster",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Acabamento",
+          value: "Fosco, tecido plano",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Detalhe",
+          value: "Caimento: armado",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Gramatura",
+          value: "158 G/M²",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Instruções de Lavagem",
+          value: "max-lav-40-suave",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Instruções de Lavagem",
+          value: "nao-alv",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Instruções de Lavagem",
+          value: "nao-secar-tambor",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Instruções de Lavagem",
+          value: "temp-max-110-n-vap",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Utilidades dos Tecidos",
+          value: "Confecção de roupas",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Utilidades dos Tecidos",
+          value: "Alfaiataria",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Utilidades dos Tecidos",
+          value: "Jalecos",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Utilidades dos Tecidos",
+          value: "Decoração",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Utilidades dos Tecidos",
+          value: "Toalha de Mesa",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Utilidades dos Tecidos",
+          value: "Artesanato",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Amarelo",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Ouro",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Azul Bebê",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Azul Royal",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Branco",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Lilás",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Bege",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Marrom",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Pink",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Preto",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Rosa Bebê",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Roxo",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Verde Bandeira",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Vermelho",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cor Principal",
+          value: "Vinho",
+          valueReference: "PROPERTY"
+        },
+        {
+          "@type": "PropertyValue",
+          name: "sellerId",
+          value: "1",
+          valueReference: "PROPERTY"
+        }
+      ],
+      model: ""
+    },
+    image: [
+      {
+        "@type": "ImageObject",
+        alternateName: "",
+        url: "https://tecilar.vtexassets.com/arquivos/ids/155477/MOSTARDA.jpg?v=638211955810330000",
+        name: ""
+      }
+    ],
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "BRL",
+      highPrice: 7.99,
+      lowPrice: 7.99,
+      offerCount: 1,
+      offers: [
+        {
+          "@type": "Offer",
+          price: 7.99,
+          seller: "1",
+          priceValidUntil: "2024-12-15T15:05:06Z",
+          inventoryLevel: { value: 10000 },
+          giftSkuIds: [],
+          teasers: [],
+          priceSpecification: [
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object],
+            [Object], [Object]
+          ],
+          availability: "https://schema.org/InStock"
+        }
+      ]
+    }
+  }
