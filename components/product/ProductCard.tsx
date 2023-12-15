@@ -112,7 +112,7 @@ function ProductCard(
   return (
     <div
       id={id}
-      class={`group flex flex-col justify-between  w-full min-w-[160px]  h-full  lg:min-h-[425px]  bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
+      class={`group flex flex-col justify-between  w-full min-w-[160px]  h-full  lg:min-h-[400px]  bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
       } ${
         l?.onMouseOver?.showCardShadow
@@ -285,7 +285,7 @@ function ProductCard(
         {l?.hide?.allPrices
           ? ""
           : (
-            <div class="flex flex-col gap-5 group-hover:gap-1  py-1 mt-6">
+            <div class="flex flex-col gap-5 group-hover:gap-1  py-1 mt-4">
               <div
                 class={`flex flex-col gap-0 ${
                   l?.basics?.oldPriceSize === "Normal"
