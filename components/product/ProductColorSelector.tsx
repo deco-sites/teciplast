@@ -7,6 +7,10 @@ interface Props {
   product: Product;
 }
 
+const animal = "/animal.png"
+const estampado = "/estampado.png"
+const etinico = "/etinico.png"
+
 const CORES: { [cor: string]: string} = {
   "Amarelo": "bg-[#FFFF00]",
   "Azul": "bg-[#0000FF]",
@@ -30,14 +34,20 @@ const CORES: { [cor: string]: string} = {
   "Verde": "bg-[#008000]",
   "Verde Bandeira": "bg-[#006400]",
   "Vermelho": "bg-[#FF0000]",
-  "Vinho": "bg-[#722F37]"
+  "Vinho": "bg-[#722F37]",
+  "Animal Print":"bg-[url('/animal.png')]",
+  "Estampado":"bg-[url('/animal.png')]",
+  "Étnico":"bg-[url('/animal.png')]", 
+  "Floral":"bg-[url('/animal.png')]",
+  "Mescla":"bg-[url('/animal.png')]",
+  "Transparente":"bg-[url('/animal.png')]", 
 };
 
 function ColorSelector({ product }: Props) {
   const { url, isVariantOf } = product;
   const hasVariant = isVariantOf?.hasVariant ?? [];
   const possibilities = useVariantPossibilities(hasVariant, product);
-
+  console.log(product)
   if (Object.keys(possibilities).includes("Cor Principal")) {
   return (
     <div class="border border-[#cecece] py-1 px-4">
@@ -50,11 +60,18 @@ function ColorSelector({ product }: Props) {
               const partial = usePartialSection({ href: link });
 
               return (
+              <>
                 <li>
                   <button>
                     <div class={`h-8 w-8 ${CORES[value]} rounded-full p-[2px] border-2 border-white shadow-md shadow-[#737373]`}></div>
                   </button>
                 </li>
+                  <li>
+                  <button>
+                    <img class={` h-8 w-8 rounded-full  border-2 border-white shadow-md shadow-[#737373]`} src={etinico}></img>
+                  </button>
+                </li>
+                </>
               );
             })}
         
