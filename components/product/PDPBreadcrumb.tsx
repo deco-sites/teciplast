@@ -5,10 +5,9 @@ export interface Props {
   page: ProductDetailsPage | null;
 }
 
-
-export default function PDPBreadcrumb({page}: Props) {
+export default function PDPBreadcrumb({ page }: Props) {
   const {
-    breadcrumbList
+    breadcrumbList,
   } = page;
 
   if (page === null) {
@@ -18,8 +17,8 @@ export default function PDPBreadcrumb({page}: Props) {
   return (
     <div class="container border-t border-b border-[#cecece] mb-6">
       <Breadcrumb
-          itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
-        />
+        itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
+      />
     </div>
-  )
+  );
 }

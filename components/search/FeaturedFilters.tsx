@@ -17,7 +17,7 @@ interface Props {
   filters: ProductListingPage["filters"];
   allowedFilters: AllowedFilters[];
   url: BreadcrumbList["itemListElement"];
-  hiddenCategory:boolean
+  hiddenCategory: boolean;
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
@@ -311,26 +311,25 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
 
   const ordenarListaComCorPrimeiro = (lista : Filter[])=> {
     
-    const filtroCor = lista.find((item)=> item.key == "cor-principal")
+    const filtroCor = lista.find((item,index)=> item.key == "cor-principal")
 
-    const indexCor = lista.findIndex((item)=> item.key == "cor-principal")
+    const indexCor = lista.findIndex((item,index)=> item.key == "cor-principal")
     
     if(filtroCor){
       lista.splice(indexCor,1)
       lista.unshift(filtroCor);
     }
 
-    const filtroLavagem = lista.find((item)=> item.key == "instrucoes-de-lavagem")
+    const filtroLavagem = lista.find((item,index)=> item.key == "instrucoes-de-lavagem")
 
-    const lavagem = lista.findIndex((item)=> item.key == "instrucoes-de-lavagem")
+    const lavagem = lista.findIndex((item,index)=> item.key == "instrucoes-de-lavagem")
    
     if(filtroLavagem){
       lista.splice(lavagem,1)
     }
+  };
 
-  }
-
-  ordenarListaComCorPrimeiro(filters)
+  ordenarListaComCorPrimeiro(filters);
   const getAllowedFromFilter = (filter: FilterToggle) => {
     const allowedFilter = allowedFilters.find((item) =>
       item.key == filter.key && item.pageName == url[0].name
@@ -344,7 +343,6 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
         item.key == filter.key && item.pageName == url[0].name
       ),
     );
-
     return (
     <div class="flex relative w-full justify-center min-h-[110px] py-2 ">
       <div class=" ">
@@ -352,7 +350,9 @@ function FeaturedFilters({ filters, allowedFilters, url, hiddenCategory }: Props
           {filters
             .filter(isToggle)
             .filter(isAllowed)
-            .filter((filter: Filter) => hiddenCategory? ( filter.key !== "category-2" ):( true ))
+            .filter((filter: Filter) =>
+              hiddenCategory ? (filter.key !== "category-2") : (true)
+            )
             .map((filter) => {
               const allowed = getAllowedFromFilter(filter);
 

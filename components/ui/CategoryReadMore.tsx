@@ -3,7 +3,6 @@ import type { SectionProps } from "deco/types.ts";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import { useState } from "preact/hooks";
 
-
 /**
  * @titleBy matcher
  */
@@ -15,7 +14,7 @@ export interface ICategoryText {
   content: string;
 }
 
-const DEFAULT_PROPS = { 
+const DEFAULT_PROPS = {
   texts: [
     {
       content: "<h3>Hello</h3><p>Default Text</p>",
@@ -28,8 +27,8 @@ function CategoryText(props: SectionProps<ReturnType<typeof loader>>) {
   const [isShowing, setIsShowing] = useState(false);
   const toggleShow = () => setIsShowing(!isShowing);
   const { content } = props;
-  
-  if(!content) return null;
+
+  if (!content) return null;
   return (
     <section class="w-full px-auto flex justify-center my-[70px]">
       <div class="container px-4 lg:px-0">
@@ -39,11 +38,11 @@ function CategoryText(props: SectionProps<ReturnType<typeof loader>>) {
           } overflow-hidden text-gray-500 `}
         >
           {content && (
-          <div
-            class="text-sm lg:text-sm text-[#646464] leading-5 [&_ul]:pl-4 [&_ul]:mx-3 [&_ul]:list-disc [&_p]:mt-3 [&_h1]:mt-3 [&_h2]:mt-3 [&_h3]:mt-3 [&_h4]:mt-3 [&_h5]:mt-3 [&_a]:text-blue-600 [&_a]:underline [&_a]:font-medium"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-        )}
+            <div
+              class="text-sm lg:text-sm text-[#646464] leading-5 [&_ul]:pl-4 [&_ul]:mx-3 [&_ul]:list-disc [&_p]:mt-3 [&_h1]:mt-3 [&_h2]:mt-3 [&_h3]:mt-3 [&_h4]:mt-3 [&_h5]:mt-3 [&_a]:text-blue-600 [&_a]:underline [&_a]:font-medium"
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          )}
         </div>
         <div class="border-t pt-4 flex justify-center border-gray-300">
           <button

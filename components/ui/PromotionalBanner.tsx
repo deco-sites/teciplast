@@ -33,28 +33,28 @@ export default function PromotionalBanner(props: Props) {
 
   return (
     <section class="container w-full my-6 overflow-hidden">
-        <Picture>
-          <Source
-            media="(max-width: 767px)"
-            src={srcMobile}
-            width={640}
-            height={90}
-          />
-          <Source
-            media="(min-width: 768px)"
-            src={srcDesktop ? srcDesktop : srcMobile}
-            width={1536}
-            height={136}
-          />
-          <img
-            class="w-full"
-            sizes="(max-width: 640px) 100vw, 30vw"
-            src={srcMobile}
-            alt={alt}
-            decoding="async"
-            loading="lazy"
-          />
-        </Picture>
+      <Picture>
+        <Source
+          media="(max-width: 767px)"
+          src={srcMobile}
+          width={640}
+          height={90}
+        />
+        <Source
+          media="(min-width: 768px)"
+          src={srcDesktop ? srcDesktop : srcMobile}
+          width={1536}
+          height={136}
+        />
+        <img
+          class="w-full"
+          sizes="(max-width: 640px) 100vw, 30vw"
+          src={srcMobile}
+          alt={alt}
+          decoding="async"
+          loading="lazy"
+        />
+      </Picture>
     </section>
   );
 }

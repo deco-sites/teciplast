@@ -226,7 +226,18 @@ function ProductInfo(
      
 
       {/* Add to Cart and quantity */}
-      <ProductInfoQuantityIsland isFabric={isFabric} availability={availability} platform={platform} fabricSizeTable={fabricSizeTable} name={name} productID={productID} productGroupID={productGroupID} price={price} discount={discount} seller={seller} />
+      <ProductInfoQuantityIsland
+        isFabric={isFabric}
+        availability={availability}
+        platform={platform}
+        fabricSizeTable={fabricSizeTable}
+        name={name}
+        productID={productID}
+        productGroupID={productGroupID}
+        price={price}
+        discount={discount}
+        seller={seller}
+      />
 
       <div class="lg:hidden flex">
         <BenefitsBarPdp />

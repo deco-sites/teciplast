@@ -19,9 +19,7 @@ interface Props {
 const isToggle = (filter: Filter): filter is FilterToggle =>
   filter["@type"] === "FilterToggle";
 
-
-
-function FilterValues(props: { filter: FilterToggle;}) {
+function FilterValues(props: { filter: FilterToggle }) {
   const { key, values } = props.filter;
   const flexDirection = key === "avatar" ? "flex-row" : "flex-col";
 
@@ -86,9 +84,6 @@ function FilterValues(props: { filter: FilterToggle;}) {
   return null;
 }
 
-
-
-
 function Filter(filter: FilterToggle) {
   const [isOpen, setIsOpen] = useState(true);
   const { key, quantity } = filter;
@@ -107,7 +102,7 @@ function Filter(filter: FilterToggle) {
   ) {
     return null;
   }
-  if ( key !== "price"){
+  if (key !== "price") {
     return null;
   }
   return (
@@ -116,7 +111,6 @@ function Filter(filter: FilterToggle) {
         class="flex justify-between relative cursor-pointer items-center pt-2 pr-5"
         onClick={() => toggle()}
       >
-      
         {key !== "price" && (
           <Icon
             class="flex items-center"
@@ -132,7 +126,7 @@ function Filter(filter: FilterToggle) {
         } transition-[grid-template-rows] duration-600 ease-in-out`}
       >
         <div class={`overflow-y-auto overflow-x-hidden max-h-[400px]`}>
-          <FilterValues filter={{ ...filter }}/> 
+          <FilterValues filter={{ ...filter }} />
         </div>
       </div>
     </li>
@@ -140,31 +134,30 @@ function Filter(filter: FilterToggle) {
 }
 
 function PriceFilter({ filters }: Props) {
-
   return (
-      <ul class="flex flex-col gap-[6px]  ">
+    <ul class="flex flex-col gap-[6px]  ">
       {filters
         .filter(isToggle)
         .map((filter) => (
-          filter.key == "price" && 
+          filter.key == "price" &&
+          (
             <li>
               <div class="collapse collapse-arrow bg-base-100 rounded-none mb-1 text-base-300 border-b border-[#C3C3C3] lg:border-none">
                 <input type="checkbox" class="min-h-[0px]" />
-                  <div class="collapse-title min-h-[0px] rounded-none flex gap-2  px-0 lg:px-5">
-                    <span>{filter.label} </span>
-                  </div>
-                
-                  <div class="collapse-content">
-                    <ul  class={`flex flex-col `}>
-                      <Filter {...filter} />
-                    </ul>
-                  </div>
+                <div class="collapse-title min-h-[0px] rounded-none flex gap-2  px-0 lg:px-5">
+                  <span>{filter.label}</span>
+                </div>
+
+                <div class="collapse-content">
+                  <ul class={`flex flex-col `}>
+                    <Filter {...filter} />
+                  </ul>
+                </div>
               </div>
             </li>
-            )
           )
-        }
-      </ul>
+        ))}
+    </ul>
   );
 }
 

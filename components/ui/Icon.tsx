@@ -67,12 +67,12 @@ export type AvailableIcons =
   | "bathAccessories"
   | "share"
   | "ruler"
-  | 'toalha-de-banho'
-  | 'toalha-de-rosto'
-  | 'toalha-de-mao'
-  | 'roupao-de-banho'
-  | 'jogo-de-toalha'
-  | 'tapete-para-banheiro' 
+  | "toalha-de-banho"
+  | "toalha-de-rosto"
+  | "toalha-de-mao"
+  | "roupao-de-banho"
+  | "jogo-de-toalha"
+  | "tapete-para-banheiro"
   | "max-lav-95"
   | "max-lav-95-suave"
   | "max-lav-70"
@@ -110,14 +110,14 @@ export type AvailableIcons =
   | "acessorios"
   | "elastico"
   | "fita-de-cetin"
-  | 'quadros'
-  | 'vasos'
-  | 'luminarias'
-  | 'almofadas'
-  | 'espelho'  
-  | 'bandeja'
-  | 'tabuleiros'
-  | 'escultura'
+  | "quadros"
+  | "vasos"
+  | "luminarias"
+  | "almofadas"
+  | "espelho"
+  | "bandeja"
+  | "tabuleiros"
+  | "escultura"
   | "squareTable"
   | "roundedTable"
   | "rectangularTable"

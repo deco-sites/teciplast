@@ -144,6 +144,23 @@ function Central(
         <SearchbarFixed searchbar={searchbar} />
 
         <div class="flex justify-around items-center w-full my-[15px] h-11">
+          {isLogged && (
+            <div class="uppercase flex flex-col text-[9px] justify-end items-center  gap-2">
+              <a
+                class="flex items-center flex-col justify-center"
+                href="/login"
+                aria-label="Log in"
+              >
+                <Icon
+                  id="User-Circle2"
+                  class={`w-full  justify-center items-center  object-cover mb-2`}
+                  size={24}
+                  strokeWidth={0.4}
+                />
+                Conta
+              </a>
+            </div>
+          )}
           {!isLogged && (
             <div class="uppercase flex flex-col text-[9px] justify-end items-center  gap-2">
               <a
@@ -230,7 +247,9 @@ function Central(
   );
 }
 
-function Drawers({ menu, searchbar, children, platform, imgMenu, freeShippingTarget }: Props) {
+function Drawers(
+  { menu, searchbar, children, platform, imgMenu, freeShippingTarget }: Props,
+) {
   const { displayCart, displayMenu, displaySearchDrawer } = useUI();
 
   return (

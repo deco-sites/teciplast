@@ -1,4 +1,4 @@
-import { useUser } from 'apps/vtex/hooks/useUser.ts';
+import { useUser } from "apps/vtex/hooks/useUser.ts";
 
 export interface PropsLoad {
   productId: string;
@@ -36,7 +36,7 @@ export interface Reviews {
   pastReviews: string | null;
 }
 
-const url = 'https://tecilar.myvtex.com/reviews-and-ratings/api';
+const url = "https://tecilar.myvtex.com/reviews-and-ratings/api";
 
 // mocking specific product to test with reviews
 // /sweatshirt-logo-azul-0070430005/p
@@ -48,7 +48,7 @@ const loader = async (props: PropsLoad): Promise<ResponseReviews | null> => {
   let userHasReviewed = false;
   let averageRating: AverageResponse;
 
-  let productId = '';
+  let productId = "";
 
   if (props.productId) {
     productId = props.productId;
@@ -58,11 +58,11 @@ const loader = async (props: PropsLoad): Promise<ResponseReviews | null> => {
     try {
       const r = (await fetch(
         url +
-          '/reviews?product_id=' +
+          "/reviews?product_id=" +
           productId +
-          '&search_term=' +
+          "&search_term=" +
           shopperId +
-          '&status=false'
+          "&status=false",
       ).then((r) => r.json())) as ResponseReviews;
 
       if (r.data && r.data.length > 0) {
@@ -75,7 +75,7 @@ const loader = async (props: PropsLoad): Promise<ResponseReviews | null> => {
   }
 
   try {
-    const resp = (await fetch(url + '/rating/' + productId).then((r) =>
+    const resp = (await fetch(url + "/rating/" + productId).then((r) =>
       r.json()
     )) as AverageResponse;
 
@@ -87,7 +87,7 @@ const loader = async (props: PropsLoad): Promise<ResponseReviews | null> => {
 
   try {
     const response = (await fetch(
-      url + '/reviews?product_id=' + productId
+      url + "/reviews?product_id=" + productId,
     ).then((r) => r.json())) as ResponseReviews;
 
     return { ...response, userHasReviewed, averageRating };
@@ -98,18 +98,18 @@ const loader = async (props: PropsLoad): Promise<ResponseReviews | null> => {
 };
 
 export const ratingLoader = async (
-  props: PropsLoad
+  props: PropsLoad,
 ): Promise<AverageResponse | null> => {
   let averageRating: AverageResponse;
 
-  let productId = '';
+  let productId = "";
 
   if (props.productId) {
     productId = props.productId;
   }
 
   try {
-    const resp = (await fetch(url + '/rating/' + productId).then((r) =>
+    const resp = (await fetch(url + "/rating/" + productId).then((r) =>
       r.json()
     )) as AverageResponse;
 
