@@ -2,8 +2,8 @@
   "imports": {
     "deco-sites/teciplast/": "./",
     "$store/": "./",
-    "deco/": "https://denopkg.com/deco-cx/deco@1.46.7/",
-    "apps/": "https://denopkg.com/deco-cx/apps@0.23.13/",
+    "deco/": "https://denopkg.com/deco-cx/deco@1.47.5/",
+    "apps/": "https://denopkg.com/deco-cx/apps@0.24.17/",
     "$fresh/": "https://deno.land/x/fresh@1.6.0/",
     "preact": "https://esm.sh/preact@10.19.2",
     "preact/": "https://esm.sh/preact@10.19.2/",

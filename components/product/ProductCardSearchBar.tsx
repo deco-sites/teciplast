@@ -104,11 +104,11 @@ function ProductCard(
 
   return (
     <div
-    class="flex flex-row gap-2  justify-start items-start"
-    style={{
-      gridTemplateColumns: "auto 1fr",
-    }}
-  >
+      class="flex flex-row gap-2  justify-start items-start"
+      style={{
+        gridTemplateColumns: "auto 1fr",
+      }}
+    >
       <SendEventOnClick
         id={id}
         event={{
@@ -129,8 +129,6 @@ function ProductCard(
         class="relative overflow-hidden"
         style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}
       >
-        
-        
         {/* Product Images */}
         <a
           href={url && relative(url)}
@@ -174,7 +172,7 @@ function ProductCard(
               : "lg:hidden"
           }`}
         >
-                 {l?.onMouseOver?.showCta && cta}
+          {l?.onMouseOver?.showCta && cta}
         </figcaption>
       </figure>
       {/* Prices & Name */}
@@ -189,16 +187,15 @@ function ProductCard(
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}
-           </div>
+            </div>
           )}
         {l?.hide?.allPrices ? "" : (
           <div class="flex flex-col gap-1">
             <div
               class={`flex flex-row gap-0  "justify-end`}
             >
-              
               <div class="font-bold text-[15px] mr-2 ">
-                {formatPrice(price, offers?.priceCurrency)} 
+                {formatPrice(price, offers?.priceCurrency)}
               </div>
 
               <div
@@ -211,15 +208,11 @@ function ProductCard(
               ? ""
               : (
                 <div class="text-base-300 text-sm ">
-                  até <span class='text-primary text-sm'> {installments}</span>
+                  até <span class="text-primary text-sm">{installments}</span>
                 </div>
               )}
           </div>
         )}
-
-      
-
-        
       </div>
     </div>
   );

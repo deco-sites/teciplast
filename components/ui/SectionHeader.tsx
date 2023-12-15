@@ -1,11 +1,10 @@
-
 interface ColorBG {
   /**
-  * @format color
-  * @title BackGround Color
-  * @default #FFFFFF
-  */
- "backGroundShelf": string;
+   * @format color
+   * @title BackGround Color
+   * @default #FFFFFF
+   */
+  "backGroundShelf": string;
 }
 interface Props {
   title?: string;
@@ -13,8 +12,7 @@ interface Props {
   description?: string;
   alignment: "center" | "left";
   colorReverse?: boolean;
-  text : ColorBG;
-
+  text: ColorBG;
 }
 
 function Header(props: Props) {
@@ -39,8 +37,7 @@ function Header(props: Props) {
                   ${props.fontSize === "Normal" ? "lg:text-3xl" : "lg:text-4xl"}
 
                   `}
-                  style={{color:props.text.backGroundShelf}}
-
+                  style={{ color: props.text.backGroundShelf }}
                 >
                   {props.title}
                 </h1>
@@ -58,7 +55,7 @@ function Header(props: Props) {
                 
 
                 `}
-                style={{color:props.text.backGroundShelf}}
+                  style={{ color: props.text.backGroundShelf }}
                 >
                   {props.description}
                 </h2>

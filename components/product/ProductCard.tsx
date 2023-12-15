@@ -11,7 +11,6 @@ import Image from "apps/website/components/Image.tsx";
 import RatingStars from "$store/components/ui/RatingStars.tsx";
 import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
 
-
 export interface Layout {
   basics?: {
     contentAlignment?: "Left" | "Center";
@@ -113,7 +112,7 @@ function ProductCard(
   return (
     <div
       id={id}
-      class={`group flex flex-col justify-between  w-full min-w-[160px]  h-full  lg:min-h-[425px]  bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
+      class={`group flex flex-col justify-between  w-full min-w-[160px]  h-full  lg:min-h-[400px]  bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
       } ${
         l?.onMouseOver?.showCardShadow
@@ -124,7 +123,7 @@ function ProductCard(
         l?.onMouseOver?.card === "Move up" &&
         "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
       }
-      ${l?.hide?.showCardShadow ? "border-b-4 shadowCard "  : ""}
+      ${l?.hide?.showCardShadow ? "border-b-4 shadowCard " : ""}
       `}
       data-deco="view-product"
     >
@@ -178,8 +177,8 @@ function ProductCard(
           class="grid grid-cols-1 grid-rows-1 w-full h-[200px]"
         >
           <Image
-            src={front.url!}
-            alt={front.alternateName}
+            src={front?.url!}
+            alt={front?.alternateName}
             width={WIDTH}
             height={HEIGHT}
             class={`bg-base-100 col-span-full row-span-full  w-full ${
@@ -267,7 +266,8 @@ function ProductCard(
               }
             </div>
           )}
-        <div class="flex py-2 text-xs ">
+        {
+          /* <div class="flex py-2 text-xs ">
           <RatingStars
             productId={productID}
             size="xs"
@@ -280,11 +280,12 @@ function ProductCard(
             extraClasses="lg:hidden mr-2 "
             display="productCard"
           />
-        </div>
+        </div> */
+        }
         {l?.hide?.allPrices
           ? ""
           : (
-            <div class="flex flex-col gap-5 group-hover:gap-1  py-1">
+            <div class="flex flex-col gap-5 group-hover:gap-1  py-1 mt-4">
               <div
                 class={`flex flex-col gap-0 ${
                   l?.basics?.oldPriceSize === "Normal"

@@ -1,7 +1,6 @@
 import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 import type { Product } from "apps/commerce/types.ts";
 
-
 interface Props {
   product: Product;
 }

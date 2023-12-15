@@ -1,4 +1,3 @@
-
 import Searchbar, {
   Props as SearchbarProps,
 } from "$store/components/search/SearchbarMobileWhite.tsx";
@@ -8,22 +7,14 @@ export interface Props {
 }
 
 function SearchbarFixed({ searchbar }: Props) {
-
-  
-  if (!searchbar) { 
+  if (!searchbar) {
     return null;
   }
 
   return (
-    
-    
-    <div
-        class=" flex lg:px-0 px-3 w-full justify-center  "
-        
-      >
-        <Searchbar {...searchbar} />
-      </div>
-
+    <div class=" flex lg:px-0 px-3 w-full justify-center  ">
+      <Searchbar {...searchbar} />
+    </div>
   );
 }
 

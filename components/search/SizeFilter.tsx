@@ -19,13 +19,11 @@ interface Props {
 const isToggle = (filter: Filter): filter is FilterToggle =>
   filter["@type"] === "FilterToggle";
 
-
-
-function FilterValues(props: { filter: FilterToggle;}) {
+function FilterValues(props: { filter: FilterToggle }) {
   const { key, values } = props.filter;
   const flexDirection = key === "avatar" ? "flex-row" : "flex-col";
 
-  // Tem que trocar a parte logica, pois esta com a do price. Não mexi pois não tem retorno ainda da api para isso. 
+  // Tem que trocar a parte logica, pois esta com a do price. Não mexi pois não tem retorno ainda da api para isso.
   if (key === "price") {
     //parsing range values for price filter
     const valuesArray = Object.entries(values);
@@ -87,14 +85,8 @@ function FilterValues(props: { filter: FilterToggle;}) {
   return null;
 }
 
-
-
-
 function Filter(filter: FilterToggle) {
   const { key, quantity } = filter;
-
-
-
 
   const unused_categories = ["category-1", "category-2", "brand"];
   if (
@@ -102,14 +94,14 @@ function Filter(filter: FilterToggle) {
   ) {
     return null;
   }
-  
+
   return (
     <li class="flex flex-col">
       <div
         class={`grid border-solid "grid-rows-[1fr]" transition-[grid-template-rows] duration-600 ease-in-out`}
       >
         <div class={`overflow-y-auto overflow-x-hidden`}>
-          <FilterValues filter={{ ...filter }}/> 
+          <FilterValues filter={{ ...filter }} />
         </div>
       </div>
     </li>
@@ -117,29 +109,25 @@ function Filter(filter: FilterToggle) {
 }
 
 function PriceFilter({ filters }: Props) {
-
   return (
-      <ul class="flex flex-col   ">
+    <ul class="flex flex-col   ">
       {filters
         .filter(isToggle)
         .map((filter) => (
-          filter.key == "price" && 
-              <div class="text-base-300 w-[350px] h-full flex flex-col justify-between py-1  ">
-             
-                  <div class="rounded-none flex gap-2  px-5 text-sm text-[#999999] w-full">
-                    <span>Tamanho (Largura) </span>
-                  </div>
-                
-                  <div class=" w-full bg-base-100 border-[#C3C3C3] rounded-md  ">
-                 
-                      <Filter {...filter} />
-                 
-                  </div>
+          filter.key == "price" &&
+          (
+            <div class="text-base-300 w-[350px] h-full flex flex-col justify-between py-1  ">
+              <div class="rounded-none flex gap-2  px-5 text-sm text-[#999999] w-full">
+                <span>Tamanho (Largura)</span>
               </div>
-            ) 
+
+              <div class=" w-full bg-base-100 border-[#C3C3C3] rounded-md  ">
+                <Filter {...filter} />
+              </div>
+            </div>
           )
-        }
-      </ul>
+        ))}
+    </ul>
   );
 }
 

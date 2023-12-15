@@ -59,7 +59,7 @@ const useAddToCart = ({
 
 export default function AddToCartButton(props: Props) {
   const btnProps = useAddToCart(props);
-  const {extraClasses=""} = props
+  const { extraClasses = "" } = props;
 
   return (
     <Button
