@@ -7,6 +7,8 @@ import CartItem, { Item, Props as ItemProps } from "./CartItem.tsx";
 import Coupon, { Props as CouponProps } from "./Coupon.tsx";
 import FreeShippingProgressBar from "./FreeShippingProgressBar.tsx";
 import Icon from "deco-sites/teciplast/components/ui/Icon.tsx";
+import { SendEventOnLoad } from "$store/components/Analytics.tsx";
+
 
 interface Props {
   items: Item[];
@@ -168,6 +170,19 @@ function Cart({
             </footer>
           </>
         )}
+        <SendEventOnLoad
+          event={{
+            name: "view_cart",
+            params: {
+              currency,
+              value: total - discounts,
+              items: items
+              .map((_, index) => itemToAnalyticsItem(index))
+              .filter((x): x is AnalyticsItem => Boolean(x))
+            },
+          }}
+        />
+      />
     </div>
   );
 }
