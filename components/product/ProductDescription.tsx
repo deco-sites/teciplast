@@ -60,7 +60,6 @@ function ProductInfo(
   );
 
   const isCurtain = curtainCategory && curtainCategory.length;
-  console.log(product);
 
   return (
     <div
