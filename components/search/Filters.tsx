@@ -55,7 +55,7 @@ function FilterValues({ key, values }: FilterToggle) {
       {values.map((item) => {
         const { url, selected, value, quantity } = item;
 
-        if (key === "cor" || key === "tamanho") {
+        if (key === "cor") {
           return (
             <a href={url}>
               <Avatar
@@ -77,6 +77,7 @@ function FilterValues({ key, values }: FilterToggle) {
 }
 
 function Filters({ filters, hiddenCategory, hiddenDepartament }: Props) {
+  console.log({ filters });
   return (
     <ul class="flex flex-col lg:gap-[6px]  ">
       {filters
