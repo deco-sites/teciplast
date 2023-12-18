@@ -203,7 +203,9 @@ function Central(
           <div class="uppercase flex flex-col text-[9px] gap-2 items-center justify-end">
             <a
               class=" flex items-center flex-col justify-center"
-              href="/help"
+              href="http://wa.link/lf93ro"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="help"
             >
               <Icon
