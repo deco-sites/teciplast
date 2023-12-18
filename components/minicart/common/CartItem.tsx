@@ -45,8 +45,8 @@ function CartItem(
   const isGift = sale < 0.01;
   const [loading, setLoading] = useState(false);
   const { alt, src } = image;
-  const srcNew = src.replace("-55-55","")
-  
+  const srcNew = src.replace("-55-55", "");
+
   const withLoading = useCallback(
     <A,>(cb: (args: A) => Promise<void>) => async (e: A) => {
       try {

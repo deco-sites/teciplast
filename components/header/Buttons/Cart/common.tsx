@@ -9,7 +9,6 @@ interface Props {
   currency: string;
   total: number;
   items: AnalyticsItem[];
-  
 }
 
 function CartButton({ loading, currency, total, items }: Props) {
@@ -27,7 +26,7 @@ function CartButton({ loading, currency, total, items }: Props) {
   return (
     <div class="indicator px-1">
       <span
-        class={`indicator-item badge badge-secondary badge-sm right-auto left-0 ${
+        class={`indicator-item badge badge-secondary badge-xs right-auto left-0 ${
           totalItems === 0 ? "hidden" : ""
         }`}
       >
@@ -41,8 +40,10 @@ function CartButton({ loading, currency, total, items }: Props) {
         loading={loading}
         onClick={onClick}
       >
-        <Icon id="CartShopping" size={24} strokeWidth={2} />
-        <span class="ml-1 uppercase text-[9px] lg:text-base justify-center items-center gap-2 mt-2 lg:mt-0 ">CARRINHO</span>
+        <Icon id="CartShopping" size={20} strokeWidth={2} />
+        <span class="ml-1 uppercase text-[9px] lg:text-xs justify-center items-center gap-2 mt-2 lg:mt-0 ">
+          CARRINHO
+        </span>
       </Button>
     </div>
   );

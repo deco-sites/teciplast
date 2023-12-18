@@ -19,6 +19,7 @@ import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import NavLogin from "$store/islands/NavLogin.tsx";
 import NavLogout from "$store/islands/NavLogout.tsx";
+import NavMyAccount from "$store/islands/NavMyAccount.tsx";
 
 import SearchButton from "deco-sites/teciplast/components/header/Buttons/Search.tsx";
 
@@ -87,15 +88,16 @@ function Navbar({ items, searchbar, logo }: Props) {
           <SearchbarFixed searchbar={searchbar} />
 
           <div class="flex-none flex items-center justify-center gap-14">
+            <NavMyAccount />
             <NavLogin />
-            <div class="uppercase flex flex-row text-base gap-2 justify-center items-center">
+            <div class="uppercase flex flex-row text-xs gap-2 justify-center items-center">
               {platform === "vtex" && <CartButtonVTEX />}
               {platform === "vnda" && <CartButtonVDNA />}
               {platform === "wake" && <CartButtonWake />}
               {platform === "linx" && <CartButtonLinx />}
               {platform === "shopify" && <CartButtonShopify />}
             </div>
-            <div class="uppercase flex flex-row text-base justify-center items-center gap-2">
+            <div class="uppercase flex flex-row text-xs justify-center items-center gap-2">
               <a
                 class="  flex flex-row justify-center items-center"
                 href="/wishlist"
@@ -104,14 +106,14 @@ function Navbar({ items, searchbar, logo }: Props) {
                 <Icon
                   id="Heart"
                   class={` mr-2`}
-                  size={25}
+                  size={20}
                   strokeWidth={2}
                   fill="none"
                 />
                 Lista de desejos
               </a>
             </div>
-            <div class="uppercase flex flex-row text-base gap-2 items-center justify-center">
+            <div class="uppercase flex flex-row text-xs gap-2 items-center justify-center">
               <a
                 class="  flex flex-row  items-center justify-center "
                 href="/help"
@@ -120,7 +122,7 @@ function Navbar({ items, searchbar, logo }: Props) {
                 <Icon
                   id="Layer_1"
                   class={`w-full  justify-center items-center  object-cover mr-2`}
-                  size={24}
+                  size={20}
                   strokeWidth={1}
                 />
                 Ajuda

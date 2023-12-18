@@ -50,6 +50,10 @@ function ProductInfo(
     p.name === "Instruções de Lavagem"
   ).map((item) => item.value) as AvailableIcons[];
 
+  const utils = isVariantOf?.additionalProperty.filter((p) =>
+    p.name === "Utilidades dos Tecidos"
+  ).map((item) => item.value);
+
   const curtainCategory = product.additionalProperty?.filter((p) =>
     p.value?.toLocaleLowerCase().includes("cortina") ||
     p.value?.toLocaleLowerCase().includes("persiana")
@@ -97,12 +101,34 @@ function ProductInfo(
                       </div>
                     )}
 
+                    {additionalProperty.map((item) => {
+                      if (item.name == "Cor Principal") {
+                        return (
+                          <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
+                            <span class="text-base uppercase font-bold">
+                              Cor Principal
+                            </span>
+                            <span class="text-sm uppercase ">{item.value}</span>
+                          </div>
+                        );
+                      }
+                    })}
+
+                    <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
+                      <span class="text-base uppercase font-bold">
+                        Garantia
+                      </span>
+                      <span class="text-sm uppercase ">30 dias</span>
+                    </div>
+
                     {isVariantOf?.additionalProperty.map((item) => {
                       if (
                         item.name && item.value !== undefined &&
                         item.name !== "category" && item.name !== "RefId" &&
                         item.name !== "sellerId" &&
-                        item.name !== "Instruções de Lavagem"
+                        item.name !== "Instruções de Lavagem" &&
+                        item.name !== "Utilidades dos Tecidos" &&
+                        item.name !== "Cor Principal"
                       ) {
                         return (
                           <div class={`flex flex-col sm:min-w-[200px] mb-5 `}>
@@ -114,6 +140,7 @@ function ProductInfo(
                         );
                       }
                     })}
+
                     {instructions.length && (
                       <div class="flex flex-col sm:min-w-[200px] mb-5">
                         <span class="text-base  uppercase font-bold">
@@ -122,6 +149,18 @@ function ProductInfo(
                         <span class="text-sm uppercase font-normal">
                           <LaundryInstructions instructions={instructions} />
                         </span>
+                      </div>
+                    )}
+                    {utils?.length && (
+                      <div class="flex flex-col sm:min-w-[200px] mb-5">
+                        <span class="text-base  uppercase font-bold">
+                          Utilização Recomendada
+                        </span>
+                        {utils.map((u) => (
+                          <span class="text-sm uppercase font-normal">
+                            {u}
+                          </span>
+                        ))}
                       </div>
                     )}
                   </div>

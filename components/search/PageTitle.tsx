@@ -10,7 +10,9 @@ function PageTitle({ matchingTitle, breadCrumbs }: Props) {
   const pathName = window.location.pathname;
   const urlParams = new URLSearchParams(query);
   const searchTerm = urlParams.get("q");
-  const pageTitle = breadCrumbs ? breadCrumbs[breadCrumbs.length - 1].name : "";
+  const pageTitle = breadCrumbs
+    ? breadCrumbs[breadCrumbs.length - 1]?.name
+    : "";
 
   return (
     <div>

@@ -7,6 +7,8 @@ import CartItem, { Item, Props as ItemProps } from "./CartItem.tsx";
 import Coupon, { Props as CouponProps } from "./Coupon.tsx";
 import FreeShippingProgressBar from "./FreeShippingProgressBar.tsx";
 import Icon from "deco-sites/teciplast/components/ui/Icon.tsx";
+import { SendEventOnLoad } from "$store/components/Analytics.tsx";
+
 
 interface Props {
   items: Item[];
@@ -41,7 +43,6 @@ function Cart({
 }: Props) {
   const { displayCart } = useUI();
   const isEmtpy = items.length === 0;
-
 
   return (
     <div
@@ -122,7 +123,7 @@ function Cart({
                 <div class="flex justify-between items-center w-full">
                   <span class={`px-4 font-bold text-[15px]`}>Total</span>
                   <span class="font-medium text-xl">
-                    {formatPrice(total , currency, locale)}
+                    {formatPrice(total, currency, locale)}
                   </span>
                 </div>
                 <span class="text-xs text-base-300 flex flex-row gap-2">
@@ -169,6 +170,19 @@ function Cart({
             </footer>
           </>
         )}
+        <SendEventOnLoad
+          event={{
+            name: "view_cart",
+            params: {
+              currency,
+              value: total - discounts,
+              items: items
+              .map((_, index) => itemToAnalyticsItem(index))
+              .filter((x): x is AnalyticsItem => Boolean(x))
+            },
+          }}
+        />
+      />
     </div>
   );
 }

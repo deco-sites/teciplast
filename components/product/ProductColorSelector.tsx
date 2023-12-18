@@ -2,7 +2,6 @@ import type { Product } from "apps/commerce/types.ts";
 import { usePartialSection } from "deco/hooks/usePartialSection.ts";
 import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 
-
 interface Props {
   product: Product;
 }
