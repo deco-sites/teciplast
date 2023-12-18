@@ -215,7 +215,7 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
             />
           )}
       </div>
-      <span class="text-[9px] w-full uppercase font-bold mt-1 h-7">
+      <span class="text-[9px] w-full uppercase font-bold mt-1">
         {title}
       </span>
     </a>
