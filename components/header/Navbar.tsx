@@ -116,7 +116,9 @@ function Navbar({ items, searchbar, logo }: Props) {
             <div class="uppercase flex flex-row text-xs gap-2 items-center justify-center">
               <a
                 class="  flex flex-row  items-center justify-center "
-                href="/help"
+                href="http://wa.link/lf93ro"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="help"
               >
                 <Icon

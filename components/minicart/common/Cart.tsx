@@ -9,7 +9,6 @@ import FreeShippingProgressBar from "./FreeShippingProgressBar.tsx";
 import Icon from "deco-sites/teciplast/components/ui/Icon.tsx";
 import { SendEventOnLoad } from "$store/components/Analytics.tsx";
 
-
 interface Props {
   items: Item[];
   loading: boolean;
@@ -131,13 +130,13 @@ function Cart({
                     width={17}
                     height={14}
                     strokeWidth={1}
-                    id="Visas"
+                    id="Visa"
                   />
                   <Icon
                     width={17}
                     height={14}
                     strokeWidth={1}
-                    id="Mastercards"
+                    id="Mastercard"
                   />{" "}
                   Parcele em até 12x dependendo do cartão
                 </span>
@@ -170,19 +169,18 @@ function Cart({
             </footer>
           </>
         )}
-        <SendEventOnLoad
-          event={{
-            name: "view_cart",
-            params: {
-              currency,
-              value: total - discounts,
-              items: items
+      <SendEventOnLoad
+        event={{
+          name: "view_cart",
+          params: {
+            currency,
+            value: total - discounts,
+            items: items
               .map((_, index) => itemToAnalyticsItem(index))
-              .filter((x): x is AnalyticsItem => Boolean(x))
-            },
-          }}
-        />
-     
+              .filter((x): x is AnalyticsItem => Boolean(x)),
+          },
+        }}
+      />
     </div>
   );
 }
