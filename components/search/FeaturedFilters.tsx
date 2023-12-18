@@ -283,7 +283,11 @@ function DropdownFilter({ filter, label, url }: DropdownFilterProps) {
     <div class="flex items-end  w-full group min-w-[250px] max-w-[250px]">
       <div class="hidden lg:flex   group-hover:flex rounded-md mb-1 text-base-300 border border-[#DEDEDE] w-full relative min-w-[250px] max-w-[250px]  pl-[5px] max-h-[40px] bg-[#fff]">
         <div class=" group-hover:flex w-full flex h-[40px] pl-5  items-center  min-w-[250px] max-w-[250px]">
-          <span>{filter.label}</span>
+          <span>
+            {filter.label === "Dimensão (Diâmetro ou Maior Lado)"
+              ? "Diâmetro ou Maior Lado"
+              : filter.label}
+          </span>
         </div>
 
         <ul class=" hidden group-hover:flex flex-col items-center w-full h-full shrink-0 absolute top-[28px] left-0 border border-[#DEDEDE] border-t-0 min-w-[250px] max-w-[250px] z-50 ">
