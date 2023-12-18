@@ -26,7 +26,9 @@ import {
 } from "$store/loaders/Reviews/reviewsandratings.ts";
 import type { SectionProps } from "deco/mod.ts";
 import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
-import ProductInfoQuantityIsland from "$store/islands/ProductInfoQuantityIsland.tsx";
+
+import ProductInfoQuantityIsland from "$store/islands/ProductInfoQuantityIsland.tsx"
+import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 
 export interface RecordItem {
   name: string;
@@ -70,7 +72,6 @@ export async function loader(
     debug = { ...debug, reviewsError: e };
     console.log({ e });
   }
-
   return {
     page,
     layout,
@@ -119,6 +120,9 @@ function ProductInfo(
   const isFabric = product.additionalProperty!.find((p) =>
     p.value === "Tecidos"
   );
+  const hasVariant = isVariantOf?.hasVariant ?? [];
+
+  const possibilities = useVariantPossibilities(hasVariant, product);
 
   return (
     <div class="flex flex-col max-w-[100vw]">
@@ -180,7 +184,6 @@ function ProductInfo(
           >
           </div>
         )}
-
       {additionalProperty &&
         (
           <div class="flex flex-row justify-start w-full  gap-5 py-3">
@@ -199,7 +202,6 @@ function ProductInfo(
             })}
           </div>
         )}
-
       {/* More Details link */}
       <a href="#more" class="mt-5 flex items-center text-[#403F3F]">
         <span class="uppercase underline text-[#403F3F] text-xs">
@@ -213,11 +215,16 @@ function ProductInfo(
           <div class="mt-4 sm:mt-6">
             <BedSizeSelector product={product} />
           </div>
-        )}
-
-      <div class="mt-4 sm:mt-6">
-        <ColorSelector product={product} />
-      </div>
+        )
+      }
+      {Object.keys(possibilities).includes("Cor Principal") &&
+        (
+          <div class="mt-4 px-2  sm:px-0 sm:mt-6">
+            <ColorSelector product={product}/>
+          </div>
+        )
+      }
+     
 
       {/* Add to Cart and quantity */}
       <ProductInfoQuantityIsland

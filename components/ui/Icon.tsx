@@ -121,7 +121,10 @@ export type AvailableIcons =
   | "squareTable"
   | "roundedTable"
   | "rectangularTable"
-  | "ruler";
+  | "ruler"
+  | "Mastercards"
+  | "Visas";
+  
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
