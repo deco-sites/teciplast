@@ -80,11 +80,11 @@ function FabricSizeTableModal({ table }: { table: TableItem[] }) {
   return (
     <>
       <button
-        class={"btn-square btn-ghost join-item  w-[48%] h-11 border border-[#403F3F] lg:text-base flex justify-start gap-10 px-4  items-center"}
+        class={"btn-square btn-ghost join-item  w-[48%] h-11 border border-[#403F3F] lg:text-base flex justify-start gap-2 sm:gap-10 px-1 sm:px-4  items-center"}
         onClick={() => displayFabricSizeTable.value = true}
       >
         <Icon class={`rotate-180`} id="ruler" width={16} height={16} />{" "}
-        Quantos mestros comprar
+        <span class={`text-xs sm:text-sm`}> Quantos mestros comprar</span>
       </button>
       <Modal
         loading="lazy"
