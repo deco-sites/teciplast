@@ -26,7 +26,9 @@ import {
 } from "$store/loaders/Reviews/reviewsandratings.ts";
 import type { SectionProps } from "deco/mod.ts";
 import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
-import ProductInfoQuantityIsland from "$store/islands/ProductInfoQuantityIsland.tsx";
+
+import ProductInfoQuantityIsland from "$store/islands/ProductInfoQuantityIsland.tsx"
+import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 
 export interface RecordItem {
   name: string;
