@@ -26,21 +26,21 @@ function FabricSizeTable(
           segurança!
         </span>
       </div>
-      <div class="flex justify-center gap-14 my-12">
+      <div class="flex flex-col md:flex-row justify-center gap-2 md:gap-14 my-12">
         {table.map((t) => (
           <button
             class={`btn ${
               Number(fabricTabOpen) === table.indexOf(t)
                 ? "bg-black text-white"
                 : "border bg-white text-black"
-            }  w-44`}
+            }  w-full md:w-44`}
             onClick={() => fabricTabOpen.value = table.indexOf(t)}
           >
             {t.title}
           </button>
         ))}
       </div>
-      <div class="grid grid-cols-6 p-3 font-bold">
+      <div class="grid grid-cols-6 p-3 font-bold text-xs md:text-base">
         <div class="col-span-3">
           <span>{table[Number(fabricTabOpen)].title}</span>
         </div>
@@ -55,7 +55,11 @@ function FabricSizeTable(
         </div>
       </div>
       {table[Number(fabricTabOpen)].records.map((r, i) => (
-        <div class={`grid grid-cols-6 p-3 ${i % 2 === 0 && "bg-[#e0e0e0]"}`}>
+        <div
+          class={`grid grid-cols-6 p-3 ${
+            i % 2 === 0 && "bg-[#e0e0e0]"
+          } text-xs md:text-base`}
+        >
           <div class="col-span-3">
             <span class="uppercase">{r.name}</span>
           </div>
@@ -84,7 +88,7 @@ function FabricSizeTableModal({ table }: { table: TableItem[] }) {
         onClick={() => displayFabricSizeTable.value = true}
       >
         <Icon class={`rotate-180`} id="ruler" width={16} height={16} />{" "}
-        <span class={`text-xs sm:text-sm`}> Quantos mestros comprar</span>
+        <span class={`text-xs sm:text-sm`}>Quantos mestros comprar</span>
       </button>
       <Modal
         loading="lazy"
