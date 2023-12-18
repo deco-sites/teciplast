@@ -77,7 +77,6 @@ function FilterValues({ key, values }: FilterToggle) {
 }
 
 function Filters({ filters, hiddenCategory, hiddenDepartament }: Props) {
-  console.log({ filters });
   return (
     <ul class="flex flex-col lg:gap-[6px]  ">
       {filters
