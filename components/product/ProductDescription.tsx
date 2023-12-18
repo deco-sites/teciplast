@@ -63,6 +63,7 @@ function ProductInfo(
 
   return (
     <div
+      id="more"
       class={`container bg-white p-5 lg:p-12  w-full border-x border-[#cecece] ${
         borderRoundedBot && "rounded-b  border-b  rounded-md"
       } `}
