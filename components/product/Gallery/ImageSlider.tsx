@@ -93,7 +93,7 @@ export default function GallerySlider(props: Props) {
         </div>
 
         {/* Dots */}
-        <ul class="flex flex-row justify-center items-center  sm:carousel sm:carousel-center sm:justify-start sm:items-start gap-2  sm:px-0 sm:flex-col order-2 sm:order-1 ">
+        <ul class="flex flex-row justify-center items-center  sm:carousel sm:carousel-center sm:justify-start sm:items-start gap-2  sm:px-0 sm:flex-col order-2 sm:order-1 sm:min-w-[90px] ">
           {images.map((img, index) => (
             <li class="lg:carousel-item  sm:min-w-[76px] max-h-[76px] gap-2 ">
               <Slider.Dot index={index}>

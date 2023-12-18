@@ -35,45 +35,57 @@ const CORES: { [cor: string]: string} = {
   "Vermelho": "bg-[#FF0000]",
   "Vinho": "bg-[#722F37]",
   "Animal Print":"bg-[url('/animal.png')]",
-  "Estampado":"bg-[url('/animal.png')]",
-  "Étnico":"bg-[url('/animal.png')]", 
-  "Floral":"bg-[url('/animal.png')]",
-  "Mescla":"bg-[url('/animal.png')]",
-  "Transparente":"bg-[url('/animal.png')]", 
+  "Estampado":"bg-[url('/estampado.png')]",
+  "Étnico":"bg-[url('/etinico.png')]", 
+  "Floral":"bg-[url('/etinico.png')]",
+  "Mescla":"bg-[url('/estampado.png')]",
+  "Transparente":"bg-[#FFFFFF]", 
 };
 
 function ColorSelector({ product }: Props) {
   const { url, isVariantOf } = product;
   const hasVariant = isVariantOf?.hasVariant ?? [];
   const possibilities = useVariantPossibilities(hasVariant, product);
-  console.log(product)
   if (Object.keys(possibilities).includes("Cor Principal")) {
   return (
-    <div class="border border-[#cecece] py-1 px-4">
+    <div class="border border-[#cecece] py-2 px-4 ">
       <div class="mb-1">
         <span class="text-xs text-[#9b9b9b]">Selecione a cor</span>
       </div>
       <div>
-        <ul class="flex gap-2">
+        <ul class="flex gap-2  justify-between py-2">
         {Object.entries(possibilities["Cor Principal"]).map(([value, link]) => {
-              const partial = usePartialSection({ href: link });
-
-              return (
-              <>
-                <li>
-                  <button>
-                    <div class={`h-8 w-8 ${CORES[value]} rounded-full p-[2px] border-2 border-white shadow-md shadow-[#737373]`}></div>
-                  </button>
+          const partial = usePartialSection({ href: link });
+            if(value == 'Animal Print'){
+              return( <li>
+                <a href={link}>
+                  <img class={` h-8 w-8 rounded-full  border-2 border-white shadow-md shadow-[#737373]`} src={animal}></img>
+                </a>
+              </li>)
+          
+            }else if (value == 'Estampado' || value == 'Mescla'){
+              return( <li>
+                  <a href={link}>
+                    <img class={` h-8 w-8 rounded-full  border-2 border-white shadow-md shadow-[#737373]`} src={estampado}></img>
+                  </a>
                 </li>
-                  <li>
-                  <button>
-                    <img class={` h-8 w-8 rounded-full  border-2 border-white shadow-md shadow-[#737373]`} src={etinico}></img>
-                  </button>
+              )
+            }else if (value == 'Étnico' || value == 'Floral' ){
+              return( <li>
+                  <a href={link}>
+                    <img class={` h-8 w-8 rounded-full  border-2 border-white shadow-md shadow-[#737373] `} src={etinico}></img>
+                  </a>
                 </li>
-                </>
-              );
-            })}
-        
+              )
+            }else{
+            return(<li>
+                <a href={link} >
+                  <div class={`h-8 w-8 ${CORES[value]} rounded-full p-[2px] border-2 border-white shadow-md shadow-[#737373]`}></div>
+                </a>
+              </li>
+            );
+          }
+        })}
         </ul>
       </div>
     </div>
