@@ -55,7 +55,7 @@ function FilterValues({ key, values }: FilterToggle) {
       {values.map((item) => {
         const { url, selected, value, quantity } = item;
 
-        if (key === "cor" || key === "tamanho") {
+        if (key === "cor") {
           return (
             <a href={url}>
               <Avatar
