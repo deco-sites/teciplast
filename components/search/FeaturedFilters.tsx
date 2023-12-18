@@ -89,7 +89,7 @@ function CarouselValueItem(
       href={item.url}
       class="flex flex-col items-center text-center gap-1 hover:underline lg:px-2"
     >
-      <div class="w-[48px] h-[48px]">
+      <div class="w-[70px] h-[60px]">
         <img
           src={image}
           class={`w-full h-full border-4 shadow-lg rounded-md block ${
@@ -149,12 +149,12 @@ function CarouselFilterValues(
       </Slider>
       <>
         <div class="hidden relative sm:block z-10 col-start-1 row-start-1">
-          <Slider.PrevButton class="btn btn-circle btn-outline absolute top-1/2 right-1/2 mr-4 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+          <Slider.PrevButton class="btn btn-circle btn-outline absolute top-1/2 right-1/2 mr-4 bg-none border-none text-black hover:bg-white hover:text-black mt-4">
             <Icon size={24} id="ChevronLeft" strokeWidth={1} />
           </Slider.PrevButton>
         </div>
         <div class="hidden relative sm:block z-10 col-start-3 row-start-1">
-          <Slider.NextButton class="btn btn-circle btn-outline absolute top-1/2 left-1/2 ml-4 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
+          <Slider.NextButton class="btn btn-circle btn-outline absolute top-1/2 left-1/2 ml-4 bg-none border-none text-black hover:bg-[#fff] hover:text-black mt-4">
             <Icon size={24} id="ChevronRight" strokeWidth={1} />
           </Slider.NextButton>
         </div>
@@ -166,7 +166,7 @@ function CarouselFilterValues(
 
 function CarouselFilter({ filter, allowedFilters, url }: CarouselFilterProps) {
   return (
-    <div class="bg-base-100 rounded-none mb-1 text-base-300 lg:border-b border-[#C3C3C3] lg:border-none lg:py-4">
+    <div class="bg-base-100 mb-1 text-base-300 border border-[#dedede] lg:py-4 rounded">
       <div class="flex">
         <ul class={`flex`}>
           <CarouselFilterValues
