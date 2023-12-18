@@ -48,12 +48,12 @@ function ColorSelector({ product }: Props) {
   const possibilities = useVariantPossibilities(hasVariant, product);
   if (Object.keys(possibilities).includes("Cor Principal")) {
   return (
-    <div class="border border-[#cecece] py-2 px-4 ">
+    <div class="border border-[#cecece] py-2 px-4 max-w-[350px] sm:max-w-[650px] ">
       <div class="mb-1">
         <span class="text-xs text-[#9b9b9b]">Selecione a cor</span>
       </div>
       <div>
-        <ul class="flex gap-2  justify-between py-2">
+        <ul class="flex gap-2  justify-between py-2 overflow-x-scroll sm:overflow-x-none">
         {Object.entries(possibilities["Cor Principal"]).map(([value, link]) => {
           const partial = usePartialSection({ href: link });
             if(value == 'Animal Print'){
