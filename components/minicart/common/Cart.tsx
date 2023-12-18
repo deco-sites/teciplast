@@ -130,13 +130,13 @@ function Cart({
                     width={17}
                     height={14}
                     strokeWidth={1}
-                    id="Visa"
+                    id="Visas"
                   />
                   <Icon
                     width={17}
                     height={14}
                     strokeWidth={1}
-                    id="Mastercard"
+                    id="Mastercards"
                   />{" "}
                   Parcele em até 12x dependendo do cartão
                 </span>
