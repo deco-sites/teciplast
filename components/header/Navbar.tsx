@@ -32,7 +32,7 @@ export interface Props {
 function Navbar({ items, searchbar, logo }: Props) {
   const platform = usePlatform();
   const help = "/help.png";
-
+  const ultItem = items.length -1
   return (
     <>
       {/* Mobile Version */}
@@ -133,8 +133,8 @@ function Navbar({ items, searchbar, logo }: Props) {
             <NavLogout />
           </div>
         </div>
-        <ul class="flex flex-row items-center justify-between w-full h-full shrink-0 ">
-          {items.map((item, index) => <NavItem item={item} index={index} />)}
+        <ul class="flex flex-row items-center w-full justify-between  h-full shrink-0 ">
+          {items.map((item, index) => <NavItem item={item} index={index} ultItem={ultItem} />)}
         </ul>
       </div>
     </>

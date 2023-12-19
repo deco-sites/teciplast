@@ -4,7 +4,7 @@ import { headerHeight, marginTopDrop } from "./constants.ts";
 import Icon from "$store/components/ui/Icon.tsx";
 
 function NavItem(
-  { item, index }: { item: SiteNavigationElement; index: number },
+  { item, index,ultItem }: { item: SiteNavigationElement; index: number ,ultItem : number},
 ) {
   const { url, name, children } = item;
   const image = item?.image?.[0];
@@ -15,7 +15,7 @@ function NavItem(
       <a href={url}>
         <div class="flex flex-row items-center gap-2 border-b-[3px] border-b-transparent group-hover:border-b-[#626262]   px-1 py-2">
           <span>
-            {name}
+            {name} 
           </span>
           <Icon
             id="ChevronDown"
@@ -24,10 +24,10 @@ function NavItem(
             fill="none"
           />
         </div>
-      </a>
+      </a> 
 
       <div
-        class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center  max-w-[420px] `}
+        class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center  max-w-[400px] ${index == ultItem ? "lg:right-0 lg:mr-[20px] right-0 mr-[180px]":" "} `}
         style={{ top: "0px", marginTop: marginTopDrop }}
       >
         {image?.url && (
@@ -40,7 +40,8 @@ function NavItem(
             loading="lazy"
           />
         )}
-        <ul class="flex flex-row items-center justify-start  flex-wrap ">
+        <ul class="flex flex-row items-center justify-start  flex-wrap  "
+        >
           {children?.map((node) => (
             <li class=" text-start min-w-[200px] max-w-[200px] p-[7.5px] ">
               <a class="" href={node.url}>
