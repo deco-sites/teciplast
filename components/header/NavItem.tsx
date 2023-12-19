@@ -64,5 +64,4 @@ function NavItem(
     </li>
   );
 }
-
 export default NavItem;
