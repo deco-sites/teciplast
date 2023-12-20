@@ -107,7 +107,7 @@ function Result(
 
   return (
     <>
-      <div class="hidden sm:flex w-full max-w-[90%] border-y border-[#DCDCDC] mx-auto">
+      <div class="container hidden sm:flex w-full border-y border-[#DCDCDC]">
         <div class="container  flex-row items-center sm:p-0  ">
           <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
         </div>
