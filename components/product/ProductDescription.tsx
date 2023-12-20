@@ -161,7 +161,7 @@ function ProductInfo(
                           <span class="text-sm uppercase font-normal">
                             {u}
                           </span>
-                        ))}s
+                        ))}
                       </div>
                     )}
                   </div>
