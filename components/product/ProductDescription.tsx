@@ -60,8 +60,7 @@ function ProductInfo(
   );
 
   const isCurtain = curtainCategory && curtainCategory.length;
-  console.log(instructions)
-  console.log(utils)
+ 
   return (
     <div
       id="more"
@@ -153,7 +152,7 @@ function ProductInfo(
                         </span>
                       </div>
                     )}
-                    {utils.length > 0 && (
+                    {utils!.length > 0 && (
                       <div class="flex flex-col sm:min-w-[200px] mb-5">
                         <span class="text-base  uppercase font-bold">
                           Utilização Recomendada
