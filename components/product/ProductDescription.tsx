@@ -60,7 +60,8 @@ function ProductInfo(
   );
 
   const isCurtain = curtainCategory && curtainCategory.length;
-
+  console.log(instructions)
+  console.log(utils)
   return (
     <div
       id="more"
@@ -142,7 +143,7 @@ function ProductInfo(
                       }
                     })}
 
-                    {instructions.length && (
+                    {instructions.length > 0 && (
                       <div class="flex flex-col sm:min-w-[200px] mb-5">
                         <span class="text-base  uppercase font-bold">
                           INSTRUÇÕES
@@ -152,7 +153,7 @@ function ProductInfo(
                         </span>
                       </div>
                     )}
-                    {utils?.length && (
+                    {utils.length > 0 && (
                       <div class="flex flex-col sm:min-w-[200px] mb-5">
                         <span class="text-base  uppercase font-bold">
                           Utilização Recomendada
@@ -161,7 +162,7 @@ function ProductInfo(
                           <span class="text-sm uppercase font-normal">
                             {u}
                           </span>
-                        ))}
+                        ))}s
                       </div>
                     )}
                   </div>
