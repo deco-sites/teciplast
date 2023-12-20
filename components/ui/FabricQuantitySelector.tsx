@@ -14,10 +14,10 @@ const QUANTITY_MAX_VALUE = 100;
 function QuantitySelector(
   { onChange, quantity, disabled, loading, widthFull, coloredButtons }: Props,
 ) {
-  const decrement = () => onChange?.(Math.max(0, quantity - 0.1));
+  const decrement = () => onChange?.(Math.max(0, quantity - 1));
 
   const increment = () =>
-    onChange?.(Math.min(quantity + 0.1, QUANTITY_MAX_VALUE));
+    onChange?.(Math.min(quantity + 1, QUANTITY_MAX_VALUE));
 
   return (
     <div
@@ -36,15 +36,15 @@ function QuantitySelector(
         -
       </Button>
       <input
-        class={`input text-center join-item [appearance:textfield] ${
+        class={`p-0 text-xs input text-center join-item [appearance:textfield w-[40%] ${
           widthFull ? "h-[40px]" : "max-h-8"
         }`}
         type="text"
         // inputMode="numeric"
         // pattern="[0-9]*"
         max={QUANTITY_MAX_VALUE}
-        min={1}
-        value={quantity.toFixed(2) + "m"}
+        min={10}
+        value={(quantity / 10).toFixed(2) + "m"}
         disabled={disabled}
         onBlur={(e) => onChange?.(e.currentTarget.valueAsNumber)}
         maxLength={3}
