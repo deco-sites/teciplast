@@ -133,7 +133,7 @@ function Navbar({ items, searchbar, logo }: Props) {
             <NavLogout />
           </div>
         </div>
-        <ul class="flex flex-row items-center w-full justify-between  h-full shrink-0 ">
+        <ul class="flex flex-row items-center w-full justify-between  h-full shrink-0 relative ">
           {items.map((item, index) => <NavItem item={item} index={index} ultItem={ultItem} />)}
         </ul>
       </div>

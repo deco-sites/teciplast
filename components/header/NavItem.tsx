@@ -27,8 +27,8 @@ function NavItem(
       </a> 
 
       <div
-        class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center  max-w-[400px] ${index == ultItem ? "lg:right-0 lg:mr-[20px] right-0 mr-[180px]":" "} `}
-        style={{ top: "0px", marginTop: marginTopDrop }}
+        class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center  max-w-[400px] ${index == ultItem ? " right-0":" "} `}
+        style={{ top: "0px", marginTop: "45px" }}
       >
         {image?.url && (
           <Image
