@@ -37,7 +37,7 @@ export interface AllowedFilters {
   key: string;
   title: string;
   pageName: string;
-  type: "carousel" | "icons" | "dropdown" | "img-dropdown";
+  type: "range" | "carousel" | "icons" | "dropdown" | "img-dropdown";
   values: FeaturedFiltersInfo[];
 }
 
