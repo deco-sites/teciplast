@@ -157,7 +157,7 @@ function ProductInfo(
                         <span class="text-base  uppercase font-bold">
                           Utilização Recomendada
                         </span>
-                        {utils.map((u) => (
+                        {utils!.map((u) => (
                           <span class="text-sm uppercase font-normal">
                             {u}
                           </span>
