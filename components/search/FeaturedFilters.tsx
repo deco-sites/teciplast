@@ -116,7 +116,7 @@ function CarouselFilterValues(
 
   const isAllowedOption = (value: FilterToggleValue) => {
     const allowedFilter = allowedFilters.find((item) =>
-      item.key == key && item?.pageName == url[0].name
+      item.key == key && item?.pageName == url[url.length - 1].name
     );
     const allowedOption = allowedFilter?.values.find((item) =>
       item.key == value.value
@@ -227,7 +227,7 @@ function IconsFilterValues(
 ) {
   const { key, values } = filter;
   const allowedFilter = allowedFilters.find((item) =>
-    item.key == key && item?.pageName == url[0].name
+    item.key == key && item?.pageName == url[url.length - 1].name
   );
 
   const isAllowedOption = (value: FilterToggleValue) => {
@@ -244,7 +244,7 @@ function IconsFilterValues(
       <div class="carousel carousel-start sm:carousel-end  justify-start min-w-[300px] max-w-[350px]  h-[110px] gap-10 lg:max-w-[900px] ">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
-            filter.key == key && filter?.pageName == url[0].name
+            filter.key == key && filter?.pageName == url[url.length - 1].name
           )
             ?.values.find((option) => option.key == item.value);
           if (!allowedOption) return null;
@@ -311,9 +311,39 @@ function DropdownFilter({ filter, label, url }: DropdownFilterProps) {
   );
 }
 
+function RangeFilter({ filter, label, url }: DropdownFilterProps) {
+  // console.log({ filter });
+  return (
+    <div class="w-full">
+      <span>{filter.label}</span>
+      <input
+        type="range"
+        min={filter.values[0].value}
+        max={filter.values[filter.values.length - 1].value}
+        value={filter.values[0].value}
+        class="range range-xs w-full"
+        step="10"
+      />
+      <div class="w-full flex justify-between text-xs px-2">
+        {filter.values.map((f) => (
+          <span class="text-[9px]">{Number(f.value)}</span>
+        ))}
+        {
+          /* <span>0</span>
+        <span>200</span>
+        <span>350</span>
+        <span>400</span>
+        <span>420</span> */
+        }
+      </div>
+    </div>
+  );
+}
+
 function FeaturedFilters(
   { filters, allowedFilters, url, hiddenCategory }: Props,
 ) {
+  // console.log({ urlName: url[url.length - 1].name, filters });
   const ordenarListaComCorPrimeiro = (lista: Filter[]) => {
     const filtroCor = lista.find((item, index) => item.key == "cor-principal");
 
@@ -342,7 +372,7 @@ function FeaturedFilters(
   ordenarListaComCorPrimeiro(filters);
   const getAllowedFromFilter = (filter: FilterToggle) => {
     const allowedFilter = allowedFilters.find((item) =>
-      item.key == filter.key && item.pageName == url[0].name
+      item.key == filter.key && item.pageName == url[url.length - 1].name
     );
 
     return allowedFilter;
@@ -350,7 +380,7 @@ function FeaturedFilters(
   const isAllowed = (filter: Filter): filter is FilterToggle =>
     Boolean(
       allowedFilters.find((item) =>
-        item.key == filter.key && item.pageName == url[0].name
+        item.key == filter.key && item.pageName == url[url.length - 1].name
       ),
     );
   return (
@@ -367,7 +397,8 @@ function FeaturedFilters(
               const allowed = getAllowedFromFilter(filter);
 
               if (
-                allowed?.type == "carousel" && allowed?.pageName == url[0].name
+                allowed?.type == "carousel" &&
+                allowed?.pageName == url[url.length - 1].name
               ) {
                 return (
                   <CarouselFilter
@@ -379,7 +410,8 @@ function FeaturedFilters(
               }
 
               if (
-                allowed?.type == "dropdown" && allowed?.pageName == url[0].name
+                allowed?.type == "dropdown" &&
+                allowed?.pageName == url[url.length - 1].name
               ) {
                 return (
                   <DropdownFilter
@@ -391,7 +423,21 @@ function FeaturedFilters(
               }
 
               if (
-                allowed?.type == "icons" && allowed?.pageName == url[0].name
+                allowed?.type == "range" &&
+                allowed?.pageName == url[url.length - 1].name
+              ) {
+                return (
+                  <RangeFilter
+                    filter={filter}
+                    label={allowed.title}
+                    url={url}
+                  />
+                );
+              }
+
+              if (
+                allowed?.type == "icons" &&
+                allowed?.pageName == url[url.length - 1].name
               ) {
                 return (
                   <IconsFilter
