@@ -3,6 +3,7 @@ import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
 import OutOfStock from "$store/islands/OutOfStock.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
+import FabricQuantitySelector from "$store/components/ui/FabricQuantitySelector.tsx";
 import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
 
 export interface Props {
@@ -31,17 +32,28 @@ const ProductInfoQuantityIsland = (props: Props) => {
     discount,
     seller,
   } = props;
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(isFabric ? 10 : 1);
 
   return (
     <div class="mt-4 sm:mt-10 flex flex-row flex-wrap gap-2 justify-between max-w-[360px] sm:max-w-none">
       <div class={`w-[48%]`}>
-        <QuantitySelector
-          quantity={quantity}
-          widthFull={true}
-          coloredButtons={true}
-          onChange={(q) => setQuantity(q)}
-        />
+        {isFabric
+          ? (
+            <FabricQuantitySelector
+              quantity={quantity}
+              widthFull={true}
+              coloredButtons={true}
+              onChange={(q) => setQuantity(q)}
+            />
+          )
+          : (
+            <QuantitySelector
+              quantity={quantity}
+              widthFull={true}
+              coloredButtons={true}
+              onChange={(q) => setQuantity(q)}
+            />
+          )}
       </div>
 
       {isFabric && <FabricSizeTableModal table={fabricSizeTable} />}
