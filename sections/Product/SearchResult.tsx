@@ -260,6 +260,7 @@ function Result(
 function SearchResult(
   { page, ...props }: SectionProps<ReturnType<typeof loader>>,
 ) {
+  // console.log({page})
   if (!page) {
     return <NotFound />;
   }
