@@ -1,6 +1,7 @@
 import Button from "$store/components/ui/Button.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
+import FabricQuantitySelector from "$store/components/ui/FabricQuantitySelector.tsx";
 import { sendEvent } from "$store/sdk/analytics.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import { AnalyticsItem } from "apps/commerce/types.ts";
@@ -18,6 +19,8 @@ export interface Item {
     sale: number;
     list: number;
   };
+  measurementUnit: string;
+  unitMultiplier: number;
 }
 
 export interface Props {
@@ -41,7 +44,14 @@ function CartItem(
     itemToAnalyticsItem,
   }: Props,
 ) {
-  const { image, name, price: { sale, list }, quantity } = item;
+  const {
+    image,
+    name,
+    price: { sale, list },
+    quantity,
+    measurementUnit,
+    unitMultiplier,
+  } = item;
   const isGift = sale < 0.01;
   const [loading, setLoading] = useState(false);
   const { alt, src } = image;
@@ -93,28 +103,59 @@ function CartItem(
         </div>
         <div class="flex justify-between items-center gap-2 w-full">
           <span class="text-[15px] font-bold ">
-            {isGift ? "Grátis" : formatPrice(sale, currency, locale)}
+            {isGift ? "Grátis" : (
+              <>
+                {formatPrice(sale, currency, locale)}
+                <span class="text-xs font-normal">
+                  /{unitMultiplier != 1 && unitMultiplier}
+                  {measurementUnit}
+                </span>
+              </>
+            )}
           </span>
+          {measurementUnit === "m"
+            ? (
+              <FabricQuantitySelector
+                disabled={loading || isGift}
+                quantity={quantity}
+                onChange={withLoading(async (quantity) => {
+                  const analyticsItem = itemToAnalyticsItem(index);
+                  const diff = quantity - item.quantity;
 
-          <QuantitySelector
-            disabled={loading || isGift}
-            quantity={quantity}
-            onChange={withLoading(async (quantity) => {
-              const analyticsItem = itemToAnalyticsItem(index);
-              const diff = quantity - item.quantity;
+                  await onUpdateQuantity(quantity, index);
 
-              await onUpdateQuantity(quantity, index);
+                  if (analyticsItem) {
+                    analyticsItem.quantity = diff;
 
-              if (analyticsItem) {
-                analyticsItem.quantity = diff;
+                    sendEvent({
+                      name: diff < 0 ? "remove_from_cart" : "add_to_cart",
+                      params: { items: [analyticsItem] },
+                    });
+                  }
+                })}
+              />
+            )
+            : (
+              <QuantitySelector
+                disabled={loading || isGift}
+                quantity={quantity}
+                onChange={withLoading(async (quantity) => {
+                  const analyticsItem = itemToAnalyticsItem(index);
+                  const diff = quantity - item.quantity;
 
-                sendEvent({
-                  name: diff < 0 ? "remove_from_cart" : "add_to_cart",
-                  params: { items: [analyticsItem] },
-                });
-              }
-            })}
-          />
+                  await onUpdateQuantity(quantity, index);
+
+                  if (analyticsItem) {
+                    analyticsItem.quantity = diff;
+
+                    sendEvent({
+                      name: diff < 0 ? "remove_from_cart" : "add_to_cart",
+                      params: { items: [analyticsItem] },
+                    });
+                  }
+                })}
+              />
+            )}
         </div>
       </div>
     </div>

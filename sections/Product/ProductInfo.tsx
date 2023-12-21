@@ -160,7 +160,8 @@ function ProductInfo(
             {isFabric
               ? (
                 <span class="text-2xl text-[#403F3F] font-bold">
-                  {formatPrice(listPrice, offers?.priceCurrency)}{" "}
+                  {formatPrice(((price * 10) + 0.09), offers?.priceCurrency)}
+                  {" "}
                   <span class="text-xs">/metro</span>
                 </span>
               )

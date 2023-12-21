@@ -18,6 +18,7 @@ const useAddToCart = ({
   price,
   name,
   discount,
+  quantity,
   productGroupID,
   productID,
   onAddItem,
@@ -38,7 +39,7 @@ const useAddToCart = ({
         name: "add_to_cart",
         params: {
           items: [{
-            quantity: 1,
+            quantity: quantity,
             price,
             item_name: name,
             discount: discount,
