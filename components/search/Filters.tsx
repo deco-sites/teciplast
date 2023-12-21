@@ -57,7 +57,7 @@ function FilterValues({ key, values }: FilterToggle) {
 
         if (key === "cor") {
           return (
-            <a href={url}>
+            <a href={url} rel="nofollow">
               <Avatar
                 content={value}
                 variant={selected ? "active" : "default"}

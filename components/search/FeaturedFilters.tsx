@@ -60,7 +60,8 @@ function ValueItem(
 ) {
   return (
     <li >
-            <a
+      <a
+        rel="nofollow"
         href={url}
         class="flex items-center hover:underline lg:px-5 min-w-[250px] max-w-[250px]"
       > 
@@ -80,6 +81,7 @@ function ValueItemColor(
     <li >
       <a
         href={url}
+        rel="nofollow"
         class="flex items-center hover:underline lg:px-5 min-w-[250px] max-w-[250px]"
       > 
         <div class={`h-[13px] w-[13px] ${CORES[label]} rounded-full border-2 border-[#C0C0C0] shadow-md `}></div>
@@ -107,7 +109,7 @@ function FilterValues({ key, values }: FilterToggle) {
 
         if (key === "cor" || key === "tamanho") {
           return (
-            <a href={url}>
+            <a href={url} rel="nofollow">
               <Avatar
                 content={value}
                 variant={selected ? "active" : "default"}
@@ -141,6 +143,7 @@ function CarouselValueItem(
   return (
     <a
       href={item.url}
+      rel="nofollow"
       class="flex flex-col items-center text-center gap-1 hover:underline lg:px-2"
     >
       <div class="w-[70px] h-[60px]">
@@ -243,6 +246,7 @@ function IconsValueItem({ title, item, icon }: IconsAllowedOption) {
   return (
     <a
       href={item.url}
+      rel="nofollow"
       class={`${
         item.selected
           ? "text-[#70A4E0] border-[#DADADA] bg-base-100 border-2"
