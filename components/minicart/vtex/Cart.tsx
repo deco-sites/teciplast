@@ -21,6 +21,8 @@ function Cart({ freeShippingTarget }: { freeShippingTarget: number }) {
           sale: item.sellingPrice / 100,
           list: item.listPrice / 100,
         },
+        measurementUnit: item.measurementUnit,
+        unitMultiplier: item.unitMultiplier,
       }))}
       total={(total + discounts) / 100}
       subtotal={total / 100}
