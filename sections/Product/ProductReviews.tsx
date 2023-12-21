@@ -133,14 +133,15 @@ function ProductReviews(
         Avaliações do produto
       </h3>
       {Boolean(reviews.data?.length) && (
-        <div class="flex justify-between mb-6">
+        <div class="flex justify-start mb-6">
           <RatingStars
             productId={"averageReviews-" + productId}
             display="detailsPage"
             average={reviews.averageRating!.average}
             count={reviews.averageRating!.totalCount}
           />
-          <div class="flex gap-2">
+          {
+            /* <div class="flex gap-2">
             <select class="select select-bordered w-full max-w-xs">
               <option disabled selected>Ordenar</option>
               <option>Mais Recente</option>
@@ -156,7 +157,8 @@ function ProductReviews(
               <option>4 estrelas</option>
               <option>5 estrelas</option>
             </select>
-          </div>
+          </div> */
+          }
         </div>
       )}
       <div>

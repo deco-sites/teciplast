@@ -27,7 +27,7 @@ import {
 import type { SectionProps } from "deco/mod.ts";
 import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
 
-import ProductInfoQuantityIsland from "$store/islands/ProductInfoQuantityIsland.tsx"
+import ProductInfoQuantityIsland from "$store/islands/ProductInfoQuantityIsland.tsx";
 import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 
 export interface RecordItem {
@@ -151,16 +151,26 @@ function ProductInfo(
       {/* Prices */}
       <div class="mt-4">
         <div class="flex flex-col">
-          {listPrice !== price && (
+          {listPrice !== price && !isFabric && (
             <span class="line-through text-base-300 text-xs">
               {formatPrice(listPrice, offers?.priceCurrency)}
             </span>
           )}
           <div class="flex items-center">
-            <span class="text-2xl text-[#403F3F] font-bold">
-              {formatPrice(price, offers?.priceCurrency)}
-            </span>
-            {discount > 0 && (
+            {isFabric
+              ? (
+                <span class="text-2xl text-[#403F3F] font-bold">
+                  {formatPrice(((price * 10) + 0.09), offers?.priceCurrency)}
+                  {" "}
+                  <span class="text-xs">/metro</span>
+                </span>
+              )
+              : (
+                <span class="text-2xl text-[#403F3F] font-bold">
+                  {formatPrice(price, offers?.priceCurrency)}
+                </span>
+              )}
+            {discount > 0 && !isFabric && (
               <div class="bg-[#008000] text-white rounded py-[2px] px-2 ml-3">
                 <span class="text-sm font-semibold">
                   {percentageDiscount}% OFF
@@ -169,9 +179,11 @@ function ProductInfo(
             )}
           </div>
         </div>
-        <span class="text-base text-[#007C2C]">
-          até {installments}
-        </span>
+        {!isFabric && (
+          <span class="text-base text-[#007C2C]">
+            até {installments}
+          </span>
+        )}
       </div>
       {/* Sku Selectors */}
       {description &&
@@ -215,16 +227,13 @@ function ProductInfo(
           <div class="mt-4 sm:mt-6">
             <BedSizeSelector product={product} />
           </div>
-        )
-      }
+        )}
       {Object.keys(possibilities).includes("Cor Principal") &&
         (
           <div class="mt-4 px-2  sm:px-0 sm:mt-6">
-            <ColorSelector product={product}/>
+            <ColorSelector product={product} />
           </div>
-        )
-      }
-     
+        )}
 
       {/* Add to Cart and quantity */}
       <ProductInfoQuantityIsland

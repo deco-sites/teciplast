@@ -37,7 +37,7 @@ export interface AllowedFilters {
   key: string;
   title: string;
   pageName: string;
-  type: "carousel" | "icons" | "dropdown" | "img-dropdown";
+  type: "range" | "carousel" | "icons" | "dropdown" | "img-dropdown";
   values: FeaturedFiltersInfo[];
 }
 
@@ -84,8 +84,49 @@ export const loader = ({
 
 function NotFound() {
   return (
-    <div class="w-full flex justify-center items-center py-10">
-      <span>Not Found!</span>
+    <div class="w-full flex flex-col justify-start items-center py-10 h-[400px] gap-8">
+      <span class="text-2xl font-bold">Ops! Página não encontrada!</span>
+      <div class="flex flex-col gap-4">
+        <span class="text-lg">
+          Tente navegar para a{" "}
+          <a class="text-[#0000ff] underline font-semibold" href="/">
+            Página Inicial
+          </a>{" "}
+          ou explore nossos departamentos:
+        </span>
+        <div class="flex w-full justify-center gap-3">
+          <a class="text-[#0000ff] underline font-semibold" href="/tecidos">
+            Tecidos
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/cama">
+            Cama
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/mesa">
+            Mesa
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/banho">
+            Banho
+          </a>
+          <span>|</span>
+          <a
+            class="text-[#0000ff] underline font-semibold"
+            href="/decoracao/cortinas-e-persianas"
+          >
+            Cortinas
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/armarinho">
+            Armarinho
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/decoracao">
+            Decoração
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
@@ -107,7 +148,7 @@ function Result(
 
   return (
     <>
-      <div class="hidden sm:flex w-full max-w-[90%] border-y border-[#DCDCDC] mx-auto">
+      <div class="container hidden sm:flex w-full border-y border-[#DCDCDC]">
         <div class="container  flex-row items-center sm:p-0  ">
           <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
         </div>
@@ -219,6 +260,7 @@ function Result(
 function SearchResult(
   { page, ...props }: SectionProps<ReturnType<typeof loader>>,
 ) {
+  // console.log({page})
   if (!page) {
     return <NotFound />;
   }

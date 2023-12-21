@@ -88,7 +88,7 @@ function FabricSizeTableModal({ table }: { table: TableItem[] }) {
         onClick={() => displayFabricSizeTable.value = true}
       >
         <Icon class={`rotate-180`} id="ruler" width={16} height={16} />{" "}
-        <span class={`text-xs sm:text-sm`}>Quantos mestros comprar</span>
+        <span class={`text-xs sm:text-sm`}>Quantos metros comprar</span>
       </button>
       <Modal
         loading="lazy"

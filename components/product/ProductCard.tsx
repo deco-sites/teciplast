@@ -81,6 +81,9 @@ function ProductCard(
   const { listPrice, price, installments } = useOffer(offers);
   const possibilities = useVariantPossibilities(hasVariant, product);
   const variants = Object.entries(Object.values(possibilities)[0] ?? {});
+  const isFabric = product.additionalProperty!.find((p) =>
+    p.value === "Tecidos"
+  );
 
   const l = layout;
   const align =
@@ -104,7 +107,7 @@ function ProductCard(
       productGroupID={productGroupID}
       price={price}
       seller={"1"}
-      quantity={1}
+      quantity={isFabric ? 10 : 1}
       extraClasses="text-xs rounded"
     />
   );
@@ -293,16 +296,27 @@ function ProductCard(
                     : ""
                 } ${align === "center" ? "justify-center" : "justify-start"}`}
               >
-                <div
-                  class={`line-through text-base-300 text-xs ${
-                    l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
-                  }`}
-                >
-                  {formatPrice(listPrice, offers?.priceCurrency)}
-                </div>
-                <div class="text-[#3e3e3e]  font-bold text-base lg:text-[15px]">
-                  {formatPrice(price, offers?.priceCurrency)}
-                </div>
+                {!isFabric && (
+                  <div
+                    class={`line-through text-base-300 text-xs ${
+                      l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
+                    }`}
+                  >
+                    {formatPrice(listPrice, offers?.priceCurrency)}
+                  </div>
+                )}
+                {isFabric
+                  ? (
+                    <div class="text-[#3e3e3e]  font-bold text-base lg:text-[15px]">
+                      {formatPrice(price, offers?.priceCurrency)}{" "}
+                      <span class="text-xs">/ 0.1m</span>
+                    </div>
+                  )
+                  : (
+                    <div class="text-[#3e3e3e]  font-bold text-base lg:text-[15px]">
+                      {formatPrice(price, offers?.priceCurrency)}
+                    </div>
+                  )}
 
                 {l?.hide?.installments
                   ? ""
