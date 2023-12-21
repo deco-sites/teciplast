@@ -5,14 +5,13 @@ export interface Props extends Omit<BtnProps, "onAddItem" | "platform"> {
   seller: string;
   quantity?: number;
   extraClasses?: string;
-  isFabric?: any;
+  isFabric?: unknown;
 }
 
 function AddToCartButton(props: Props) {
   const { isFabric } = props;
   const { quantity = isFabric ? 10 : 1, extraClasses } = props;
   const { addItems } = useCart();
-
 
   const onAddItem = () =>
     addItems({
