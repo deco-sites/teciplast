@@ -107,7 +107,7 @@ function ProductCard(
       productGroupID={productGroupID}
       price={price}
       seller={"1"}
-      quantity={1}
+      quantity={isFabric ? 10 : 1}
       extraClasses="text-xs rounded"
     />
   );
