@@ -84,8 +84,49 @@ export const loader = ({
 
 function NotFound() {
   return (
-    <div class="w-full flex justify-center items-center py-10">
-      <span>Not Found!</span>
+    <div class="w-full flex flex-col justify-start items-center py-10 h-[400px] gap-8">
+      <span class="text-2xl font-bold">Ops! Página não encontrada!</span>
+      <div class="flex flex-col gap-4">
+        <span class="text-lg">
+          Tente navegar para a{" "}
+          <a class="text-[#0000ff] underline font-semibold" href="/">
+            Página Inicial
+          </a>{" "}
+          ou explore nossos departamentos:
+        </span>
+        <div class="flex w-full justify-center gap-3">
+          <a class="text-[#0000ff] underline font-semibold" href="/tecidos">
+            Tecidos
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/cama">
+            Cama
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/mesa">
+            Mesa
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/banho">
+            Banho
+          </a>
+          <span>|</span>
+          <a
+            class="text-[#0000ff] underline font-semibold"
+            href="/decoracao/cortinas-e-persianas"
+          >
+            Cortinas
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/armarinho">
+            Armarinho
+          </a>
+          <span>|</span>
+          <a class="text-[#0000ff] underline font-semibold" href="/decoracao">
+            Decoração
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
