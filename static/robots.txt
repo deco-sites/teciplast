@@ -1,2 +1,5 @@
 User-agent: *
-Allow: *
+Allow: /
+Disallow: /checkout/*
+Sitemap: https://www.teciplast.com.br/sitemap.xml
+Host: https://www.teciplast.com.br
