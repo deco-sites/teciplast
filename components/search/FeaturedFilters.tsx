@@ -20,6 +20,38 @@ interface Props {
   hiddenCategory: boolean;
 }
 
+const CORES: { [cor: string]: string} = {
+  "Amarelo": "bg-[#FFFF00]",
+  "Azul": "bg-[#0000FF]",
+  "Azul Bebê": "bg-[#89CFF0]",
+  "Azul Celeste": "bg-[#7EC0EE]",
+  "Azul Royal": "bg-[#4169E1]",
+  "Bege": "bg-[#F5F5DC]",
+  "Branco": "bg-[#FFFFFF]",
+  "Cinza": "bg-[#808080]",
+  "Laranja": "bg-[#FFA500]",
+  "Lilás": "bg-[#C8A2C8]",
+  "Marrom": "bg-[#A52A2A]",
+  "Ouro": "bg-[#FFD700]",
+  "Pink": "bg-[#FF0084]",
+  "Prata": "bg-[#C0C0C0]",
+  "Preto": "bg-[#000000]",
+  "Rosa": "bg-[#FFC0CB]",
+  "Rosa Bebê": "bg-[#F4C2C2]",
+  "Roxo": "bg-[#800080]",
+  "Terracota": "bg-[#E2725B]",
+  "Verde": "bg-[#008000]",
+  "Verde Bandeira": "bg-[#006400]",
+  "Vermelho": "bg-[#FF0000]",
+  "Vinho": "bg-[#722F37]",
+  "Animal Print":"bg-gradient-to-r from-teal-200 to-lime-200",
+  "Estampado":"bg-gradient-to-r from-green-300 via-blue-500 to-purple-600",
+  "Étnico":"bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400", 
+  "Floral":"bg-gradient-to-r from-yellow-400 via-gray-50 to-teal-300",
+  "Mescla":"bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-sky-500 to-sky-500",
+  "Transparente":"bg-[#FFFFFF]", 
+};
+
 const isToggle = (filter: Filter): filter is FilterToggle =>
   filter["@type"] === "FilterToggle";
 
@@ -27,12 +59,32 @@ function ValueItem(
   { url, selected, label, quantity }: FilterToggleValue,
 ) {
   return (
-    <li>
+    <li >
+            <a
+        href={url}
+        class="flex items-center hover:underline lg:px-5 min-w-[250px] max-w-[250px]"
+      > 
+        <span class="text-sm ml-2 mr-auto truncate w-full bg-[#fff]">{label}</span>
+        {quantity > 0 && (
+          <span class="text-sm  ml-auto text-base-300">({quantity})</span>
+        )}
+      </a>
+    </li>
+  );
+}
+
+function ValueItemColor(
+  { url, selected, label, quantity }: FilterToggleValue,
+) {
+  return (
+    <li >
       <a
         href={url}
         class="flex items-center hover:underline lg:px-5 min-w-[250px] max-w-[250px]"
-      >
-        <span class="text-sm mr-auto truncate w-full bg-[#fff]">{label}</span>
+      > 
+        <div class={`h-[13px] w-[13px] ${CORES[label]} rounded-full border-2 border-[#C0C0C0] shadow-md `}></div>
+
+        <span class="text-sm ml-2 mr-auto truncate w-full bg-[#fff]">{label}</span>
         {quantity > 0 && (
           <span class="text-sm  ml-auto text-base-300">({quantity})</span>
         )}
@@ -67,7 +119,9 @@ function FilterValues({ key, values }: FilterToggle) {
         if (key === "price") {
           return null;
         }
-
+        if (key === "cor-principal"){
+         return  <ValueItemColor {...item} />
+        }
         return <ValueItem {...item} />;
       })}
     </ul>
