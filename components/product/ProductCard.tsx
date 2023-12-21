@@ -108,7 +108,6 @@ function ProductCard(
       price={price}
       seller={"1"}
       quantity={1}
-      isFabric={isFabric}
       extraClasses="text-xs rounded"
     />
   );
