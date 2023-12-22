@@ -36,7 +36,7 @@ function QuantitySelector(
         -
       </Button>
       <input
-        class={`p-0 text-base input text-center join-item [appearance:textfield w-[40%] ${
+        class={`p-0 text-base input text-center join-item [appearance:textfield w-[70%] ${
           widthFull ? "h-[40px]" : "max-h-8"
         }`}
         type="text"
