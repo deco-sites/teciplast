@@ -36,19 +36,20 @@ function QuantitySelector(
         -
       </Button>
       <input
-        class={`p-0 text-xs input text-center join-item [appearance:textfield w-[40%] ${
+        class={`p-0 text-base input text-center join-item [appearance:textfield w-[70%] ${
           widthFull ? "h-[40px]" : "max-h-8"
         }`}
         type="text"
         // inputMode="numeric"
         // pattern="[0-9]*"
         max={QUANTITY_MAX_VALUE}
-        min={10}
-        value={(quantity / 10).toFixed(2) + "m"}
+        min={1}
+        value={quantity + " m"}
         disabled={disabled}
-        onBlur={(e) => onChange?.(e.currentTarget.valueAsNumber)}
+        // onBlur={(e) => onChange?.(e.currentTarget.value)}
         maxLength={3}
         size={3}
+        readOnly
       />
       <Button
         class={`btn-square btn-ghost join-item ${

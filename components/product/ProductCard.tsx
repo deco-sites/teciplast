@@ -107,7 +107,7 @@ function ProductCard(
       productGroupID={productGroupID}
       price={price}
       seller={"1"}
-      quantity={isFabric ? 10 : 1}
+      quantity={1}
       extraClasses="text-xs rounded"
     />
   );
@@ -296,7 +296,7 @@ function ProductCard(
                     : ""
                 } ${align === "center" ? "justify-center" : "justify-start"}`}
               >
-                {!isFabric && (
+                {listPrice !== price && (
                   <div
                     class={`line-through text-base-300 text-xs ${
                       l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
@@ -309,7 +309,7 @@ function ProductCard(
                   ? (
                     <div class="text-[#3e3e3e]  font-bold text-base lg:text-[15px]">
                       {formatPrice(price, offers?.priceCurrency)}{" "}
-                      <span class="text-xs">/ 0.1m</span>
+                      <span class="text-xs">/metro</span>
                     </div>
                   )
                   : (

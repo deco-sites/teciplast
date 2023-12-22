@@ -113,7 +113,8 @@ function CartItem(
               </>
             )}
           </span>
-          {measurementUnit === "m"
+          {measurementUnit === "m" || measurementUnit === "metro" ||
+              measurementUnit === "Metro"
             ? (
               <FabricQuantitySelector
                 disabled={loading || isGift}
