@@ -1,0 +1,204 @@
+{
+"@type": "Product",
+category: "Tecidos>Tricoline",
+productID: "3691",
+url: "http://localhost:8000/tricoline-estampado-100-algodao-moranguinho-rosa-1-50-de-larg-infantil/p?skuId"... 5 more characters,
+name: "Tricoline Estampado 100% algodão Moranguinho Rosa 1.50 de larg Infantil",
+description: '<p style="box-sizing: border-box; vertical-align: top; font-family: Roboto, Helvetica, Arial, Verdan'... 1038 more characters,
+brand: {
+  "@type": "Brand",
+  "@id": "2000045",
+  name: "Tecimais",
+  logo: undefined
+},
+isAccessoryOrSparePartFor: undefined,
+inProductGroupWithID: "3993",
+sku: "3691",
+gtin: "",
+releaseDate: 1696377600000,
+additionalProperty: [
+  {
+    "@type": "PropertyValue",
+    name: "Cor Principal",
+    value: "Estampado",
+    propertyID: undefined,
+    valueReference: "SPECIFICATION"
+  },
+  {
+    "@type": "PropertyValue",
+    name: "category",
+    propertyID: "27",
+    value: "Tecidos"
+  },
+  {
+    "@type": "PropertyValue",
+    name: "category",
+    propertyID: "44",
+    value: "Tricoline"
+  },
+  {
+    "@type": "PropertyValue",
+    name: "RefId",
+    value: "79063945-5",
+    valueReference: "ReferenceID"
+  }
+],
+isVariantOf: {
+  "@type": "ProductGroup",
+  productGroupID: "3993",
+  hasVariant: [
+    {
+      "@type": "Product",
+      category: "Tecidos>Tricoline",
+      productID: "3691",
+      url: "http://localhost:8000/tricoline-estampado-100-algodao-moranguinho-rosa-1-50-de-larg-infantil/p?skuId"... 5 more characters,
+      name: "Tricoline Estampado 100% algodão Moranguinho Rosa 1.50 de larg Infantil",
+      description: '<p style="box-sizing: border-box; vertical-align: top; font-family: Roboto, Helvetica, Arial, Verdan'... 1038 more characters,
+      brand: {
+        "@type": "Brand",
+        "@id": "2000045",
+        name: "Tecimais",
+        logo: undefined
+      },
+      isAccessoryOrSparePartFor: undefined,
+      inProductGroupWithID: "3993",
+      sku: "3691",
+      gtin: "",
+      releaseDate: 1696377600000,
+      additionalProperty: [ [Object], [Object], [Object], [Object] ],
+      isVariantOf: undefined,
+      image: [ [Object], [Object], [Object] ],
+      offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "BRL",
+        highPrice: 49.99,
+        lowPrice: 49.99,
+        offerCount: 1,
+        offers: [Array]
+      }
+    }
+  ],
+  url: "http://localhost:8000/tricoline-estampado-100-algodao-moranguinho-rosa-1-50-de-larg-infantil/p",
+  name: "Tricoline Estampado 100% algodão Moranguinho Rosa 1.50 de larg Infantil",
+  additionalProperty: [
+    {
+      "@type": "PropertyValue",
+      name: "Composição do Tecido",
+      value: "100% ALGODÃO",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Gramatura",
+      value: "130 G/M²",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Instruções de Lavagem",
+      value: "max-lav-40-suave",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Instruções de Lavagem",
+      value: "nao-alv",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Instruções de Lavagem",
+      value: "nao-secar-tambor",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Instruções de Lavagem",
+      value: "temp-max-110-n-vap",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Utilidades dos Tecidos",
+      value: "Confecção de roupas",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Utilidades dos Tecidos",
+      value: "Jalecos",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Utilidades dos Tecidos",
+      value: "Uniformes",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Cor Principal",
+      value: "Estampado",
+      valueReference: "PROPERTY"
+    },
+    {
+      "@type": "PropertyValue",
+      name: "sellerId",
+      value: "1",
+      valueReference: "PROPERTY"
+    }
+  ],
+  model: "79063945-5"
+},
+image: [
+  {
+    "@type": "ImageObject",
+    alternateName: "",
+    url: "https://tecilar.vtexassets.com/arquivos/ids/168346/tricoline-estampado-100-algodao-moranguinho-rosa-"... 48 more characters,
+    name: ""
+  },
+  {
+    "@type": "ImageObject",
+    alternateName: "",
+    url: "https://tecilar.vtexassets.com/arquivos/ids/168347/tricoline-estampado-100-algodao-moranguinho-rosa-"... 48 more characters,
+    name: ""
+  },
+  {
+    "@type": "ImageObject",
+    alternateName: "",
+    url: "https://tecilar.vtexassets.com/arquivos/ids/168348/tricoline-estampado-100-algodao-moranguinho-rosa-"... 48 more characters,
+    name: ""
+  }
+],
+offers: {
+  "@type": "AggregateOffer",
+  priceCurrency: "BRL",
+  highPrice: 49.99,
+  lowPrice: 49.99,
+  offerCount: 1,
+  offers: [
+    {
+      "@type": "Offer",
+      price: 49.99,
+      seller: "1",
+      priceValidUntil: "2024-12-15T17:59:36Z",
+      inventoryLevel: { value: 10000 },
+      giftSkuIds: [],
+      teasers: [],
+      priceSpecification: [
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object]
+      ],
+      availability: "https://schema.org/InStock"
+    }
+  ]
+
+x   

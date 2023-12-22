@@ -85,7 +85,7 @@ function ColorSelector({ product }: Props) {
               </li>
             );
           }
-        })}
+        })}deno
         </ul>
       </div>
     </div>

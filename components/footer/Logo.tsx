@@ -18,6 +18,8 @@ export default function Logo({ logo }: Props) {
               src={logo?.image}
               alt={logo?.description}
               class={"w-44 mb-5"}
+              width={1920}
+              height={427}
             />
           </div>
         </div>

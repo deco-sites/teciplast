@@ -1,5 +1,6 @@
 import { Picture, Source } from "apps/website/components/Picture.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
+import Image from "apps/website/components/Image.tsx";
 
 /**
  * @titleBy alt
@@ -19,6 +20,7 @@ export interface Banner {
    * @description When you click you go to
    */
   href: string;
+  preload:boolean
 }
 
 export type BorderRadius =
@@ -48,6 +50,7 @@ export interface Props {
     desktop?: BorderRadius;
   };
   banners: Banner[];
+  
 }
 
 const MOBILE_ROWSPAN = {
@@ -149,6 +152,7 @@ const DEFAULT_PROPS: Props = {
         "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/7b3a9d75-57a5-43cf-a3c5-f689a997f24e",
       heightProportion: 120,
       widthProportion: 320,
+      preload:false,
     },
     {
       alt: "a",
@@ -161,6 +165,7 @@ const DEFAULT_PROPS: Props = {
         "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/3e2b7824-d75c-4704-8d32-621bfc9b20cf",
       heightProportion: 120,
       widthProportion: 320,
+      preload:false,
     },
   ],
   gridColumns: 2,
@@ -197,7 +202,7 @@ export default function BannerCustom(props: Props) {
             columns,
             rows,
             heightProportion,
-            widthProportion = 200,
+            widthProportion = 200,preload
           },
         ) => (
           <a
@@ -229,7 +234,7 @@ export default function BannerCustom(props: Props) {
                 src={srcMobile}
                 alt={alt}
                 decoding="async"
-                loading="lazy"
+                loading={preload ? "eager": "lazy"}
               />
             </Picture>
           </a>
@@ -264,8 +269,8 @@ export default function BannerCustom(props: Props) {
               src={firstBanner.srcMobile}
               alt={firstBanner.alt}
               decoding="async"
-              loading="lazy"
-            />
+              loading={firstBanner.preload ? "eager": "lazy"}
+              />
           </Picture>
         </a>
       </div>
