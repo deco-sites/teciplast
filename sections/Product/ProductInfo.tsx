@@ -227,7 +227,7 @@ function ProductInfo(
         )}
       {Object.keys(possibilities).includes("Cor Principal") &&
         (
-          <div class="mt-4 px-2  sm:px-0 sm:mt-6">
+          <div class="mt-4  sm:px-0 sm:mt-6">
             <ColorSelector product={product} />
           </div>
         )}

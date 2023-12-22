@@ -51,7 +51,7 @@ export default function GallerySlider(props: Props) {
         {/* Image Slider */}
 
         <div class="relative order-1 sm:order-2 ">
-          <Slider class="carousel carousel-center gap-6 w-screen h-[350px]  sm:w-[700px]   sm:h-[700px]">
+          <Slider class="carousel carousel-center gap-6  sm:w-[700px]   sm:h-[700px]">
             {images.map((img, index) => (
               <Slider.Item
                 index={index}
