@@ -80,7 +80,7 @@ function ProductInfo(
               <div class="flex-col">
                 <div
                   class={`flex flex-col ${
-                    !isCurtain && "lg:grid-cols-5 lg:flex-row"
+                    !isCurtain && ""
                   } justify-start items-start`}
                 >
                   <span
@@ -92,7 +92,7 @@ function ProductInfo(
                   </span>
                   <div
                     class={`flex flex-row  flex-wrap  flex-grow  w-full ${
-                      !isCurtain && "lg:min-w-[900px] lg:col-span-4"
+                      !isCurtain && ""
                     } lg:max-w-full gap-5 `}
                   >
                     {brand && (
