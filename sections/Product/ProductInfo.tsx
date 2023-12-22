@@ -160,8 +160,7 @@ function ProductInfo(
             {isFabric
               ? (
                 <span class="text-2xl text-[#403F3F] font-bold">
-                  {formatPrice(((price * 10) + 0.09), offers?.priceCurrency)}
-                  {" "}
+                  {formatPrice(price, offers?.priceCurrency)}{" "}
                   <span class="text-xs">/metro</span>
                 </span>
               )
@@ -179,11 +178,9 @@ function ProductInfo(
             )}
           </div>
         </div>
-        {!isFabric && (
-          <span class="text-base text-[#007C2C]">
-            até {installments}
-          </span>
-        )}
+        <span class="text-base text-[#007C2C]">
+          até {installments}
+        </span>
       </div>
       {/* Sku Selectors */}
       {description &&

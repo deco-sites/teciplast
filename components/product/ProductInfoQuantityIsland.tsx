@@ -32,7 +32,7 @@ const ProductInfoQuantityIsland = (props: Props) => {
     discount,
     seller,
   } = props;
-  const [quantity, setQuantity] = useState(isFabric ? 10 : 1);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <div class="mt-4 sm:mt-10 flex flex-row flex-wrap gap-2 justify-between max-w-[360px] sm:max-w-none">
