@@ -125,7 +125,7 @@ function ProductInfo(
   const possibilities = useVariantPossibilities(hasVariant, product);
 
   return (
-    <div class="flex flex-col max-w-[100vw]">
+    <div class="flex flex-col max-w-[100vw] px-2 sm:px-0">
       {/* Code and name */}
       <div>
         <h1>
