@@ -227,10 +227,16 @@ function Footer({
           {(!layout?.variation || layout?.variation == "Variation 1") && (
             <div class="flex flex-col gap-10">
               <div class="flex flex-col md:flex-row md:justify-between md:flex-wrap lg:flex-nowrap gap-8 lg:gap-12">
-                <div>
-                  <div>{_logo}</div>
+                <div class="flex lg:flex-col lg:w-full justify-between">
                   <div>
-                    {_social}
+                    <div>{_logo}</div>
+                    <div>
+                      {_social}
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-[9px]">Powered by</span>
+                    <PoweredByDeco />
                   </div>
                 </div>
                 {_sectionLinks}
