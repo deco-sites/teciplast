@@ -47,11 +47,11 @@ export default function GallerySlider(props: Props) {
 
   return (
     <>
-      <div id={id} class=" grid grid-flow-row sm:grid-flow-col lg:gap-5">
+      <div id={id} class=" grid grid-flow-row sm:grid-flow-col">
         {/* Image Slider */}
 
         <div class="relative order-1 sm:order-2 ">
-          <Slider class="carousel carousel-center gap-6  sm:w-[700px]   sm:h-[700px]">
+          <Slider class="carousel carousel-center gap-6 ">
             {images.map((img, index) => (
               <Slider.Item
                 index={index}
@@ -95,18 +95,18 @@ export default function GallerySlider(props: Props) {
         {/* Dots */}
         <ul class="flex flex-row justify-center items-center  sm:carousel sm:carousel-center sm:justify-start sm:items-start gap-2  sm:px-0 sm:flex-col order-2 sm:order-1 sm:min-w-[90px] ">
           {images.map((img, index) => (
-            <li class="lg:carousel-item  sm:min-w-[76px] max-h-[76px] gap-2 ">
+            <li class="sm:carousel-item  sm:min-w-[76px] max-h-[76px] gap-2 ">
               <Slider.Dot index={index}>
                 <Image
                   style={{ aspectRatio }}
-                  class="hidden lg:flex  group-disabled:border-[#7EABEE] border group-disabled:border-4    max-h-[76px]"
+                  class="hidden sm:flex  group-disabled:border-[#7EABEE] border group-disabled:border-4    max-h-[76px]"
                   width={76}
                   height={76}
                   src={img.url!}
                   alt={img.alternateName}
                 />
                 <div>
-                  <div class=" lg:hidden first-line:flex w-[10px] h-[10px]  rounded border border-[#7EABEE]  group-disabled:bg-[#7EABEE] " />
+                  <div class=" sm:hidden first-line:flex w-[10px] h-[10px]  rounded border border-[#7EABEE]  group-disabled:bg-[#7EABEE] " />
                 </div>
               </Slider.Dot>
             </li>
