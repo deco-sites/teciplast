@@ -125,7 +125,7 @@ function ProductInfo(
   const possibilities = useVariantPossibilities(hasVariant, product);
 
   return (
-    <div class="flex flex-col max-w-[100vw]">
+    <div class="flex flex-col max-w-[100vw] px-2 sm:px-0">
       {/* Code and name */}
       <div>
         <h1>
@@ -227,7 +227,7 @@ function ProductInfo(
         )}
       {Object.keys(possibilities).includes("Cor Principal") &&
         (
-          <div class="mt-4 px-2  sm:px-0 sm:mt-6">
+          <div class="mt-4  sm:px-0 sm:mt-6">
             <ColorSelector product={product} />
           </div>
         )}
