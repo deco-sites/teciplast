@@ -67,6 +67,7 @@ function CategoryList(props: Props) {
                       width={121}
                       height={121}
                       loading="lazy"
+                      decoding="async"
                     />
                   </figure>
                 )}

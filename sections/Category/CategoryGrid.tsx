@@ -109,6 +109,7 @@ function CategoryGrid(props: Props) {
                                 alt={title}
                                 width={250}
                                 loading="lazy"
+                                decoding="async"
                               />
                               <h3 class="absolute w-full bg-white bottom-0 text-left py-1 px-1 text-xs">
                                 {title}
