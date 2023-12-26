@@ -57,6 +57,7 @@ export default function FooterItems(
                           <a
                             href={item.href}
                             class="block py-1 link link-hover"
+                            target="_blank"
                           >
                             {item.label}
                           </a>
