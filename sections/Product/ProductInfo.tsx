@@ -1,23 +1,13 @@
 import { SendEventOnLoad } from "$store/components/Analytics.tsx";
-import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
-import AddToCartButtonLinx from "$store/islands/AddToCartButton/linx.tsx";
-import AddToCartButtonShopify from "$store/islands/AddToCartButton/shopify.tsx";
-import AddToCartButtonVNDA from "$store/islands/AddToCartButton/vnda.tsx";
-import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
-import AddToCartButtonWake from "$store/islands/AddToCartButton/wake.tsx";
-import OutOfStock from "$store/islands/OutOfStock.tsx";
 import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
-import WishlistButton from "$store/islands/WishlistButton.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
-import ProductSelector from "$store/components/product/ProductVariantSelector.tsx";
 import BenefitsBarPdp from "$store/islands/BenefitsBarPdp.tsx";
 import ColorSelector from "$store/components/product/ProductColorSelector.tsx";
 import BedSizeSelector from "$store/components/product/ProductBedSizeSelector.tsx";
-import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import RatingStars from "$store/components/ui/RatingStars.tsx";
 import {
@@ -25,10 +15,10 @@ import {
   ratingLoader,
 } from "$store/loaders/Reviews/reviewsandratings.ts";
 import type { SectionProps } from "deco/mod.ts";
-import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
 
 import ProductInfoQuantityIsland from "$store/islands/ProductInfoQuantityIsland.tsx";
 import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
+import { Product } from "apps/commerce/types.ts";
 
 export interface RecordItem {
   name: string;
@@ -72,46 +62,39 @@ export async function loader(
     debug = { ...debug, reviewsError: e };
     console.log({ e });
   }
-  return {
-    page,
-    layout,
-    fabricSizeTable,
-    rating,
-    debug,
-  };
-}
+  const pageNull = page === null ? true : false;
+  const breadcrumbList = page?.breadcrumbList;
 
-function ProductInfo(
-  { page, layout, fabricSizeTable, debug, rating }: SectionProps<typeof loader>,
-) {
-  const platform = usePlatform();
+  const product = {
+    productID: page?.product.productID,
+    name: page?.product.name,
+    gtin: page?.product.gtin,
+    isVariantOf: page?.product.isVariantOf,
+    additionalProperty: page?.product.additionalProperty,
+    category: page?.product.category,
+  } as Product;
 
-  if (page === null) {
-    throw new Error("Missing Product Details Page Info");
-  }
+  const description = page?.product.description ||
+    product.isVariantOf?.description;
 
-  const {
-    breadcrumbList,
-    product,
-  } = page;
-  const {
-    productID,
-    offers,
-    name = "",
-    gtin,
-    isVariantOf,
-    additionalProperty = [],
-    category,
-  } = product;
-  const description = product.description || isVariantOf?.description;
   const {
     price = 0,
     listPrice,
     seller = "1",
     installments,
     availability,
-  } = useOffer(offers);
-  const productGroupID = isVariantOf?.productGroupID ?? "";
+  } = useOffer(page?.product.offers);
+
+  const offers = {
+    price,
+    listPrice,
+    seller,
+    installments,
+    availability,
+    priceCurrency: page?.product.offers?.priceCurrency,
+  };
+
+  const productGroupID = product.isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
   const percentageDiscount = listPrice
     ? Math.round((discount / listPrice) * 100)
@@ -120,9 +103,67 @@ function ProductInfo(
   const isFabric = product.additionalProperty!.find((p) =>
     p.value === "Tecidos"
   );
-  const hasVariant = isVariantOf?.hasVariant ?? [];
+  const hasVariant = product.isVariantOf?.hasVariant ?? [];
 
-  const possibilities = useVariantPossibilities(hasVariant, product);
+  const possibilities = useVariantPossibilities(hasVariant, page!.product);
+
+  return {
+    pageNull,
+    breadcrumbList,
+    product,
+    description,
+    offers,
+    productGroupID,
+    discount,
+    percentageDiscount,
+    isFabric,
+    possibilities,
+    layout,
+    fabricSizeTable,
+    rating,
+    debug,
+  };
+}
+
+function ProductInfo(
+  {
+    pageNull,
+    breadcrumbList,
+    product,
+    description,
+    offers,
+    productGroupID,
+    discount,
+    percentageDiscount,
+    isFabric,
+    possibilities,
+    layout,
+    fabricSizeTable,
+    debug,
+    rating,
+  }: SectionProps<typeof loader>,
+) {
+  const platform = usePlatform();
+
+  if (pageNull) {
+    throw new Error("Missing Product Details Page Info");
+  }
+
+  const {
+    productID,
+    name = "",
+    gtin,
+    isVariantOf,
+    additionalProperty = [],
+    category,
+  } = product;
+  const {
+    price = 0,
+    listPrice,
+    seller = "1",
+    installments,
+    availability,
+  } = offers;
 
   return (
     <div class="flex flex-col max-w-[100vw] px-2 sm:px-0">
@@ -249,22 +290,6 @@ function ProductInfo(
       <div class="lg:hidden flex">
         <BenefitsBarPdp />
       </div>
-      {
-        /* Description card
-      <div class="mt-4 sm:mt-6">
-        <span class="text-sm">
-          {description && (
-            <details>
-              <summary class="cursor-pointer">Descrição</summary>
-              <div
-                class="ml-2 mt-2"
-                dangerouslySetInnerHTML={{ __html: description }}
-              />
-            </details>
-          )}
-        </span>
-      </div> */
-      }
 
       {/* Shipping Simulation */}
       <div class="mt-4 border border-[#cecece] p-6">
