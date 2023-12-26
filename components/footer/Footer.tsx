@@ -226,8 +226,8 @@ function Footer({
         <div class="lg:container mx-6 lg:mx-auto">
           {(!layout?.variation || layout?.variation == "Variation 1") && (
             <div class="flex flex-col gap-10">
-              <div class="flex flex-col md:flex-row md:justify-between md:flex-wrap lg:flex-nowrap gap-8 lg:gap-12">
-                <div class="flex lg:flex-col lg:w-full justify-between">
+              <div class="flex flex-col md:grid md:grid-cols-5 md:justify-between lg:flex-nowrap gap-8 lg:gap-12">
+                <div class="flex lg:flex-col lg:w-full justify-between md:col-span-2">
                   <div>
                     <div>{_logo}</div>
                     <div>
@@ -239,7 +239,9 @@ function Footer({
                     <PoweredByDeco />
                   </div>
                 </div>
-                {_sectionLinks}
+                <div class="md:col-span-3">
+                  {_sectionLinks}
+                </div>
               </div>
 
               {
