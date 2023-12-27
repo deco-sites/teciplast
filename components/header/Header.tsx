@@ -30,6 +30,7 @@ export interface Props {
   text?: HTMLWidget;
   textMobile?: HTMLWidget;
   textLink?: HTMLWidget;
+  showAlert?: boolean;
 
   /**
    * @title Expires at date
@@ -64,6 +65,7 @@ interface Text {
 function Header({
   expiresAt,
   labels,
+  showAlert,
   text,
   textLink,
   data,
@@ -75,6 +77,7 @@ function Header({
 }: Props) {
   const platform = usePlatform();
   const items = navItems ?? [];
+  console.log({ text })
 
   return (
     <>
@@ -87,14 +90,19 @@ function Header({
           freeShippingTarget={freeShippingTarget}
         >
           <div class="bg-base-100 bg-opacity-0  w-full z-30">
-            <Alert
-              data={data}
-              expiresAt={expiresAt}
-              labels={labels}
-              text={text}
-              textLink={textLink}
-              textMobile={textMobile}
-            />
+            {
+              showAlert ?
+              <Alert
+                data={data}
+                expiresAt={expiresAt}
+                labels={labels}
+                text={text}
+                textLink={textLink}
+                textMobile={textMobile}
+              />
+              : null
+            }
+           
             <Navbar
               items={items}
               searchbar={searchbar && { ...searchbar, platform }}
