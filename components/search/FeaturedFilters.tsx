@@ -20,7 +20,7 @@ interface Props {
   hiddenCategory: boolean;
 }
 
-const CORES: { [cor: string]: string} = {
+const CORES: { [cor: string]: string } = {
   "Amarelo": "bg-[#FFFF00]",
   "Azul": "bg-[#0000FF]",
   "Azul Bebê": "bg-[#89CFF0]",
@@ -44,12 +44,13 @@ const CORES: { [cor: string]: string} = {
   "Verde Bandeira": "bg-[#006400]",
   "Vermelho": "bg-[#FF0000]",
   "Vinho": "bg-[#722F37]",
-  "Animal Print":"bg-gradient-to-r from-teal-200 to-lime-200",
-  "Estampado":"bg-gradient-to-r from-green-300 via-blue-500 to-purple-600",
-  "Étnico":"bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400", 
-  "Floral":"bg-gradient-to-r from-yellow-400 via-gray-50 to-teal-300",
-  "Mescla":"bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-sky-500 to-sky-500",
-  "Transparente":"bg-[#FFFFFF]", 
+  "Animal Print": "bg-gradient-to-r from-teal-200 to-lime-200",
+  "Estampado": "bg-gradient-to-r from-green-300 via-blue-500 to-purple-600",
+  "Étnico": "bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400",
+  "Floral": "bg-gradient-to-r from-yellow-400 via-gray-50 to-teal-300",
+  "Mescla":
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-sky-500 to-sky-500",
+  "Transparente": "bg-[#FFFFFF]",
 };
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
@@ -59,13 +60,15 @@ function ValueItem(
   { url, selected, label, quantity }: FilterToggleValue,
 ) {
   return (
-    <li >
+    <li>
       <a
         rel="nofollow"
         href={url}
         class="flex items-center hover:underline lg:px-5 min-w-[250px] max-w-[250px]"
-      > 
-        <span class="text-sm ml-2 mr-auto truncate w-full bg-[#fff]">{label}</span>
+      >
+        <span class="text-sm ml-2 mr-auto truncate w-full bg-[#fff]">
+          {label}
+        </span>
         {quantity > 0 && (
           <span class="text-sm  ml-auto text-base-300">({quantity})</span>
         )}
@@ -78,15 +81,22 @@ function ValueItemColor(
   { url, selected, label, quantity }: FilterToggleValue,
 ) {
   return (
-    <li >
+    <li>
       <a
         href={url}
         rel="nofollow"
         class="flex items-center hover:underline lg:px-5 min-w-[250px] max-w-[250px]"
-      > 
-        <div class={`h-[13px] w-[13px] ${CORES[label]} rounded-full border-2 border-[#C0C0C0] shadow-md `}></div>
+      >
+        <div
+          class={`h-[13px] w-[13px] ${
+            CORES[label]
+          } rounded-full border-2 border-[#C0C0C0] shadow-md `}
+        >
+        </div>
 
-        <span class="text-sm ml-2 mr-auto truncate w-full bg-[#fff]">{label}</span>
+        <span class="text-sm ml-2 mr-auto truncate w-full bg-[#fff]">
+          {label}
+        </span>
         {quantity > 0 && (
           <span class="text-sm  ml-auto text-base-300">({quantity})</span>
         )}
@@ -121,8 +131,8 @@ function FilterValues({ key, values }: FilterToggle) {
         if (key === "price") {
           return null;
         }
-        if (key === "cor-principal"){
-         return  <ValueItemColor {...item} />
+        if (key === "cor-principal") {
+          return <ValueItemColor {...item} />;
         }
         return <ValueItem {...item} />;
       })}
@@ -183,9 +193,9 @@ function CarouselFilterValues(
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] px-0  flex-grow  h-[80px]  max-w-[350px]  lg:max-w-[600px] lg:min-w-[400px] w-full mx-1 lg:mx-10"
+      class="grid grid-cols-[48px_1fr_48px] sm:px-0 flex-grow h-[110px] pt-3 sm:pt-0 sm:h-[80px]  max-w-[350px]  lg:max-w-[600px] lg:min-w-[400px] w-full mx-1 lg:mx-10"
     >
-      <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:max-h-[450px] min-w-[350px]">
+      <Slider class="carousel carousel-center sm:carousel-end gap-3 sm:gap-6 col-span-full row-start-2 row-end-5  justify-start  sm:max-h-[450px] min-w-[350px]">
         {values.filter(isAllowedOption).map((item, index) => {
           const allowedOption = allowedFilters.find((filter) =>
             filter.key == key

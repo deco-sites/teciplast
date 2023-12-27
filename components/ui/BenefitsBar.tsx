@@ -3,10 +3,11 @@ import Icon from "$store/components/ui/Icon.tsx";
 export default function BenefitsBar(props: Props) {
   return (
     <section class="container w-full h-20 my-6">
-      <div class="flex flex-row h-full">
+      <div class="flex flex-row h-full text-xs sm:text-base">
         <div class="benefits-bg-first w-1/2 sm:w-1/4 grid grid-cols-3">
           <div class="col-span-1 flex items-center">
-            <div class="bg-[#007C2C] w-[3px] h-[65px] flex-shrink-0 ml-3"></div>
+            <div class="bg-[#007C2C] w-[3px] h-[55px] sm:h-[65px] flex-shrink-0 ml-3">
+            </div>
             <Icon height={35} id="GreenShield" />
           </div>
           <div class="col-span-2 flex flex-col justify-center">
