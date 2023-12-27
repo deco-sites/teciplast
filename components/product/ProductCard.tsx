@@ -70,8 +70,7 @@ function ProductCard(
     name,
     image: images,
     offers,
-    isVariantOf,
-    review,
+    isVariantOf,additionalProperty    
   } = product;
   const id = `product-card-${productID}`;
   const hasVariant = isVariantOf?.hasVariant ?? [];
@@ -81,10 +80,9 @@ function ProductCard(
   const { listPrice, price, installments } = useOffer(offers);
   const possibilities = useVariantPossibilities(hasVariant, product);
   const variants = Object.entries(Object.values(possibilities)[0] ?? {});
-  const isFabric = product.additionalProperty!.find((p) =>
-    p.value === "Tecidos"
-  );
-
+  const isFabric = additionalProperty!.find((p) =>
+     p.value === "Tecidos"
+   );
   const l = layout;
   const align =
     !l?.basics?.contentAlignment || l?.basics?.contentAlignment == "Left"
