@@ -145,7 +145,7 @@ function Alert(
               id={`${id}::expired`}
               class="hidden text-sm text-center lg:text-xl lg:text-left lg:max-w-lg"
             >
-              {labels?.expired || "Expired!"}
+              {labels?.expired || ""}
             </div>
             <div class="flex gap-8 lg:gap-16 items-center justify-center lg:justify-normal py-2 ">
               <div id={`${id}::counter`}>
