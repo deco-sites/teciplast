@@ -266,11 +266,7 @@ export const loader = (props: Props) => {
     };
   });
 
-  // const size = new TextEncoder().encode(JSON.stringify(products)).length
-  // const kiloBytes = size / 1024;
-  // const megaBytes = kiloBytes / 1024;
-
-  // console.log({ size, kiloBytes, megaBytes })
+  
 
   return { ...props, products };
 };
