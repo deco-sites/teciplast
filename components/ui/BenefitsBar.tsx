@@ -6,7 +6,7 @@ export default function BenefitsBar(props: Props) {
       <div class="flex flex-row h-full text-xs sm:text-base">
         <div class="benefits-bg-first w-1/2 sm:w-1/4 grid grid-cols-3">
           <div class="col-span-1 flex items-center">
-            <div class="bg-[#007C2C] w-[3px] h-[55px] sm:h-[65px] flex-shrink-0 ml-3">
+            <div class="bg-[#007C2C] w-[3px] h-[50px] sm:h-[65px] flex-shrink-0 ml-3">
             </div>
             <Icon height={35} id="GreenShield" />
           </div>
