@@ -20,7 +20,7 @@ export interface Banner {
    * @description When you click you go to
    */
   href: string;
-  preload:boolean
+  preload: boolean;
 }
 
 export type BorderRadius =
@@ -50,7 +50,6 @@ export interface Props {
     desktop?: BorderRadius;
   };
   banners: Banner[];
-  
 }
 
 const MOBILE_ROWSPAN = {
@@ -152,7 +151,7 @@ const DEFAULT_PROPS: Props = {
         "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/7b3a9d75-57a5-43cf-a3c5-f689a997f24e",
       heightProportion: 120,
       widthProportion: 320,
-      preload:false,
+      preload: false,
     },
     {
       alt: "a",
@@ -165,7 +164,7 @@ const DEFAULT_PROPS: Props = {
         "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/3e2b7824-d75c-4704-8d32-621bfc9b20cf",
       heightProportion: 120,
       widthProportion: 320,
-      preload:false,
+      preload: false,
     },
   ],
   gridColumns: 2,
@@ -187,7 +186,7 @@ export default function BannerCustom(props: Props) {
 
   const firstBanner = banners[0];
   return (
-    <section class="md:container w-full md:px-0 mx-auto my-8">
+    <section class="md:container w-full md:px-0 mx-auto mb-8">
       <div
         class={`hidden md:grid gap-1 md:gap-2 ${MOBILE_COLUMNS[gridColumns]} ${
           DESKTOP_COLUMNS[gridColumns]
@@ -202,7 +201,8 @@ export default function BannerCustom(props: Props) {
             columns,
             rows,
             heightProportion,
-            widthProportion = 200,preload
+            widthProportion = 200,
+            preload,
           },
         ) => (
           <a
@@ -234,7 +234,7 @@ export default function BannerCustom(props: Props) {
                 src={srcMobile}
                 alt={alt}
                 decoding="async"
-                loading={preload ? "eager": "lazy"}
+                loading={preload ? "eager" : "lazy"}
               />
             </Picture>
           </a>
@@ -269,8 +269,8 @@ export default function BannerCustom(props: Props) {
               src={firstBanner.srcMobile}
               alt={firstBanner.alt}
               decoding="async"
-              loading={firstBanner.preload ? "eager": "lazy"}
-              />
+              loading={firstBanner.preload ? "eager" : "lazy"}
+            />
           </Picture>
         </a>
       </div>
