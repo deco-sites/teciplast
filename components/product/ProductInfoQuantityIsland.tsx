@@ -75,7 +75,7 @@ const ProductInfoQuantityIsland = (props: Props) => {
                   />
                   <div class="text-[#818181] items-center flex gap-2 w-full mt-1">
                     <Icon id="secureIcon" height={15} width={13} />
-                    <span>Compra 100% Segura</span>
+                    <span class={`text-xs sm:text-sm `}>Compra 100% Segura</span>
                   </div>
                 </>
               )}
