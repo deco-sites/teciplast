@@ -75,12 +75,12 @@ function Searchbar({
 
   return (
     <>
-      <div class="w-full grid overflow-y-hidden max-w-[500px] bg-base-100">
-        <form id={id} action={action} class="join">
+      <div class="w-full grid overflow-y-hidden max-w-[500px] bg-base-100 mr-5">
+        <form id={id} action={action} class="join ">
           <input
             ref={searchInputRef}
             id="search-input"
-            class="input input-bordered join-item flex-grow bg-base-100 border-r-0 focus:outline-none"
+            class="input input-bordered join-item flex-grow bg-base-100 border-r-0 focus:outline-none "
             name={name}
             onInput={(e) => {
               const value = e.currentTarget.value;
