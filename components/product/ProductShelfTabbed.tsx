@@ -150,6 +150,20 @@ function TabbedProductShelf({
           </a>
         </div>
       </div>
+      <SendEventOnLoad
+          event={{
+            name: "view_item_list",
+            params: {
+              item_list_name: tabs[ti].title,
+              items: products.map((product) =>
+                mapProductToAnalyticsItem({
+                  product,
+                  ...(useOffer(product.offers)),
+                })
+              ),
+            },
+          }}
+        />
     </div>
   );
 }

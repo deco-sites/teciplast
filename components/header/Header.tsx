@@ -77,7 +77,6 @@ function Header({
 }: Props) {
   const platform = usePlatform();
   const items = navItems ?? [];
-  console.log({ text })
 
   return (
     <>

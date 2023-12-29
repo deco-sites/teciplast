@@ -117,7 +117,7 @@ function Central(
 
   return (
     <div class="w-full flex px-5 justify-center items-center ">
-      <div class="left-auto  absolute top-5  rounded-none w-11/12 bg-base-100 py-[15px] px-[15px] ">
+      <div class="left-auto absolute top-2 rounded-none w-11/12 bg-base-100 py-[15px] px-[15px] ">
         <div class="flex justify-start items-start w-full mb-[15px]">
           {imgMenu && (
             <div
@@ -129,7 +129,6 @@ function Central(
                 alt={"Logo"}
                 width={140}
                 height={30}
-                class={`grayscale`}
               />
             </div>
           )}

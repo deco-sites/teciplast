@@ -112,7 +112,7 @@ function ProductCard(
 
   return (
     <div
-      id={id}
+      id={`product-card-${productID}`}
       class={`group flex flex-col justify-between  w-full min-w-[160px]  h-full  lg:min-h-[400px]  bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
       } ${
@@ -250,9 +250,7 @@ function ProductCard(
         {l?.hide?.productName && l?.hide?.productDescription
           ? ""
           : (
-            <div class="flex flex-col h-[50px]  "  
-                
-            >
+            <a href={url && relative(url)} class="flex flex-col h-[50px]">
               {l?.hide?.productName ? "" : (
                 <h2 class="text-[12px]  h-full  text-[#303030] font-bold"
 
@@ -267,7 +265,7 @@ function ProductCard(
                 />
               )} */
               }
-            </div>
+            </a>
           )}
         {
           /* <div class="flex py-2 text-xs ">
