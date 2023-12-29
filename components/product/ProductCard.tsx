@@ -67,17 +67,19 @@ function ProductCard(
   const {
     url,
     productID,
-    name,
+    name = '',
     image: images,
     offers,
-    isVariantOf,additionalProperty    
+    isVariantOf,
+    additionalProperty    
   } = product;
+
   const id = `product-card-${productID}`;
   const hasVariant = isVariantOf?.hasVariant ?? [];
-  const productGroupID = isVariantOf?.productGroupID;
+  const productGroupID = isVariantOf!.productGroupID;
   const description = product.description || isVariantOf?.description;
   const [front, back] = images ?? [];
-  const { listPrice, price, installments } = useOffer(offers);
+  const { listPrice, price = 0, installments } = useOffer(offers);
   const possibilities = useVariantPossibilities(hasVariant, product);
   const variants = Object.entries(Object.values(possibilities)[0] ?? {});
   const isFabric = additionalProperty!.find((p) =>
@@ -112,7 +114,7 @@ function ProductCard(
 
   return (
     <div
-      id={`product-card-${productID}`}
+      id={id}
       class={`group flex flex-col justify-between  w-full min-w-[160px]  h-full  lg:min-h-[400px]  bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
       } ${
@@ -168,6 +170,7 @@ function ProductCard(
             <WishlistButton
               productGroupID={productGroupID}
               productID={productID}
+              price={price}
             />
           )}
         </div>
