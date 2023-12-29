@@ -129,7 +129,6 @@ function Central(
                 alt={"Logo"}
                 width={140}
                 height={30}
-                class={`grayscale`}
               />
             </div>
           )}
