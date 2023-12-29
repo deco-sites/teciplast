@@ -19,7 +19,7 @@ export default function FooterItems(
         <>
           {/* Tablet and Desktop view */}
           <ul
-            class={`hidden md:flex flex-row gap-6 lg:gap-28 ${
+            class={`hidden lg:flex flex-row gap-6 lg:gap-28 ${
               justify && "lg:justify-around"
             }`}
           >
@@ -37,7 +37,7 @@ export default function FooterItems(
                     {section.items?.map((item) => (
                       <li>
                         {item.label.includes("@") && (
-                          <div class={"inline-flex gap-2 items-center"}>
+                          <div class={"inline-flex gap-2 items-center flex-wrap"}>
                             <Icon id="Email" width={20} height={20} />
                             <span>
                               {item.label}
@@ -45,7 +45,7 @@ export default function FooterItems(
                           </div>
                         )}
                         {item.label.includes("(21)") && (
-                          <div class={"inline-flex gap-2 items-center"}>
+                          <div class={"inline-flex gap-2 items-center flex-wrap"}>
                             <Icon id="WhatsApp2" width={20} height={20} />
                             <span>
                               {item.label}
@@ -71,7 +71,7 @@ export default function FooterItems(
           </ul>
 
           {/* Mobile view */}
-          <ul class="flex flex-col md:hidden gap-4 mb-10">
+          <ul class="flex flex-col lg:hidden gap-4 mb-10">
             {sections.map((section) => (
               <li>
                 <div class="collapse collapse-arrow ">
