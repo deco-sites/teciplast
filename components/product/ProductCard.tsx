@@ -10,7 +10,6 @@ import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalytic
 import Image from "apps/website/components/Image.tsx";
 import RatingStars from "$store/components/ui/RatingStars.tsx";
 import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
-import { sendEvent } from "$store/sdk/analytics.tsx";
 
 export interface Layout {
   basics?: {
@@ -113,7 +112,7 @@ function ProductCard(
 
   return (
     <div
-      id={id}
+      id={`product-card-${productID}`}
       class={`group flex flex-col justify-between  w-full min-w-[160px]  h-full  lg:min-h-[400px]  bg-white border-b-[#002A70] border-b-4 rounded-none text-[#303030] ${
         align === "center" ? "text-center" : "text-start"
       } ${
@@ -177,21 +176,6 @@ function ProductCard(
           href={url && relative(url)}
           aria-label="view product"
           class="grid grid-cols-1 grid-rows-1 w-full h-[200px]"
-          onClick={() => {
-            sendEvent({
-              name: "select_item" as const,
-              params: {
-                item_list_name: itemListName,
-                items: [
-                  mapProductToAnalyticsItem({
-                    product,
-                    price,
-                    listPrice,
-                  }),
-                ],
-              },
-            });
-          }}
         >
           <Image
             src={front?.url!}
@@ -266,21 +250,7 @@ function ProductCard(
         {l?.hide?.productName && l?.hide?.productDescription
           ? ""
           : (
-            <a href={url && relative(url)} onClick={() => {
-              sendEvent({
-                name: "select_item" as const,
-                params: {
-                  item_list_name: itemListName,
-                  items: [
-                    mapProductToAnalyticsItem({
-                      product,
-                      price,
-                      listPrice,
-                    }),
-                  ],
-                },
-              });
-            }} class="flex flex-col h-[50px]  ">
+            <a href={url && relative(url)} class="flex flex-col h-[50px]">
               {l?.hide?.productName ? "" : (
                 <h2
                   class="text-[12px]  h-full  text-[#303030] font-bold"
