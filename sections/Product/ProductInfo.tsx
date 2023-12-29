@@ -67,6 +67,7 @@ export async function loader(
 
   const product = {
     productID: page?.product.productID,
+    sku: page?.product.sku,
     name: page?.product.name,
     gtin: page?.product.gtin,
     isVariantOf: page?.product.isVariantOf,
