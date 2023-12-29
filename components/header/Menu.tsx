@@ -19,7 +19,7 @@ function MenuItem({ item }: { item: SiteNavigationElement }) {
       <div class="collapse-content">
         <ul class="text-sm border-none ">
           {item.children?.map((node) => (
-            <li class="gap-2">
+            <li class="gap-2 leading-10 border-b">
               <a class=" text-sm border-none" href={node.url}>
                 {node.name}
               </a>
