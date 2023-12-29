@@ -233,7 +233,7 @@ function ProductCard(
         </figcaption>
       </figure>
       {/* Prices & Name */}
-      <div class="flex-auto flex flex-col p-2">
+      <div class="flex-auto flex flex-col p-2" href={url && relative(url)}>
         {/* SKU Selector */}
         {(!l?.elementsPositions?.skuSelector ||
           l?.elementsPositions?.skuSelector === "Top") && (
@@ -255,8 +255,8 @@ function ProductCard(
           : (
             <a href={url && relative(url)} class="flex flex-col h-[50px]">
               {l?.hide?.productName ? "" : (
-                <h2
-                  class="text-[12px]  h-full  text-[#303030] font-bold"
+                <h2 class="text-[12px]  h-full  text-[#303030] font-bold"
+
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}

@@ -44,6 +44,7 @@ function Newsletter(
 
       await invoke.vtex.actions.newsletter.subscribe({ email });
     } finally {
+      alert("Email cadastrado com sucesso!");
       loading.value = false;
     }
   };

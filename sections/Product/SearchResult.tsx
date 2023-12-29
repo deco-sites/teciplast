@@ -319,6 +319,9 @@ function Result(
   const hiddenDepartament = numberOfItems > 0;
   const hiddenCategory = numberOfItems > 1;
 
+  const bList = breadcrumb?.itemListElement;
+
+
   return (
     <>
       <div class="container hidden sm:flex w-full border-y border-[#DCDCDC]">
@@ -414,8 +417,7 @@ function Result(
           name: "view_item_list",
           params: {
             // TODO: get category name from search or cms setting
-            item_list_name: "",
-            item_list_id: "",
+            item_list_name: bList ? bList[bList.length - 1]?.name : "Search Result",
             items: page.products?.map((product) =>
               mapProductToAnalyticsItem({
                 ...(useOffer(product.offers)),
