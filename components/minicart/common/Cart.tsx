@@ -169,18 +169,6 @@ function Cart({
             </footer>
           </>
         )}
-      <SendEventOnLoad
-        event={{
-          name: "view_cart",
-          params: {
-            currency,
-            value: total - discounts,
-            items: items
-              .map((_, index) => itemToAnalyticsItem(index))
-              .filter((x): x is AnalyticsItem => Boolean(x)),
-          },
-        }}
-      />
     </div>
   );
 }
