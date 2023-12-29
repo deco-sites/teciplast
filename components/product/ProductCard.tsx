@@ -250,7 +250,7 @@ function ProductCard(
         {l?.hide?.productName && l?.hide?.productDescription
           ? ""
           : (
-            <div class="flex flex-col h-[50px]  ">
+            <a href={url && relative(url)} class="flex flex-col h-[50px]  ">
               {l?.hide?.productName ? "" : (
                 <h2
                   class="text-[12px]  h-full  text-[#303030] font-bold"
@@ -265,7 +265,7 @@ function ProductCard(
                 />
               )} */
               }
-            </div>
+            </a>
           )}
         {
           /* <div class="flex py-2 text-xs ">
