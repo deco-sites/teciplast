@@ -112,6 +112,8 @@ function ProductCard(
     />
   );
 
+
+
   return (
     <div
       id={id}
@@ -255,10 +257,12 @@ function ProductCard(
           : (
             <a href={url && relative(url)} class="flex flex-col h-[50px]">
               {l?.hide?.productName ? "" : (
-                <h2 class="text-[12px]  h-full  text-[#303030] font-bold"
 
-                  dangerouslySetInnerHTML={{ __html: name ?? "" }}
-                />
+                <h2
+                  class="text-[12px]  h-full  text-[#303030] font-bold"
+                  
+                >{ name.replace(/<[^>]*>/g, '') ?? "" }</h2>
+
               )}
               {
                 /* {l?.hide?.productDescription ? "" : (
