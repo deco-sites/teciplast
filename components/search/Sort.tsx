@@ -36,14 +36,14 @@ function Sort({ sortOptions }: Props) {
   const sort = useSort();
 
   return (
-    <>
-      <div class="flex items-center">
-        <span class="text-[#999999] font-normal text-[14px]">Ordenar por</span>
+    <div class={`border-b border-[#C3C3C3]`}>
+      <div class="flex items-center py-2 ">
+        <span class="text-[#898989] font-normal text-[14px]">Ordenar por</span>
         <select
           id="sort"
           name="sort"
           onInput={applySort}
-          class="hidden sm:flex w-min h-[36px] px-1 m-2 cursor-pointer outline-none lowercase font-bold border-b border-[#999999] text-[#999999] bg-transparent text-[14px]"
+          class="hidden sm:flex w-min h-[36px] px-1 m-2 cursor-pointer outline-none lowercase font-bold border-b border-[#999999] text-[#898989] bg-transparent text-[14px]"
         >
           {sortOptions.map(({ value, label }) => ({
             value,
@@ -62,7 +62,7 @@ function Sort({ sortOptions }: Props) {
         id="sort"
         name="sort"
         onInput={applySort}
-        class=" flex sm:hidden select text-base-300 w-full max-w-xs px-0 border-none focus:outline-none"
+        class=" flex sm:hidden select text-base-300 w-full max-w-xs px-0 border-none focus:outline-none "
       >
         {sortOptions.map(({ value, label }) => ({
           value,
@@ -74,7 +74,7 @@ function Sort({ sortOptions }: Props) {
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 }
 
