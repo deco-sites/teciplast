@@ -4,7 +4,11 @@ import { headerHeight, marginTopDrop } from "./constants.ts";
 import Icon from "$store/components/ui/Icon.tsx";
 
 function NavItem(
-  { item, index,ultItem }: { item: SiteNavigationElement; index: number ,ultItem : number},
+  { item, index, ultItem }: {
+    item: SiteNavigationElement;
+    index: number;
+    ultItem: number;
+  },
 ) {
   const { url, name, children } = item;
   const image = item?.image?.[0];
@@ -15,7 +19,7 @@ function NavItem(
       <a href={url}>
         <div class="flex flex-row items-center gap-2 border-b-[3px] border-b-transparent group-hover:border-b-[#626262]   px-1 py-2">
           <span>
-            {name} 
+            {name}
           </span>
           <Icon
             id="ChevronDown"
@@ -24,11 +28,12 @@ function NavItem(
             fill="none"
           />
         </div>
-      </a> 
+      </a>
 
       <div
-        class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 z-50 items-center justify-center  max-w-[400px] ${index == ultItem ? " right-0":" "} `}
-        style={{ top: "0px", marginTop: "45px" }}
+        class={` absolute hidden hover:flex group-hover:flex   bg-gray-100 top-[55px] z-50 items-center justify-center w-[300px] ${
+          index == ultItem ? " right-0" : " "
+        } `}
       >
         {image?.url && (
           <Image
@@ -40,18 +45,20 @@ function NavItem(
             loading="lazy"
           />
         )}
-        <ul class="flex flex-row items-center justify-start  flex-wrap  "
-        >
+        <ul class="flex flex-row items-center justify-start flex-wrap">
           {children?.map((node) => (
-            <li class=" text-start min-w-[200px] max-w-[200px] p-[7.5px] ">
-              <a class="" href={node.url}>
+            <li class="flex text-start w-[150px] ">
+              <a
+                class="w-full h-full block hover:bg-[#e9e9e9] p-[7.5px] transition-all"
+                href={node.url}
+              >
                 <span>{node.name}</span>
               </a>
 
               <ul class="flex flex-col gap-1 mt-4">
                 {node.children?.map((leaf) => (
                   <li>
-                    <a class="" href={leaf.url}>
+                    <a class="w-full block" href={leaf.url}>
                       <span class="text-xs">{leaf.name}</span>
                     </a>
                   </li>

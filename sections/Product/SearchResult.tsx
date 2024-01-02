@@ -21,7 +21,6 @@ import type {
   UnitPriceSpecification,
 } from "apps/commerce/types.ts";
 
-
 export interface Layout {
   /**
    * @description Use drawer for mobile like behavior on desktop. Aside for rendering the filters alongside the products
@@ -84,10 +83,9 @@ export const loader = ({
       matchingTitle = title.title;
     }
   }
-  delete page?.seo
+  delete page?.seo;
 
-
-  if (page?.products){
+  if (page?.products) {
     const bestInstallment = (
       acc: UnitPriceSpecification | null,
       curr: UnitPriceSpecification,
@@ -95,78 +93,78 @@ export const loader = ({
       if (curr.priceComponentType !== "https://schema.org/Installment") {
         return acc;
       }
-  
+
       if (!acc) {
         return curr;
       }
-  
+
       if (acc.price > curr.price) {
         return curr;
       }
-  
+
       if (acc.price < curr.price) {
         return acc;
       }
-  
+
       if (
         acc.billingDuration && curr.billingDuration &&
         acc.billingDuration < curr.billingDuration
       ) {
         return curr;
       }
-  
+
       return acc;
     };
-  
+
     const installment = (specs: UnitPriceSpecification[]) =>
-    specs.reduce(bestInstallment, null);
+      specs.reduce(bestInstallment, null);
 
-  const isVariantOfMap = (isVariantOf: ProductGroup) => {
-    const hasVariant = isVariantOf.hasVariant.map((variant: ProductLeaf) => {
-      const { offers, url, productID, additionalProperty } = variant;
+    const isVariantOfMap = (isVariantOf: ProductGroup) => {
+      const hasVariant = isVariantOf.hasVariant.map((variant: ProductLeaf) => {
+        const { offers, url, productID, additionalProperty } = variant;
 
+        return {
+          offers: {
+            ...offers,
+            offers: offers?.offers.filter((offer) => offer.seller === "1").map(
+              (offer) => {
+                const best = installment(offer.priceSpecification);
+                const specs = offer.priceSpecification.filter((spec) =>
+                  ["https://schema.org/ListPrice"].includes(spec.priceType)
+                );
+
+                if (best) {
+                  specs.push(best);
+                }
+                return ({
+                  seller: offer.seller,
+                  priceSpecification: specs.map((spec) => {
+                    return {
+                      ...spec,
+                      price: spec.price,
+                      priceComponentType: spec.priceComponentType,
+                      priceType: spec.priceType,
+                      billingIncrement: spec.billingIncrement,
+                      billingDuration: spec.billingDuration,
+                    };
+                  }),
+                  price: offer.price,
+                  availability: offer.availability,
+                  inventoryLevel: offer.inventoryLevel,
+                });
+              },
+            ),
+          },
+          url,
+          productID,
+          additionalProperty,
+        };
+      });
       return {
-        offers: {
-          ...offers,
-          offers: offers?.offers.filter((offer) => offer.seller === "1").map(
-            (offer) => {
-              const best = installment(offer.priceSpecification);
-              const specs = offer.priceSpecification.filter((spec) =>
-                ["https://schema.org/ListPrice"].includes(spec.priceType)
-              );
-
-              if (best) {
-                specs.push(best);
-              }
-              return ({
-                seller: offer.seller,
-                priceSpecification: specs.map((spec) => {
-                  return {
-                    ...spec,
-                    price: spec.price,
-                    priceComponentType: spec.priceComponentType,
-                    priceType: spec.priceType,
-                    billingIncrement: spec.billingIncrement,
-                    billingDuration: spec.billingDuration,
-                  };
-                }),
-                price: offer.price,
-                availability: offer.availability,
-                inventoryLevel: offer.inventoryLevel,
-              });
-            },
-          ),
-        },
-        url,
-        productID,
-        additionalProperty,
+        productGroupID: isVariantOf.productGroupID,
+        name: isVariantOf.name,
+        hasVariant,
       };
-    });
-    return {
-      productGroupID: isVariantOf.productGroupID,
-      name: isVariantOf.name,
-      hasVariant,
-     };
     };
 
     page.products?.map((product) => {
@@ -179,34 +177,35 @@ export const loader = ({
             image,
             offers: {
               ...offers,
-              offers: offers?.offers.filter((offer) => offer.seller === "1").map(
-                (offer) => {
-                  const best = installment(offer.priceSpecification);
-                  const specs = offer.priceSpecification.filter((spec) =>
-                    ["https://schema.org/ListPrice"].includes(spec.priceType)
-                  );
-  
-                  if (best) {
-                    specs.push(best);
-                  }
-                  return ({
-                    seller: offer.seller,
-                    priceSpecification: specs.map((spec) => {
-                      return {
-                        ...spec,
-                        price: spec.price,
-                        priceComponentType: spec.priceComponentType,
-                        priceType: spec.priceType,
-                        billingIncrement: spec.billingIncrement,
-                        billingDuration: spec.billingDuration,
-                      };
-                    }),
-                    price: offer.price,
-                    availability: offer.availability,
-                    inventoryLevel: offer.inventoryLevel,
-                  });
-                },
-              ),
+              offers: offers?.offers.filter((offer) => offer.seller === "1")
+                .map(
+                  (offer) => {
+                    const best = installment(offer.priceSpecification);
+                    const specs = offer.priceSpecification.filter((spec) =>
+                      ["https://schema.org/ListPrice"].includes(spec.priceType)
+                    );
+
+                    if (best) {
+                      specs.push(best);
+                    }
+                    return ({
+                      seller: offer.seller,
+                      priceSpecification: specs.map((spec) => {
+                        return {
+                          ...spec,
+                          price: spec.price,
+                          priceComponentType: spec.priceComponentType,
+                          priceType: spec.priceType,
+                          billingIncrement: spec.billingIncrement,
+                          billingDuration: spec.billingDuration,
+                        };
+                      }),
+                      price: offer.price,
+                      availability: offer.availability,
+                      inventoryLevel: offer.inventoryLevel,
+                    });
+                  },
+                ),
             },
             productID,
             url,
@@ -215,7 +214,7 @@ export const loader = ({
         }),
         additionalProperty: product.additionalProperty!,
         url: product.url,
-        name:product.name,
+        name: product.name,
         offers: {
           ...product.offers,
           offers: product.offers?.offers.filter((offer) => offer.seller === "1")
@@ -224,7 +223,7 @@ export const loader = ({
               const specs = offer.priceSpecification.filter((spec) =>
                 ["https://schema.org/ListPrice"].includes(spec.priceType)
               );
-  
+
               if (best) {
                 specs.push(best);
               }
@@ -250,7 +249,6 @@ export const loader = ({
       };
     });
   }
-  
 
   return { page, matchingTitle, layout, cardLayout, featuredFilters };
 };
@@ -321,7 +319,6 @@ function Result(
 
   const bList = breadcrumb?.itemListElement;
 
-
   return (
     <>
       <div class="container hidden sm:flex w-full border-y border-[#DCDCDC]">
@@ -363,7 +360,7 @@ function Result(
           </span>
         </div>
 
-        <div class="flex flex-row sm:gap-5">
+        <div class="flex flex-row sm:gap-5 mt-4">
           <div class="flex flex-col">
             {layout?.variant === "aside" && filters.length > 0 && (
               <>
@@ -417,7 +414,9 @@ function Result(
           name: "view_item_list",
           params: {
             // TODO: get category name from search or cms setting
-            item_list_name: bList ? bList[bList.length - 1]?.name : "Search Result",
+            item_list_name: bList
+              ? bList[bList.length - 1]?.name
+              : "Search Result",
             items: page.products?.map((product) =>
               mapProductToAnalyticsItem({
                 ...(useOffer(product.offers)),
@@ -435,8 +434,7 @@ function Result(
 function SearchResult(
   { page, ...props }: SectionProps<ReturnType<typeof loader>>,
 ) {
-
-  if (!page) {  
+  if (!page) {
     return <NotFound />;
   }
 

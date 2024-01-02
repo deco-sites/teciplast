@@ -42,9 +42,9 @@ function SearchControls(
               </div>
 
               <div class="flex-grow overflow-auto  w-full pb-10  px-5">
+                {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
                 <Filters filters={filters} />
                 <PriceFilter filters={filters} />
-                {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@ function SearchControls(
               class="text-[#818181] "
             />
           </Button>
-          <div class="hidden lg:flex">
+          <div class="flex">
             {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
           </div>
         </div>

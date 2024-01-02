@@ -8,19 +8,28 @@ export interface Props {
 function MenuItem({ item }: { item: SiteNavigationElement }) {
   return (
     <div
-      class={`collapse ${
+      onClick={(event) => {
+        const clicked = event.target as HTMLElement;
+        const clientX = event.clientX;
+        if (clientX < 140 && clicked.getAttribute("data-url")) {
+          const link = clicked.getAttribute("data-url") as string;
+          window.location.href = link;
+          event.preventDefault();
+        }
+      }}
+      class={`collapse relative ${
         item.children && item.children.length > 0 && ("collapse-arrow")
       }`}
     >
-      <input type="checkbox" aria-label={item.name} />
-      <label class="collapse-title  text-base">
+      <input type="checkbox" aria-label={item.name} data-url={item.url} />
+      <label class="collapse-title text-base">
         {item.name}
       </label>
       <div class="collapse-content">
         <ul class="text-sm border-none ">
           {item.children?.map((node) => (
-            <li class="gap-2 leading-10 border-b">
-              <a class=" text-sm border-none" href={node.url}>
+            <li class="gap-2 border-b">
+              <a class=" text-sm border-none w-full block py-2" href={node.url}>
                 {node.name}
               </a>
             </li>
