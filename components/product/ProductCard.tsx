@@ -112,6 +112,8 @@ function ProductCard(
     />
   );
 
+
+
   return (
     <div
       id={id}
@@ -257,8 +259,8 @@ function ProductCard(
               {l?.hide?.productName ? "" : (
                 <h2
                   class="text-[12px]  h-full  text-[#303030] font-bold"
-                  dangerouslySetInnerHTML={{ __html: name ?? "" }}
-                />
+                  
+                >{ name.replace(/<[^>]*>/g, '') ?? "" }</h2>
               )}
               {
                 /* {l?.hide?.productDescription ? "" : (
