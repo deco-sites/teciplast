@@ -22,10 +22,10 @@ export default function BenefitsBar(props: Props) {
             <div
               class={` ${
                 index === 0
-                  ? "benefits-bg-first w-1/2 sm:w-1/4 grid grid-cols-3"
+                  ? "benefits-bg-first w-1/2  lg:w-1/4 grid grid-cols-3"
                   : index === benefits.length - 1
-                  ? "benefits-bg-last w-1/2 sm:w-1/4 grid grid-cols-3"
-                  : "benefits-bg-middle hidden benefits-bg-middle w-1/4 sm:grid sm:grid-cols-3"
+                  ? "benefits-bg-last w-1/2  lg:w-1/4 grid grid-cols-3"
+                  : "benefits-bg-middle hidden benefits-bg-middle w-1/4  lg:grid  lg:grid-cols-3"
               } `}
             >
               <div class="col-span-1 flex items-center">
