@@ -5,7 +5,7 @@ import { formatPrice } from "$store/sdk/format.ts";
 import { useCart } from "apps/vtex/hooks/useCart.ts";
 import type { SimulationOrderForm, SKU, Sla } from "apps/vtex/utils/types.ts";
 import Icon from "$store/components/ui/Icon.tsx";
-
+import { useShippingQuantity } from "$store/sdk/useShippingQuantity.ts";
 export interface Props {
   items: Array<SKU>;
 }
@@ -76,14 +76,19 @@ function ShippingSimulation({ items }: Props) {
   const { simulate, cart } = useCart();
 
   const handleSimulation = useCallback(async () => {
+    const { shippingQuantity } = useShippingQuantity();
+
     if (postalCode.value.length !== 8) {
       return;
     }
 
     try {
+      console.log({ items })
+      const item = items[0];
+      item.quantity = shippingQuantity.value || 1;
       loading.value = true;
       simulateResult.value = await simulate({
-        items: items,
+        items: [item],
         postalCode: postalCode.value,
         country: cart.value?.storePreferencesData.countryCode || "BRA",
       });
