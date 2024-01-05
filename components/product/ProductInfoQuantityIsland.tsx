@@ -5,6 +5,9 @@ import Icon from "$store/components/ui/Icon.tsx";
 import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
 import FabricQuantitySelector from "$store/components/ui/FabricQuantitySelector.tsx";
 import FabricSizeTableModal from "$store/islands/FabricSizeTableModal.tsx";
+import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
+import BenefitsBarPdp from "$store/islands/BenefitsBarPdp.tsx";
+import { useShippingQuantity } from "$store/sdk/useShippingQuantity.ts";
 
 export interface Props {
   isFabric: any;
@@ -34,6 +37,8 @@ const ProductInfoQuantityIsland = (props: Props) => {
   } = props;
   const [quantity, setQuantity] = useState(1);
 
+  const { shippingQuantity } = useShippingQuantity(); 
+
   return (
     <div class="mt-4 sm:mt-10 flex flex-row flex-wrap gap-2 justify-between sm:max-w-none">
       <div class={`w-[48%]`}>
@@ -43,7 +48,7 @@ const ProductInfoQuantityIsland = (props: Props) => {
               quantity={quantity}
               widthFull={true}
               coloredButtons={true}
-              onChange={(q) => setQuantity(q)}
+              onChange={(q) => { setQuantity(q); shippingQuantity.value = q; }}
             />
           )
           : (
@@ -51,7 +56,7 @@ const ProductInfoQuantityIsland = (props: Props) => {
               quantity={quantity}
               widthFull={true}
               coloredButtons={true}
-              onChange={(q) => setQuantity(q)}
+              onChange={(q) => {setQuantity(q); shippingQuantity.value = q; }}
             />
           )}
       </div>
@@ -82,6 +87,22 @@ const ProductInfoQuantityIsland = (props: Props) => {
             </>
           )
           : <OutOfStock productID={productID} />}
+      </div>
+      <div class="lg:hidden flex">
+        <BenefitsBarPdp />
+      </div>
+
+      {/* Shipping Simulation */}
+      <div class="mt-4 border border-[#cecece] p-6 w-full">
+        {platform === "vtex" && (
+          <ShippingSimulation
+            items={[{
+              id: Number(productID),
+              quantity,
+              seller,
+            }]}
+          />
+        )}
       </div>
     </div>
   );

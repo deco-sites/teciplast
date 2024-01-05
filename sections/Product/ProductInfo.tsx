@@ -288,23 +288,6 @@ function ProductInfo(
         seller={seller}
       />
 
-      <div class="lg:hidden flex">
-        <BenefitsBarPdp />
-      </div>
-
-      {/* Shipping Simulation */}
-      <div class="mt-4 border border-[#cecece] p-6">
-        {platform === "vtex" && (
-          <ShippingSimulation
-            items={[{
-              id: Number(product.sku),
-              quantity: 1,
-              seller: seller,
-            }]}
-          />
-        )}
-      </div>
-
       {/* Analytics Event */}
       <SendEventOnLoad
         event={{
