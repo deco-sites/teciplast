@@ -74,9 +74,7 @@ function PdpProductShelf({
               </Slider.Item>
             ))}
           </Slider>
-
-          {
-            /* <>
+          <>
             <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
               <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-[#ffffff9f] border-none text-black hover:bg-[#fff] hover:text-black">
                 <Icon size={24} id="ChevronLeft" strokeWidth={1} />
@@ -87,8 +85,7 @@ function PdpProductShelf({
                 <Icon size={24} id="ChevronRight" strokeWidth={1} />
               </Slider.NextButton>
             </div>
-          </> */
-          }
+          </>
           <SliderJS rootId={id} />
           <SendEventOnLoad
             event={{
